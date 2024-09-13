@@ -1,0 +1,6 @@
+@SportHire.Identity.API_HostAddress = http://localhost:5087
+
+GET {{SportHire.Identity.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
