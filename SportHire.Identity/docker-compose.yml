@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  identity:
+    image: identity
+    build:
+      context: .
+      dockerfile: SportHire.Identity.API/Dockerfile
+    container_name: identity_api
+    ports:
+      - 5201:5201
