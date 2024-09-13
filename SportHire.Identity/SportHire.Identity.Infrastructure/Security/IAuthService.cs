@@ -8,5 +8,6 @@ namespace SportHire.Identity.Infrastructure.Authentication
 {
     public interface IAuthService
     {
+        string GenerateSha256Hash(string password);
     }
 }
