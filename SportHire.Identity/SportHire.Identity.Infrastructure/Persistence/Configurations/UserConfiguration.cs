@@ -13,7 +13,37 @@ namespace SportHire.Identity.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            throw new NotImplementedException();
+            builder
+                .ToTable("Users")
+                .HasKey(u => u.Id);
+
+            builder
+                .Property(u => u.Id)
+                .HasDefaultValueSql("uuid_generate_v4()")
+                .ValueGeneratedOnAdd();
+
+            builder
+                .Property(u => u.FullName)
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(255)
+                .IsRequired();
+
+            builder
+                .Property(u => u.Email)
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(255)
+                .IsRequired();
+
+            builder
+                .Property(u => u.Password)
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(255)
+                .IsRequired();
+
+            builder
+                .Property(u => u.EmailConfirmed)
+                .HasColumnType("BOOLEAN")
+                .HasDefaultValueSql("FALSE");
         }
     }
 }
