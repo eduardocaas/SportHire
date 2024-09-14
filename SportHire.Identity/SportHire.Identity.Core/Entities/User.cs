@@ -12,6 +12,6 @@ namespace SportHire.Identity.Core.Entities
         public string FullName { get; private set; }
         public string Email { get; private set; }
         public string Password { get; private set; }
-        public bool ConfirmedEmail { get; private set; }
+        public bool EmailConfirmed { get; private set; }
     }
 }
