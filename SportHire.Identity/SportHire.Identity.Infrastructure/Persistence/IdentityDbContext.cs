@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using SportHire.Identity.Core.Entities;
+using System.Reflection;
 
 namespace SportHire.Identity.Infrastructure.Persistence
 {
@@ -12,7 +14,14 @@ namespace SportHire.Identity.Infrastructure.Persistence
             this._connectionString = configuration.GetConnectionString("PostgresConnection");
         }
 
+        public DbSet<User> Users { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseNpgsql(this._connectionString);
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
     }
 }
