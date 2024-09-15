@@ -21,4 +21,9 @@
     <ProjectReference Include="..\SportHire.Identity.Core\SportHire.Identity.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Persistence\Scripts\" />
+  </ItemGroup>
+
 </Project>
