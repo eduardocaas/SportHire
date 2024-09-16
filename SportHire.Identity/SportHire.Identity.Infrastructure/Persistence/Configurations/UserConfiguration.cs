@@ -19,7 +19,7 @@ namespace SportHire.Identity.Infrastructure.Persistence.Configurations
 
             builder
                 .Property(u => u.Id)
-                .HasDefaultValueSql("uuid_generate_v4()")
+                .HasDefaultValueSql("gen_random_uuid()")
                 .ValueGeneratedOnAdd();
 
             builder
