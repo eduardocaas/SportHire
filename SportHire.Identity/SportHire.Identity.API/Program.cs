@@ -1,4 +1,6 @@
+using SportHire.Identity.Core.Repositories;
 using SportHire.Identity.Infrastructure.Persistence;
+using SportHire.Identity.Infrastructure.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<IdentityDbContext>();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
