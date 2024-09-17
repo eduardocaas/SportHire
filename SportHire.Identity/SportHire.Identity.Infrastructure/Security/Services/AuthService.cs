@@ -1,12 +1,7 @@
-﻿using SportHire.Identity.Infrastructure.Authentication;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace SportHire.Identity.Infrastructure.Security
+namespace SportHire.Identity.Infrastructure.Security.Services
 {
     public class AuthService : IAuthService
     {
