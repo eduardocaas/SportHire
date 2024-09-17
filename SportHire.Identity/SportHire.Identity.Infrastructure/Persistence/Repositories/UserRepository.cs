@@ -10,6 +10,13 @@ namespace SportHire.Identity.Infrastructure.Persistence.Repositories
 {
     public class UserRepository : IUserRepository
     {
+        private readonly IdentityDbContext _dbContext;
+
+        public UserRepository(IdentityDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         public Task AddAsync(User user)
         {
             throw new NotImplementedException();
