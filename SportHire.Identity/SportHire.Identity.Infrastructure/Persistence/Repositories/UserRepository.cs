@@ -1,4 +1,5 @@
-﻿using SportHire.Identity.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SportHire.Identity.Core.Entities;
 using SportHire.Identity.Core.Repositories;
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,9 @@ namespace SportHire.Identity.Infrastructure.Persistence.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash)
+        public async Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Users.SingleOrDefaultAsync(u => u.Email == email && u.Password == passwordHash);
         }
     }
 }
