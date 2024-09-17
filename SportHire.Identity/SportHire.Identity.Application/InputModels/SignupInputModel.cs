@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SportHire.Identity.Application.InputModels
 {
-    internal class SignupInputModel
+    public class SignupInputModel
     {
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }
