@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace SportHire.Identity.Infrastructure.Migrations
+namespace SportHire.Identity.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class ver1 : Migration
