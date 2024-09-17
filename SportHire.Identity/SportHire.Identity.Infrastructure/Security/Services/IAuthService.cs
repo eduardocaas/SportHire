@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SportHire.Identity.Infrastructure.Authentication
+namespace SportHire.Identity.Infrastructure.Security.Services
 {
     public interface IAuthService
     {
