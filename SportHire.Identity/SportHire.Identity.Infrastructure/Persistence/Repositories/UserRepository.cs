@@ -17,9 +17,10 @@ namespace SportHire.Identity.Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public Task AddAsync(User user)
+        public async Task AddAsync(User user)
         {
-            throw new NotImplementedException();
+            await _dbContext.Users.AddAsync(user);
+            await _dbContext.SaveChangesAsync();
         }
 
         public Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash)
