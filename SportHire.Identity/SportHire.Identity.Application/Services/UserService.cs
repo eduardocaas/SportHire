@@ -25,7 +25,7 @@ namespace SportHire.Identity.Application.Services
         public async Task<Guid> SignUp(SignupInputModel inputModel)
         {
             var passwordHash = _authService.GenerateSha256Hash(inputModel.Password);
-            var user = new User(inputModel.FullName, inputModel.Email, inputModel.Password);
+            var user = new User(inputModel.FullName, inputModel.Email, passwordHash);
 
             await _repository.AddAsync(user);
 
