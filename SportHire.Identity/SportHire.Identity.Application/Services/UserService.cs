@@ -1,21 +1,27 @@
 ﻿using SportHire.Identity.Application.InputModels;
 using SportHire.Identity.Application.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SportHire.Identity.Core.Repositories;
+using SportHire.Identity.Infrastructure.Security.Services;
 
 namespace SportHire.Identity.Application.Services
 {
-    internal class UserService : IUserService
+    public class UserService : IUserService
     {
+        private readonly IUserRepository _repository;
+        private readonly IAuthService _authService;
+
+        public UserService(IUserRepository repository, IAuthService authService)
+        {
+            _repository = repository;
+            _authService = authService;
+        }
+
         public SigninViewModel SignIn(SigninInputModel inputModel)
         {
             throw new NotImplementedException();
         }
 
-        public int SignUp(SignupInputModel inputModel)
+        public async Task<int> SignUp(SignupInputModel inputModel)
         {
             throw new NotImplementedException();
         }
