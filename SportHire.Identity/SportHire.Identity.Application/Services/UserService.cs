@@ -1,5 +1,6 @@
 ﻿using SportHire.Identity.Application.InputModels;
 using SportHire.Identity.Application.ViewModels;
+using SportHire.Identity.Core.Entities;
 using SportHire.Identity.Core.Repositories;
 using SportHire.Identity.Infrastructure.Security.Services;
 
@@ -21,9 +22,14 @@ namespace SportHire.Identity.Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task<int> SignUp(SignupInputModel inputModel)
+        public async Task<Guid> SignUp(SignupInputModel inputModel)
         {
-            throw new NotImplementedException();
+            var passwordHash = _authService.GenerateSha256Hash(inputModel.Password);
+            var user = new User(inputModel.FullName, inputModel.Email, inputModel.Password);
+
+            await _repository.AddAsync(user);
+
+            return user.Id;
         }
     }
 }
