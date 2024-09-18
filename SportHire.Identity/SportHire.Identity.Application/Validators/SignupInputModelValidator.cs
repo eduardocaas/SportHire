@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
+using SportHire.Identity.Application.InputModels;
 
 namespace SportHire.Identity.Application.Validators
 {
-    internal class SignupInputModelValidator
+    public class SignupInputModelValidator : AbstractValidator<SignupInputModel>
     {
+        public SignupInputModelValidator()
+        {
+            
+        }
     }
 }
