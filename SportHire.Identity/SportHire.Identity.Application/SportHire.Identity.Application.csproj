@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SportHire.Identity.Infrastructure\SportHire.Identity.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
