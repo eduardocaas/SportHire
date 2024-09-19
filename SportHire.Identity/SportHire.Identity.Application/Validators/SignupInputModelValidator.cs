@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using SportHire.Identity.Application.InputModels;
+using System.Text.RegularExpressions;
 
 namespace SportHire.Identity.Application.Validators
 {
@@ -17,6 +18,14 @@ namespace SportHire.Identity.Application.Validators
                 .WithMessage("E-mail não válido!");
 
 
+        }
+
+        public bool ValidPassword(string password)
+        {
+            // 8 char - 1 uppercase - 1 lowercase - 1 number - 1 special
+            var regex = new Regex(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=].*$)");
+
+            return regex.IsMatch(password);
         }
     }
 }
