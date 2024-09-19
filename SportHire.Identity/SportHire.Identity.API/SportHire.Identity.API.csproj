@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SportHire.Identity.Application\SportHire.Identity.Application.csproj" />
     <ProjectReference Include="..\SportHire.Identity.Infrastructure\SportHire.Identity.Infrastructure.csproj" />
   </ItemGroup>
 
