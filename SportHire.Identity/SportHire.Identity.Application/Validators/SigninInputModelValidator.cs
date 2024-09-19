@@ -12,7 +12,15 @@ namespace SportHire.Identity.Application.Validators
     {
         public SigninInputModelValidator()
         {
-            
+            RuleFor(u => u.Email)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("E-mail é obrigatório");
+
+            RuleFor(u => u.Password)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("Senha é obrigatória");
         }
     }
 }
