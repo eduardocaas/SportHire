@@ -30,6 +30,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 
 // Validators
 builder.Services.AddScoped<IValidator<SignupInputModel>, SignupInputModelValidator>();
+builder.Services.AddScoped<IValidator<SigninInputModel>, SigninInputModelValidator>();
 
 var app = builder.Build();
 
