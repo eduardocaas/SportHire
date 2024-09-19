@@ -6,6 +6,6 @@ namespace SportHire.Identity.Application.Services
     public interface IUserService
     {
         SigninViewModel SignIn(SigninInputModel inputModel);
-        Task<int> SignUp(SignupInputModel inputModel);
+        Task<Guid> SignUp(SignupInputModel inputModel);
     }
 }
