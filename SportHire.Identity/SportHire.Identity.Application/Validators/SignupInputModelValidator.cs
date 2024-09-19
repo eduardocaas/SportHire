@@ -7,7 +7,16 @@ namespace SportHire.Identity.Application.Validators
     {
         public SignupInputModelValidator()
         {
-            
+            RuleFor(u => u.FullName)
+                .NotEmpty()
+                .NotNull()
+                .WithMessage("Nome é obrigatório!");
+
+            RuleFor(u => u.Email)
+                .EmailAddress()
+                .WithMessage("E-mail não válido!");
+
+
         }
     }
 }
