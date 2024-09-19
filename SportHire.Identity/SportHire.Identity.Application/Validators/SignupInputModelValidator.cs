@@ -17,7 +17,9 @@ namespace SportHire.Identity.Application.Validators
                 .EmailAddress()
                 .WithMessage("E-mail não válido!");
 
-
+            RuleFor(u => u.Password)
+                .Must(ValidPassword)
+                .WithMessage("A senha deve conter no mínimo 8 caracteres, sendo uma letra maiúscula, uma minúscula, um caractere especial e um número!");
         }
 
         public bool ValidPassword(string password)
