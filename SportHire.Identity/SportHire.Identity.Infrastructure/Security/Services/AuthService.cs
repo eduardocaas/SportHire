@@ -1,10 +1,18 @@
-﻿using System.Security.Cryptography;
+﻿using Microsoft.Extensions.Configuration;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace SportHire.Identity.Infrastructure.Security.Services
 {
     public class AuthService : IAuthService
     {
+        private readonly IConfiguration _configuration;
+
+        public AuthService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public string GenerateSha256Hash(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
