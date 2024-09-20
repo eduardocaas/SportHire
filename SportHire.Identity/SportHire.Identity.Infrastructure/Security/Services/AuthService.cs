@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -34,7 +35,16 @@ namespace SportHire.Identity.Infrastructure.Security.Services
 
         public string GenerateJwtToken(string email)
         {
-            throw new NotImplementedException();
+            var issuer = _configuration["Jwt:Issuer"];
+            var audience = _configuration["Jwt:Audience"];
+            var privateKey = _configuration["Jwt:Key"];
+
+            var claims = new List<Claim>
+            {
+                new Claim("userEmail", email)
+            };
+
+
         }
     }
 }
