@@ -23,5 +23,10 @@ namespace SportHire.Identity.Infrastructure.Security.Services
                 return builder.ToString();
             }
         }
+
+        public string GenerateJwtToken(string email)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
