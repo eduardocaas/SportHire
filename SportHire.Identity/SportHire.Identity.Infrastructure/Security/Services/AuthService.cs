@@ -44,7 +44,8 @@ namespace SportHire.Identity.Infrastructure.Security.Services
                 new Claim("userEmail", email)
             };
 
-
+            var rsaKey = RSA.Create();
+            
         }
     }
 }
