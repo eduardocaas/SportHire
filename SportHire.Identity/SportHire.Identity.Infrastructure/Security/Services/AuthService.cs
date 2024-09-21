@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -45,7 +47,19 @@ namespace SportHire.Identity.Infrastructure.Security.Services
 
             var rsaKey = RSA.Create();
             rsaKey.ImportFromPem(_configuration["Jwt:PrivateKeyPath"]);
-            
+
+            var rsaSecurityKey = new RsaSecurityKey(rsaKey);
+            var signingCredentials = new SigningCredentials(rsaSecurityKey, SecurityAlgorithms.RsaSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: issuer,
+                audience: audience,
+                expires: DateTime.Now.AddHours(8),
+                signingCredentials: signingCredentials,
+                claims: claims);
+
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+            return tokenString;
         }
     }
 }
