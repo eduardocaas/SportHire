@@ -37,7 +37,6 @@ namespace SportHire.Identity.Infrastructure.Security.Services
         {
             var issuer = _configuration["Jwt:Issuer"];
             var audience = _configuration["Jwt:Audience"];
-            var privateKey = _configuration["Jwt:Key"];
 
             var claims = new List<Claim>
             {
@@ -45,6 +44,7 @@ namespace SportHire.Identity.Infrastructure.Security.Services
             };
 
             var rsaKey = RSA.Create();
+            rsaKey.ImportFromPem(_configuration["Jwt:PrivateKeyPath"]);
             
         }
     }
