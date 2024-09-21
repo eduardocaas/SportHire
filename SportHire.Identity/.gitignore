@@ -3,7 +3,9 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+# Secrets
 appsettings.Production.json
+SportHire.Identity.Infrastructure/Keys
 
 # dotenv files
 .env
