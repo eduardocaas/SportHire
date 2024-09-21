@@ -40,7 +40,7 @@ namespace SportHire.Identity.Infrastructure.Security.Services
 
             var claims = new List<Claim>
             {
-                new Claim("userEmail", email)
+                new Claim(ClaimTypes.Email, email)
             };
 
             var rsaKey = RSA.Create();
