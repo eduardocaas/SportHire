@@ -21,7 +21,7 @@ namespace SportHire.Identity.Application.Services
         {
             var passwordHash = _authService.GenerateSha256Hash(inputModel.Password);
 
-            var user = await _repository.GetUserByEmailAndPasswordAsync(inputModel.Email, inputModel.Password);
+            var user = await _repository.GetUserByEmailAndPasswordAsync(inputModel.Email, passwordHash);
             if (user == null) return null;
 
             // TODO: Generate JWT Token
