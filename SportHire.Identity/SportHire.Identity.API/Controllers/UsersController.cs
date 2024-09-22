@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SportHire.Identity.Application.Services;
 
 namespace SportHire.Identity.API.Controllers
 {
@@ -6,5 +7,11 @@ namespace SportHire.Identity.API.Controllers
     [Route("identity/[controller]")]
     public class UsersController : ControllerBase
     {
+        private readonly IUserService _userService;
+
+        public UsersController(IUserService userService)
+        {
+            _userService = userService;
+        }
     }
 }
