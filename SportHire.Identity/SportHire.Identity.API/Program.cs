@@ -2,6 +2,7 @@ using FluentValidation;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 using SportHire.Identity.API.Filters;
 using SportHire.Identity.Application.InputModels;
+using SportHire.Identity.Application.Services;
 using SportHire.Identity.Application.Validators;
 using SportHire.Identity.Core.Repositories;
 using SportHire.Identity.Infrastructure.Persistence;
@@ -27,6 +28,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // Services
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 // Validators
 builder.Services.AddScoped<IValidator<SignupInputModel>, SignupInputModelValidator>();
