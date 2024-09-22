@@ -17,6 +17,13 @@ namespace SportHire.Identity.API.Controllers
             _userService = userService;
         }
 
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] int id)
+        {
+
+        }
+
         [HttpPost]
         [Route("login")]
         [AllowAnonymous]
