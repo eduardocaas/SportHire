@@ -26,5 +26,12 @@ namespace SportHire.Identity.API.Controllers
 
             return loginViewModel is null ? BadRequest("Login ou senha incorretos!") : Ok(loginViewModel);        
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Signup([FromBody] SignupInputModel inputModel)
+        {
+
+        }
     }
 }
