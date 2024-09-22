@@ -24,9 +24,7 @@ namespace SportHire.Identity.API.Controllers
         {
             var loginViewModel = await _userService.SignIn(inputModel);
 
-            return loginViewModel is null ? BadRequest("Login ou senha incorretos!") : Ok(loginViewModel); 
-
-            
+            return loginViewModel is null ? BadRequest("Login ou senha incorretos!") : Ok(loginViewModel);        
         }
     }
 }
