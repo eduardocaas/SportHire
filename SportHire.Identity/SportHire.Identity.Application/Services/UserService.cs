@@ -17,16 +17,16 @@ namespace SportHire.Identity.Application.Services
             _authService = authService;
         }
 
-        public async SigninViewModel SignIn(SigninInputModel inputModel)
+        public async Task<SigninViewModel> SignIn(SigninInputModel inputModel)
         {
             var passwordHash = _authService.GenerateSha256Hash(inputModel.Password);
 
             var user = await _repository.GetUserByEmailAndPasswordAsync(inputModel.Email, passwordHash);
             if (user == null) return null;
 
-            // TODO: Generate JWT Token
+            var token = _authService.GenerateJwtToken(inputModel.Email);
 
-            // TODO: Return ViewModel 
+            return new SigninViewModel(inputModel.Email, token);
         }
 
         public async Task<Guid> SignUp(SignupInputModel inputModel)
