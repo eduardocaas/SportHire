@@ -7,5 +7,6 @@ namespace SportHire.Identity.Application.Services
     {
         Task<SigninViewModel> SignIn(SigninInputModel inputModel);
         Task<Guid> SignUp(SignupInputModel inputModel);
+        Task<UserViewModel> GetUser(int id);
     }
 }
