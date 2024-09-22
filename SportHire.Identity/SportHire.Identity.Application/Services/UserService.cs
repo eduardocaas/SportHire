@@ -38,5 +38,10 @@ namespace SportHire.Identity.Application.Services
 
             return user.Id;
         }
+
+        public Task<UserViewModel> GetUser(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
