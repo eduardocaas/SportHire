@@ -5,7 +5,7 @@ namespace SportHire.Identity.Application.Services
 {
     public interface IUserService
     {
-        SigninViewModel SignIn(SigninInputModel inputModel);
+        Task<SigninViewModel> SignIn(SigninInputModel inputModel);
         Task<Guid> SignUp(SignupInputModel inputModel);
     }
 }

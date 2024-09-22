@@ -17,7 +17,7 @@ namespace SportHire.Identity.Application.Services
             _authService = authService;
         }
 
-        public async Task<SigninViewModel> SignIn(SigninInputModel inputModel)
+        public async Task<SigninViewModel?> SignIn(SigninInputModel inputModel)
         {
             var passwordHash = _authService.GenerateSha256Hash(inputModel.Password);
 
