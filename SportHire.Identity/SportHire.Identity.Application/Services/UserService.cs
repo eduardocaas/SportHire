@@ -39,9 +39,14 @@ namespace SportHire.Identity.Application.Services
             return user.Id;
         }
 
-        public Task<UserViewModel> GetUser(int id)
+        public async Task<UserViewModel> GetUser(Guid id)
         {
-            throw new NotImplementedException();
+            #nullable enable
+            var user = await _repository.GetByIdAsync(id);
+
+            if (user == null) return null;
+
+            return new UserViewModel(user.FullName, user.Email);
         }
     }
 }
