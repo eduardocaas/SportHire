@@ -6,5 +6,6 @@ namespace SportHire.Identity.Core.Repositories
     {
         Task AddAsync(User user);
         Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash);
+        Task<User> GetUserByIdAsync(int id);
     }
 }
