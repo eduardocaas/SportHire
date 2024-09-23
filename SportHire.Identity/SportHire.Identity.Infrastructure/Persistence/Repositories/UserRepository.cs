@@ -19,12 +19,12 @@ namespace SportHire.Identity.Infrastructure.Persistence.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash)
+        public async Task<User> GetByEmailAndPasswordAsync(string email, string passwordHash)
         {
             return await _dbContext.Users.SingleOrDefaultAsync(u => u.Email == email && u.Password == passwordHash);
         }
 
-        public async Task<User> GetUserByIdAsync(Guid id)
+        public async Task<User> GetByIdAsync(Guid id)
         {
             return await _dbContext.Users.SingleOrDefaultAsync(u => u.Id == id);
         }
