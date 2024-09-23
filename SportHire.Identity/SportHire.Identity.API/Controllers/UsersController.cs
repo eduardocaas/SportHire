@@ -19,9 +19,11 @@ namespace SportHire.Identity.API.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] int id)
+        public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
+            var viewModel = await _userService.GetUser(id);
 
+            return viewModel is null ? NotFound() : Ok(viewModel);
         }
 
         [HttpPost]
