@@ -40,7 +40,8 @@ namespace SportHire.Identity.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Signup([FromBody] SignupInputModel inputModel)
         {
-
+            var id = await _userService.SignUp(inputModel);
+            return CreatedAtAction(nameof(GetById), new { id = id }, inputModel);
         }
     }
 }
