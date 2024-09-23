@@ -24,9 +24,9 @@ namespace SportHire.Identity.Infrastructure.Persistence.Repositories
             return await _dbContext.Users.SingleOrDefaultAsync(u => u.Email == email && u.Password == passwordHash);
         }
 
-        public Task<User> GetUserByIdAsync(int id)
+        public async Task<User> GetUserByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Users.SingleOrDefaultAsync(u => u.Id == id);
         }
     }
 }
