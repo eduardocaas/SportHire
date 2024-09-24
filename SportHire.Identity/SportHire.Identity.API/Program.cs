@@ -1,4 +1,6 @@
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 using SportHire.Identity.API.Filters;
@@ -9,6 +11,7 @@ using SportHire.Identity.Core.Repositories;
 using SportHire.Identity.Infrastructure.Persistence;
 using SportHire.Identity.Infrastructure.Persistence.Repositories;
 using SportHire.Identity.Infrastructure.Security.Services;
+using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,6 +52,25 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        var rsaKey = RSA.Create();
+        rsaKey.ImportFromPem(builder.Configuration["Jwt:PrivateKeyPath"]);
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new RsaSecurityKey(rsaKey)
+        };
+    });
 
 builder.Services.AddDbContext<IdentityDbContext>();
 
