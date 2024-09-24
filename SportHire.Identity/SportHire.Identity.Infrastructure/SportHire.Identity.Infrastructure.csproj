@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Keys\" />
     <Folder Include="Persistence\Migrations\" />
     <Folder Include="Persistence\Scripts\" />
   </ItemGroup>
