@@ -1,6 +1,11 @@
-﻿namespace SportHire.Identity.API.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace SportHire.Identity.API.Controllers
 {
-    public class HealthController
+    [ApiController]
+    [Route("identity/[controller]")]
+    public class HealthController : ControllerBase
     {
+        
     }
 }
