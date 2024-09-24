@@ -6,6 +6,10 @@ namespace SportHire.Identity.API.Controllers
     [Route("identity/[controller]")]
     public class HealthController : ControllerBase
     {
-        
+        [HttpGet]
+        public IActionResult Status()
+        {
+            return Ok("API is up to date");
+        }
     }
 }
