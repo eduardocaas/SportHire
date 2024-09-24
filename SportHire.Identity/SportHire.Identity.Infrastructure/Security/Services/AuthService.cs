@@ -46,7 +46,8 @@ namespace SportHire.Identity.Infrastructure.Security.Services
             };
 
             var rsaKey = RSA.Create();
-            rsaKey.ImportFromPem(_configuration["Jwt:PrivateKeyPath"]);
+            string pemKey = File.ReadAllText(_configuration.GetSection("Jwt:PrivateKeyPath").Value);
+            rsaKey.ImportFromPem(pemKey);
 
             var rsaSecurityKey = new RsaSecurityKey(rsaKey);
             var signingCredentials = new SigningCredentials(rsaSecurityKey, SecurityAlgorithms.RsaSha256);

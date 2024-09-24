@@ -1,5 +1,6 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
@@ -57,8 +58,10 @@ builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
+
         var rsaKey = RSA.Create();
-        rsaKey.ImportFromPem(builder.Configuration["Jwt:PublicKeyPath"]);
+        string pemKey = File.ReadAllText(builder.Configuration.GetSection("Jwt:PublicKeyPath").Value);
+        rsaKey.ImportFromPem(pemKey);
 
         options.TokenValidationParameters = new TokenValidationParameters
         {
