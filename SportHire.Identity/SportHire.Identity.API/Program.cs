@@ -58,7 +58,7 @@ builder.Services
     .AddJwtBearer(options =>
     {
         var rsaKey = RSA.Create();
-        rsaKey.ImportFromPem(builder.Configuration["Jwt:PrivateKeyPath"]);
+        rsaKey.ImportFromPem(builder.Configuration["Jwt:PublicKeyPath"]);
 
         options.TokenValidationParameters = new TokenValidationParameters
         {
