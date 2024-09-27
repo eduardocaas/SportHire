@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
+//using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 using SportHire.Identity.API.Filters;
 using SportHire.Identity.Application.InputModels;
 using SportHire.Identity.Application.Services;
@@ -19,11 +19,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers(options => 
-    { options.Filters.Add<ValidationFilter>(); })
-    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<SigninInputModelValidator>());
-//builder.Services.AddFluentValidationAutoValidation();
-//builder.Services.AddValidatorsFromAssemblyContaining<SignupInputModelValidator>(); 
+builder.Services.AddControllers(options =>
+    { options.Filters.Add(typeof(ValidationFilter)); });
+    //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<SigninInputModelValidator>());
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssemblyContaining<SigninInputModelValidator>(); 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
