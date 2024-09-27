@@ -12,7 +12,7 @@ using SportHire.Identity.Infrastructure.Persistence;
 namespace SportHire.Identity.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(IdentityDbContext))]
-    [Migration("20240917141535_ver1")]
+    [Migration("20240927025204_ver1")]
     partial class ver1
     {
         /// <inheritdoc />
@@ -53,6 +53,9 @@ namespace SportHire.Identity.Infrastructure.Persistence.Migrations
                         .HasColumnType("VARCHAR");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "Email" }, "IX_User_Email")
+                        .IsUnique();
 
                     b.ToTable("Users", (string)null);
                 });

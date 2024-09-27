@@ -51,6 +51,9 @@ namespace SportHire.Identity.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex(new[] { "Email" }, "IX_User_Email")
+                        .IsUnique();
+
                     b.ToTable("Users", (string)null);
                 });
 #pragma warning restore 612, 618
