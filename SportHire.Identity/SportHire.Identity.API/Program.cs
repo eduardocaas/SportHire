@@ -1,4 +1,5 @@
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -18,9 +19,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter)));
-builder.Services.AddFluentValidationAutoValidation();
-// builder.Services.AddValidatorsFromAssemblyContaining<SignupInputModelValidator>(); alternative
+builder.Services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter))).AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<SignupInputModelValidator>());
+//builder.Services.AddFluentValidationAutoValidation();
+//builder.Services.AddValidatorsFromAssemblyContaining<SignupInputModelValidator>(); 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
