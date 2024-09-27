@@ -19,7 +19,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter))).AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<SignupInputModelValidator>());
+builder.Services.AddControllers(options => 
+    { options.Filters.Add<ValidationFilter>(); })
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<SigninInputModelValidator>());
 //builder.Services.AddFluentValidationAutoValidation();
 //builder.Services.AddValidatorsFromAssemblyContaining<SignupInputModelValidator>(); 
 
@@ -86,6 +88,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
 // Validators
+builder.Services.AddScoped<ValidationFilter>();
 builder.Services.AddScoped<IValidator<SignupInputModel>, SignupInputModelValidator>();
 builder.Services.AddScoped<IValidator<SigninInputModel>, SigninInputModelValidator>();
 
