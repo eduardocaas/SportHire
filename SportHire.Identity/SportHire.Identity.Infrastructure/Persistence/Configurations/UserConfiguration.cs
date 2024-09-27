@@ -44,6 +44,10 @@ namespace SportHire.Identity.Infrastructure.Persistence.Configurations
                 .Property(u => u.EmailConfirmed)
                 .HasColumnType("BOOLEAN")
                 .HasDefaultValueSql("FALSE");
+
+            builder
+                .HasIndex(u => u.Email, "IX_User_Email")
+                .IsUnique();
         }
     }
 }
