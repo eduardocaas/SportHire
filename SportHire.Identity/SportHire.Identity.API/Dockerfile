@@ -9,6 +9,10 @@ ENV ASPNETCORE_URLS=http://+:5201;
 RUN adduser -u 2000 --disabled-password --gecos "" appuser && chown -R appuser /app
 USER appuser
 
+RUN mkdir /app/keys
+RUN cd /app/keys && openssl genrsa -out private.pem 2048
+RUN cd /app/keys && openssl rsa -in private.pem -pubout -outform PEM -out public.pem
+
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
