@@ -40,8 +40,21 @@ namespace SportHire.Identity.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Signup([FromBody] SignupInputModel inputModel)
         {
-            var id = await _userService.SignUp(inputModel);
-            return CreatedAtAction(nameof(GetById), new { id = id }, inputModel);
+            try
+            {
+                var id = await _userService.SignUp(inputModel);
+                return CreatedAtAction(nameof(GetById), new { id = id }, inputModel);
+            }
+            catch (Exception exception)
+            {
+                if (exception.InnerException != null && exception.InnerException.Message.Contains("duplicate key"))
+                {
+                    return Conflict("Email já cadastrado no sistema!");
+                }
+
+                return StatusCode(StatusCodes.Status500InternalServerError, exception.Message);
+            }
+            
         }
     }
 }
