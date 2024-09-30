@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  events:
+    image: events
+    build:
+      context: .
+      dockerfile: SportHire.Events.API/DockerFile
+    container_name: events_api
+    ports:
+      - 5301:5301
