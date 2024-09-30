@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +38,27 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+
+        var rsaKey = RSA.Create();
+        string pemKey = File.ReadAllText(builder.Configuration.GetSection("Jwt:PublicKeyPath").Value);
+        rsaKey.ImportFromPem(pemKey);
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new RsaSecurityKey(rsaKey)
+        };
+    });
 
 var app = builder.Build();
 
