@@ -6,6 +6,8 @@ EXPOSE 5201
 
 ENV ASPNETCORE_URLS=http://+:5201;
 
+RUN apt update && apt install nano
+
 RUN adduser -u 2000 --disabled-password --gecos "" appuser && chown -R appuser /app
 USER appuser
 
