@@ -3,6 +3,9 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+# Secrets
+SportHire.Events.Infrastructure/Keys
+
 # dotenv files
 .env
 
