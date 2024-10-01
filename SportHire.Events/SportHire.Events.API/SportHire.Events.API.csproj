@@ -14,4 +14,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SportHire.Events.Infrastructure\SportHire.Events.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
