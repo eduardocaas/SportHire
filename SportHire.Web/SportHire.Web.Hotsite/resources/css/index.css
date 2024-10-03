@@ -20,3 +20,100 @@ header {
   background-repeat: no-repeat;
   height: 100vh;
 }
+
+h1 {
+  margin: 0;
+  font-size: 35px;
+  color: #FFF;
+  letter-spacing: 1.1px;
+}
+
+h1:nth-child(2) {
+  font-weight: 300;
+  margin-top: 4px;
+  letter-spacing: 1.4px;
+}
+
+.hero-text-container {
+  display: flex;
+  align-items: center;
+  height: calc(100% - 150px);
+}
+
+.hero-text-box {
+  margin-left: 50px;
+}
+
+.btn:link,
+.btn:visited {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 15px;
+    color: #FFF;
+    border: 2px solid #0077b6;
+    border-radius: 30px;
+    padding: 10px 36px;
+    transition: 0.2s;
+    margin-top: 12px;
+    margin-right: 6px;
+}
+
+.btn-full:link,
+.btn-full:visited {
+  background-color: #0077b6;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+  background-color: #0077b6;
+}
+
+
+.btn-full:hover,
+.btn-full:active {
+  background-color: #0482c5;
+  border: 2px solid #0482c5;
+}
+
+
+/* -- Hero Header Menu -- */
+
+.main-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px 20px;
+  padding-left: 50px;
+}
+
+.logo {
+  height: 80px;
+  background-color: #FFF;
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  width: 350px;
+}
+
+.main-nav ul li a:link,
+.main-nav ul li a:visited {
+  color: #FFF;
+  font-size: 28px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 2px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.2s;
+ 
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a:active {
+  border-bottom: 2px solid #0077b6;
+}
