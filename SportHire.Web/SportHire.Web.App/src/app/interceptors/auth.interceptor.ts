@@ -1,6 +1,8 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
+@Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
   constructor() { }
@@ -20,5 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
 }
 
 export const AuthInterceptorProvider = [{
-
+  provide: HTTP_INTERCEPTORS,
+  useClass: AuthInterceptor,
+  multi: true
 }]
