@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
