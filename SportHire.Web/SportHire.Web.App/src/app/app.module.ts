@@ -10,7 +10,9 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { NavComponent } from './components/nav/nav.component';
 
+// Angular Material
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    // Angular Material
+    MatCheckbox
   ],
   providers: [AuthInterceptorProvider, provideAnimationsAsync()],
   bootstrap: [AppComponent]
