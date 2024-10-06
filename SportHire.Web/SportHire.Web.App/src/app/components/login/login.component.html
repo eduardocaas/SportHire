@@ -1,16 +1,30 @@
 <div class="container">
   <div class="box">
     <div class="login-box">
-      <span>Faça seu login</span>
+      <h2>Faça seu login</h2>
       <div class="hint-box">
-        <span>Ainda não tem uma conta?</span>
-        <a href="#">Registre-se</a>
+        <span class="hint hint-text">Ainda não tem uma conta?</span>
+        <a class="hint hint-link" href="#">Registre-se</a>
       </div>
       <div class="input-box">
-
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Fill form field</mat-label>
+            <input matInput placeholder="Placeholder">
+            <mat-icon class="icon" matSuffix>mail</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Fill form field</mat-label>
+            <input matInput placeholder="Placeholder">
+            <mat-icon class="icon" matSuffix>pin</mat-icon>
+          </mat-form-field>
+        </p>
       </div>
       <div class="hint-box">
-
+        <mat-checkbox><span class="hint hint-text">Manter logado</span></mat-checkbox>
+        <a class="hint hint-link" href="#">Esqueceu a senha?</a>
       </div>
       <button>Login</button>
     </div>

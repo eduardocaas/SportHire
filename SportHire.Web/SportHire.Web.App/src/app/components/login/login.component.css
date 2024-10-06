@@ -19,3 +19,32 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.login-box h2 {
+  text-transform: uppercase;
+  font-size: 35px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  color: #0034c2;
+}
+
+.hint-link:link,
+.hint-link:visited {
+  color: #0077b6;
+  font-weight: 600;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.hint-text {
+  color: #0077b6;
+  font-size: 18px;
+}
+
+.hint {
+  letter-spacing: -0.2px;
+}
+
+.icon {
+  color: #83878b;
+}
