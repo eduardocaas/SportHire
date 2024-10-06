@@ -1,0 +1,21 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  background-color: #0077b6;
+}
+
+.box {
+  height: 100%;
+  width: 100%;
+}
+
+.box:nth-child(1) {
+  background-color: #FFF;
+}
+
+.box:nth-child(2) {
+  background-image: url("/assets/img/Login.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
