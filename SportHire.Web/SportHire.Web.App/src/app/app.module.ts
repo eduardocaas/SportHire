@@ -7,6 +7,8 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { NavComponent } from './components/nav/nav.component';
+import { HttpClientModule } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -17,9 +19,10 @@ import { NavComponent } from './components/nav/nav.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [AuthInterceptorProvider, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
