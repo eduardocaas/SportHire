@@ -10,9 +10,15 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { NavComponent } from './components/nav/nav.component';
 
+// Forms
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 // Angular Material
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatCheckbox } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon'
+import { MatInputModule } from '@angular/material/input'
 
 @NgModule({
   declarations: [
@@ -25,8 +31,16 @@ import { MatCheckbox } from '@angular/material/checkbox';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+
+    // Forms
+    FormsModule,
+    ReactiveFormsModule,
+
     // Angular Material
-    MatCheckbox
+    MatCheckbox,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule
   ],
   providers: [AuthInterceptorProvider, provideAnimationsAsync()],
   bootstrap: [AppComponent]
