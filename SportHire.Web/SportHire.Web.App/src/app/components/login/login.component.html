@@ -11,8 +11,9 @@
         <p>
           <mat-form-field class="field" appearance="fill">
             <mat-label class="label">Email</mat-label>
-            <input matInput placeholder="mail@email.com">
+            <input matInput placeholder="mail@email.com" [formControl]="emailControl" required>
             <mat-icon class="icon" matSuffix>mail</mat-icon>
+            <mat-error *ngIf="emailControl.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
         </p>
         <p>
