@@ -9,6 +9,7 @@ import { FormControl, Validators } from '@angular/forms';
 export class LoginComponent {
 
   emailControl = new FormControl('', [Validators.required, Validators.email]);
+  passwordControl = new FormControl('', [Validators.required]);
 
   getErrorMessage() {
     if (this.emailControl.hasError('required')) {
@@ -17,6 +18,11 @@ export class LoginComponent {
     if (this.emailControl.hasError('email')) {
       return 'Insira um email válido';
     }
+
+    if(this.passwordControl.hasError('required')) {
+      return 'Insira uma senha';
+    }
+
     return '';
   }
 }

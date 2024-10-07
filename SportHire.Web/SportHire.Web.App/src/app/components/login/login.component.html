@@ -19,8 +19,9 @@
         <p>
           <mat-form-field class="field field-pwd" appearance="fill">
             <mat-label class="label">Senha</mat-label>
-            <input matInput placeholder="**********">
+            <input matInput placeholder="**********" [formControl]="passwordControl" required>
             <mat-icon class="icon" matSuffix>pin</mat-icon>
+            <mat-error *ngIf="passwordControl.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
         </p>
       </div>
