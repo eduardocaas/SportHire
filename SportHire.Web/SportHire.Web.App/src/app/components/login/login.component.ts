@@ -17,5 +17,6 @@ export class LoginComponent {
     if (this.emailControl.hasError('email')) {
       return 'Insira um email válido';
     }
+    return '';
   }
 }
