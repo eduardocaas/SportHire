@@ -1,6 +1,7 @@
 <div class="container">
   <div class="box">
     <div class="login-box">
+      <div class="login-flex">
       <h2>Faça seu login</h2>
       <div class="hint-box">
         <span class="hint hint-text">Ainda não tem uma conta?</span>
@@ -8,25 +9,29 @@
       </div>
       <div class="input-box">
         <p>
-          <mat-form-field appearance="fill">
-            <mat-label>Fill form field</mat-label>
-            <input matInput placeholder="Placeholder">
+          <mat-form-field class="field" appearance="fill">
+            <mat-label class="label">Email</mat-label>
+            <input matInput placeholder="mail@email.com">
             <mat-icon class="icon" matSuffix>mail</mat-icon>
           </mat-form-field>
         </p>
         <p>
-          <mat-form-field appearance="fill">
-            <mat-label>Fill form field</mat-label>
-            <input matInput placeholder="Placeholder">
+          <mat-form-field class="field field-pwd" appearance="fill">
+            <mat-label class="label">Senha</mat-label>
+            <input matInput placeholder="**********">
             <mat-icon class="icon" matSuffix>pin</mat-icon>
           </mat-form-field>
         </p>
       </div>
       <div class="hint-box">
-        <mat-checkbox><span class="hint hint-text">Manter logado</span></mat-checkbox>
+        <div>
+          <input type="checkbox" name="check-logado" id="check-logado">
+          <label for="check-logado" class="hint hint-text">Manter logado</label>
+        </div>
         <a class="hint hint-link" href="#">Esqueceu a senha?</a>
       </div>
-      <button>Login</button>
+      <button class="btn">Login</button>
+      </div>
     </div>
   </div>
   <div class="box">
