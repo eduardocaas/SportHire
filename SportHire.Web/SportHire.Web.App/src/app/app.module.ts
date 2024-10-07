@@ -19,6 +19,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
+import { MatButtonModule } from '@angular/material/button'
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MatInputModule } from '@angular/material/input'
     MatCheckbox,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [AuthInterceptorProvider, provideAnimationsAsync()],
   bootstrap: [AppComponent]
