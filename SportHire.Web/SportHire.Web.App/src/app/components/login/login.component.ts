@@ -22,4 +22,6 @@ export class LoginComponent {
   getErrorMessagePwd() {
     return this.passwordControl.hasError('required') ? 'Insira uma senha' : '';
   }
+
+  hide = true;
 }
