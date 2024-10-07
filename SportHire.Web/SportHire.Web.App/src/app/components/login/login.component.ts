@@ -15,14 +15,11 @@ export class LoginComponent {
     if (this.emailControl.hasError('required')) {
       return 'Insira um email';
     }
-    if (this.emailControl.hasError('email')) {
-      return 'Insira um email válido';
-    }
 
-    if(this.passwordControl.hasError('required')) {
-      return 'Insira uma senha';
-    }
+    return this.emailControl.hasError('email') ? 'Insira um email válido' : '';
+  }
 
-    return '';
+  getErrorMessagePwd() {
+    return this.passwordControl.hasError('required') ? 'Insira uma senha' : '';
   }
 }
