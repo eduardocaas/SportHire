@@ -10,7 +10,35 @@
   </div>
   <div class="box">
     <div class="signup-box">
-
+      <h2>Realize seu <br>cadastro</h2>
+      <p>
+        <mat-form-field class="field" appearance="fill">
+          <mat-label class="label">Nome</mat-label>
+          <input matInput [formControl]="nameControl" required>
+          <mat-icon class="icon" matSuffix>person</mat-icon>
+          <mat-error *ngIf="nameControl.invalid">{{getErrorMessageName()}}</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="field" appearance="fill">
+          <mat-label class="label">Email</mat-label>
+          <input matInput placeholder="mail@email.com" [formControl]="emailControl" required>
+          <mat-icon class="icon" matSuffix>mail</mat-icon>
+          <mat-error *ngIf="emailControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="field field-pwd" appearance="fill">
+          <mat-label class="label">Senha</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'"
+            [formControl]="passwordControl" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon class="icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          <mat-error *ngIf="passwordControl.invalid">{{getErrorMessagePwd()}}</mat-error>
+        </mat-form-field>
+      </p>
+      <button class="btn">Cadastrar</button>
     </div>
   </div>
 </div>
