@@ -22,6 +22,20 @@ export class LoginComponent {
 
   constructor(private service: AuthService, private router: Router) { }
 
+  login() {
+    this.service
+      .authenticate(this.creds)
+      .subscribe({
+        next: (response) => {
+          response.headers.get('Authorization')?.substring(7);
+          this.router.navigate(['']);
+        },
+        error: (err) => {
+          alert(err)
+        }
+      });
+  }
+
   getErrorMessage() {
     if (this.emailControl.hasError('required')) {
       return 'Insira um email';
