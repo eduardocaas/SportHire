@@ -11,7 +11,7 @@
           <p>
             <mat-form-field class="field" appearance="fill">
               <mat-label class="label">Email</mat-label>
-              <input matInput placeholder="mail@email.com" [formControl]="emailControl" required>
+              <input [(ngModel)]="creds.email" matInput placeholder="mail@email.com" [formControl]="emailControl" required>
               <mat-icon class="icon" matSuffix>mail</mat-icon>
               <mat-error *ngIf="emailControl.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
@@ -19,7 +19,7 @@
           <p>
             <mat-form-field class="field field-pwd" appearance="fill">
               <mat-label class="label">Senha</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'"
+              <input [(ngModel)]="creds.password" matInput [type]="hide ? 'password' : 'text'"
                 [formControl]="passwordControl" required>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                   <mat-icon class="icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -35,7 +35,7 @@
           </div>
           <a class="hint hint-link" href="#">Esqueceu a senha?</a>
         </div>
-        <button class="btn">Login</button>
+        <button (click)="login()" class="btn">Login</button>
       </div>
     </div>
   </div>
