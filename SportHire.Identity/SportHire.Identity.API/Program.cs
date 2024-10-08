@@ -15,10 +15,23 @@ using SportHire.Identity.Infrastructure.Persistence.Repositories;
 using SportHire.Identity.Infrastructure.Security.Services;
 using System.Security.Cryptography;
 
+var AllowAllOrigins = "_allowAllOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Cors Policy - Development - All Origins
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: AllowAllOrigins,
+        policy =>
+        {
+            policy.AllowAnyOrigin();
+            policy.AllowAnyHeader();
+            policy.AllowAnyMethod();
+        });
+});
 
+// Add services to the container.
 builder.Services.AddControllers(options =>
     { options.Filters.Add(typeof(ValidationFilter)); });
     //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<SigninInputModelValidator>());
@@ -103,6 +116,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(AllowAllOrigins);
 
 app.UseAuthentication();
 app.UseAuthorization();
