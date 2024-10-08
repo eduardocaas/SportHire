@@ -6,8 +6,8 @@ EXPOSE 5201
 
 ENV ASPNETCORE_URLS=http://+:5201;
 
-RUN apt update && apt install nano
-RUN apt install net-tools && apt install iputils-ping
+RUN apt update
+RUN apt install -y net-tools && apt install -y iputils-ping && apt install -y nano
 
 RUN adduser -u 2000 --disabled-password --gecos "" appuser && chown -R appuser /app
 USER appuser
