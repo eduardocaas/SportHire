@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   {
-    path: '', component: NavComponent, canActivate: [authGuard], children: []
+    path: '', component: NavComponent, children: []
   }
 ];
 
