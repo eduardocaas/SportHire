@@ -19,14 +19,16 @@ import { MatCheckbox } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
-import { MatButtonModule } from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
+import { EventsFindComponent } from './components/events/events-find/events-find.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    NavComponent
+    NavComponent,
+    EventsFindComponent
   ],
   imports: [
     BrowserModule,
