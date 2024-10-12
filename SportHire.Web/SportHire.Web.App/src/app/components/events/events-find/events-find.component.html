@@ -3,7 +3,20 @@
     <div class="form">
       <span>Selecione as opções <br>a seguir</span>
       <div class="box-form">
-
+        <mat-form-field class="example-full-width">
+          <mat-label>Number</mat-label>
+          <input type="text"
+                 placeholder="Pick one"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
       </div>
       <div class="button-form">
         <img src="/assets/css/events/events-find/play_circle.svg">
