@@ -11,7 +11,7 @@ export class EventsFindComponent implements OnInit {
 
   sportControl = new FormControl('', [Validators.required]);
 
-  sportOptions: string[] = ['One', 'Two', 'Three'];
+  sportOptions: string[] = ['Basquete', 'Futebol', 'Futsal', 'Vôlei', 'Vôlei de praia'];
   sportFilteredOptions: Observable<string[]> = new Observable<string[]>;
 
   ngOnInit() {
