@@ -26,10 +26,10 @@
                  aria-label="Estado"
                  matInput
                  [formControl]="stateControl"
-                 [matAutocomplete]="auto"
+                 [matAutocomplete]="auto1"
                  required>
                  <mat-error *ngIf="stateControl.invalid">{{getErrorMessageState()}}</mat-error>
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete">
             <mat-option *ngFor="let option of stateFilteredOptions | async" [value]="option">
               {{option}}
             </mat-option>

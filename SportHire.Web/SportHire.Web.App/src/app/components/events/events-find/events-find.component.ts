@@ -19,10 +19,15 @@ export class EventsFindComponent implements OnInit {
   stateFilteredOptions: Observable<string[]> = new Observable<string[]>;
 
   ngOnInit() {
+    this._createFilters();
+  }
+
+  private _createFilters() {
     this.sportFilteredOptions = this.sportControl.valueChanges.pipe(
       startWith(''),
       map(value => this._sportFilter(value || '')),
     );
+
     this.stateFilteredOptions = this.stateControl.valueChanges.pipe(
       startWith(''),
       map(value => this._stateFilter(value || ''))
