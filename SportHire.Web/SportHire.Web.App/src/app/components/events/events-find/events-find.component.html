@@ -35,6 +35,22 @@
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Cidade</mat-label>
+          <input type="text"
+                 placeholder="Selecione"
+                 aria-label="Cidade"
+                 matInput
+                 [formControl]="cityControl"
+                 [matAutocomplete]="auto2"
+                 required>
+                 <mat-error *ngIf="cityControl.invalid">{{getErrorMessageCity()}}</mat-error>
+          <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
+            <mat-option *ngFor="let option of cityFilteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
       </div>
       <div class="button-form">
         <img src="/assets/css/events/events-find/play_circle.svg">
