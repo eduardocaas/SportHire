@@ -120,3 +120,35 @@
 .paginator {
   height: 10%;
 }
+
+@media only screen and (min-resolution: 1.4dppx) {
+
+  .card {
+    flex: 0 0 27%;
+    height: 190px;
+  }
+
+  .title-card span {
+    font-size: 18px;
+    padding: 13px;
+  }
+
+  .content-card h3 {
+    font-family: Inter, "Helvetica Neue", sans-serif !important;
+    margin: 0 0 -5px 10px;
+    font-size: 15px;
+  }
+
+  .content-card span {
+    font-size: 14px;
+    margin-left: 10px;
+  }
+
+  .price-button button {
+    font-family: Inter, "Helvetica Neue", sans-serif !important;
+    font-size: 13px;
+    height: 30px;
+    width: 90px;
+    margin-right: 10px;
+  }
+}
