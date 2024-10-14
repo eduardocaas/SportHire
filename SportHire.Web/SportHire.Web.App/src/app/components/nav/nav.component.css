@@ -76,3 +76,24 @@
   margin-right: 40px;
 }
 
+@media only screen and (min-resolution: 1.4dppx) {
+  .main-nav {
+    height: 80px;
+  }
+
+  .ul-nav li a:link,
+  .ul-nav li a:visited,
+  .btn-nav a:link,
+  .btn-nav a:visited {
+    font-size: 22px;
+  }
+
+  .main-nav h1 {
+    font-size: 28px;
+  }
+
+  .btn-nav {
+    border: 2px solid #ffb703;
+    padding: 5px 20px;
+  }
+}
