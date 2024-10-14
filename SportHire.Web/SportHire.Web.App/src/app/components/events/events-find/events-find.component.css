@@ -123,6 +123,10 @@
 
 @media only screen and (min-resolution: 1.4dppx) {
 
+  .container {
+    height: calc(100% - 80px);
+  }
+
   .card {
     flex: 0 0 27%;
     height: 190px;
