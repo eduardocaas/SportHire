@@ -76,7 +76,7 @@
   margin-right: 40px;
 }
 
-@media only screen and (min-resolution: 1.4dppx) {
+@media only screen and (min-resolution: 1.35dppx) {
   .main-nav {
     height: 80px;
   }
@@ -93,7 +93,7 @@
   }
 
   .btn-nav {
-    border: 2px solid #ffb703;
+    border: 3px solid #ffb703;
     padding: 5px 20px;
   }
 }
