@@ -127,6 +127,10 @@
     height: calc(100% - 80px);
   }
 
+  .cards {
+    height: 92%;
+  }
+
   .card {
     flex: 0 0 27%;
     height: 190px;
@@ -154,5 +158,9 @@
     height: 30px;
     width: 90px;
     margin-right: 10px;
+  }
+
+  .paginator {
+    height: 8%;
   }
 }
