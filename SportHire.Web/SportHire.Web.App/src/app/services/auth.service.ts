@@ -14,7 +14,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   authenticate(creds: Credentials) {
-    return this.http.post(`${IDENTITY_CONFIG.localUrl}/users/login`, creds, {
+    return this.http.post(`${IDENTITY_CONFIG.localUrl}/identity/users/login`, creds, {
       observe: 'response',
       responseType: 'text'
     });
