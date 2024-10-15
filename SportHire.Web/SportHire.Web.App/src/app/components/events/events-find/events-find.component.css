@@ -134,11 +134,30 @@ mat-error {
   height: 45px;
   width: 100px;
   margin-right: 10px;
-  background-color: #0034c2;
-  color: #FFF;
   font-weight: 600;
   border: 0;
   border-radius: 10px;
+}
+
+.price-button-button {
+  display: flex;
+}
+
+.btn-play {
+  background-color: #0034c2;
+  color: #FFF;
+}
+
+.btn-info {
+  padding-left: 12px;
+  display: flex;
+  align-items: center;
+  background-color: #FFF;
+  color: #0034c2;
+}
+
+.btn-info img {
+  width: 18px;
 }
 
 .paginator {
@@ -216,7 +235,7 @@ mat-error {
   .price-button button {
     font-size: 14px;
     height: 30px;
-    width: 90px;
+    width: 80px;
     margin-right: 10px;
   }
 
