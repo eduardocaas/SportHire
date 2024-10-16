@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  height: calc(100% - 110px);
+  height: calc(100% - 114px);
 }
 
 .box-left {
@@ -339,7 +339,7 @@ mat-error {
 @media only screen and (min-resolution: 1.35dppx) {
 
   .container {
-    height: calc(100% - 80px);
+    height: calc(100% - 83.5px);
   }
 
   .form {
