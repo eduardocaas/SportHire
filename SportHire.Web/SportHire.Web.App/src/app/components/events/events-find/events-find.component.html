@@ -3,48 +3,33 @@
     <div class="form">
       <span>Selecione as opções <br>a seguir</span>
       <div class="box-form">
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Esporte</mat-label>
-          <input type="text"
-                 placeholder="Selecione"
-                 aria-label="Esporte"
-                 matInput
-                 [formControl]="sportControl"
-                 [matAutocomplete]="auto"
-                 required>
-                 <mat-error *ngIf="sportControl.invalid">{{getErrorMessageSport()}}</mat-error>
+          <input type="text" placeholder="Selecione" aria-label="Esporte" matInput [formControl]="sportControl"
+            [matAutocomplete]="auto" required>
+          <mat-error *ngIf="sportControl.invalid">{{getErrorMessageSport()}}</mat-error>
           <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
             <mat-option *ngFor="let option of sportFilteredOptions | async" [value]="option">
               {{option}}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Estado</mat-label>
-          <input type="text"
-                 placeholder="Selecione"
-                 aria-label="Estado"
-                 matInput
-                 [formControl]="stateControl"
-                 [matAutocomplete]="auto1"
-                 required>
-                 <mat-error *ngIf="stateControl.invalid">{{getErrorMessageState()}}</mat-error>
+          <input type="text" placeholder="Selecione" aria-label="Estado" matInput [formControl]="stateControl"
+            [matAutocomplete]="auto1" required>
+          <mat-error *ngIf="stateControl.invalid">{{getErrorMessageState()}}</mat-error>
           <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete">
             <mat-option *ngFor="let option of stateFilteredOptions | async" [value]="option">
               {{option}}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Cidade</mat-label>
-          <input type="text"
-                 placeholder="Selecione"
-                 aria-label="Cidade"
-                 matInput
-                 [formControl]="cityControl"
-                 [matAutocomplete]="auto2"
-                 required>
-                 <mat-error *ngIf="cityControl.invalid">{{getErrorMessageCity()}}</mat-error>
+          <input type="text" placeholder="Selecione" aria-label="Cidade" matInput [formControl]="cityControl"
+            [matAutocomplete]="auto2" required>
+          <mat-error *ngIf="cityControl.invalid">{{getErrorMessageCity()}}</mat-error>
           <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
             <mat-option *ngFor="let option of cityFilteredOptions | async" [value]="option">
               {{option}}
@@ -52,17 +37,52 @@
           </mat-autocomplete>
         </mat-form-field>
       </div>
-      <div class="button-form">
-        <a href="">
-          <img src="/assets/css/events/events-find/play_circle.svg">
-          <span>Buscar</span>
-      </a>
-      </div>
+      <button class="btn-find">Buscar</button>
     </div>
   </div>
   <div class="box-right">
     <div class="cards">
       <div class="card">
+        <p class="card-title">Basquete, <br>Porto Alegre</p>
+        <div class="card-footer">
+          <div>
+            <img src="/assets/css/events/events-find/pin.svg">
+            <p>Centro Histórico</p>
+          </div>
+          <div>
+            <img src="/assets/css/events/events-find/schedule.svg">
+            <p>23/10</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <p class="card-title">Futebol, <br>Porto Alegre</p>
+        <div class="card-footer">
+          <div>
+            <img src="/assets/css/events/events-find/pin.svg">
+            <p>Ipanema</p>
+          </div>
+          <div>
+            <img src="/assets/css/events/events-find/schedule.svg">
+            <p>01/11</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <p class="card-title">Vôlei de Praia, <br>Porto Alegre</p>
+        <div class="card-footer">
+          <div>
+            <img src="/assets/css/events/events-find/pin.svg">
+            <p>Menino Deus</p>
+          </div>
+          <div>
+            <img src="/assets/css/events/events-find/schedule.svg">
+            <p>04/11</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="card">
         <div class="title-card">
           <span>Basquete</span>
         </div>
@@ -197,7 +217,7 @@
             <button>JOGAR</button>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="paginator">
 

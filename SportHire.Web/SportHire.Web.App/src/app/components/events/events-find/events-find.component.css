@@ -5,12 +5,13 @@
 
 .box-left {
   width: 25%;
-  background-color: #0077b6;
+  background-color: #212121;
+  border-right: 2px solid #333;
 }
 
 .box-right {
   width: 75%;
-  background-color: #212529;
+  background-color: #212121;
 }
 
 .form {
@@ -29,26 +30,60 @@
 }
 
 .box-form mat-form-field {
-  height: 90px;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
 }
+
+::ng-deep .mdc-text-field--outlined {
+  --mdc-outlined-text-field-container-shape: 10px;
+}
+
+::ng-deep .mdc-notched-outline__leading {
+  border-color: #545454 !important;
+}
+::ng-deep .mdc-notched-outline__notch {
+  border-color: #545454 !important;
+}
+::ng-deep .mdc-notched-outline__trailing {
+  border-color: #545454 !important;
+}
+
+/* ::ng-deep .mat-mdc-form-field-required-marker, .mdc-floating-label--required {
+  color: #d9d9d9;
+} */
+
 
 .box-form input,
 mat-label {
-  font-size: 130%;
+  font-size: 115%;
+}
+
+.box-form input {
+  color: #d9d9d9;
+}
+
+.box-form input::placeholder {
+  color: #aaa;
+}
+
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: #aaa !important;
+}
+
+::ng-deep .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: var(--mat-form-field-error-text-color) !important;
 }
 
 .box-form mat-autocomplete,
 mat-option,
 mat-error {
-  font-size: 140%;
+  font-size: 125%;
 }
 
 .form span {
   font-size: 26px;
   line-height: 140%;
   text-align: center;
-  color: #FFF;
+  color: #d9d9d9;
 }
 
 .button-form {
@@ -63,27 +98,80 @@ mat-error {
   text-decoration: none;
 }
 
-.button-form img {
-  width: 135px;
-}
-
-.button-form span {
-  margin-top: 10px;
-  text-transform: uppercase;
-  font-size: 32px;
+.btn-find {
+  cursor: pointer;
+  width: 80%;
+  height: 60px;
+  border: 2px solid #aaa;
+  border-radius: 10px;
+  background-color: #212121;
+  color: #d9d9d9;
+  font-size: 22px;
   font-weight: 600;
-  color: #57cc99;
+  text-transform: uppercase;
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
 }
 
 .cards {
-  height: 90%;
+  height: 80%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-evenly;
+}
+
+.card:nth-child(1) {
+  background-image: url(/assets/css/events/events-find/basquete.jpg);
+}
+
+.card:nth-child(2) {
+  background-image: url(/assets/css/events/events-find/futebol.jpg);
+}
+
+.card:nth-child(3) {
+  background-image: url(/assets/css/events/events-find/volei_praia.jpg);
 }
 
 .card {
+  width: 420px;
+  height: 420px;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
+  background-size: cover;
+  border: 2px solid #545454;
+  border-radius: 20px;
+}
+
+.card-title {
+  margin: 180px 0 0 15px;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 35px;
+  color: #FFF;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 60px;
+  width: 100%;
+  margin: 135px 0 0 0;
+}
+
+.card-footer div {
+  display: flex;
+  align-items: center;
+}
+
+.card-footer div:nth-child(2) {
+  margin-right: 15px;
+}
+
+.card-footer p {
+  color: #FFF;
+  font-size: 16px;
+  margin: 0 0 0 3px;
+}
+
+/* .card {
   flex: 0 0 27%;
   height: 280px;
   display: flex;
@@ -159,9 +247,9 @@ mat-error {
 .btn-info img {
   width: 18px;
 }
-
+ */
 .paginator {
-  height: 10%;
+  height: 20%;
 }
 
 @media only screen and (min-resolution: 1.35dppx) {
@@ -208,10 +296,10 @@ mat-error {
   }
 
   .cards {
-    height: 92%;
+    height: 85%;
   }
 
-  .card {
+  /* .card {
     flex: 0 0 27%;
     height: 190px;
   }
@@ -237,9 +325,9 @@ mat-error {
     height: 30px;
     width: 80px;
     margin-right: 10px;
-  }
+  } */
 
   .paginator {
-    height: 8%;
+    height: 15%;
   }
 }
