@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .box-form {
@@ -82,6 +82,7 @@ mat-error {
 .form span {
   font-size: 26px;
   line-height: 140%;
+  margin-bottom: 100px;
   text-align: center;
   color: #d9d9d9;
 }
@@ -109,7 +110,16 @@ mat-error {
   font-size: 22px;
   font-weight: 600;
   text-transform: uppercase;
+  transition: background-color 0.1s;
   font-family: Inter, "Helvetica Neue", sans-serif !important;
+}
+
+.btn-find:hover {
+  background-color: #202020;
+}
+
+.btn-find:active {
+  background-color: #191919;
 }
 
 .cards {
@@ -285,6 +295,7 @@ mat-error {
   .form span {
     font-size: 20px;
     line-height: 110%;
+    margin-bottom: 40px;
   }
 
   .button-form img {
