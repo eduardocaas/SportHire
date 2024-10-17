@@ -115,11 +115,11 @@ mat-error {
 }
 
 .btn-find:hover {
-  background-color: #202020;
+  background-color: #191919;
 }
 
 .btn-find:active {
-  background-color: #191919;
+  background-color: #171717;
 }
 
 .cards {
