@@ -141,12 +141,13 @@ mat-error {
 }
 
 .card-content-title {
-  font-size: 20px;
+  font-size: 22px;
+  padding-bottom: 5px;
   font-weight: 600;
 }
 
 .card-content-info {
-  font-size: 14px;
+  font-size: 18px;
   padding-bottom: 10px;
 }
 
@@ -390,7 +391,7 @@ mat-error {
   }
 
   .card-title {
-    margin: 105px 0 0 15px;
+    margin: 105px 0 0 35px;
     font-size: 24px;
     line-height: 29px;
   }
@@ -405,6 +406,30 @@ mat-error {
 
   .card-footer img {
     width: 18px;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 220px;
+    padding: 25px 0 35px 0;
+    margin: 0 0 0 35px;
+    position: absolute;
+    color: rgba(0,0,0, 0);
+  }
+
+  .card-content-title {
+    font-size: 18px;
+    padding-bottom: 0;
+  }
+
+  .card-content-info {
+    font-size: 14px;
+  }
+
+  .card-content-footer {
+    margin-top: 15px;
   }
   /* .card {
     flex: 0 0 27%;
