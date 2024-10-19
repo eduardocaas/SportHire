@@ -103,23 +103,25 @@ mat-error {
   cursor: pointer;
   width: 80%;
   height: 60px;
-  border: 2px solid #aaa;
+  border: 2px solid #012894;
   border-radius: 10px;
-  background-color: #212121;
+  background-color: #012894;
   color: #d9d9d9;
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   transition: background-color 0.1s;
   font-family: Inter, "Helvetica Neue", sans-serif !important;
 }
 
 .btn-find:hover {
-  background-color: #191919;
+  background-color: #012588;
+  border: 2px solid #012588;
 }
 
 .btn-find:active {
-  background-color: #171717;
+  background-color: #01227e;
+  border: 2px solid #01227e;
 }
 
 .cards {
@@ -439,6 +441,10 @@ mat-error {
     margin-top: 2px;
     width: 22px;
     height: 22px;
+  }
+
+  .btn-find {
+    font-size: 20px;
   }
   /* .card {
     flex: 0 0 27%;

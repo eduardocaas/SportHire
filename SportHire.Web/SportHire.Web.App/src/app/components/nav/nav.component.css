@@ -20,7 +20,7 @@
 .btn-nav a:visited {
   font-size: 28px;
   font-weight: 600;
-  color: #ffb703;
+  color: #d9d9d9;
   text-decoration: none;
 }
 
@@ -33,7 +33,7 @@
 
 .ul-nav li a:link:hover,
 .ul-nav li a:visited:hover {
-  border-bottom: 2px solid #ffb703;
+  border-bottom: 2px solid #012894;
 }
 
 .main-nav h1 {
@@ -49,7 +49,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  border: 3px solid #ffb703;
+  border: 3px solid #d9d9d9;
   border-radius: 15px;
   padding: 10px 20px;
   margin-right: 20px;
@@ -94,7 +94,7 @@
   }
 
   .btn-nav {
-    border: 3px solid #ffb703;
+    border: 3px solid #d9d9d9;
     padding: 5px 20px;
   }
 }
