@@ -29,11 +29,11 @@
 
 .box:hover {
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .4);
-  filter: grayscale(0%); /* Current draft standard */
-  -webkit-filter: grayscale(0%); /* New WebKit */
-  -moz-filter: grayscale(0%);
-  -ms-filter: grayscale(0%);
-  -o-filter: grayscale(0%); /* Not yet supported in Gecko, Opera or IE */
+  filter: grayscale(50%); /* Current draft standard */
+  -webkit-filter: grayscale(50%); /* New WebKit */
+  -moz-filter: grayscale(50%);
+  -ms-filter: grayscale(50%);
+  -o-filter: grayscale(50%); /* Not yet supported in Gecko, Opera or IE */
   filter: none; /* IE */
-  -webkit-filter: grayscale(0); /* Old WebKit */
+  -webkit-filter: grayscale(0.5); /* Old WebKit */
 }
