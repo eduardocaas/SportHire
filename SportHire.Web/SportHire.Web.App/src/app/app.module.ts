@@ -24,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     LoginComponent,
     SignupComponent,
     NavComponent,
-    EventsFindComponent
+    EventsFindComponent,
+    HomeComponent
   ],
   imports: [
     // Angular
