@@ -10,7 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportHire.Events.Infrastructure", "SportHire.Events.Infrastructure\SportHire.Events.Infrastructure.csproj", "{48E0D731-D5E1-4E98-95CE-1CB797DCDC4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportHire.Events.Infrastructure", "SportHire.Events.Infrastructure\SportHire.Events.Infrastructure.csproj", "{48E0D731-D5E1-4E98-95CE-1CB797DCDC4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportHire.Events.Core", "SportHire.Events.Core\SportHire.Events.Core.csproj", "{77CCE455-2D9F-462C-9750-E32190FF245A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{48E0D731-D5E1-4E98-95CE-1CB797DCDC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48E0D731-D5E1-4E98-95CE-1CB797DCDC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48E0D731-D5E1-4E98-95CE-1CB797DCDC4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77CCE455-2D9F-462C-9750-E32190FF245A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77CCE455-2D9F-462C-9750-E32190FF245A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77CCE455-2D9F-462C-9750-E32190FF245A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77CCE455-2D9F-462C-9750-E32190FF245A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
