@@ -136,3 +136,18 @@
   transition: background-color 0.05s;
   background-color: rgba( 0, 0, 0,  0.4);
 }
+
+@media only screen and (min-resolution: 1.35dppx) {
+  .content h3 {
+    font-size: 20px;
+
+  }
+
+  .content p {
+    font-size: 16px;
+  }
+
+  .content button {
+    font-size: 16px;
+ }
+}
