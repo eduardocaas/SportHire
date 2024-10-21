@@ -2,5 +2,8 @@
 {
     public enum EventStatusEnum
     {
+        ABERTO = 0,
+        ANDAMENTO = 1,
+        CONCLUIDO = 2
     }
 }
