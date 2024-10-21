@@ -21,10 +21,12 @@
 
 .box-left {
   background-image: url('/assets/css/home/volley_home.jpg');
+  transition: width 0.4s;
 }
 
 .box-right {
   background-image: url('/assets/css/home/basket_home.jpg');
+  transition: width 0.4s;
 }
 
 .box:hover {
@@ -34,6 +36,103 @@
   -moz-filter: grayscale(50%);
   -ms-filter: grayscale(50%);
   -o-filter: grayscale(50%); /* Not yet supported in Gecko, Opera or IE */
-  filter: none; /* IE */
   -webkit-filter: grayscale(0.5); /* Old WebKit */
+
+  .content {
+    background: rgba( 0, 0, 0, 0.05 );
+  }
+
+  .content h3 {
+    font-size: 26px;
+  }
+
+  .content p {
+    font-size: 20px;
+  }
+
+  .content button {
+    width: 280px;
+  }
+}
+
+.box-left:hover {
+    width: 60%;
+
+    .box-right {
+      width: 40%;
+    }
+}
+
+.box-right:hover {
+  width: 60%;
+
+    .box-left {
+      width: 40%;
+    }
+}
+
+.content-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.content-text {
+  text-align: center;
+  color: #FFF;
+}
+
+.content h3 {
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
+  font-size: 24px;
+  font-weight: 600;
+  transition: font-size 0.4s;
+
+}
+
+.content p {
+  font-size: 18px;
+  transition: font-size 0.4s;
+}
+
+.content {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 0;
+  background: rgba( 255, 255, 255, 0.05 );
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  transition: padding 0.4s;
+}
+
+.content button {
+  margin-top: 20px;
+  color: #d9d9d9;
+  font-size: 18px;
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  width: 250px;
+  height: 50px;
+  border: 2px solid #d9d9d9;
+  border-radius: 100px;
+  background-color: rgba( 0, 0, 0,  0);
+  transition: width 0.4s, background-color 0.3s;
+  cursor: pointer;
+}
+
+.content button:hover {
+  background-color: rgba( 0, 0, 0,  0.2);
+}
+
+.content button:active {
+  transition: background-color 0.05s;
+  background-color: rgba( 0, 0, 0,  0.4);
 }
