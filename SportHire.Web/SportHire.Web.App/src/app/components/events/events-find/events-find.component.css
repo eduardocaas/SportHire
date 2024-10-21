@@ -112,6 +112,9 @@ mat-error {
   text-transform: uppercase;
   transition: background-color 0.1s;
   font-family: Inter, "Helvetica Neue", sans-serif !important;
+  -webkit-box-shadow: 10px 10px 16px -7px rgba(17,17,17,1);
+-moz-box-shadow: 10px 10px 16px -7px rgba(17,17,17,1);
+box-shadow: 10px 10px 16px -7px rgba(17,17,17,1);
 }
 
 .btn-find:hover {
