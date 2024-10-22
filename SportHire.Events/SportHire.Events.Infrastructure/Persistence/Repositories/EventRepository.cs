@@ -12,9 +12,9 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
             _collection = database.GetCollection<Event>("events");
         }
 
-        public async Task<List<Event>> GetAllAsync()
+        public async Task<List<Event>> GetAllByOwnerAsync(string ownerEmail)
         {
-            return await _collection.Find(c => true).ToListAsync();
+            return await _collection.Find(c => c.EmailOwner.Equals(ownerEmail, StringComparison.OrdinalIgnoreCase)).ToListAsync();
         }
     }
 }
