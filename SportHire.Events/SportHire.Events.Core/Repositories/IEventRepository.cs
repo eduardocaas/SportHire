@@ -1,6 +1,9 @@
-﻿namespace SportHire.Events.Core.Repositories
+﻿using SportHire.Events.Core.Entities;
+
+namespace SportHire.Events.Core.Repositories
 {
     public interface IEventRepository
     {
+        Task<List<Event>> GetAllAsync();
     }
 }
