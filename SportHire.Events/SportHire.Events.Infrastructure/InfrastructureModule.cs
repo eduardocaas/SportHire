@@ -11,6 +11,11 @@ namespace SportHire.Events.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services) 
         {
+            services
+                .AddMongo()
+                .AddRepositories();
+
+            return services;
         }
 
         public static IServiceCollection AddMongo(this IServiceCollection services)
