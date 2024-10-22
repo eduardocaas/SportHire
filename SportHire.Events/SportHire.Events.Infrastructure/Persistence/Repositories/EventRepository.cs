@@ -12,9 +12,9 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
             _collection = database.GetCollection<Event>("events");
         }
 
-        public Task<List<Event>> GetAllAsync()
+        public async Task<List<Event>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _collection.Find(c => true).ToListAsync();
         }
     }
 }
