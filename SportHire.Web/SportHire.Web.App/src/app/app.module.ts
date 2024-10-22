@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { NavComponent } from './components/nav/nav.component';
 import { EventsFindComponent } from './components/events/events-find/events-find.component';
+import { HomeComponent } from './components/home/home.component';
 
 // Forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,7 +25,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { HomeComponent } from './components/home/home.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { HomeComponent } from './components/home/home.component';
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatSelectModule
   ],
   providers: [AuthInterceptorProvider, provideAnimationsAsync()],
   bootstrap: [AppComponent]
