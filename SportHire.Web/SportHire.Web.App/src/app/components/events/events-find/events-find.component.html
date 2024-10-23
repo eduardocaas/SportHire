@@ -3,60 +3,40 @@
     <div class="form">
       <span>Selecione as opções <br>a seguir</span>
       <div class="box-form">
-        <mat-form-field class="example-full-width" appearance="outline">
+        <mat-form-field appearance="outline">
           <mat-label>Esporte</mat-label>
-          <input type="text" placeholder="Selecione" aria-label="Esporte" matInput [formControl]="sportControl"
-            [matAutocomplete]="auto" required>
-          <mat-error *ngIf="sportControl.invalid">{{getErrorMessageSport()}}</mat-error>
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of sportFilteredOptions | async" [value]="option">
-              {{option}}
+          <mat-select [(ngModel)]="selectedSport" [formControl]="sportControl">
+            <mat-option *ngFor="let sport of sports" [value]="sport.opt">
+              {{ sport.name }}
             </mat-option>
-          </mat-autocomplete>
+          </mat-select>
+          <mat-error *ngIf="sportControl.invalid && sportControl.touched">{{ getErrorMessageSport() }}</mat-error>
         </mat-form-field>
-        <!-- <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>Estado</mat-label>
-          <input type="text" placeholder="Selecione" aria-label="Estado" matInput [formControl]="stateControl"
-            [matAutocomplete]="auto1" required>
-          <mat-error *ngIf="stateControl.invalid">{{getErrorMessageState()}}</mat-error>
-          <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete">
-            <mat-option *ngFor="let option of stateFilteredOptions | async" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>Cidade</mat-label>
-          <input type="text" placeholder="Selecione" aria-label="Cidade" matInput [formControl]="cityControl"
-            [matAutocomplete]="auto2" required>
-          <mat-error *ngIf="cityControl.invalid">{{getErrorMessageCity()}}</mat-error>
-          <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
-            <mat-option *ngFor="let option of cityFilteredOptions | async" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field> -->
         <mat-form-field appearance="outline">
           <mat-label>UF</mat-label>
-          <mat-select [(ngModel)]="selectedState" (selectionChange)="selectedCity = ''">
+          <mat-select [(ngModel)]="selectedState" [formControl]="stateControl" (selectionChange)="cityControl.setValue(''); cityControl.markAsUntouched()">
             <mat-option *ngFor="let state of states" [value]="state.uf">
               {{ state.name }}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="stateControl.invalid && stateControl.touched">{{ getErrorMessageState() }}</mat-error>
         </mat-form-field>
-
         <mat-form-field appearance="outline">
           <mat-label>Cidade</mat-label>
-          <mat-select [(ngModel)]="selectedCity">
+          <mat-select [(ngModel)]="selectedCity" [formControl]="cityControl">
             <ng-container *ngFor="let city of cities">
               <mat-option *ngIf="selectedState && city.uf == selectedState" [value]="city.name">
                 {{ city.name }}
               </mat-option>
             </ng-container>
           </mat-select>
+          <mat-error *ngIf="cityControl.invalid && cityControl.touched">{{ getErrorMessageCity() }}</mat-error>
         </mat-form-field>
       </div>
-      <button class="btn-find">Buscar</button>
+      <div class="btns-form">
+      <button class="btn-form btn-find" (click)="find()">Buscar</button>
+      <button class="btn-form btn-clear">Limpar</button>
+      </div>
     </div>
   </div>
   <div class="box-right">

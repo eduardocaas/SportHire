@@ -107,22 +107,31 @@ mat-error {
   text-decoration: none;
 }
 
-.btn-find {
-  cursor: pointer;
+.btns-form {
+  display: flex;
+  justify-content: space-between;
   width: 80%;
+}
+
+.btn-form {
+  cursor: pointer;
+  width: 49%;
   height: 60px;
-  border: 2px solid #012894;
   border-radius: 10px;
-  background-color: #012894;
-  color: #d9d9d9;
   font-size: 22px;
   font-weight: 700;
   text-transform: uppercase;
   transition: background-color 0.1s;
   font-family: Inter, "Helvetica Neue", sans-serif !important;
   -webkit-box-shadow: 10px 10px 16px -7px rgba(17,17,17,1);
--moz-box-shadow: 10px 10px 16px -7px rgba(17,17,17,1);
-box-shadow: 10px 10px 16px -7px rgba(17,17,17,1);
+  -moz-box-shadow: 10px 10px 16px -7px rgba(17,17,17,1);
+  box-shadow: 10px 10px 16px -7px rgba(17,17,17,1);
+}
+
+.btn-find {
+  border: 2px solid #012894;
+  background-color: #012894;
+  color: #d9d9d9;
 }
 
 .btn-find:hover {
@@ -133,6 +142,22 @@ box-shadow: 10px 10px 16px -7px rgba(17,17,17,1);
 .btn-find:active {
   background-color: #01227e;
   border: 2px solid #01227e;
+}
+
+.btn-clear {
+  border: 2px solid #d9d9d9;
+  background-color: #d9d9d9;
+  color: #012894;
+}
+
+.btn-clear:hover {
+  border: 2px solid #cfcfcf;
+  background-color: #cfcfcf;
+}
+
+.btn-clear:active {
+  border: 2px solid #c1c1c1;
+  background-color: #c1c1c1;
 }
 
 .cards {
@@ -454,8 +479,10 @@ box-shadow: 10px 10px 16px -7px rgba(17,17,17,1);
     height: 22px;
   }
 
-  .btn-find {
-    font-size: 20px;
+  .btn-form {
+    font-size: 16px;
+    height: 50px;
+    width: 48%;
   }
   /* .card {
     flex: 0 0 27%;

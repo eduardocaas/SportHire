@@ -2,64 +2,70 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
 import { UF } from '../../../models/enums/uf';
+import { Sport } from '../../../models/enums/sport';
 
 @Component({
   selector: 'app-events-find',
   templateUrl: './events-find.component.html',
   styleUrl: './events-find.component.css'
 })
-export class EventsFindComponent implements OnInit {
+export class EventsFindComponent {
 
   sportControl = new FormControl('', [Validators.required]);
   stateControl = new FormControl('', [Validators.required]);
   cityControl = new FormControl('', [Validators.required]);
 
-  sportOptions: string[] = ['Basquete', 'Futebol', 'Futsal', 'Vôlei', 'Vôlei de praia'];
-  sportFilteredOptions: Observable<string[]> = new Observable<string[]>;
+  sports = [
+    { opt: Sport.FUTEBOL, name: 'Futebol' },
+    { opt: Sport.VOLEI_PRAIA, name: 'Vôlei de Praia' },
+    { opt: Sport.BASQUETE, name: 'Basquete' }
+  ]
 
-  stateOptions: string[] = ['RS'];
-  stateFilteredOptions: Observable<string[]> = new Observable<string[]>;
+  states = [
+    { uf: UF.AC, name: 'Acre' },
+    { uf: UF.AL, name: 'Alagoas' },
+    { uf: UF.AP, name: 'Amapá' },
+    { uf: UF.AM, name: 'Amazonas' },
+    { uf: UF.BA, name: 'Bahia' },
+    { uf: UF.CE, name: 'Ceará' },
+    { uf: UF.DF, name: 'Distrito Federal' },
+    { uf: UF.ES, name: 'Espírito Santo' },
+    { uf: UF.GO, name: 'Goiás' },
+    { uf: UF.MA, name: 'Maranhão' },
+    { uf: UF.MT, name: 'Mato Grosso' },
+    { uf: UF.MS, name: 'Mato Grosso do Sul' },
+    { uf: UF.MG, name: 'Minas Gerais' },
+    { uf: UF.PA, name: 'Pará' },
+    { uf: UF.PB, name: 'Paraíba' },
+    { uf: UF.PR, name: 'Paraná' },
+    { uf: UF.PE, name: 'Pernambuco' },
+    { uf: UF.PI, name: 'Piauí' },
+    { uf: UF.RJ, name: 'Rio de Janeiro' },
+    { uf: UF.RN, name: 'Rio Grande do Norte' },
+    { uf: UF.RS, name: 'Rio Grande do Sul' },
+    { uf: UF.RO, name: 'Rondônia' },
+    { uf: UF.RR, name: 'Roraima' },
+    { uf: UF.SC, name: 'Santa Catarina' },
+    { uf: UF.SP, name: 'São Paulo' },
+    { uf: UF.SE, name: 'Sergipe' },
+    { uf: UF.TO, name: 'Tocantins' }
+  ];
 
-  cityOptions: string[] = ['Porto Alegre', 'Canoas'];
-  cityFilteredOptions: Observable<string[]> = new Observable<string[]>;
+  cities = [
+    { name: 'Porto Alegre', uf: UF.RS }, // TODO: Criar enum para UF
+    { name: 'Canoas', uf: UF.RS }
+  ];
 
-  ngOnInit() {
-    this._createFilters();
-  }
+  selectedSport: number | null = null;
+  selectedState: number | null = null;
+  selectedCity: string = '';
 
-  private _createFilters() {
-    this.sportFilteredOptions = this.sportControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._sportFilter(value || '')),
-    );
-
-    this.stateFilteredOptions = this.stateControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._stateFilter(value || ''))
-    );
-
-    this.cityFilteredOptions = this.cityControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._cityFilter(value || ''))
-    );
-  }
-
-  private _sportFilter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.sportOptions.filter(option => option.toLowerCase().includes(filterValue));
-  }
-
-  private _stateFilter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.stateOptions.filter(option => option.toLowerCase().includes(filterValue));
-  }
-
-  private _cityFilter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.cityOptions.filter(option => option.toLowerCase().includes(filterValue));
+  find() {
+    if (this.stateControl.invalid || this.cityControl.invalid || this.sportControl.invalid) {
+      this.sportControl.markAsTouched();
+      this.stateControl.markAsTouched();
+      this.cityControl.markAsTouched();
+    }
   }
 
   getErrorMessageSport() {
@@ -74,17 +80,6 @@ export class EventsFindComponent implements OnInit {
     return this.cityControl.hasError('required') ? 'Selecione uma cidade' : '';
   }
 
-  states = [
-    { uf: UF.RS, name: 'Rio Grande do Sul' },
-    { uf: UF.SP, name: 'São Paulo' },
 
-  ];
 
-  cities = [
-    { name: 'Porto Alegre', uf: UF.RS }, // TODO: Criar enum para UF
-
-  ];
-
-  selectedState: number = UF.SELECIONE;
-  selectedCity: string = '';
 }
