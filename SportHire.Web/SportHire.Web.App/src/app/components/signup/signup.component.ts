@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { UserSignup } from '../../models/signup';
 
 @Component({
   selector: 'app-signup',
@@ -8,9 +9,19 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class SignupComponent {
 
+  hide = true;
   nameControl = new FormControl('', [Validators.required]);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
   passwordControl = new FormControl('', [Validators.required]);
+
+  user: UserSignup = {
+    name: '',
+    email: '',
+    password: ''
+  }
+
+  signup() {
+  }
 
   // TODO: Adicionar Regex para caracteres especiais e maxLength
   getErrorMessageName() {
@@ -29,5 +40,4 @@ export class SignupComponent {
     return this.passwordControl.hasError('required') ? 'Insira uma senha' : '';
   }
 
-  hide = true;
 }
