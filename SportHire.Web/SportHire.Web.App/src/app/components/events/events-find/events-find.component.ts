@@ -56,7 +56,7 @@ export class EventsFindComponent {
     { name: 'Canoas', uf: UF.RS }
   ];
 
-  selectedSport: number | null = null;
+  selectedSport: number | null = null
   selectedState: number | null = null;
   selectedCity: string = '';
 
@@ -66,6 +66,16 @@ export class EventsFindComponent {
       this.stateControl.markAsTouched();
       this.cityControl.markAsTouched();
     }
+  }
+
+  clear() {
+    this.sportControl.setValue(null);
+    this.stateControl.setValue(null);
+    this.cityControl.setValue('');
+
+    this.sportControl.markAsUntouched();
+    this.stateControl.markAsUntouched();
+    this.cityControl.markAsUntouched();
   }
 
   getErrorMessageSport() {
