@@ -36,7 +36,7 @@
             </mat-option>
           </mat-autocomplete>
         </mat-form-field> -->
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-label>UF</mat-label>
           <mat-select [(ngModel)]="selectedState" (selectionChange)="selectedCity = ''">
             <mat-option *ngFor="let state of states" [value]="state.uf">
@@ -45,7 +45,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-label>Cidade</mat-label>
           <mat-select [(ngModel)]="selectedCity">
             <ng-container *ngFor="let city of cities">
