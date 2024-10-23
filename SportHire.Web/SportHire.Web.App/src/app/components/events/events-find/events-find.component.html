@@ -39,7 +39,7 @@
         <mat-form-field>
           <mat-label>UF</mat-label>
           <mat-select [(ngModel)]="selectedState" (selectionChange)="selectedCity = ''">
-            <mat-option *ngFor="let state of states" [value]="state.number">
+            <mat-option *ngFor="let state of states" [value]="state.uf">
               {{ state.name }}
             </mat-option>
           </mat-select>
@@ -49,7 +49,7 @@
           <mat-label>Cidade</mat-label>
           <mat-select [(ngModel)]="selectedCity">
             <ng-container *ngFor="let city of cities">
-              <mat-option *ngIf="selectedState && city.state == selectedState" [value]="city.name">
+              <mat-option *ngIf="selectedState && city.uf == selectedState" [value]="city.name">
                 {{ city.name }}
               </mat-option>
             </ng-container>
