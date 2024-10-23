@@ -22,7 +22,7 @@ export class EventsFindComponent {
   ]
 
   states = [
-    { uf: UF.AC, name: 'Acre' },
+/*     { uf: UF.AC, name: 'Acre' },
     { uf: UF.AL, name: 'Alagoas' },
     { uf: UF.AP, name: 'Amapá' },
     { uf: UF.AM, name: 'Amazonas' },
@@ -41,19 +41,21 @@ export class EventsFindComponent {
     { uf: UF.PE, name: 'Pernambuco' },
     { uf: UF.PI, name: 'Piauí' },
     { uf: UF.RJ, name: 'Rio de Janeiro' },
-    { uf: UF.RN, name: 'Rio Grande do Norte' },
+    { uf: UF.RN, name: 'Rio Grande do Norte' }, */
     { uf: UF.RS, name: 'Rio Grande do Sul' },
-    { uf: UF.RO, name: 'Rondônia' },
+/*     { uf: UF.RO, name: 'Rondônia' },
     { uf: UF.RR, name: 'Roraima' },
-    { uf: UF.SC, name: 'Santa Catarina' },
+    { uf: UF.SC, name: 'Santa Catarina' }, */
     { uf: UF.SP, name: 'São Paulo' },
-    { uf: UF.SE, name: 'Sergipe' },
-    { uf: UF.TO, name: 'Tocantins' }
+   /*  { uf: UF.SE, name: 'Sergipe' },
+    { uf: UF.TO, name: 'Tocantins' } */
   ];
 
   cities = [
-    { name: 'Porto Alegre', uf: UF.RS }, // TODO: Criar enum para UF
-    { name: 'Canoas', uf: UF.RS }
+    { name: 'Porto Alegre', uf: UF.RS },
+    { name: 'Canoas', uf: UF.RS },
+    { name: 'São Paulo', uf: UF.SP },
+    { name: 'Campinas', uf: UF.SP }
   ];
 
   selectedSport: number | null = null
