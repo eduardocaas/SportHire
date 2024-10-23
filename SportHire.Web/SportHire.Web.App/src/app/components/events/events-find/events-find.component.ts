@@ -74,16 +74,16 @@ export class EventsFindComponent implements OnInit {
   }
 
   states = [
-    { number: 0, abbr: 'RS', name: 'Rio Grande do Sul' },
-    { number: 1, abbr: 'SP', name: 'São Paulo' },
+    { number: 1, abbr: 'RS', name: 'Rio Grande do Sul' },
+    { number: 2, abbr: 'SP', name: 'São Paulo' },
 
   ];
 
   cities = [
-    { name: 'Porto Alegre', state: 0 }, // TODO: Criar enum para UF
+    { name: 'Porto Alegre', state: 1 }, // TODO: Criar enum para UF
 
   ];
 
-  selectedState: number = 22;
+  selectedState: number = 0;
   selectedCity: string = '';
 }
