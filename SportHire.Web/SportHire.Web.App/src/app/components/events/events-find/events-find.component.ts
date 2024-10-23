@@ -72,4 +72,18 @@ export class EventsFindComponent implements OnInit {
   getErrorMessageCity() {
     return this.cityControl.hasError('required') ? 'Selecione uma cidade' : '';
   }
+
+  states = [
+    { number: 0, abbr: 'RS', name: 'Rio Grande do Sul' },
+    { number: 1, abbr: 'SP', name: 'São Paulo' },
+
+  ];
+
+  cities = [
+    { name: 'Porto Alegre', state: 0 }, // TODO: Criar enum para UF
+
+  ];
+
+  selectedState: number = 22;
+  selectedCity: string = '';
 }

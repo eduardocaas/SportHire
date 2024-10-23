@@ -14,7 +14,7 @@
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="outline">
+        <!-- <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Estado</mat-label>
           <input type="text" placeholder="Selecione" aria-label="Estado" matInput [formControl]="stateControl"
             [matAutocomplete]="auto1" required>
@@ -35,6 +35,25 @@
               {{option}}
             </mat-option>
           </mat-autocomplete>
+        </mat-form-field> -->
+        <mat-form-field>
+          <mat-label>UF</mat-label>
+          <mat-select [(ngModel)]="selectedState" (selectionChange)="selectedCity = ''">
+            <mat-option *ngFor="let state of states" [value]="state.number">
+              {{ state.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Cidade</mat-label>
+          <mat-select [(ngModel)]="selectedCity">
+            <ng-container *ngFor="let city of cities">
+              <mat-option *ngIf="selectedState && city.state === selectedState" [value]="city.name">
+                {{ city.name }}
+              </mat-option>
+            </ng-container>
+          </mat-select>
         </mat-form-field>
       </div>
       <button class="btn-find">Buscar</button>
