@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
+import { UF } from '../../../models/enums/uf';
 
 @Component({
   selector: 'app-events-find',
@@ -74,16 +75,16 @@ export class EventsFindComponent implements OnInit {
   }
 
   states = [
-    { number: 1, abbr: 'RS', name: 'Rio Grande do Sul' },
-    { number: 2, abbr: 'SP', name: 'São Paulo' },
+    { uf: UF.RS, name: 'Rio Grande do Sul' },
+    { uf: UF.SP, name: 'São Paulo' },
 
   ];
 
   cities = [
-    { name: 'Porto Alegre', state: 1 }, // TODO: Criar enum para UF
+    { name: 'Porto Alegre', uf: UF.RS }, // TODO: Criar enum para UF
 
   ];
 
-  selectedState: number = 0;
+  selectedState: number = UF.SELECIONE;
   selectedCity: string = '';
 }
