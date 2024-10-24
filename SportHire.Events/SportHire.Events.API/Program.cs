@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SportHire.Events.Core.Repositories;
 using SportHire.Events.Infrastructure;
 using SportHire.Events.Infrastructure.Persistence.Repositories;
+using System.Reflection;
 using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,9 @@ builder.Services
 
 builder.Services
     .AddScoped<IEventRepository, EventRepository>();
+
+builder.Services
+    .AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
