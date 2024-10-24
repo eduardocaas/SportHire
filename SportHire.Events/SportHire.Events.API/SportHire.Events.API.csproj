@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SportHire.Events.Application\SportHire.Events.Application.csproj" />
     <ProjectReference Include="..\SportHire.Events.Infrastructure\SportHire.Events.Infrastructure.csproj" />
   </ItemGroup>
 
