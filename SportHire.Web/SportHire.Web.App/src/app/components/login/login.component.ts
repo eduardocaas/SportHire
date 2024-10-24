@@ -23,7 +23,8 @@ export class LoginComponent {
   constructor(private service: AuthService, private router: Router) { }
 
   login() {
-    this.service
+    if (this.emailControl.valid && this.passwordControl.valid) {
+      this.service
       .authenticate(this.creds)
       .subscribe({
         next: (response) => {
@@ -33,7 +34,8 @@ export class LoginComponent {
         error: (err) => {
           console.log(err);
         }
-      });
+      }); // TODO: Toast (else) para campos inválidos.
+    }
   }
 
   getErrorMessage() {

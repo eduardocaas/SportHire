@@ -25,7 +25,8 @@ export class SignupComponent {
   constructor(private readonly service: SignupService, private readonly router: Router) { }
 
   signup() {
-    this.service
+    if (this.nameControl.valid && this.emailControl.valid && this.passwordControl.valid) {
+      this.service
       .signup(this.user)
       .subscribe({
         next: (response) => {
@@ -34,7 +35,8 @@ export class SignupComponent {
         error: (err) => {
           console.log(err);
         }
-      });
+      }); // TODO: Toast (else) para campos inválidos.
+    }
   }
 
   // TODO: Adicionar Regex para caracteres especiais e maxLength
