@@ -38,7 +38,7 @@
           <mat-error *ngIf="passwordControl.invalid">{{getErrorMessagePwd()}}</mat-error>
         </mat-form-field>
       </p>
-      <button class="btn">Cadastrar</button>
+      <button class="btn" (click)="signup()">Cadastrar</button>
     </div>
   </div>
 </div>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UserSignup } from '../../models/signup';
+import { SignupService } from '../../services/signup.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +22,19 @@ export class SignupComponent {
     password: ''
   }
 
+  constructor(private readonly service: SignupService, private readonly router: Router) { }
+
   signup() {
+    this.service
+      .signup(this.user)
+      .subscribe({
+        next: (response) => {
+          this.router.navigate(['events/login']);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
   }
 
   // TODO: Adicionar Regex para caracteres especiais e maxLength
