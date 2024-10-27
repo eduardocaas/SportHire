@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using SportHire.Events.Application.Queries.GetEventsByCityAndSport;
 using SportHire.Events.Core.Repositories;
 using SportHire.Events.Infrastructure;
 using SportHire.Events.Infrastructure.Persistence.Repositories;
@@ -20,7 +21,7 @@ builder.Services
     .AddScoped<IEventRepository, EventRepository>();
 
 builder.Services
-    .AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+    .AddMediatR(cfg => cfg.RegisterServicesFromAssemblies([typeof(Program).Assembly, typeof(GetEventsByCityAndSportQuery).Assembly]));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
