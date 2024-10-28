@@ -13,9 +13,9 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
             _collection = database.GetCollection<Event>("events");
         }
 
-        public Task AddAsync(Event _event)
+        public async Task AddAsync(Event _event)
         {
-            throw new NotImplementedException();
+            await _collection.InsertOneAsync(_event);
         }
 
         public async Task<List<Event>> GetAllByCityAndSportAsync(string city, EventSportEnum sport)
