@@ -6,6 +6,18 @@ namespace SportHire.Events.Core.Entities
 {
     public class Event
     {
+        public Event(string emailOwner, EventSportEnum sport, UF uf, string city, string address, DateTime startDate, int duration, int cost)
+        {
+            EmailOwner = emailOwner;
+            Sport = sport;
+            Uf = uf;
+            City = city;
+            Address = address;
+            StartDate = startDate;
+            Duration = duration;
+            Cost = cost;
+        }
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
