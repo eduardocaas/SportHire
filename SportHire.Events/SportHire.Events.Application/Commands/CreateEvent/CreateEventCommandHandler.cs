@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using SportHire.Events.Core.Repositories;
 
 namespace SportHire.Events.Application.Commands.CreateEvent
 {
-    internal class CreateEventCommandHandler
+    public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, int>
     {
+        private readonly IEventRepository _repository;
+
+        public CreateEventCommandHandler(IEventRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public Task<int> Handle(CreateEventCommand request, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
