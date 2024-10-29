@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SportHire.Events.Application.Commands.CreateEvent;
 using SportHire.Events.Application.Queries.GetEventsByCityAndSport;
 using SportHire.Events.Core.Enums;
 
@@ -28,6 +29,15 @@ namespace SportHire.Events.API.Controllers
             var events = await _mediator.Send(query);
 
             return Ok(events);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateEventCommand command)
+        {
+            var id = await _mediator.Send(command);
+
+            throw new NotImplementedException();
+            // TODO: Criar GetById -> return At Action
         }
     }
 }
