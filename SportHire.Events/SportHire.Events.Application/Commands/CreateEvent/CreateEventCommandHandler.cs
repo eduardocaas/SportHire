@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using SportHire.Events.Core.Entities;
 using SportHire.Events.Core.Repositories;
 
 namespace SportHire.Events.Application.Commands.CreateEvent
@@ -12,9 +13,11 @@ namespace SportHire.Events.Application.Commands.CreateEvent
             _repository = repository;
         }
 
-        public Task<int> Handle(CreateEventCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateEventCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var _event = new Event(request.EmailOwner, request.Sport, request.Uf, request.City, request.Address, request.StartDate, request.Duration, request.Cost);
+            await _repository.AddAsync(_event);
+            return 1; // TODO: Retornar string -> ver se funciona consulta direta -> return _event.Id
         }
     }
 }
