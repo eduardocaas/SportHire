@@ -11,7 +11,7 @@ namespace SportHire.Events.Application.Commands.CreateEvent
         public string City { get; set; }
         public string Address { get; set; }
         public DateTime StartDate { get; set; }
-        public string Duration { get; set; }
+        public int Duration { get; set; }
         public int Cost { get; set; }
     }
 }
