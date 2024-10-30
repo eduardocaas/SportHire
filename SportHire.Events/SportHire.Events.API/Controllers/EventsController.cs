@@ -36,7 +36,7 @@ namespace SportHire.Events.API.Controllers
         {
             var id = await _mediator.Send(command);
 
-            throw new NotImplementedException();
+            return Ok();
             // TODO: Criar GetById -> return At Action
         }
     }
