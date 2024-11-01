@@ -11,6 +11,8 @@ import { Sport } from '../../../models/enums/sport';
 })
 export class EventsFindComponent {
 
+  /* --- FORMULÁRIO DE BUSCA --- */
+
   sportControl = new FormControl('', [Validators.required]);
   stateControl = new FormControl('', [Validators.required]);
   cityControl = new FormControl('', [Validators.required]);
@@ -92,6 +94,7 @@ export class EventsFindComponent {
     return this.cityControl.hasError('required') ? 'Selecione uma cidade' : '';
   }
 
+   /* --- -------------- --- */
 
 
 }
