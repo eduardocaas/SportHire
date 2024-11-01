@@ -2,7 +2,7 @@ import { Status } from "../models/enums/status";
 import { UF } from "../models/enums/uf";
 import { Event } from "../models/event";
 
-const eventsFindPortoAlegreAberto: Event[] = [
+export const eventsFindPortoAlegreAberto: Event[] = [
   {
     Id: "507f1f77bcf86cd799439011",
     Sport: 1,
