@@ -7,3 +7,14 @@ export class EventService {
 
   constructor() { }
 }
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MockEventService {
+
+  constructor() { }
+}
+
+
+
