@@ -94,7 +94,8 @@ export class EventsFindComponent {
     return this.cityControl.hasError('required') ? 'Selecione uma cidade' : '';
   }
 
-   /* --- -------------- --- */
+
+   /* --- CARDS EVENTOS --- */
 
 
 }
