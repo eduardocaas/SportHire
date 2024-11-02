@@ -41,33 +41,21 @@
     backdrop-filter: blur( 6px );
     -webkit-backdrop-filter: blur( 6px );
   }
-
-  .content h3 {
-    font-size: 26px;
-  }
-
-  .content p {
-    font-size: 20px;
-  }
-
-  .content button {
-    width: 280px;
-  }
 }
 
 .box-left:hover {
-    width: 60%;
+    width: 55%;
 
     .box-right {
-      width: 40%;
+      width: 45%;
     }
 }
 
 .box-right:hover {
-  width: 60%;
+  width: 55%;
 
     .box-left {
-      width: 40%;
+      width: 45%;
     }
 }
 
@@ -144,25 +132,15 @@
   }
 
   .content h3 {
-    font-size: 20px;
+    font-size: 18px;
 
   }
 
   .content p {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .content button {
     font-size: 16px;
- }
-
- .box:hover {
-  .content h3 {
-    font-size: 22px;
-  }
-
-  .content p {
-    font-size: 18px;
-  }
  }
 }
