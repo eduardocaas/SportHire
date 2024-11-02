@@ -3,6 +3,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
 import { UF } from '../../../models/enums/uf';
 import { Sport } from '../../../models/enums/sport';
+import { Event } from '../../../models/event';
+import { eventsFindPortoAlegreAberto } from '../../../mocks/events.mock';
 
 @Component({
   selector: 'app-events-find',
@@ -64,14 +66,6 @@ export class EventsFindComponent {
   selectedState: number | null = null;
   selectedCity: string = '';
 
-  find() {
-    if (this.stateControl.invalid || this.cityControl.invalid || this.sportControl.invalid) {
-      this.sportControl.markAsTouched();
-      this.stateControl.markAsTouched();
-      this.cityControl.markAsTouched();
-    }
-  }
-
   clear() {
     this.sportControl.setValue(null);
     this.stateControl.setValue(null);
@@ -97,5 +91,24 @@ export class EventsFindComponent {
 
    /* --- CARDS EVENTOS --- */
 
+   loadEvents() {
+    if (this.stateControl.invalid || this.cityControl.invalid || this.sportControl.invalid) {
+      this.sportControl.markAsTouched();
+      this.stateControl.markAsTouched();
+      this.cityControl.markAsTouched();
+    }
 
+    let cards = document.getElementById("ts--cards");
+
+    if (cards !== null) {
+      this.eventsMock.forEach(e => {
+
+      });
+    }
+    else {
+
+    }
+  }
+
+  eventsMock: Event[] = eventsFindPortoAlegreAberto;
 }
