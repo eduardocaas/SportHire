@@ -5,6 +5,7 @@ export interface Event {
   EmailPlayer?: string;
   Uf?: number;
   City: string;
+  District: string;
   Address: string;
   StartDate: Date;
   Duration: number;

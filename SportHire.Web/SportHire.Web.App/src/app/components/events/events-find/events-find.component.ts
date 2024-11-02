@@ -26,33 +26,33 @@ export class EventsFindComponent {
   ]
 
   states = [
-/*     { uf: UF.AC, name: 'Acre' },
-    { uf: UF.AL, name: 'Alagoas' },
-    { uf: UF.AP, name: 'Amapá' },
-    { uf: UF.AM, name: 'Amazonas' },
-    { uf: UF.BA, name: 'Bahia' },
-    { uf: UF.CE, name: 'Ceará' },
-    { uf: UF.DF, name: 'Distrito Federal' },
-    { uf: UF.ES, name: 'Espírito Santo' },
-    { uf: UF.GO, name: 'Goiás' },
-    { uf: UF.MA, name: 'Maranhão' },
-    { uf: UF.MT, name: 'Mato Grosso' },
-    { uf: UF.MS, name: 'Mato Grosso do Sul' },
-    { uf: UF.MG, name: 'Minas Gerais' },
-    { uf: UF.PA, name: 'Pará' },
-    { uf: UF.PB, name: 'Paraíba' },
-    { uf: UF.PR, name: 'Paraná' },
-    { uf: UF.PE, name: 'Pernambuco' },
-    { uf: UF.PI, name: 'Piauí' },
-    { uf: UF.RJ, name: 'Rio de Janeiro' },
-    { uf: UF.RN, name: 'Rio Grande do Norte' }, */
+    /*     { uf: UF.AC, name: 'Acre' },
+        { uf: UF.AL, name: 'Alagoas' },
+        { uf: UF.AP, name: 'Amapá' },
+        { uf: UF.AM, name: 'Amazonas' },
+        { uf: UF.BA, name: 'Bahia' },
+        { uf: UF.CE, name: 'Ceará' },
+        { uf: UF.DF, name: 'Distrito Federal' },
+        { uf: UF.ES, name: 'Espírito Santo' },
+        { uf: UF.GO, name: 'Goiás' },
+        { uf: UF.MA, name: 'Maranhão' },
+        { uf: UF.MT, name: 'Mato Grosso' },
+        { uf: UF.MS, name: 'Mato Grosso do Sul' },
+        { uf: UF.MG, name: 'Minas Gerais' },
+        { uf: UF.PA, name: 'Pará' },
+        { uf: UF.PB, name: 'Paraíba' },
+        { uf: UF.PR, name: 'Paraná' },
+        { uf: UF.PE, name: 'Pernambuco' },
+        { uf: UF.PI, name: 'Piauí' },
+        { uf: UF.RJ, name: 'Rio de Janeiro' },
+        { uf: UF.RN, name: 'Rio Grande do Norte' }, */
     { uf: UF.RS, name: 'Rio Grande do Sul' },
-/*     { uf: UF.RO, name: 'Rondônia' },
-    { uf: UF.RR, name: 'Roraima' },
-    { uf: UF.SC, name: 'Santa Catarina' }, */
+    /*     { uf: UF.RO, name: 'Rondônia' },
+        { uf: UF.RR, name: 'Roraima' },
+        { uf: UF.SC, name: 'Santa Catarina' }, */
     { uf: UF.SP, name: 'São Paulo' },
-   /*  { uf: UF.SE, name: 'Sergipe' },
-    { uf: UF.TO, name: 'Tocantins' } */
+    /*  { uf: UF.SE, name: 'Sergipe' },
+     { uf: UF.TO, name: 'Tocantins' } */
   ];
 
   cities = [
@@ -89,33 +89,33 @@ export class EventsFindComponent {
   }
 
 
-   /* --- CARDS EVENTOS --- */
+  /* --- CARDS EVENTOS --- */
 
-   events: Event[] = [];
-   displayedEvents: Event[] = [];
-   currentPage: number = 0;
-   itemsPerPage: number = 3;
+  events: Event[] = [];
+  displayedEvents: Event[] = [];
+  currentPage: number = 0;
+  itemsPerPage: number = 3;
 
-   loadEvents() {
+  loadEvents() {
     if (this.stateControl.invalid || this.cityControl.invalid || this.sportControl.invalid) {
       this.sportControl.markAsTouched();
       this.stateControl.markAsTouched();
       this.cityControl.markAsTouched();
     }
     /* else { */
-      let info_events = document.querySelector('#ts--info-events') as HTMLElement;
-      let paginator = document.querySelector('#ts--paginator') as HTMLElement;
+    let info_events = document.querySelector('#ts--info-events') as HTMLElement;
+    let paginator = document.querySelector('#ts--paginator') as HTMLElement;
 
-      if (paginator !== null && info_events !== null) {
-        paginator.style.display = 'flex';
-        info_events.style.display = 'block';
-      }
-      this.events = eventsFindPortoAlegreAberto;
+    if (paginator !== null && info_events !== null) {
+      paginator.style.display = 'flex';
+      info_events.style.display = 'block';
+    }
+    this.events = eventsFindPortoAlegreAberto;
 
-      const startIndex = this.currentPage * this.itemsPerPage;
-      this.displayedEvents = this.events.slice(startIndex, startIndex + this.itemsPerPage);
+    const startIndex = this.currentPage * this.itemsPerPage;
+    this.displayedEvents = this.events.slice(startIndex, startIndex + this.itemsPerPage);
 
-      //let cards = document.getElementById("ts--cards");
+    //let cards = document.getElementById("ts--cards");
     /*} */
 
 
@@ -146,4 +146,14 @@ export class EventsFindComponent {
     }
   }
 
+  loadTitle(sport: Sport) {
+    switch (sport) {
+      case Sport.BASQUETE:
+        return 'Basquete';
+      case Sport.FUTEBOL:
+        return 'Futebol';
+      case Sport.VOLEI_PRAIA:
+        return 'Vôlei de Praia';
+    }
+  }
 }

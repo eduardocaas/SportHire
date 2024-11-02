@@ -61,11 +61,11 @@
             </div>
           </div>
         </div>
-        <p class="card-title transition">Basquete, <br>Porto Alegre</p>
+        <p class="card-title transition">{{ loadTitle(event.Sport) }}, <br>Porto Alegre</p>
         <div class="card-footer">
           <div>
             <img class="transition" src="/assets/css/events/events-find/pin.svg">
-            <p class="transition">Centro Histórico</p>
+            <p class="transition">{{ event.District }}</p>
           </div>
           <div>
             <img class="transition" src="/assets/css/events/events-find/schedule.svg">
