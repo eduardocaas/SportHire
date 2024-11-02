@@ -41,7 +41,7 @@ export const eventsFindPortoAlegreAberto: Event[] = [
   },
   {
     Id: "507f1f77bcf86cd799439014",
-    Sport: 4,
+    Sport: 2,
     EmailOwner: "owner4@example.com",
     Uf: UF.RS,
     City: "Porto Alegre",
@@ -53,7 +53,7 @@ export const eventsFindPortoAlegreAberto: Event[] = [
   },
   {
     Id: "507f1f77bcf86cd799439015",
-    Sport: 5,
+    Sport: 3,
     EmailOwner: "owner5@example.com",
     Uf: UF.RS,
     City: "Porto Alegre",
@@ -65,7 +65,7 @@ export const eventsFindPortoAlegreAberto: Event[] = [
   },
   {
     Id: "507f1f77bcf86cd799439016",
-    Sport: 6,
+    Sport: 1,
     EmailOwner: "owner6@example.com",
     Uf: UF.RS,
     City: "Porto Alegre",
@@ -77,7 +77,7 @@ export const eventsFindPortoAlegreAberto: Event[] = [
   },
   {
     Id: "507f1f77bcf86cd799439017",
-    Sport: 7,
+    Sport: 1,
     EmailOwner: "owner7@example.com",
     Uf: UF.RS,
     City: "Porto Alegre",

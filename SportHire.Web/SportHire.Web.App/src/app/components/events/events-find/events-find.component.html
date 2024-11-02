@@ -42,7 +42,7 @@
   <div class="box-right">
     <span class="info-events" id="ts--info-events">Foram encontrados <strong> {{ events.length }} </strong> eventos</span>
     <div class="cards" id="ts--cards">
-      <div *ngFor="let event of displayedEvents" class="card">
+      <div *ngFor="let event of displayedEvents" class="card" [style.background-image]="'url(/assets/css/events/events-find/' + loadImage(event.Sport) + ')'">
         <div class="card-content">
           <div>
             <p class="card-content-title transition">Endereço</p>

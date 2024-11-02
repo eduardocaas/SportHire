@@ -215,18 +215,6 @@ mat-error {
   opacity: 0;
 }
 
-.card:nth-child(1) {
-  background-image: url(/assets/css/events/events-find/basquete.jpg);
-}
-
-.card:nth-child(2) {
-  background-image: url(/assets/css/events/events-find/futebol.jpg);
-}
-
-.card:nth-child(3) {
-  background-image: url(/assets/css/events/events-find/volei_praia.jpg);
-}
-
 .card {
   width: 420px;
   height: 420px;

@@ -135,4 +135,15 @@ export class EventsFindComponent {
     }
   }
 
+  loadImage(sport: Sport) {
+    switch (sport) {
+      case Sport.BASQUETE:
+        return 'basquete.jpg';
+      case Sport.FUTEBOL:
+        return 'futebol.jpg';
+      case Sport.VOLEI_PRAIA:
+        return 'volei_praia.jpg';
+    }
+  }
+
 }
