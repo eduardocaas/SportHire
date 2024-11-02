@@ -19,7 +19,7 @@
 .ul-nav li a:visited,
 .btn-nav a:link,
 .btn-nav a:visited {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
   color: #d9d9d9;
   text-decoration: none;
@@ -42,7 +42,7 @@
   margin: 0;
   font-family: Inter, "Helvetica Neue", sans-serif !important;
   color: #d9d9d9;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
 }
 
@@ -92,11 +92,11 @@
   .ul-nav li a:visited,
   .btn-nav a:link,
   .btn-nav a:visited {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .main-nav h1 {
-    font-size: 28px;
+    font-size: 22px;
   }
 
   .btn-nav {
