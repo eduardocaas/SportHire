@@ -102,13 +102,20 @@ export class EventsFindComponent {
       this.stateControl.markAsTouched();
       this.cityControl.markAsTouched();
     }
+    else {
+      let paginator = document.querySelector('#ts--paginator') as HTMLElement;
+      if (paginator !== null) {
+        paginator.style.display = 'flex';
+      }
+      this.events = eventsFindPortoAlegreAberto;
 
-    this.events = eventsFindPortoAlegreAberto;
+      const startIndex = this.currentPage * this.itemsPerPage;
+      this.displayedEvents = this.events.slice(startIndex, startIndex + this.itemsPerPage);
 
-    const startIndex = this.currentPage * this.itemsPerPage;
-    this.displayedEvents = this.events.slice(startIndex, startIndex + this.itemsPerPage);
+      //let cards = document.getElementById("ts--cards");
+    }
 
-    //let cards = document.getElementById("ts--cards");
+
   }
 
   nextPage() {

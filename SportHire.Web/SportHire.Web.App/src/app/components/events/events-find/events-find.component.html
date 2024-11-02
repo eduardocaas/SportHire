@@ -166,9 +166,10 @@
         </div>
       </div> -->
     </div>
-    <div class="paginator">
+    <div class="paginator" id="ts--paginator">
       <div class="paginator-btns">
         <button (click)="previousPage()" [disabled]="currentPage === 0">Anterior</button>
+        <button> {{this.currentPage}} </button>
         <button (click)="nextPage()" [disabled]="(currentPage + 1) * itemsPerPage >= events.length">Próximo</button>
       </div>
     </div>

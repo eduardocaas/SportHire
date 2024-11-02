@@ -376,7 +376,7 @@ mat-error {
  */
 .paginator {
   height: 20%;
-  display: flex;
+  display: none;
   justify-content: center;
 }
 
