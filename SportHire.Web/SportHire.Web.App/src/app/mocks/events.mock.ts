@@ -1,3 +1,4 @@
+import { Sport } from "../models/enums/sport";
 import { Status } from "../models/enums/status";
 import { UF } from "../models/enums/uf";
 import { Event } from "../models/event";
@@ -5,7 +6,7 @@ import { Event } from "../models/event";
 export const eventsFindPortoAlegreAberto: Event[] = [
   {
     Id: "507f1f77bcf86cd799439011",
-    Sport: 1,
+    Sport: Sport.BASQUETE,
     EmailOwner: "owner1@example.com",
     Uf: UF.RS,
     City: "Porto Alegre",
@@ -17,7 +18,7 @@ export const eventsFindPortoAlegreAberto: Event[] = [
   },
   {
     Id: "507f1f77bcf86cd799439012",
-    Sport: 2,
+    Sport: Sport.VOLEI_PRAIA,
     EmailOwner: "owner2@example.com",
     Uf: UF.RS,
     City: "Porto Alegre",
@@ -29,7 +30,7 @@ export const eventsFindPortoAlegreAberto: Event[] = [
   },
   {
     Id: "507f1f77bcf86cd799439013",
-    Sport: 3,
+    Sport: Sport.FUTEBOL,
     EmailOwner: "owner3@example.com",
     Uf: UF.RS,
     City: "Porto Alegre",
@@ -41,7 +42,7 @@ export const eventsFindPortoAlegreAberto: Event[] = [
   },
   {
     Id: "507f1f77bcf86cd799439014",
-    Sport: 2,
+    Sport: Sport.FUTEBOL,
     EmailOwner: "owner4@example.com",
     Uf: UF.RS,
     City: "Porto Alegre",
@@ -53,7 +54,7 @@ export const eventsFindPortoAlegreAberto: Event[] = [
   },
   {
     Id: "507f1f77bcf86cd799439015",
-    Sport: 3,
+    Sport: Sport.BASQUETE,
     EmailOwner: "owner5@example.com",
     Uf: UF.RS,
     City: "Porto Alegre",
@@ -65,7 +66,7 @@ export const eventsFindPortoAlegreAberto: Event[] = [
   },
   {
     Id: "507f1f77bcf86cd799439016",
-    Sport: 1,
+    Sport: Sport.VOLEI_PRAIA,
     EmailOwner: "owner6@example.com",
     Uf: UF.RS,
     City: "Porto Alegre",
@@ -77,7 +78,7 @@ export const eventsFindPortoAlegreAberto: Event[] = [
   },
   {
     Id: "507f1f77bcf86cd799439017",
-    Sport: 1,
+    Sport: Sport.BASQUETE,
     EmailOwner: "owner7@example.com",
     Uf: UF.RS,
     City: "Porto Alegre",
