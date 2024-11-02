@@ -102,7 +102,7 @@ export class EventsFindComponent {
       this.stateControl.markAsTouched();
       this.cityControl.markAsTouched();
     }
-    else {
+    /* else { */
       let paginator = document.querySelector('#ts--paginator') as HTMLElement;
       if (paginator !== null) {
         paginator.style.display = 'flex';
@@ -113,7 +113,7 @@ export class EventsFindComponent {
       this.displayedEvents = this.events.slice(startIndex, startIndex + this.itemsPerPage);
 
       //let cards = document.getElementById("ts--cards");
-    }
+    /*} */
 
 
   }

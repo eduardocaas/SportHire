@@ -168,8 +168,8 @@
     </div>
     <div class="paginator" id="ts--paginator">
       <div class="paginator-btns">
-        <button (click)="previousPage()" [disabled]="currentPage === 0">Anterior</button>
-        <button> {{this.currentPage}} </button>
+        <button class="paginator-margin" (click)="previousPage()" [disabled]="currentPage === 0">Anterior</button>
+        <button class="paginator-margin page"> {{this.currentPage + 1}} </button>
         <button (click)="nextPage()" [disabled]="(currentPage + 1) * itemsPerPage >= events.length">Próximo</button>
       </div>
     </div>
