@@ -14,6 +14,14 @@
   background-color: #212121;
 }
 
+.info-events {
+  display: none;
+  text-align: center;
+  color: #d9d9d9;
+  font-size: 22px;
+  margin: 20px auto -40px auto;
+}
+
 .form {
   height: 100%;
   display: flex;
@@ -386,10 +394,10 @@ mat-error {
   border: 2px solid #d9d9d9;
   color: #d9d9d9;
   background-color: transparent;
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 700;
-  width: 100px;
-  height: 40px;
+  width: 135px;
+  height: 55px;
   text-transform: uppercase;
   transition: background-color 0.1s;
   font-family: Inter, "Helvetica Neue", sans-serif !important;
@@ -403,7 +411,7 @@ mat-error {
 }
 
 .page {
-  width: 40px !important;
+  width: 56px !important;
   cursor: default !important;
 }
 
@@ -415,6 +423,10 @@ mat-error {
 
   .container {
     height: calc(100% - 84px);
+  }
+
+  .info-events {
+    font-size: 16px;
   }
 
   .form {
@@ -547,5 +559,16 @@ mat-error {
 
   .paginator {
     height: 15%;
+  }
+
+  .paginator-btns button {
+    border-radius: 50px;
+    font-size: 14px;
+    width: 100px;
+    height: 40px;
+  }
+
+  .page {
+    width: 40px !important;
   }
 }

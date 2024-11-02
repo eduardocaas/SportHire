@@ -103,9 +103,12 @@ export class EventsFindComponent {
       this.cityControl.markAsTouched();
     }
     /* else { */
+      let info_events = document.querySelector('#ts--info-events') as HTMLElement;
       let paginator = document.querySelector('#ts--paginator') as HTMLElement;
-      if (paginator !== null) {
+
+      if (paginator !== null && info_events !== null) {
         paginator.style.display = 'flex';
+        info_events.style.display = 'block';
       }
       this.events = eventsFindPortoAlegreAberto;
 
