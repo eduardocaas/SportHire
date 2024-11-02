@@ -50,7 +50,7 @@
             <p class="card-content-title transition">Duração</p>
             <p class="card-content-info transition">{{ event.Duration }} minutos</p>
             <p class="card-content-title transition">Data</p>
-            <p class="card-content-info transition">{{ event.StartDate }}  14/10</p>
+            <p class="card-content-info transition">{{ event.StartDate | date: 'dd/MM \'às\' HH:mm' }}</p>
             <p class="card-content-title transition">Preço</p>
             <p class="card-content-info transition">R$ {{ event.Cost }} </p>
           </div>
@@ -61,7 +61,7 @@
             </div>
           </div>
         </div>
-        <p class="card-title transition">{{ loadTitle(event.Sport) }}, <br>Porto Alegre</p>
+        <p class="card-title transition">{{ loadTitle(event.Sport) }}, <br>{{ event.City }}</p>
         <div class="card-footer">
           <div>
             <img class="transition" src="/assets/css/events/events-find/pin.svg">
@@ -69,103 +69,10 @@
           </div>
           <div>
             <img class="transition" src="/assets/css/events/events-find/schedule.svg">
-            <p class="transition">23/10</p>
+            <p class="transition">{{ event.StartDate | date: 'dd/MM' }}</p>
           </div>
         </div>
       </div>
-      <!-- <div class="card">
-        <div class="card-content">
-          <div>
-            <p class="card-content-title transition">Endereço</p>
-            <p class="card-content-info transition">Rua ABC 123, Centro Histórico</p>
-            <p class="card-content-title transition">Duração</p>
-            <p class="card-content-info transition">120 minutos</p>
-            <p class="card-content-title transition">Data</p>
-            <p class="card-content-info transition">14/10</p>
-            <p class="card-content-title transition">Preço</p>
-            <p class="card-content-info transition">R$ 80,00</p>
-          </div>
-          <div>
-            <div class="card-content-footer">
-              <span class="card-content-title transition">Jogar</span>
-              <img class="transition" src="/assets/css/events/events-find/trending_flat.svg">
-            </div>
-          </div>
-        </div>
-        <p class="card-title transition">Basquete, <br>Porto Alegre</p>
-        <div class="card-footer">
-          <div>
-            <img class="transition" src="/assets/css/events/events-find/pin.svg">
-            <p class="transition">Centro Histórico</p>
-          </div>
-          <div>
-            <img class="transition" src="/assets/css/events/events-find/schedule.svg">
-            <p class="transition">23/10</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-content">
-          <div>
-            <p class="card-content-title transition">Endereço</p>
-            <p class="card-content-info transition">Rua DEF ABC 321, Ipanema</p>
-            <p class="card-content-title transition">Duração</p>
-            <p class="card-content-info transition">60 minutos</p>
-            <p class="card-content-title transition">Data</p>
-            <p class="card-content-info transition">29/10</p>
-            <p class="card-content-title transition">Preço</p>
-            <p class="card-content-info transition">R$ 40,00</p>
-          </div>
-          <div>
-            <div class="card-content-footer">
-              <span class="card-content-title transition">Jogar</span>
-              <img class="transition" src="/assets/css/events/events-find/trending_flat.svg">
-            </div>
-          </div>
-        </div>
-        <p class="card-title transition">Futebol, <br>Porto Alegre</p>
-        <div class="card-footer">
-          <div>
-            <img class="transition" src="/assets/css/events/events-find/pin.svg">
-            <p class="transition">Ipanema</p>
-          </div>
-          <div>
-            <img class="transition" src="/assets/css/events/events-find/schedule.svg">
-            <p class="transition">29/10</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-content">
-          <div>
-            <p class="card-content-title transition">Endereço</p>
-            <p class="card-content-info transition">Rua WXY DEF 456, Menino Deus</p>
-            <p class="card-content-title transition">Duração</p>
-            <p class="card-content-info transition">120 minutos</p>
-            <p class="card-content-title transition">Data</p>
-            <p class="card-content-info transition">04/11</p>
-            <p class="card-content-title transition">Preço</p>
-            <p class="card-content-info transition">R$ 80,00</p>
-          </div>
-          <div>
-            <div class="card-content-footer">
-              <span class="card-content-title transition">Jogar</span>
-              <img class="transition" src="/assets/css/events/events-find/trending_flat.svg">
-            </div>
-          </div>
-        </div>
-        <p class="card-title transition">Vôlei de Praia, <br>Porto Alegre</p>
-        <div class="card-footer">
-          <div>
-            <img class="transition" src="/assets/css/events/events-find/pin.svg">
-            <p class="transition">Menino Deus</p>
-          </div>
-          <div>
-            <img class="transition" src="/assets/css/events/events-find/schedule.svg">
-            <p class="transition">04/11</p>
-          </div>
-        </div>
-      </div> -->
     </div>
     <div class="paginator" id="ts--paginator">
       <div class="paginator-btns">
