@@ -91,6 +91,11 @@ export class EventsFindComponent {
 
    /* --- CARDS EVENTOS --- */
 
+   events: Event[] = [];
+   displayedEvents: Event[] = [];
+   currentPage: number = 0;
+   itemsPerPage: number = 3;
+
    loadEvents() {
     if (this.stateControl.invalid || this.cityControl.invalid || this.sportControl.invalid) {
       this.sportControl.markAsTouched();
@@ -98,17 +103,26 @@ export class EventsFindComponent {
       this.cityControl.markAsTouched();
     }
 
-    let cards = document.getElementById("ts--cards");
+    this.events = eventsFindPortoAlegreAberto;
 
-    if (cards !== null) {
-      this.eventsMock.forEach(e => {
+    const startIndex = this.currentPage * this.itemsPerPage;
+    this.displayedEvents = this.events.slice(startIndex, startIndex + this.itemsPerPage);
 
-      });
-    }
-    else {
+    //let cards = document.getElementById("ts--cards");
+  }
 
+  nextPage() {
+    if ((this.currentPage + 1) * this.itemsPerPage < this.events.length) {
+      this.currentPage++;
+      this.loadEvents();
     }
   }
 
-  eventsMock: Event[] = eventsFindPortoAlegreAberto;
+  previousPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.loadEvents();
+    }
+  }
+
 }

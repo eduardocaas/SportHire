@@ -41,7 +41,38 @@
   </div>
   <div class="box-right">
     <div class="cards" id="ts--cards">
-      <div class="card">
+      <div *ngFor="let event of displayedEvents" class="card">
+        <div class="card-content">
+          <div>
+            <p class="card-content-title transition">Endereço</p>
+            <p class="card-content-info transition">{{ event.Address }}</p>
+            <p class="card-content-title transition">Duração</p>
+            <p class="card-content-info transition">{{ event.Duration }} minutos</p>
+            <p class="card-content-title transition">Data</p>
+            <p class="card-content-info transition">{{ event.StartDate }}  14/10</p>
+            <p class="card-content-title transition">Preço</p>
+            <p class="card-content-info transition">R$ {{ event.Cost }} </p>
+          </div>
+          <div>
+            <div class="card-content-footer">
+              <span class="card-content-title transition">Jogar</span>
+              <img class="transition" src="/assets/css/events/events-find/trending_flat.svg">
+            </div>
+          </div>
+        </div>
+        <p class="card-title transition">Basquete, <br>Porto Alegre</p>
+        <div class="card-footer">
+          <div>
+            <img class="transition" src="/assets/css/events/events-find/pin.svg">
+            <p class="transition">Centro Histórico</p>
+          </div>
+          <div>
+            <img class="transition" src="/assets/css/events/events-find/schedule.svg">
+            <p class="transition">23/10</p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="card">
         <div class="card-content">
           <div>
             <p class="card-content-title transition">Endereço</p>
@@ -133,12 +164,12 @@
             <p class="transition">04/11</p>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="paginator">
       <div class="paginator-btns">
-        <button>Anterior</button>
-        <button>Próximo</button>
+        <button (click)="previousPage()" [disabled]="currentPage === 0">Anterior</button>
+        <button (click)="nextPage()" [disabled]="(currentPage + 1) * itemsPerPage >= events.length">Próximo</button>
       </div>
     </div>
   </div>
