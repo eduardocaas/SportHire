@@ -22,6 +22,13 @@
   margin: 20px auto -40px auto;
 }
 
+.empty-events {
+  font-size: 22px;
+  text-align: center;
+  font-weight: 300;
+  color: #d9d9d9;
+}
+
 .form {
   height: 100%;
   display: flex;
@@ -415,6 +422,10 @@ mat-error {
 
   .info-events {
     font-size: 16px;
+  }
+
+  .empty-events {
+    font-size: 18px;
   }
 
   .form {

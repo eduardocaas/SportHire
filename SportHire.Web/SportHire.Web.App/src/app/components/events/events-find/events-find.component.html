@@ -42,6 +42,7 @@
   <div class="box-right">
     <span class="info-events" id="ts--info-events">Foram encontrados <strong> {{ events.length }} </strong> eventos</span>
     <div class="cards" id="ts--cards">
+      <p class="empty-events" id="ts--empty-events">Você ainda não buscou nenhum evento!</p>
       <div *ngFor="let event of displayedEvents" class="card" [style.background-image]="'url(/assets/css/events/events-find/' + loadImage(event.Sport) + ')'">
         <div class="card-content">
           <div>

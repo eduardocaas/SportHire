@@ -103,10 +103,12 @@ export class EventsFindComponent {
       this.cityControl.markAsTouched();
     }
     else {
+      let empty_events = document.querySelector('#ts--empty-events') as HTMLElement;
       let info_events = document.querySelector('#ts--info-events') as HTMLElement;
       let paginator = document.querySelector('#ts--paginator') as HTMLElement;
 
-      if (paginator !== null && info_events !== null) {
+      if (paginator !== null && info_events !== null && empty_events !== null) {
+        empty_events.style.display = 'none';
         paginator.style.display = 'flex';
         info_events.style.display = 'block';
       }
