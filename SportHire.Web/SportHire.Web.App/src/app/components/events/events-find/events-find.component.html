@@ -13,7 +13,7 @@
           <mat-error *ngIf="sportControl.invalid && sportControl.touched">{{ getErrorMessageSport() }}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
-          <mat-label>UF</mat-label>
+          <mat-label>Estado</mat-label>
           <mat-select [(ngModel)]="selectedState" [formControl]="stateControl" (selectionChange)="cityControl.setValue(''); cityControl.markAsUntouched()">
             <mat-option *ngFor="let state of states" [value]="state.uf">
               {{ state.name }}
