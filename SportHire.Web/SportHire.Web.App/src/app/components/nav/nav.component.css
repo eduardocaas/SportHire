@@ -20,7 +20,7 @@
 .btn-nav a:link,
 .btn-nav a:visited {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 400;
   color: #d9d9d9;
   text-decoration: none;
 }
@@ -50,7 +50,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  border: 3px solid #d9d9d9;
+  border: 2px solid #d9d9d9;
   border-radius: 15px;
   padding: 10px 20px;
   margin-left: 40px;
@@ -100,7 +100,11 @@
   }
 
   .btn-nav {
-    border: 3px solid #d9d9d9;
+    border: 2px solid #d9d9d9;
     padding: 5px 20px;
+  }
+
+  .pin {
+    width: 30px;
   }
 }
