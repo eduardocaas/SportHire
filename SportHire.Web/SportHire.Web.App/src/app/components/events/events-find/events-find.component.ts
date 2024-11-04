@@ -6,6 +6,7 @@ import { Sport } from '../../../models/enums/sport';
 import { Event } from '../../../models/event';
 import { eventsFindPortoAlegreAberto } from '../../../mocks/events.mock';
 import { EventService, MockEventService } from '../../../services/event.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-events-find',
@@ -14,7 +15,11 @@ import { EventService, MockEventService } from '../../../services/event.service'
 })
 export class EventsFindComponent {
 
-  constructor(private readonly mockService: MockEventService, private readonly service: EventService) { }
+  constructor(
+    private readonly mockService: MockEventService,
+    private readonly service: EventService,
+    private toast: ToastrService
+  ) { }
 
   /* --- FORMULÁRIO DE BUSCA --- */
 
@@ -119,18 +124,22 @@ export class EventsFindComponent {
       this.cityControl.markAsTouched();
     }
     else {
-      // Carrega conteúdo auxiliar
-      this.loadCardsContent(1);
-
       // Pega eventos do MockService - apenas para desenvolvimento
       this.events = this.mockService.getByCityAndSport(this.selectedCity, this.selectedSport);
 
-      // Paginator
-      const startIndex = this.currentPage * this.itemsPerPage;
-      this.displayedEvents = this.events.slice(startIndex, startIndex + this.itemsPerPage);
+      if (this.events.length > 0) {
+        // Carrega conteúdo auxiliar
+        this.loadCardsContent(1);
+
+        // Paginator
+        const startIndex = this.currentPage * this.itemsPerPage;
+        // Cards
+        this.displayedEvents = this.events.slice(startIndex, startIndex + this.itemsPerPage);
+      }
+      else {
+        this.toast.info('Nenhum evento encontrado com base na sua pesquisa!', 'Busca', { positionClass: 'toast-bottom-center'});
+      }
     }
-
-
   }
 
   // Paginator
