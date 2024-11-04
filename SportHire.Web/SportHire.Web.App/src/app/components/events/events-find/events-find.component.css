@@ -19,7 +19,7 @@
   text-align: center;
   color: #d9d9d9;
   font-size: 22px;
-  margin: 20px auto -40px auto;
+  margin: 40px auto -60px auto;
 }
 
 .empty-events {
@@ -300,83 +300,6 @@ mat-error {
   }
 }
 
-/* .card {
-  flex: 0 0 27%;
-  height: 280px;
-  display: flex;
-  flex-direction: column;
-  background-color: #0077b6;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 107px -41px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 107px -41px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 107px -41px rgba(0, 0, 0, 0.75);
-}
-
-.title-card span {
-  display: block;
-  font-size: 22px;
-  font-weight: 600;
-  background-color: #0034c2;
-  color: #FFF;
-  text-align: center;
-  padding: 20px;
-  margin-bottom: 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.content-card h3 {
-  font-family: Inter, "Helvetica Neue", sans-serif !important;
-  margin: 12px 0 0 10px;
-  padding: 0;
-  font-size: 21px;
-  font-weight: 600;
-}
-
-.content-card span {
-  font-size: 20px;
-  margin-left: 10px;
-}
-
-.price-button {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-}
-
-.price-button button {
-  font-family: Inter, "Helvetica Neue", sans-serif !important;
-  font-size: 18px;
-  letter-spacing: 1px;
-  height: 45px;
-  width: 100px;
-  margin-right: 10px;
-  font-weight: 600;
-  border: 0;
-  border-radius: 10px;
-}
-
-.price-button-button {
-  display: flex;
-}
-
-.btn-play {
-  background-color: #0034c2;
-  color: #FFF;
-}
-
-.btn-info {
-  padding-left: 12px;
-  display: flex;
-  align-items: center;
-  background-color: #FFF;
-  color: #0034c2;
-}
-
-.btn-info img {
-  width: 18px;
-}
- */
 .paginator {
   height: 20%;
   display: none;
@@ -422,6 +345,7 @@ mat-error {
 
   .info-events {
     font-size: 16px;
+    margin: 30px auto -50px auto;
   }
 
   .empty-events {
@@ -437,23 +361,22 @@ mat-error {
   }
 
   .box-form mat-form-field {
-    height: 75px;
     margin: 0;
   }
 
   .box-form input,
-  mat-label {
-    font-size: 100%;
+  mat-label, mat-select {
+    font-size: 80%;
   }
 
   .box-form mat-autocomplete,
   mat-option,
   mat-error {
-    font-size: 100%;
+    font-size: 80%;
   }
 
   .form span {
-    font-size: 20px;
+    font-size: 14px;
     line-height: 110%;
     margin-bottom: 40px;
   }
@@ -463,7 +386,7 @@ mat-error {
   }
 
   .button-form span {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .cards {
@@ -524,37 +447,10 @@ mat-error {
   }
 
   .btn-form {
-    font-size: 16px;
-    height: 50px;
+    font-size: 14px;
+    height: 40px;
     width: 48%;
   }
-  /* .card {
-    flex: 0 0 27%;
-    height: 190px;
-  }
-
-  .title-card span {
-    font-size: 18px;
-    padding: 13px;
-    margin-bottom: 2px;
-  }
-
-  .content-card h3 {
-    margin: 0 0 -5px 10px;
-    font-size: 15px;
-  }
-
-  .content-card span {
-    font-size: 14px;
-    margin-left: 10px;
-  }
-
-  .price-button button {
-    font-size: 14px;
-    height: 30px;
-    width: 80px;
-    margin-right: 10px;
-  } */
 
   .paginator {
     height: 15%;
