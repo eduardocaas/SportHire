@@ -19,7 +19,7 @@ export class MockEventService {
 
   getByCityAndSport(city: string, sport: Sport | null) {
     return eventsFindPortoAlegreAberto.filter(e => {
-      e.City == city && e.Sport == sport
+      return e.City == city && e.Sport == sport
     });
   }
 }
