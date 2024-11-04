@@ -18,10 +18,12 @@ export class EventsFindComponent {
 
   /* --- FORMULÁRIO DE BUSCA --- */
 
+  // Inicia formControl para campos
   sportControl = new FormControl('', [Validators.required]);
   stateControl = new FormControl('', [Validators.required]);
   cityControl = new FormControl('', [Validators.required]);
 
+  // Define esportes a serem apresentados - select
   sports = [
     { opt: Sport.DEFAULT, name: 'Todos' },
     { opt: Sport.FUTEBOL, name: 'Futebol' },
@@ -29,6 +31,7 @@ export class EventsFindComponent {
     { opt: Sport.BASQUETE, name: 'Basquete' }
   ]
 
+  // Define estados a serem apresentados - select
   states = [
     /*     { uf: UF.AC, name: 'Acre' },
         { uf: UF.AL, name: 'Alagoas' },
@@ -59,6 +62,7 @@ export class EventsFindComponent {
      { uf: UF.TO, name: 'Tocantins' } */
   ];
 
+  // Define cidades a serem apresentados - select
   cities = [
     { name: 'Porto Alegre', uf: UF.RS },
     { name: 'Canoas', uf: UF.RS },
@@ -70,6 +74,7 @@ export class EventsFindComponent {
   selectedState: number | null = null;
   selectedCity: string = '';
 
+  // Limpa formulário e cards
   clear() {
     this.sportControl.setValue(null);
     this.stateControl.setValue(null);
@@ -78,8 +83,13 @@ export class EventsFindComponent {
     this.sportControl.markAsUntouched();
     this.stateControl.markAsUntouched();
     this.cityControl.markAsUntouched();
+
+    this.events = [];
+    this.displayedEvents = [];
+    this.loadCardsContent(2);
   }
 
+  // Mensagem de erros - validator
   getErrorMessageSport() {
     return this.sportControl.hasError('required') ? 'Selecione um esporte' : '';
   }
@@ -95,11 +105,13 @@ export class EventsFindComponent {
 
   /* --- CARDS EVENTOS --- */
 
+  // Inicia variáveis relacionada aos eventos e paginator - card
   events: Event[] = [];
   displayedEvents: Event[] = [];
   currentPage: number = 0;
   itemsPerPage: number = 3;
 
+  // Carrega eventos na tela
   loadEvents() {
     if (this.stateControl.invalid || this.cityControl.invalid || this.sportControl.invalid) {
       this.sportControl.markAsTouched();
@@ -107,18 +119,13 @@ export class EventsFindComponent {
       this.cityControl.markAsTouched();
     }
     else {
-      let empty_events = document.querySelector('#ts--empty-events') as HTMLElement;
-      let info_events = document.querySelector('#ts--info-events') as HTMLElement;
-      let paginator = document.querySelector('#ts--paginator') as HTMLElement;
+      // Carrega conteúdo auxiliar
+      this.loadCardsContent(1);
 
-      if (paginator !== null && info_events !== null && empty_events !== null) {
-        empty_events.style.display = 'none';
-        paginator.style.display = 'flex';
-        info_events.style.display = 'block';
-      }
-
+      // Pega eventos do MockService - apenas para desenvolvimento
       this.events = this.mockService.getByCityAndSport(this.selectedCity, this.selectedSport);
 
+      // Paginator
       const startIndex = this.currentPage * this.itemsPerPage;
       this.displayedEvents = this.events.slice(startIndex, startIndex + this.itemsPerPage);
     }
@@ -126,6 +133,7 @@ export class EventsFindComponent {
 
   }
 
+  // Paginator
   nextPage() {
     if ((this.currentPage + 1) * this.itemsPerPage < this.events.length) {
       this.currentPage++;
@@ -133,6 +141,7 @@ export class EventsFindComponent {
     }
   }
 
+  // Paginator
   previousPage() {
     if (this.currentPage > 0) {
       this.currentPage--;
@@ -140,6 +149,7 @@ export class EventsFindComponent {
     }
   }
 
+  // Retorna o jpg para determinado esporte - card
   loadImage(sport: Sport) {
     switch (sport) {
       case Sport.BASQUETE:
@@ -153,6 +163,7 @@ export class EventsFindComponent {
     }
   }
 
+  // Retorna o título para determinado esporte - card
   loadTitle(sport: Sport) {
     switch (sport) {
       case Sport.BASQUETE:
@@ -164,5 +175,27 @@ export class EventsFindComponent {
       default:
         return '';
     }
+  }
+
+  // Carrega ou limpa conteúdo auxiliar - cards e formulário
+  loadCardsContent(opt: number) {
+      let empty_events = document.querySelector('#ts--empty-events') as HTMLElement;
+      let info_events = document.querySelector('#ts--info-events') as HTMLElement;
+      let paginator = document.querySelector('#ts--paginator') as HTMLElement;
+
+      if (paginator !== null && info_events !== null && empty_events !== null) {
+        // Carrega conteúdo
+        if (opt == 1) {
+          empty_events.style.display = 'none';
+          paginator.style.display = 'flex';
+          info_events.style.display = 'block';
+        }
+        // Limpa a tela
+        if (opt == 2) {
+          empty_events.style.display = 'block';
+          paginator.style.display = 'none';
+          info_events.style.display = 'none';
+        }
+      }
   }
 }
