@@ -89,8 +89,6 @@ export class EventsFindComponent {
     this.stateControl.markAsUntouched();
     this.cityControl.markAsUntouched();
 
-    this.events = [];
-    this.displayedEvents = [];
     this.loadCardsContent(2);
   }
 
@@ -128,7 +126,7 @@ export class EventsFindComponent {
       this.events = this.mockService.getByCityAndSport(this.selectedCity, this.selectedSport);
 
       if (this.events.length > 0) {
-        // Carrega conteúdo auxiliar
+
         this.loadCardsContent(1);
 
         // Paginator
@@ -137,6 +135,7 @@ export class EventsFindComponent {
         this.displayedEvents = this.events.slice(startIndex, startIndex + this.itemsPerPage);
       }
       else {
+        this.loadCardsContent(2);
         this.toast.info('Nenhum evento encontrado com base na sua pesquisa!', 'Busca', { positionClass: 'toast-bottom-center'});
       }
     }
@@ -201,6 +200,8 @@ export class EventsFindComponent {
         }
         // Limpa a tela
         if (opt == 2) {
+          this.events = [];
+          this.displayedEvents = [];
           empty_events.style.display = 'block';
           paginator.style.display = 'none';
           info_events.style.display = 'none';
