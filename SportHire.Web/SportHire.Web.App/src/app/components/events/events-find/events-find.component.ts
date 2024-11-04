@@ -5,6 +5,7 @@ import { UF } from '../../../models/enums/uf';
 import { Sport } from '../../../models/enums/sport';
 import { Event } from '../../../models/event';
 import { eventsFindPortoAlegreAberto } from '../../../mocks/events.mock';
+import { EventService, MockEventService } from '../../../services/event.service';
 
 @Component({
   selector: 'app-events-find',
@@ -12,6 +13,8 @@ import { eventsFindPortoAlegreAberto } from '../../../mocks/events.mock';
   styleUrl: './events-find.component.css'
 })
 export class EventsFindComponent {
+
+  constructor(private readonly mockService: MockEventService, private readonly service: EventService) { }
 
   /* --- FORMULÁRIO DE BUSCA --- */
 
@@ -112,7 +115,8 @@ export class EventsFindComponent {
         paginator.style.display = 'flex';
         info_events.style.display = 'block';
       }
-      this.events = eventsFindPortoAlegreAberto;
+
+      this.events = this.mockService.getByCityAndSport(this.selectedCity, this.selectedSport);
 
       const startIndex = this.currentPage * this.itemsPerPage;
       this.displayedEvents = this.events.slice(startIndex, startIndex + this.itemsPerPage);
