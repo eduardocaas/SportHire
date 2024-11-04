@@ -6,12 +6,13 @@ namespace SportHire.Events.Core.Entities
 {
     public class Event
     {
-        public Event(string emailOwner, EventSportEnum sport, UF uf, string city, string address, DateTime startDate, int duration)
+        public Event(string emailOwner, EventSportEnum sport, UF uf, string city, string district, string address, DateTime startDate, int duration)
         {
             EmailOwner = emailOwner;
             Sport = sport;
             Uf = uf;
             City = city;
+            District = district;
             Address = address;
             StartDate = startDate;
             EndDate = startDate.AddMinutes(duration);
@@ -27,6 +28,7 @@ namespace SportHire.Events.Core.Entities
         public EventSportEnum Sport { get; set; }
         public UF Uf { get; set; }
         public string City { get; set; }
+        public string District  { get; set; }
         public string Address { get; set; }
         public DateTime StartDate { get; set; }
         public int Duration { get; set; }

@@ -9,6 +9,7 @@ namespace SportHire.Events.Application.Commands.CreateEvent
         public EventSportEnum Sport { get; set; }
         public UF Uf { get; set; }
         public string City { get; set; }
+        public string District { get; set; }
         public string Address { get; set; }
         public DateTime StartDate { get; set; }
         public int Duration { get; set; }
