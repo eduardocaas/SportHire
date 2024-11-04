@@ -23,6 +23,7 @@ export class EventsFindComponent {
   cityControl = new FormControl('', [Validators.required]);
 
   sports = [
+    { opt: Sport.DEFAULT, name: 'Todos' },
     { opt: Sport.FUTEBOL, name: 'Futebol' },
     { opt: Sport.VOLEI_PRAIA, name: 'Vôlei de Praia' },
     { opt: Sport.BASQUETE, name: 'Basquete' }
@@ -65,7 +66,7 @@ export class EventsFindComponent {
     { name: 'Campinas', uf: UF.SP }
   ];
 
-  selectedSport: number | null = null
+  selectedSport: number | null = null;
   selectedState: number | null = null;
   selectedCity: string = '';
 
@@ -147,6 +148,8 @@ export class EventsFindComponent {
         return 'futebol.jpg';
       case Sport.VOLEI_PRAIA:
         return 'volei_praia.jpg';
+      default:
+        return '';
     }
   }
 
@@ -158,6 +161,8 @@ export class EventsFindComponent {
         return 'Futebol';
       case Sport.VOLEI_PRAIA:
         return 'Vôlei de Praia';
+      default:
+        return '';
     }
   }
 }
