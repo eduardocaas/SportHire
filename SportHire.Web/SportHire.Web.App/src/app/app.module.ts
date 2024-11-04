@@ -7,6 +7,7 @@ import { AsyncPipe } from '@angular/common';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 
+// Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -26,6 +27,9 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
+
+// Others
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -55,7 +59,15 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatButtonModule,
     MatAutocompleteModule,
-    MatSelectModule
+    MatSelectModule,
+
+    // Others
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      preventDuplicates: true,
+      closeButton: true,
+      progressBar: true
+    }),
   ],
   providers: [AuthInterceptorProvider, provideAnimationsAsync()],
   bootstrap: [AppComponent]
