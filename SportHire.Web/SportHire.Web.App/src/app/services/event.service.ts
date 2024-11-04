@@ -24,6 +24,8 @@ export class MockEventService implements IEventService {
   constructor() { }
 
   getByCityAndSport(city: string, sport: Sport | null): Event[] {
+    // TODO: Add generic Sport
+
     return eventsFindPortoAlegreAberto.filter(e => {
       return e.City == city && e.Sport == sport
     });
