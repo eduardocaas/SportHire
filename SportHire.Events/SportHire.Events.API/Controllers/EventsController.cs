@@ -31,6 +31,12 @@ namespace SportHire.Events.API.Controllers
             return Ok(events);
         }
 
+        public async Task<IActionResult> GetByCity(
+            [FromQuery(Name = "city")] string city)
+        {
+            throw new NotImplementedException();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateEventCommand command)
         {
