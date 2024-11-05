@@ -1,7 +1,7 @@
 <div class="container">
   <div class="box-left">
     <div class="form">
-      <span>Selecione as opções <br>a seguir</span>
+      <span>Busque uma partida <br>abaixo</span>
       <div class="box-form">
         <mat-form-field appearance="outline">
           <mat-label>Esporte</mat-label>
@@ -43,7 +43,7 @@
     <span class="info-events" id="ts--info-events">Foram encontrados <strong> {{ events.length }} </strong> eventos</span>
     <div class="cards" id="ts--cards">
       <p class="empty-events" id="ts--empty-events">Você ainda não buscou nenhum evento!</p>
-      <div *ngFor="let event of displayedEvents" class="card" [style.background-image]="'url(/assets/css/events/events-find/' + loadImage(event.Sport) + ')'">
+      <div *ngFor="let event of displayedEvents" class="card" [@fadeIn] [style.background-image]="'url(/assets/css/events/events-find/' + loadImage(event.Sport) + ')'">
         <div class="card-content">
           <div>
             <p class="card-content-title transition">Endereço</p>

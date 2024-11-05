@@ -7,11 +7,20 @@ import { Event } from '../../../models/event';
 import { eventsFindPortoAlegreAberto } from '../../../mocks/events.mock';
 import { EventService, MockEventService } from '../../../services/event.service';
 import { ToastrService } from 'ngx-toastr';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-events-find',
   templateUrl: './events-find.component.html',
-  styleUrl: './events-find.component.css'
+  styleUrl: './events-find.component.css',
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('0.5s ease-out', style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class EventsFindComponent {
 

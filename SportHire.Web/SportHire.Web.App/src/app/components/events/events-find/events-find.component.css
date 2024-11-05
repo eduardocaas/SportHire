@@ -366,17 +366,17 @@ mat-error {
 
   .box-form input,
   mat-label, mat-select {
-    font-size: 80%;
+    font-size: 90%;
   }
 
   .box-form mat-autocomplete,
   mat-option,
   mat-error {
-    font-size: 80%;
+    font-size: 95%;
   }
 
   .form span {
-    font-size: 14px;
+    font-size: 18px;
     line-height: 110%;
     margin-bottom: 40px;
   }
