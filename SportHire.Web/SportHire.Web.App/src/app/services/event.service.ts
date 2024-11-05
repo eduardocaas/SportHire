@@ -12,13 +12,17 @@ export class EventService implements IEventService {
 
   constructor(private http: HttpClient) { }
 
-  getByCityAndSport(city: string, sport: number | null |): Event[] {
+  getByCityAndSport(city: string, sport: Sport | null): Event[] {
+    throw new Error('Method not implemented.');
+  }
+
+  /*getByCityAndSport(city: string, sport: number | null): Event[] {
     const params = new HttpParams().set('city', city);
 
     if (sport != Sport.DEFAULT) {
      params.set('sport', sport);
     }
-  }
+  }*/
 }
 
 @Injectable({
