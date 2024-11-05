@@ -23,6 +23,11 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
             return await _collection.Find(e => e.City.ToLower() == city.ToLower() && e.Sport.Equals((int)sport)).ToListAsync();
         }
 
+        public async Task<List<Event>> GetAllByCityAsync(string city)
+        {
+            return await _collection.Find(e => e.City.ToLower() == city.ToLower()).ToListAsync();
+        }
+
         public async Task<List<Event>> GetAllByOwnerAsync(string ownerEmail)
         {
             return await _collection.Find(e => e.EmailOwner.Equals(ownerEmail, StringComparison.OrdinalIgnoreCase)).ToListAsync();

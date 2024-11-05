@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SportHire.Events.Application.Commands.CreateEvent;
+using SportHire.Events.Application.Queries.GetEventsByCity;
 using SportHire.Events.Application.Queries.GetEventsByCityAndSport;
 using SportHire.Events.Core.Enums;
 
@@ -34,7 +35,10 @@ namespace SportHire.Events.API.Controllers
         public async Task<IActionResult> GetByCity(
             [FromQuery(Name = "city")] string city)
         {
-            throw new NotImplementedException();
+            var query = new GetEventsByCityQuery(city);
+            var events = await _mediator.Send(query);
+
+            return Ok(events);
         }
 
         [HttpPost]
