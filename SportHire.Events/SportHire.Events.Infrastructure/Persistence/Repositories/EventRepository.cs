@@ -20,12 +20,25 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
 
         public async Task<List<Event>> GetAllByCityAndSportAsync(string city, EventSportEnum sport)
         {
-            return await _collection.Find(e => e.City.ToLower() == city.ToLower() && e.Sport.Equals((int)sport)).ToListAsync();
+            return await _collection
+                .Find(e => 
+                    e.City.ToLower() == city.ToLower() && 
+                    e.Sport.Equals((int)sport) && 
+                    e.Status == EventStatusEnum.ABERTO)
+                .SortBy(e => 
+                    e.StartDate)
+                .ToListAsync();
         }
 
         public async Task<List<Event>> GetAllByCityAsync(string city)
         {
-            return await _collection.Find(e => e.City.ToLower() == city.ToLower()).ToListAsync();
+            return await _collection
+                .Find(e => 
+                    e.City.ToLower() == city.ToLower() && 
+                    e.Status == EventStatusEnum.ABERTO)
+                .SortBy(e => 
+                    e.StartDate)
+                .ToListAsync();
         }
 
         public async Task<List<Event>> GetAllByOwnerAsync(string ownerEmail)
