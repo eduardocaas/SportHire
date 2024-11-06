@@ -1,14 +1,14 @@
 export interface Event {
-  Id?: string;
-  Sport: number;
-  EmailOwner?: string;
-  EmailPlayer?: string;
-  Uf?: number;
-  City: string;
-  District: string;
-  Address: string;
-  StartDate: Date;
-  Duration: number;
-  Status?: number;
-  Cost: number;
+  id?: string;
+  sport: number;
+  emailOwner?: string;
+  emailPlayer?: string;
+  uf?: number;
+  city: string;
+  district: string;
+  address: string;
+  startDate: Date;
+  duration: number;
+  status?: number;
+  cost: number;
 }

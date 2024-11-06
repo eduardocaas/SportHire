@@ -3,7 +3,9 @@ import { Sport } from '../models/enums/sport';
 import { eventsFindPortoAlegreAberto } from '../mocks/events.mock';
 import { IEventService } from './interfaces/i.event.service';
 import { Event } from '../models/event';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { EVENTS_CONFIG, JWT } from '../configs/api.config';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +14,18 @@ export class EventService implements IEventService {
 
   constructor(private http: HttpClient) { }
 
-  getByCityAndSport(city: string, sport: Sport | null): Event[] {
-    throw new Error('Method not implemented.');
+  getByCityAndSport(city: string, sport: Sport | null): Observable<Event[]> {
+    const params = new HttpParams()
+      .set('city', city)
+      .set('sport', sport && sport !== Sport.DEFAULT ? sport : Sport.DEFAULT);
+
+    // Apenas para desenvolvimento
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${JWT.token}`);
+
+    (sport != Sport.DEFAULT && sport != null) ? params.set('sport', sport) : params.set('sport', Sport.DEFAULT);
+
+    return this.http.get<Event[]>(EVENTS_CONFIG.localUrl, { params, headers });
   }
-
-  /*getByCityAndSport(city: string, sport: number | null): Event[] {
-    const params = new HttpParams().set('city', city);
-
-    if (sport != Sport.DEFAULT) {
-     params.set('sport', sport);
-    }
-  }*/
 }
 
 @Injectable({
@@ -32,17 +35,17 @@ export class MockEventService implements IEventService {
 
   constructor() { }
 
-  getByCityAndSport(city: string, sport: Sport | null): Event[] {
+  getByCityAndSport(city: string, sport: Sport | null): Observable<Event[]> {
 
     if (sport == Sport.DEFAULT) {
-      return eventsFindPortoAlegreAberto.filter(e => {
-        return e.City == city
-      });
+      return of(eventsFindPortoAlegreAberto.filter(e => {
+        return e.city == city
+      }));
     }
 
-    return eventsFindPortoAlegreAberto.filter(e => {
-      return e.City == city && e.Sport == sport
-    });
+    return of(eventsFindPortoAlegreAberto.filter(e => {
+      return e.city == city && e.sport == sport
+    }));
   }
 }
 

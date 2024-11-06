@@ -132,21 +132,52 @@ export class EventsFindComponent {
     }
     else {
       // Pega eventos do MockService - apenas para desenvolvimento
-      this.events = this.mockService.getByCityAndSport(this.selectedCity, this.selectedSport);
+      /* this.mockService.getByCityAndSport(this.selectedCity, this.selectedSport).subscribe(events => {
+        this.events = events;
+      }); */
 
-      if (this.events.length > 0) {
+      /* this.service.getByCityAndSport(this.selectedCity, this.selectedSport).pipe(
+        map(events =>
+          events.map(event => ({
+          Id: event.Id,
+          Sport: event.Sport,
+          EmailOwner: event.EmailOwner,
+          Uf: event.Uf,
+          City: event.City,
+          District: event.District,
+          Address: event.Address,
+          StartDate: event.StartDate,
+          Duration: event.Duration,
+          Cost: event.Cost
+        })))
+      ).subscribe(mappedEvents => {
+        console.log(mappedEvents);
 
-        this.loadCardsContent(1);
+        this.events = mappedEvents;
+      }) */
 
-        // Paginator
-        const startIndex = this.currentPage * this.itemsPerPage;
-        // Cards
-        this.displayedEvents = this.events.slice(startIndex, startIndex + this.itemsPerPage);
-      }
-      else {
-        this.loadCardsContent(2);
-        this.toast.info('Nenhum evento encontrado com base na sua pesquisa!', 'Busca', { positionClass: 'toast-bottom-center'});
-      }
+        this.service.getByCityAndSport(this.selectedCity, this.selectedSport)
+        .subscribe(response => {
+          this.events = response;
+          console.log(this.events);
+
+          if (this.events.length > 0) {
+
+            this.loadCardsContent(1);
+
+            // Paginator
+            const startIndex = this.currentPage * this.itemsPerPage;
+            // Cards
+            this.displayedEvents = this.events.slice(startIndex, startIndex + this.itemsPerPage);
+          }
+          else {
+            this.loadCardsContent(2);
+            this.toast.info('Nenhum evento encontrado com base na sua pesquisa!', 'Busca', { positionClass: 'toast-bottom-center'});
+          }
+        });
+
+
+
     }
   }
 
