@@ -25,21 +25,19 @@ namespace SportHire.Events.API.Controllers
             [FromQuery(Name = "city")] string city, 
             [FromQuery(Name = "sport")] EventSportEnum sport)
         {
-            var query = new GetEventsByCityAndSportQuery(city, sport);
+            if (sport == EventSportEnum.DEFAULT)
+            {
+                var query = new GetEventsByCityQuery(city);
 
-            var events = await _mediator.Send(query);
-
-            return Ok(events);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetByCity(
-            [FromQuery(Name = "city")] string city)
-        {
-            var query = new GetEventsByCityQuery(city);
-            var events = await _mediator.Send(query);
-
-            return Ok(events);
+                var events = await _mediator.Send(query);
+                return Ok(events);
+            }
+            else
+            {
+                var query = new GetEventsByCityAndSportQuery(city, sport);
+                var events = await _mediator.Send(query);
+                return Ok(events);
+            }
         }
 
         [HttpPost]
