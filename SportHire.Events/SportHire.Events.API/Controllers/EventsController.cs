@@ -32,6 +32,7 @@ namespace SportHire.Events.API.Controllers
             return Ok(events);
         }
 
+        [HttpGet]
         public async Task<IActionResult> GetByCity(
             [FromQuery(Name = "city")] string city)
         {
