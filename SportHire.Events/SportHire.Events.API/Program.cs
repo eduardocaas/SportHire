@@ -9,7 +9,22 @@ using SportHire.Events.Infrastructure.Persistence.Repositories;
 using System.Reflection;
 using System.Security.Cryptography;
 
+var AllowAllOrigins = "_allowAllOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Cors Policy - Development - All Origins
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: AllowAllOrigins,
+        policy =>
+        {
+            policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+});
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -84,6 +99,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(AllowAllOrigins);
 
 app.UseAuthentication();
 app.UseAuthorization();
