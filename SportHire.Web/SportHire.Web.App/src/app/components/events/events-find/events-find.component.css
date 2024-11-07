@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  height: calc(100% - 114px);
+  height: calc(100% - 94px);
 }
 
 .box-left {

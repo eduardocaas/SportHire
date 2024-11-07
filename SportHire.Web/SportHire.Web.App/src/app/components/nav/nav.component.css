@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 110px;
+  height: 90px;
   background-color: #212121;
   border: 2px solid #333;
 }
@@ -52,9 +52,15 @@
   align-items: center;
   border: 2px solid #d9d9d9;
   border-radius: 15px;
-  padding: 10px 20px;
+  padding: 8px 20px;
   margin-left: 40px;
   transition: 0.3s;
+}
+
+.btn-nav a:link,
+.btn-nav a:visited {
+  font-size: 19px;
+  font-weight: 700;
 }
 
 .btn-nav:hover {
@@ -73,6 +79,7 @@
 
 .pin-btn {
   margin-top: 0;
+  width: 30px;
 }
 
 .ul-nav:nth-child(1) {
