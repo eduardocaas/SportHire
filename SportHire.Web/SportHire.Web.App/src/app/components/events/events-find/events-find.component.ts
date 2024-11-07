@@ -136,34 +136,21 @@ export class EventsFindComponent {
         this.events = events;
       }); */
 
-      /* this.service.getByCityAndSport(this.selectedCity, this.selectedSport).pipe(
-        map(events =>
-          events.map(event => ({
-          Id: event.Id,
-          Sport: event.Sport,
-          EmailOwner: event.EmailOwner,
-          Uf: event.Uf,
-          City: event.City,
-          District: event.District,
-          Address: event.Address,
-          StartDate: event.StartDate,
-          Duration: event.Duration,
-          Cost: event.Cost
-        })))
-      ).subscribe(mappedEvents => {
-        console.log(mappedEvents);
 
-        this.events = mappedEvents;
-      }) */
-
-        this.service.getByCityAndSport(this.selectedCity, this.selectedSport)
+      this.service.getByCityAndSport(this.selectedCity, this.selectedSport)
         .subscribe(response => {
           this.events = response;
-          console.log(this.events);
 
           if (this.events.length > 0) {
 
-            this.loadCardsContent(1);
+            this.events = this.events.map(e => {
+              var newDate = new Date(e.startDate);
+              newDate.setHours(newDate.getHours() + 3);
+              e.startDate = newDate;
+              return e;
+            });
+
+            this.events.length <= 3 ? this.loadCardsContent(3) : this.loadCardsContent(1);
 
             // Paginator
             const startIndex = this.currentPage * this.itemsPerPage;
@@ -172,7 +159,7 @@ export class EventsFindComponent {
           }
           else {
             this.loadCardsContent(2);
-            this.toast.info('Nenhum evento encontrado com base na sua pesquisa!', 'Busca', { positionClass: 'toast-bottom-center'});
+            this.toast.info('Nenhum evento encontrado com base na sua pesquisa!', 'Busca', { positionClass: 'toast-bottom-center' });
           }
         });
 
@@ -227,25 +214,32 @@ export class EventsFindComponent {
 
   // Carrega ou limpa conteúdo auxiliar - cards e formulário
   loadCardsContent(opt: number) {
-      let empty_events = document.querySelector('#ts--empty-events') as HTMLElement;
-      let info_events = document.querySelector('#ts--info-events') as HTMLElement;
-      let paginator = document.querySelector('#ts--paginator') as HTMLElement;
+    let empty_events = document.querySelector('#ts--empty-events') as HTMLElement;
+    let info_events = document.querySelector('#ts--info-events') as HTMLElement;
+    let paginator = document.querySelector('#ts--paginator') as HTMLElement;
 
-      if (paginator !== null && info_events !== null && empty_events !== null) {
-        // Carrega conteúdo
-        if (opt == 1) {
-          empty_events.style.display = 'none';
-          paginator.style.display = 'flex';
-          info_events.style.display = 'block';
-        }
-        // Limpa a tela
-        if (opt == 2) {
-          this.events = [];
-          this.displayedEvents = [];
-          empty_events.style.display = 'block';
-          paginator.style.display = 'none';
-          info_events.style.display = 'none';
-        }
+    if (paginator !== null && info_events !== null && empty_events !== null) {
+
+      // Carrega conteúdo
+      if (opt == 1) {
+        empty_events.style.display = 'none';
+        paginator.style.display = 'flex';
+        info_events.style.display = 'block';
       }
+      // Limpa a tela
+      if (opt == 2) {
+        this.events = [];
+        this.displayedEvents = [];
+        empty_events.style.display = 'block';
+        paginator.style.display = 'none';
+        info_events.style.display = 'none';
+      }
+      // Carrega conteúdo - sem paginator
+      if (opt == 3) {
+        empty_events.style.display = 'none';
+        paginator.style.display = 'none';
+        info_events.style.display = 'block';
+      }
+    }
   }
 }
