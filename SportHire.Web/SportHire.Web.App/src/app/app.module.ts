@@ -14,6 +14,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { NavComponent } from './components/nav/nav.component';
 import { EventsFindComponent } from './components/events/events-find/events-find.component';
 import { HomeComponent } from './components/home/home.component';
+import { EventsDashComponent } from './components/events-dash/events-dash.component';
 
 // Forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -38,7 +39,8 @@ import { ToastrModule } from 'ngx-toastr';
     SignupComponent,
     NavComponent,
     EventsFindComponent,
-    HomeComponent
+    HomeComponent,
+    EventsDashComponent
   ],
   imports: [
     // Angular

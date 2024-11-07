@@ -6,6 +6,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { authGuard } from './auth/auth.guard';
 import { EventsFindComponent } from './components/events/events-find/events-find.component';
 import { HomeComponent } from './components/home/home.component';
+import { EventsDashComponent } from './components/events-dash/events-dash.component';
 
 const routes: Routes = [
 
@@ -14,9 +15,9 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'events', component: NavComponent, children: [
-      { path: 'find', component: EventsFindComponent }
+      { path: 'find', component: EventsFindComponent },
+      { path: 'dash', component: EventsDashComponent }
     ]
-
   }
 ];
 
