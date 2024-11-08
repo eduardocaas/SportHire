@@ -9,7 +9,10 @@
         </mat-radio-group>
       </div>
       <div class="create-box">
-        <button>Criar Evento</button>
+        <button>
+          <img src="/assets/css/events/events-dash/add_task.svg">
+          <span>Criar evento</span>
+        </button>
         <div class="create-card-box">
           <p>Próximo evento</p>
           <div class="create-card" [style.background-image]="'url(/assets/css/events/events-find/futebol.jpg)'">
@@ -25,26 +28,30 @@
                 <p class="create-card-content-info transition">R$ 80,00 </p>
               </div>
               <div>
-                <div class="create-card-content-footer">
-                  <span class="create-card-content-title transition">Jogar</span>
-                  <img class="transition" src="/assets/css/events/events-find/trending_flat.svg">
-                </div>
+
               </div>
             </div>
             <p class="create-card-title transition">Futebol, <br>Porto Alegre</p>
             <div class="create-card-footer">
               <div>
-                <img class="transition" src="/assets/css/events/events-find/pin.svg">
+                <img class="transition card-pin" src="/assets/css/events/events-find/pin.svg">
                 <p class="transition">Cavalhada</p>
               </div>
               <div>
-                <img class="transition" src="/assets/css/events/events-find/schedule.svg">
+                <img class="transition card-pin" src="/assets/css/events/events-find/schedule.svg">
                 <p class="transition">30/10</p>
               </div>
             </div>
           </div>
           <div class="create-card-btns">
-
+            <button>
+              <img src="/assets/css/events/events-dash/edit.svg">
+              <span>Editar</span>
+            </button>
+            <button>
+              <img src="/assets/css/events/events-dash/delete.svg">
+              <span>Cancelar</span>
+            </button>
           </div>
         </div>
       </div>
