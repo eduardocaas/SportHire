@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 85%;
-  height: 90%;
+  height: 93%;
 }
 
 .profile-box {
@@ -119,6 +119,10 @@
 
 .create-card p {
   cursor: default;
+}
+
+.card-pin {
+  width: 20px;
 }
 
 .create-card-content {
@@ -280,11 +284,10 @@
   flex-direction: column;
   justify-content: space-between;
   width: 85%;
-  height: 90%;
+  height: 93%;
 }
 
 .header-center {
-  background-color: blue;
   width: 100%;
   height: 15%;
 }
@@ -304,17 +307,20 @@
 }
 
 .cards-center {
-  overflow-y: scroll;
-  background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   width: 100%;
-  height: 79%;
+  height: 84%;
 }
 
 .center-card {
   width: 500px;
-  height: 220px;
+  height: 180px;
   box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5), 0px 0px 69px -23px rgba(0,0,0,1);
   background-size: cover;
+  background-position: center;
   border: 2px solid #222;
   border-radius: 20px;
   transition: border 0.4s, box-shadow 0.4s;
@@ -322,6 +328,29 @@
 
 .center-card p {
   cursor: default;
+}
+
+.center-card-header {
+  display: flex;
+  justify-content: flex-end;
+  gap: 25px;
+  width: 100%;
+  margin: 15px 0 0 0;
+}
+
+.center-card-header div {
+  display: flex;
+  align-items: center;
+}
+
+.center-card-header div:nth-child(2) {
+  margin-right: 25px;
+}
+
+.center-card-header p {
+  color: #FFF;
+  font-size: 16px;
+  margin: 0 0 0 3px;
 }
 
 .center-card-content {
@@ -354,50 +383,54 @@
   margin: 0;
 }
 
-.center-card-content-footer {
-  cursor: default;
-  display: flex;
-  align-items: center;
-  width: 95px;
-  margin-top: -70px;
-}
-
-.center-card-content-footer img {
-  width: 30px;
-  height: 30px;
-  margin-left: 5px;
-  opacity: 0;
-}
-
 .center-card-title {
-  margin: 50px 0 0 35px;
-  font-size: 32px;
+  margin: 35px 0 0 35px;
+  font-size: 26px;
   font-weight: 600;
-  line-height: 35px;
+  line-height: 30px;
   color: #FFF;
 }
 
-.center-card-header {
+.center-card-footer {
+  margin: 5px 0 0 343px;
   display: flex;
-  justify-content: flex-end;
-  gap: 60px;
-  width: 100%;
-  margin: 10px 0 0 0;
+  gap: 5px;
 }
 
-.center-card-header div {
+.center-card-footer button {
   display: flex;
+  justify-content: center;
   align-items: center;
+  cursor: pointer;
+  width: 42px;
+  height: 35px;
+  border: 0;
+  border-radius: 5px;
+  transition: background-color 0.1s;
 }
 
-.center-card-header div:nth-child(2) {
-  margin-right: 25px;
+.center-card-footer button:nth-child(1) {
+  background-color: #fff;
 }
 
-.center-card-header p {
-  color: #FFF;
-  font-size: 16px;
-  margin: 0 0 0 3px;
+.center-card-footer button:nth-child(1):hover {
+  background-color: #eceaea;
+}
+
+.center-card-footer button:nth-child(2) {
+  background-color: #0034c2;
+}
+
+.center-card-footer button:nth-child(2):hover {
+  background-color: #1045d6;
+}
+
+.center-card-footer button:nth-child(3) {
+  background-color: #c1121f;
+}
+
+.center-card-footer button:nth-child(3):hover {
+  background-color: #cc1f2b;
 }
 
 .center-card:hover {
@@ -427,6 +460,52 @@
   .center-card-content-footer img {
     opacity: 1;
   }
+}
+
+.paginator {
+  display: flex;
+  justify-content: center;
+}
+
+.paginator-btns {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.paginator-btns button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid #d9d9d9;
+  color: #d9d9d9;
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 600;
+  width: 210px;
+  height: 45px;
+  transition: background-color 0.1s;
+  text-transform: uppercase;
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
+  -webkit-box-shadow: 10px 10px 16px -7px rgba(17,17,17,1);
+  -moz-box-shadow: 10px 10px 16px -7px rgba(17,17,17,1);
+  box-shadow: 10px 10px 16px -7px rgba(17,17,17,1);
+}
+
+.paginator-btns img {
+  width: 32px;
+}
+
+.page {
+  width: 56px !important;
+  cursor: default !important;
+}
+
+.paginator-btns button:hover {
+  background-color: rgba(150, 150, 150, 0.1);
 }
 
 .box-right{
