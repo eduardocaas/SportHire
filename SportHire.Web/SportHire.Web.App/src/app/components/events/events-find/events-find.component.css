@@ -176,7 +176,7 @@ mat-error {
 }
 
 .cards {
-  height: 80%;
+  height: 85%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -301,7 +301,7 @@ mat-error {
 }
 
 .paginator {
-  height: 20%;
+  height: 15%;
   display: none;
   justify-content: center;
 }
