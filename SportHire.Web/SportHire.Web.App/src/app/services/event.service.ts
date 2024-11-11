@@ -26,6 +26,10 @@ export class EventService implements IEventService {
 
     return this.http.get<Event[]>(EVENTS_CONFIG.localUrl, { params, headers });
   }
+
+  getInProgressByEmailOwner(emailOwner: string): Observable<Event[]> {
+    throw new Error('Method not implemented.');
+  }
 }
 
 @Injectable({
@@ -46,6 +50,10 @@ export class MockEventService implements IEventService {
     return of(eventsFindPortoAlegreAberto.filter(e => {
       return e.city == city && e.sport == sport
     }));
+  }
+
+  getInProgressByEmailOwner(emailOwner: string): Observable<Event[]> {
+    throw new Error('Method not implemented.');
   }
 }
 
