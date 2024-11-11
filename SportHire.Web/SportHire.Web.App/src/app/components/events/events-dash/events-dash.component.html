@@ -60,7 +60,14 @@
     <div class="container-center">
     <div class="header-center">
       <h2>Eventos em andamento</h2>
-      <p>Você tem 5 eventos em <br>andamento</p>
+      <div class="header-content">
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="1" [checked]="true">Aberto</mat-radio-button>
+          <mat-radio-button value="2">Andamento</mat-radio-button>
+        </mat-radio-group>
+        <p>Você tem 5 eventos em <br>andamento</p>
+      </div>
+
     </div>
     <div class="cards-center">
       <div class="center-card" [style.background-image]="'url(/assets/css/events/events-find/basquete.jpg)'">
