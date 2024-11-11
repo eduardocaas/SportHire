@@ -6,7 +6,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { authGuard } from './auth/auth.guard';
 import { EventsFindComponent } from './components/events/events-find/events-find.component';
 import { HomeComponent } from './components/home/home.component';
-import { EventsDashComponent } from './components/events-dash/events-dash.component';
+import { EventsDashComponent } from './components/events/events-dash/events-dash.component';
 
 const routes: Routes = [
 
