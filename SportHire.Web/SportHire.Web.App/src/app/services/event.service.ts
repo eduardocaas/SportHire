@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Sport } from '../models/enums/sport';
-import { eventsFindPortoAlegreAberto } from '../mocks/events.mock';
+import { eventsDashUserAbertoAndamento, eventsFindPortoAlegreAberto } from '../mocks/events.mock';
 import { IEventService } from './interfaces/i.event.service';
 import { Event } from '../models/event';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -53,7 +53,9 @@ export class MockEventService implements IEventService {
   }
 
   getInProgressByEmailOwner(emailOwner: string): Observable<Event[]> {
-    throw new Error('Method not implemented.');
+    return of(eventsDashUserAbertoAndamento.filter(e => {
+      return e.emailOwner == emailOwner
+    }));
   }
 }
 
