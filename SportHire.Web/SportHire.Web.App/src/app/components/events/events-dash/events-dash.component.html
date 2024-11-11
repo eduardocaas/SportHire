@@ -61,10 +61,19 @@
     <div class="header-center">
       <h2>Eventos em andamento</h2>
       <div class="header-content">
-        <mat-radio-group aria-label="Select an option">
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <mat-select>
+            <mat-option value="cc">
+             Andamento
+            </mat-option>
+          </mat-select>
+          <mat-error>aaaa</mat-error>
+        </mat-form-field>
+        <!-- <mat-radio-group aria-label="Select an option">
           <mat-radio-button value="1" [checked]="true">Aberto</mat-radio-button>
           <mat-radio-button value="2">Andamento</mat-radio-button>
-        </mat-radio-group>
+        </mat-radio-group> -->
         <p>Você tem 5 eventos em <br>andamento</p>
       </div>
 
@@ -237,15 +246,15 @@
           <div class="center-card-header">
             <div>
               <img class="transition card-pin" src="/assets/css/events/events-find/info.svg">
-              <p class="transition left-card-status left-card-text">Finalizado</p>
+              <p class="transition right-card-status right-card-text">Finalizado</p>
             </div>
             <div>
               <img class="transition card-pin" src="/assets/css/events/events-find/schedule.svg">
-              <p class="transition left-card-text">04/11</p>
+              <p class="transition right-card-text">04/11</p>
             </div>
           </div>
           <p class="center-card-title transition">Basquete, <br>Porto Alegre</p>
-          <div class="left-card-footer">
+          <div class="right-card-footer">
             <button>
               <img src="/assets/css/events/events-dash/info_gray.svg">
               <span>Detalhes</span>
@@ -275,15 +284,15 @@
           <div class="center-card-header">
             <div>
               <img class="transition card-pin" src="/assets/css/events/events-find/info.svg">
-              <p class="transition left-card-status left-card-text">Finalizado</p>
+              <p class="transition right-card-status right-card-text">Finalizado</p>
             </div>
             <div>
               <img class="transition card-pin" src="/assets/css/events/events-find/schedule.svg">
-              <p class="transition left-card-text">20/11</p>
+              <p class="transition right-card-text">20/11</p>
             </div>
           </div>
           <p class="center-card-title transition">Vôlei de Praia, <br>Porto Alegre</p>
-          <div class="left-card-footer">
+          <div class="right-card-footer">
             <button>
               <img src="/assets/css/events/events-dash/info_gray.svg">
               <span>Detalhes</span>
@@ -313,15 +322,15 @@
           <div class="center-card-header">
             <div>
               <img class="transition card-pin" src="/assets/css/events/events-find/info.svg">
-              <p class="transition left-card-status left-card-text">Cancelado</p>
+              <p class="transition right-card-status right-card-text">Cancelado</p>
             </div>
             <div>
               <img class="transition card-pin" src="/assets/css/events/events-find/schedule.svg">
-              <p class="transition left-card-text">30/10</p>
+              <p class="transition right-card-text">30/10</p>
             </div>
           </div>
           <p class="center-card-title transition">Vôlei de Praia, <br>Porto Alegre</p>
-          <div class="left-card-footer">
+          <div class="right-card-footer">
             <button>
               <img src="/assets/css/events/events-dash/info_gray.svg">
               <span>Detalhes</span>

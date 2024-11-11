@@ -292,7 +292,6 @@
 }
 
 .header-center {
-  background-color: red;
   width: 85%;
   height: 15%;
 }
@@ -305,23 +304,82 @@
   text-align: center;
 }
 
+.header-center p {
+  font-size: 16px;
+  color: #d9d9d9;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.header-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
 .header-center mat-radio-group {
   display: flex;
   flex-direction: column;
 }
 
-.header-center p {
-  font-size: 16px;
-  color: #d9d9d9;
-  text-align: center;
+.header-center mat-radio-button {
+  margin-top: -8px;
 }
 
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: red;;
+::ng-deep .header-center .mdc-label {
+  font-size: 15px !important;
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
 }
+
+::ng-deep mat-label {
+  font-size: 15px !important;
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
+}
+
+::ng-deep .mat-mdc-select-arrow-wrapper path {
+  color: #aaa;
+}
+
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: #aaa !important;
+}
+
+::ng-deep .mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: var(--mat-form-field-error-text-color) !important;
+}
+
+::ng-deep .mdc-notched-outline__leading {
+  border-color: #545454 !important;
+}
+::ng-deep .mdc-notched-outline__notch {
+  border-color: #545454 !important;
+}
+::ng-deep .mdc-notched-outline__trailing {
+  border-color: #545454 !important;
+}
+
+::ng-deep .header-center .mat-mdc-select-value-text {
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
+  font-size: 14px !important;
+  color: #d9d9d9 !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 7%; /*you can tweak around with this, */
+  margin-bottom: -12%; /*and this*/
+}
+
+/*you also have to adjust the label, after the above*/
+::ng-deep .mat-mdc-form-field:not(.mat-form-field-disabled) .mat-mdc-floating-label.mdc-floating-label {
+  top: 50%;
+}
+::ng-deep .mdc-floating-label--float-above{
+  top: 60% !important;
+}
+
+
 
 .cards-center {
   display: flex;
@@ -482,6 +540,7 @@
 .paginator {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .paginator-btns {
@@ -494,13 +553,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 7px;
   cursor: pointer;
   border-radius: 10px;
   border: 1px solid #555;
   color: #d9d9d9;
   background-color: transparent;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
   width: 210px;
   height: 45px;
@@ -513,7 +572,7 @@
 }
 
 .paginator-btns img {
-  width: 32px;
+  width: 28px;
 }
 
 .page {
@@ -522,6 +581,10 @@
 }
 
 .paginator-btns button:hover {
+  background-color: rgba(110, 110, 110, 0.1);
+}
+
+.paginator-btns button:active {
   background-color: rgba(150, 150, 150, 0.1);
 }
 
@@ -539,41 +602,47 @@
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.650), 0px 0px 69px -23px rgba(0,0,0,1);
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
+  transition: filter 0.5s ease, -webkit-filter 0.5s ease;
 }
 
-.left-card-status {
+.right-card:hover {
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+}
+
+.right-card-status {
   font-weight: 600;
 }
 
-.left-card-text {
+.right-card-text {
   font-size: 15px !important;
 }
 
-.left-card-footer {
+.right-card-footer {
   margin: 0 0 0 343px;
   display: flex;
   justify-content: flex-end;
 }
 
-@property --left-grad1 {
+@property --right-grad1 {
   syntax: '<color>';
-  initial-value: #020024;
+  initial-value: #000000;
   inherits: false;
 }
 
-@property --left-grad2 {
+@property --right-grad2 {
   syntax: '<color>';
   initial-value: #525252;
   inherits: false;
 }
 
-.left-card-footer button {
+.right-card-footer button {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
   cursor: pointer;
-  background: linear-gradient(90deg, var(--left-grad1), var(--left-grad2));
+  background: linear-gradient(90deg, var(--right-grad1), var(--right-grad2));
   font-family: Inter, "Helvetica Neue", sans-serif !important;
   font-weight: 600;
   font-size: 14px;
@@ -585,12 +654,12 @@
   margin-right: 25px;
   width: 120px;
   height: 40px;
-  transition: --left-grad1 0.5s, --left-grad2 0.5s;
+  transition: --right-grad1 0.4s, --right-grad2 0.4s;
 }
 
-.left-card-footer button:hover {
-  --left-grad1: #525252;
-  --left-grad2: #020024;
+.right-card-footer button:hover {
+  --right-grad1: #0034c2;
+  --right-grad2: #c1121f;
 }
 
 @media only screen and (max-width: 1720px) {
