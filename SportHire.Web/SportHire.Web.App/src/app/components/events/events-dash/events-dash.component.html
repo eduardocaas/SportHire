@@ -141,9 +141,13 @@
     <div class="container-center">
       <div class="header-center">
         <h2>Histórico de eventos</h2>
-        <p>6 eventos</p>
+        <p class="finText" id="ts--headerFin">6 eventos</p>
       </div>
       <div class="cards-center">
+        <div class="empty-Finished" id="ts--empty-Finished">
+          <img src="/assets/css/events/events-dash/dissatisfied.svg">
+          <h3>Nenhum evento<br>em andamento</h3>
+        </div>
         <div class="center-card right-card" [style.background-image]="'url(/assets/css/events/events-find/basquete.jpg)'">
           <div class="center-card-content">
             <div class="center-card-contents">
@@ -258,11 +262,11 @@
           </div>
         </div>
       </div>
-      <div class="paginator" id="ts--paginator">
+      <div class="paginatorFinished" id="ts--finPaginator">
         <div class="paginator-btns">
-          <button><img src="/assets/css/events/events-dash/arrow_left.svg"><span>Anterior</span></button>
-          <button class="page">3</button>
-          <button><span>Próximo</span><img src="/assets/css/events/events-dash/arrow_right.svg"></button>
+          <button (click)="previousFinPage()" [disabled]="finCurrentPage === 0"><img src="/assets/css/events/events-dash/arrow_left.svg"><span>Anterior</span></button>
+          <button class="page">{{ finCurrentPage + 1 }}</button>
+          <button (click)="nextFinPage()" [disabled]="(finCurrentPage + 1) * finItemsPerPage >= finishedEvents.length"><span>Próximo</span><img src="/assets/css/events/events-dash/arrow_right.svg"></button>
         </div>
       </div>
     </div>

@@ -32,6 +32,7 @@ export class EventsDashComponent implements OnInit {
 
   ngOnInit() {
     this.loadInProgressEvents();
+    this.loadFinishedEvents();
   }
 
   status = [
@@ -111,6 +112,80 @@ export class EventsDashComponent implements OnInit {
       // Carrega conteúdo - sem paginator
       if (opt == 3) {
         header.style.display = 'flex';
+        paginator.style.display = 'none';
+        empty_content.style.display = 'none';
+      }
+    }
+  }
+
+  // Inicia variáveis relacionada aos eventos e paginator - card
+  finishedEvents: Event[] = [];
+  displayedFinishedEvents: Event[] = [];
+  finCurrentPage: number = 0;
+  finItemsPerPage: number = 3;
+
+  // Carrega eventos na tela
+  loadFinishedEvents() {
+    this.mockService.getFinishedByEmailOwner("owner1@example.com").subscribe(events => {
+      this.finishedEvents = events;
+    });
+
+    if (this.finishedEvents.length == 0) {
+      this.loadFinishedEventsCardsContent(2);
+    }
+    if (this.finishedEvents.length > 0 && this.finishedEvents.length <= 3) {
+      this.loadFinishedEventsCardsContent(3)
+    }
+    if (this.finishedEvents.length > 3) {
+      this.loadFinishedEventsCardsContent(1);
+    }
+
+    // Paginator
+    const startIndex = this.inPcurrentPage * this.inPitemsPerPage;
+    // Cards
+    this.displayedFinishedEvents = this.inProgressEvents.slice(startIndex, startIndex + this.inPitemsPerPage);
+  }
+
+  // Paginator
+  nextFinPage() {
+    if ((this.finCurrentPage + 1) * this.finItemsPerPage < this.finishedEvents.length) {
+      this.finCurrentPage++;
+      this.loadFinishedEvents();
+    }
+  }
+
+  // Paginator
+  previousFinPage() {
+    if (this.finCurrentPage > 0) {
+      this.finCurrentPage--;
+      this.loadFinishedEvents();
+    }
+  }
+
+  loadFinishedEventsCardsContent(opt: number) {
+    let header = document.querySelector('#ts--headerFin') as HTMLElement;
+    let paginator = document.querySelector('#ts--finPaginator') as HTMLElement;
+    let empty_content = document.querySelector('#ts--empty-Finished') as HTMLElement;
+
+    if (paginator !== null && header !== null && empty_content !== null) {
+
+      // Carrega conteúdo
+      if (opt == 1) {
+        header.style.display = 'block';
+        paginator.style.display = 'flex';
+        empty_content.style.display = 'none';
+      }
+      // Limpa a tela
+      if (opt == 2) {
+        this.inProgressEvents = [];
+        this.displayedInProgressEvents = [];
+        header.style.display = 'none';
+        paginator.style.display = 'none';
+        empty_content.style.display = 'flex';
+      }
+      // Carrega conteúdo - sem paginator
+      if (opt == 3) {
+        header.style.display = 'block';
         paginator.style.display = 'none';
         empty_content.style.display = 'none';
       }
