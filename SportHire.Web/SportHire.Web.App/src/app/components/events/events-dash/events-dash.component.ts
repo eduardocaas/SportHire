@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { Status } from '../../../models/enums/status';
 
 @Component({
   selector: 'app-events-dash',
@@ -12,4 +13,11 @@ import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 })
 export class EventsDashComponent {
 
+
+  status = [
+    { opt: Status.ABERTO, name: 'Aberto' },
+    { opt: Status.ANDAMENTO, name: 'Andamento' }
+  ];
+
+  selectedStatus: number | null = null;
 }

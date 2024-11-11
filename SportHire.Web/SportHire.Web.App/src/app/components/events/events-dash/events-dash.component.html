@@ -63,12 +63,14 @@
       <div class="header-content">
         <mat-form-field appearance="outline">
           <mat-label>Status</mat-label>
-          <mat-select>
-            <mat-option value="cc">
-             Andamento
+          <mat-select [(ngModel)]="selectedStatus">
+            <mat-option>
+             --
+            </mat-option>
+            <mat-option *ngFor="let s of status" [value]="s.opt">
+              {{ s.name }}
             </mat-option>
           </mat-select>
-          <mat-error>aaaa</mat-error>
         </mat-form-field>
         <!-- <mat-radio-group aria-label="Select an option">
           <mat-radio-button value="1" [checked]="true">Aberto</mat-radio-button>
