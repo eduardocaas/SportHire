@@ -1,5 +1,6 @@
 export enum Status {
   ABERTO = 1,
   ANDAMENTO = 2,
-  CONCLUIDO = 3
+  CANCELADO = 3,
+  CONCLUIDO = 4
 }
