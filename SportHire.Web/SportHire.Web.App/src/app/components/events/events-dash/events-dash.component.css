@@ -332,6 +332,26 @@
   margin-top: -8px;
 }
 
+.empty-inProgress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 150px;
+}
+
+.empty-inProgress img {
+  width: 70px;
+}
+
+.empty-inProgress h3 {
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
+  font-size: 22px;
+  font-weight: 300;
+  text-align: center;
+  color: #d9d9d9;
+}
+
 ::ng-deep .header-center .mdc-label {
   font-size: 15px !important;
   font-family: Inter, "Helvetica Neue", sans-serif !important;

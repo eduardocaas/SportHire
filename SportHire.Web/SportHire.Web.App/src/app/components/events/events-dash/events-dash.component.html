@@ -81,6 +81,10 @@
 
     </div>
     <div class="cards-center">
+    <div class="empty-inProgress" id="ts--empty-inProgress">
+      <img src="/assets/css/events/events-dash/dissatisfied.svg">
+      <h3>Nenhum evento<br>em andamento</h3>
+    </div>
       <div class="center-card" *ngFor="let event of displayedInProgressEvents" [@fadeIn] [style.background-image]="'url(/assets/css/events/events-find/' + loadImage(event.sport) + ')'">
         <div class="center-card-content">
           <div class="center-card-contents">
