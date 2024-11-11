@@ -317,6 +317,12 @@
   justify-content: space-around;
 }
 
+.header-content-inP {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
 .header-center mat-radio-group {
   display: flex;
   flex-direction: column;
@@ -535,6 +541,12 @@
   .center-card-content-footer img {
     opacity: 1;
   }
+}
+
+.paginatorInProgress {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .paginator {

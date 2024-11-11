@@ -57,5 +57,31 @@ export class EventsDashComponent {
       this.loadInProgressEvents();
     }
   }
+
+  loadInProgressCardsContent(opt: number) {
+    let header = document.querySelector('#ts--headerInP') as HTMLElement;
+    let paginator = document.querySelector('#ts--inPpaginator') as HTMLElement;
+
+    if (paginator !== null && header !== null) {
+
+      // Carrega conteúdo
+      if (opt == 1) {
+        header.style.display = 'flex';
+        paginator.style.display = 'flex';
+      }
+      // Limpa a tela
+      if (opt == 2) {
+        this.inProgressEvents = [];
+        this.displayedInProgressEvents = [];
+        header.style.display = 'none';
+        paginator.style.display = 'none';
+      }
+      // Carrega conteúdo - sem paginator
+      if (opt == 3) {
+        header.style.display = 'flex';
+        paginator.style.display = 'none';
+      }
+    }
+  }
 }
 
