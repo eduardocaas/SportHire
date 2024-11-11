@@ -123,7 +123,7 @@ export const eventsFindPortoAlegreAberto: Event[] = [
   },
 ];
 
-export const eventsDashUserAberto: Event[] = [
+export const eventsDashUserAbertoAndamento: Event[] = [
   {
     id: "507f1f77bcf86cd799439011",
     sport: Sport.BASQUETE,
@@ -134,7 +134,7 @@ export const eventsDashUserAberto: Event[] = [
     address: "Rua A, 123",
     startDate: new Date("2024-11-10T10:00:00"),
     duration: 90,
-    status: Status.ABERTO,
+    status: Status.ANDAMENTO,
     cost: 100,
   },
   {
@@ -147,7 +147,7 @@ export const eventsDashUserAberto: Event[] = [
     address: "Rua B, 456",
     startDate: new Date("2024-11-11T15:00:00"),
     duration: 120,
-    status: Status.ABERTO,
+    status: Status.ANDAMENTO,
     cost: 150,
   },
   {
@@ -160,7 +160,7 @@ export const eventsDashUserAberto: Event[] = [
     address: "Rua C, 789",
     startDate: new Date("2024-11-12T09:00:00"),
     duration: 60,
-    status: Status.ABERTO,
+    status: Status.ANDAMENTO,
     cost: 200,
   },
   {
@@ -173,14 +173,11 @@ export const eventsDashUserAberto: Event[] = [
     address: "Rua D, 101",
     startDate: new Date("2024-11-13T14:00:00"),
     duration: 45,
-    status: Status.ABERTO,
+    status: Status.ANDAMENTO,
     cost: 120,
-  }
-];
-
-export const eventsDashUserAndamento: Event[] = [
+  },
   {
-    id: "507f1f77bcf86cd799439011",
+    id: "507f1f77bcf86cd799439015",
     sport: Sport.BASQUETE,
     emailOwner: "owner1@example.com",
     uf: UF.RS,
@@ -189,11 +186,11 @@ export const eventsDashUserAndamento: Event[] = [
     address: "Rua A, 123",
     startDate: new Date("2024-11-10T10:00:00"),
     duration: 90,
-    status: Status.ANDAMENTO,
+    status: Status.ABERTO,
     cost: 100,
   },
   {
-    id: "507f1f77bcf86cd799439012",
+    id: "507f1f77bcf86cd799439016",
     sport: Sport.VOLEI_PRAIA,
     emailOwner: "owner1@example.com",
     uf: UF.RS,
@@ -202,11 +199,11 @@ export const eventsDashUserAndamento: Event[] = [
     address: "Rua B, 456",
     startDate: new Date("2024-11-11T15:00:00"),
     duration: 120,
-    status: Status.ANDAMENTO,
+    status: Status.ABERTO,
     cost: 150,
   },
   {
-    id: "507f1f77bcf86cd799439013",
+    id: "507f1f77bcf86cd799439017",
     sport: Sport.FUTEBOL,
     emailOwner: "owner1@example.com",
     uf: UF.RS,
@@ -215,11 +212,11 @@ export const eventsDashUserAndamento: Event[] = [
     address: "Rua C, 789",
     startDate: new Date("2024-11-12T09:00:00"),
     duration: 60,
-    status: Status.ANDAMENTO,
+    status: Status.ABERTO,
     cost: 200,
   },
   {
-    id: "507f1f77bcf86cd799439014",
+    id: "507f1f77bcf86cd799439018",
     sport: Sport.FUTEBOL,
     emailOwner: "owner1@example.com",
     uf: UF.RS,
@@ -228,7 +225,7 @@ export const eventsDashUserAndamento: Event[] = [
     address: "Rua D, 101",
     startDate: new Date("2024-11-13T14:00:00"),
     duration: 45,
-    status: Status.ANDAMENTO,
+    status: Status.ABERTO,
     cost: 120,
   }
 ];
