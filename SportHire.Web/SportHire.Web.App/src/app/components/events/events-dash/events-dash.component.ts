@@ -141,9 +141,9 @@ export class EventsDashComponent implements OnInit {
     }
 
     // Paginator
-    const startIndex = this.inPcurrentPage * this.inPitemsPerPage;
+    const startIndex = this.finCurrentPage * this.finItemsPerPage;
     // Cards
-    this.displayedFinishedEvents = this.inProgressEvents.slice(startIndex, startIndex + this.inPitemsPerPage);
+    this.displayedFinishedEvents = this.finishedEvents.slice(startIndex, startIndex + this.finItemsPerPage);
   }
 
   // Paginator
@@ -215,6 +215,21 @@ export class EventsDashComponent implements OnInit {
         return 'Futebol';
       case Sport.VOLEI_PRAIA:
         return 'Vôlei de Praia';
+      default:
+        return '';
+    }
+  }
+
+  loadStatus(status: Status | undefined) {
+    switch (status) {
+      case Status.ABERTO:
+        return 'Aberto';
+      case Status.ANDAMENTO:
+        return 'Andamento';
+      case Status.CANCELADO:
+        return 'Cancelado';
+      case Status.CONCLUIDO:
+        return 'Concluído';
       default:
         return '';
     }

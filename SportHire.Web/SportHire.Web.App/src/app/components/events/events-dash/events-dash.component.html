@@ -76,7 +76,7 @@
           <mat-radio-button value="1" [checked]="true">Aberto</mat-radio-button>
           <mat-radio-button value="2">Andamento</mat-radio-button>
         </mat-radio-group> -->
-        <p>Você tem {{ inProgressEvents.length }} eventos em <br>andamento</p>
+        <p>Você tem <strong>{{ inProgressEvents.length }}</strong> eventos em <br>andamento</p>
       </div>
 
     </div>
@@ -141,65 +141,28 @@
     <div class="container-center">
       <div class="header-center">
         <h2>Histórico de eventos</h2>
-        <p class="finText" id="ts--headerFin">6 eventos</p>
+        <p class="finText" id="ts--headerFin"><strong>{{ this.finishedEvents.length }}</strong> eventos <br>encontrados</p>
       </div>
       <div class="cards-center">
         <div class="empty-Finished" id="ts--empty-Finished">
           <img src="/assets/css/events/events-dash/dissatisfied.svg">
           <h3>Nenhum evento<br>em andamento</h3>
         </div>
-        <div class="center-card right-card" [style.background-image]="'url(/assets/css/events/events-find/basquete.jpg)'">
-          <div class="center-card-content">
-            <div class="center-card-contents">
-              <div>
-              <p class="center-card-content-title transition">Endereço</p>
-              <p class="center-card-content-info transition">Rua ABC, 123</p>
-              <p class="center-card-content-title transition">Duração</p>
-              <p class="center-card-content-info transition">60 minutos</p>
-            </div>
-              <div>
-              <p class="center-card-content-title transition">Data</p>
-              <p class="center-card-content-info transition">30/10 às 17:00</p>
-              <p class="center-card-content-title transition">Preço</p>
-              <p class="center-card-content-info transition">R$ 80,00 </p>
-            </div>
-            </div>
-            <div>
-            </div>
-          </div>
-          <div class="center-card-header">
-            <div>
-              <img class="transition card-pin" src="/assets/css/events/events-find/info.svg">
-              <p class="transition right-card-status right-card-text">Finalizado</p>
-            </div>
-            <div>
-              <img class="transition card-pin" src="/assets/css/events/events-find/schedule.svg">
-              <p class="transition right-card-text">04/11</p>
-            </div>
-          </div>
-          <p class="center-card-title transition">Basquete, <br>Porto Alegre</p>
-          <div class="right-card-footer">
-            <button>
-              <img src="/assets/css/events/events-dash/info_gray.svg">
-              <span>Detalhes</span>
-            </button>
-          </div>
-        </div>
 
-        <div class="center-card right-card" [style.background-image]="'url(/assets/css/events/events-find/futebol.jpg)'">
+        <div class="center-card right-card" *ngFor="let event of displayedFinishedEvents" [@fadeIn] [style.background-image]="'url(/assets/css/events/events-find/' + loadImage(event.sport) + ')'">
           <div class="center-card-content">
             <div class="center-card-contents">
               <div>
               <p class="center-card-content-title transition">Endereço</p>
-              <p class="center-card-content-info transition">Rua ABC, 123</p>
+              <p class="center-card-content-info transition">{{ event.address }}</p>
               <p class="center-card-content-title transition">Duração</p>
-              <p class="center-card-content-info transition">60 minutos</p>
+              <p class="center-card-content-info transition"> {{ event.duration }} minutos</p>
             </div>
               <div>
               <p class="center-card-content-title transition">Data</p>
-              <p class="center-card-content-info transition">30/10 às 17:00</p>
+              <p class="center-card-content-info transition">{{ event.startDate | date: 'dd/MM \'às\' HH:mm' }}</p>
               <p class="center-card-content-title transition">Preço</p>
-              <p class="center-card-content-info transition">R$ 80,00 </p>
+              <p class="center-card-content-info transition">R$ {{ event.cost }} </p>
             </div>
             </div>
             <div>
@@ -208,52 +171,14 @@
           <div class="center-card-header">
             <div>
               <img class="transition card-pin" src="/assets/css/events/events-find/info.svg">
-              <p class="transition right-card-status right-card-text">Finalizado</p>
+              <p class="transition right-card-status right-card-text">{{ loadStatus(event.status) }}</p>
             </div>
             <div>
               <img class="transition card-pin" src="/assets/css/events/events-find/schedule.svg">
-              <p class="transition right-card-text">20/11</p>
+              <p class="transition right-card-text">{{ event.startDate | date: 'dd/MM' }}</p>
             </div>
           </div>
-          <p class="center-card-title transition">Vôlei de Praia, <br>Porto Alegre</p>
-          <div class="right-card-footer">
-            <button>
-              <img src="/assets/css/events/events-dash/info_gray.svg">
-              <span>Detalhes</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="center-card right-card" [style.background-image]="'url(/assets/css/events/events-find/volei_praia.jpg)'">
-          <div class="center-card-content">
-            <div class="center-card-contents">
-              <div>
-              <p class="center-card-content-title transition">Endereço</p>
-              <p class="center-card-content-info transition">Rua ABC, 123</p>
-              <p class="center-card-content-title transition">Duração</p>
-              <p class="center-card-content-info transition">60 minutos</p>
-            </div>
-              <div>
-              <p class="center-card-content-title transition">Data</p>
-              <p class="center-card-content-info transition">30/10 às 17:00</p>
-              <p class="center-card-content-title transition">Preço</p>
-              <p class="center-card-content-info transition">R$ 80,00 </p>
-            </div>
-            </div>
-            <div>
-            </div>
-          </div>
-          <div class="center-card-header">
-            <div>
-              <img class="transition card-pin" src="/assets/css/events/events-find/info.svg">
-              <p class="transition right-card-status right-card-text">Cancelado</p>
-            </div>
-            <div>
-              <img class="transition card-pin" src="/assets/css/events/events-find/schedule.svg">
-              <p class="transition right-card-text">30/10</p>
-            </div>
-          </div>
-          <p class="center-card-title transition">Vôlei de Praia, <br>Porto Alegre</p>
+          <p class="center-card-title transition">{{ loadTitle(event.sport) }}, <br>{{ event.city }}</p>
           <div class="right-card-footer">
             <button>
               <img src="/assets/css/events/events-dash/info_gray.svg">
