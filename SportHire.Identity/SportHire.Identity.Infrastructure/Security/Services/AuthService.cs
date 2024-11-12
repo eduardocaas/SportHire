@@ -35,14 +35,15 @@ namespace SportHire.Identity.Infrastructure.Security.Services
             }
         }
 
-        public string GenerateJwtToken(string email)
+        public string GenerateJwtToken(string email, string name)
         {
             var issuer = _configuration["Jwt:Issuer"];
             var audience = _configuration["Jwt:Audience"];
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Email, email)
+                new Claim(ClaimTypes.Email, email),
+                new Claim(ClaimTypes.Name, name)
             };
 
             var rsaKey = RSA.Create();

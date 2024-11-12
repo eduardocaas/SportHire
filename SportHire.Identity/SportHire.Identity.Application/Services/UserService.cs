@@ -24,7 +24,7 @@ namespace SportHire.Identity.Application.Services
             var user = await _repository.GetByEmailAndPasswordAsync(inputModel.Email, passwordHash);
             if (user == null) return null;
 
-            var token = _authService.GenerateJwtToken(inputModel.Email);
+            var token = _authService.GenerateJwtToken(inputModel.Email, user.FullName);
 
             return new SigninViewModel(inputModel.Email, token);
         }
