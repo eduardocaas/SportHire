@@ -43,7 +43,12 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
 
         public async Task<List<Event>> GetAllByOwnerAsync(string ownerEmail)
         {
-            return await _collection.Find(e => e.EmailOwner.Equals(ownerEmail, StringComparison.OrdinalIgnoreCase)).ToListAsync();
+            return await _collection
+                .Find(e =>
+                    e.EmailOwner.Equals(ownerEmail, StringComparison.OrdinalIgnoreCase))
+                .SortBy(e =>
+                    e.StartDate)
+                .ToListAsync();
         }
     }
 }
