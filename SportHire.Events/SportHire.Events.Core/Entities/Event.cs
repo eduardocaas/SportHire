@@ -6,8 +6,9 @@ namespace SportHire.Events.Core.Entities
 {
     public class Event
     {
-        public Event(string emailOwner, EventSportEnum sport, UF uf, string city, string district, string address, DateTime startDate, int duration)
+        public Event(string emailOwner, string nameOwner, EventSportEnum sport, UF uf, string city, string district, string address, DateTime startDate, int duration)
         {
+            NameOwner = nameOwner;
             EmailOwner = emailOwner;
             Sport = sport;
             Uf = uf;
@@ -25,6 +26,8 @@ namespace SportHire.Events.Core.Entities
         public string? Id { get; set; }
         public string EmailOwner { get; set; }
         public string? EmailPlayer { get; set; } = null;
+        public string NameOwner { get; set; }
+        public string? NamePlayer { get; set; } = null;
         public EventSportEnum Sport { get; set; }
         public UF Uf { get; set; }
         public string City { get; set; }
