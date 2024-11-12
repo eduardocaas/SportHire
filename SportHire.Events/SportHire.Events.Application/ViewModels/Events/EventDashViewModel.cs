@@ -5,7 +5,7 @@ namespace SportHire.Events.Application.ViewModels.Events
     public class EventDashViewModel
     {
         public EventDashViewModel(
-            int id, 
+            string id, 
             EventSportEnum sport, 
             string city, 
             string district,
@@ -13,7 +13,8 @@ namespace SportHire.Events.Application.ViewModels.Events
             DateTime startDate, 
             int duration,
             int cost, 
-            string namePlayer)
+            string namePlayer,
+            string nameOwner)
         {
             Id = id;
             Sport = sport;
@@ -24,9 +25,10 @@ namespace SportHire.Events.Application.ViewModels.Events
             Duration = duration;
             Cost = cost;
             NamePlayer = namePlayer;
+            NameOwner = nameOwner;
         }
 
-        public int Id { get; private set; }
+        public string Id { get; private set; }
         public EventSportEnum Sport { get; private set; }
         public string City { get; private set; }
         public string District { get; private set; }
@@ -35,5 +37,6 @@ namespace SportHire.Events.Application.ViewModels.Events
         public int Duration { get; private set; }
         public int Cost { get; private set; }
         public string NamePlayer { get; private set; }
+        public string NameOwner { get; private set; }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SportHire.Events.Application.Commands.CreateEvent;
 using SportHire.Events.Application.Queries.GetEventsByCity;
 using SportHire.Events.Application.Queries.GetEventsByCityAndSport;
+using SportHire.Events.Application.Queries.GetEventsByOwner;
 using SportHire.Events.Core.Enums;
 
 namespace SportHire.Events.API.Controllers
@@ -38,6 +39,16 @@ namespace SportHire.Events.API.Controllers
                 var events = await _mediator.Send(query);
                 return Ok(events);
             }
+        }
+
+        [HttpGet("dash")]
+        public async Task<IActionResult> GetByOwner(
+            [FromQuery(Name = "emailOwner")] string emailOwner)
+        {          
+            var query = new GetEventsByOwnerQuery(emailOwner);
+
+            var events = await _mediator.Send(query);
+            return Ok(events);            
         }
 
         [HttpPost]
