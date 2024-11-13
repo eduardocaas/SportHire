@@ -5,6 +5,8 @@ import { EventService, MockEventService } from '../../../services/event.service'
 import { Event } from '../../../models/event';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Sport } from '../../../models/enums/sport';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogCreateComponent } from './dialog-create/dialog-create.component';
 
 @Component({
   selector: 'app-events-dash',
@@ -27,12 +29,17 @@ export class EventsDashComponent implements OnInit {
 
   constructor(
     private readonly mockService: MockEventService,
-    private readonly service: EventService
+    private readonly service: EventService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
     this.loadInProgressEvents();
     this.loadFinishedEvents();
+  }
+
+  openCreateDialog() {
+    this.dialog.open(DialogCreateComponent);
   }
 
   status = [

@@ -28,10 +28,12 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
-import { MatRadioModule } from '@angular/material/radio'
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Others
 import { ToastrModule } from 'ngx-toastr';
+import { DialogCreateComponent } from './components/events/events-dash/dialog-create/dialog-create.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { ToastrModule } from 'ngx-toastr';
     NavComponent,
     EventsFindComponent,
     HomeComponent,
-    EventsDashComponent
+    EventsDashComponent,
+    DialogCreateComponent
   ],
   imports: [
     // Angular
@@ -64,6 +67,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatAutocompleteModule,
     MatSelectModule,
     MatRadioModule,
+    MatDialogModule,
 
     // Others
     ToastrModule.forRoot({
