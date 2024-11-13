@@ -14,66 +14,158 @@
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet">
 
-  <!-- Normalize.css --> 
-  <link rel="stylesheet" href="vendors/css/normalize.css"> 
+  <!-- Normalize.css -->
+  <link rel="stylesheet" href="vendors/css/normalize.css">
+
+  <!-- Slick css -->
+  <link rel="stylesheet" type="text/css" href="vendors/lib/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="vendors/lib/slick/slick-theme.css" />
 
   <!-- Project css -->
   <link rel="stylesheet" href="resources/css/index.css">
 
-  <!-- Slick css -->
-  <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 </head>
 
 <body>
-<div id="container">
+  <div id="container">
 
-  <!-- Header - Nav -->
-  <header>
-    <nav class="navbar padding">
-      <ul>
-        <li><a href="#">Início</a></li>
-        <li>|</li>
-        <li><a href="#">Sobre</a></li>
-        <li>|</li>
-        <li><a href="#">Contato</a></li>
-      </ul>
-      <h2>SportHire</h2>
-      <ul>
-        <li class="lang-nav"><ion-icon name="language-outline"></ion-icon><span>BR</span></li>
-        <li class="login-nav"><a href="#">Login</a></li>
-      </ul>
-    </nav>
-  </header>
-  <section class="banner">
-    <div class="title-banner padding">
-      <h1>
-        Querendo <strong>jogar?</strong><br>
-        Buscando <strong>jogadores?</strong><br>
-        <strong>Você encontra no SportHire!</strong>
-      </h1>
-      <img src="/resources/css/img/Login.svg">
-    </div>
-    <div class="content-banner">
-      <h2>Nós encontramos as melhores partidas e jogadores</h2>
-      <a href="#">Registre-se agora</a>
-    </div>
-  </section>
-  <section class="carousel">
+    <!-- Header - Nav -->
+    <header>
+      <nav class="navbar padding">
+        <ul>
+          <li><a href="#">Início</a></li>
+          <li>|</li>
+          <li><a href="#">Sobre</a></li>
+          <li>|</li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+        <h2>SportHire</h2>
+        <ul>
+          <li class="lang-nav"><ion-icon name="language-outline"></ion-icon><span>BR</span></li>
+          <li class="login-nav"><a href="#">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="banner">
+      <div class="title-banner padding">
+        <h1>
+          Querendo <strong>jogar?</strong><br>
+          Buscando <strong>jogadores?</strong><br>
+          <strong>Você encontra no SportHire!</strong>
+        </h1>
+        <img src="resources/css/img/Login.svg">
+      </div>
+      <div class="content-banner">
+        <h2>Nós encontramos as melhores partidas e jogadores</h2>
+        <a href="#">Registre-se agora</a>
+      </div>
+    </section>
+    <section class="carousel">
+      <h3>Confira alguns eventos próximos de você!</h3>
+      <div class="card-slider">
 
-  </section>
-</div>
+        <div class="card" style="background-image: url('/resources/css/img/futebol.jpg');">
+          <p>Futebol,<br>Porto Alegre</p>
+          <div class="footer-card">
+            <div>
+              <img src="resources/css/img/pin.svg" alt="Ícone de localização">
+              <span>Centro Histórico</span>
+            </div>
+            <div>
+              <img src="resources/css/img/schedule.svg" alt="Ícone de calendário">
+              <span>14/11</span>
+            </div>
+          </div>
+        </div>
 
-<!-- JQuery import -->
-<script type="text/javascript" src="/vendors/jquery/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="/vendors/jquery/jquery-migrate-1.2.1.min.js"></script>
+        <div class="card" style="background-image: url('/resources/css/img/basquete.jpg');">
+          <p>Basquete,<br>Porto Alegre</p>
+          <div class="footer-card">
+            <div>
+              <img src="resources/css/img/pin.svg" alt="Ícone de localização">
+              <span>Menino Deus</span>
+            </div>
+            <div>
+              <img src="resources/css/img/schedule.svg" alt="Ícone de calendário">
+              <span>15/11</span>
+            </div>
+          </div>
+        </div>
 
-<!-- Slick import -->
-<script type="text/javascript" src="slick/slick.min.js"></script>
+        <div class="card" style="background-image: url('/resources/css/img/volei_praia.jpg');">
+          <p>Vôlei de Praia,<br>Porto Alegre</p>
+          <div class="footer-card">
+            <div>
+              <img src="resources/css/img/pin.svg" alt="Ícone de localização">
+              <span>Ipanema</span>
+            </div>
+            <div>
+              <img src="resources/css/img/schedule.svg" alt="Ícone de calendário">
+              <span>15/11</span>
+            </div>
+          </div>
+        </div>
 
-<!-- Ionicons import -->
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <div class="card" style="background-image: url('/resources/css/img/futebol.jpg');">
+          <p>Futebol,<br>Porto Alegre</p>
+          <div class="footer-card">
+            <div>
+              <img src="resources/css/img/pin.svg" alt="Ícone de localização">
+              <span>Cidade Baixa</span>
+            </div>
+            <div>
+              <img src="resources/css/img/schedule.svg" alt="Ícone de calendário">
+              <span>16/11</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background-image: url('/resources/css/img/basquete.jpg');">
+          <p>Basquete,<br>Porto Alegre</p>
+          <div class="footer-card">
+            <div>
+              <img src="resources/css/img/pin.svg" alt="Ícone de localização">
+              <span>Praia de Belas</span>
+            </div>
+            <div>
+              <img src="resources/css/img/schedule.svg" alt="Ícone de calendário">
+              <span>17/11</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background-image: url('/resources/css/img/volei_praia.jpg');">
+          <p>Vôlei de Praia,<br>Porto Alegre</p>
+          <div class="footer-card">
+            <div>
+              <img src="resources/css/img/pin.svg" alt="Ícone de localização">
+              <span>Cavalhada</span>
+            </div>
+            <div>
+              <img src="resources/css/img/schedule.svg" alt="Ícone de calendário">
+              <span>18/11</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- JQuery import -->
+  <script type="text/javascript" src="vendors/lib/jquery/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="vendors/lib/jquery/jquery-migrate-1.2.1.min.js"></script>
+
+  <!-- Slick import -->
+  <script type="text/javascript" src="vendors/lib/slick/slick.min.js"></script>
+
+  <!-- Project JS import -->
+  <script type="text/javascript" src="resources/js/index.js"></script>
+
+  <!-- Ionicons import -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </body>
+
 </html>

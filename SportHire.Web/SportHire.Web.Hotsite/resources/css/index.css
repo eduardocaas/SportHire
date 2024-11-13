@@ -1,4 +1,4 @@
-/* Configuração padrão */
+/* Default config */
 * {
   margin: 0;
   padding: 0;
@@ -22,7 +22,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  height: 65px;
 }
 
 .navbar ul {
@@ -114,11 +114,76 @@ html {
   padding: 15px 40px;
   border: 2px solid #4361ee;
   border-radius: 50px;
-
-/* Section - carousel */
-.carousel {
-  background-color: #f1f1f1;
-  height: 300px;
 }
 
+/* Section - carousel */
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f1f1;
+  width: 100%;
+  height: 450px;
+}
+
+.carousel h3 {
+  color: #333;
+  width: 80%;
+  margin: 10px 0 20px 20px;
+  font-weight: 500;
+}
+
+.card-slider {
+  width: 80%;
+  background-color: #f1f1f1;
+}
+
+.slick-prev:before {
+  content: url('/resources/css/img/caret-back.svg');
+}
+
+.slick-next:before {
+  content: url('/resources/css/img/caret-forward.svg');
+}
+
+/* Section - carousel (cards) */
+
+.card {
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.3);
+  background-size: cover;
+  background-position: center;
+  height: 300px;    
+  margin: 10px;
+  border-radius: 20px;
+  padding-left: 30px;
+}
+
+.card p {
+  margin-top: 100px;
+  color: #fff;
+  font-size: 180%;
+  font-weight: 600;
+}
+
+.footer-card {
+  margin-top: 90px;
+  display: flex;
+  gap: 15px;
+}
+
+.footer-card div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.footer-card span {
+  color: #fff;
+  font-size: 80%;
+}
+
+.footer-card img {
+  width: 18px;
 }
