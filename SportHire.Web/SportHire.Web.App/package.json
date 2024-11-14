@@ -22,6 +22,7 @@
     "@angular/router": "^17.3.0",
     "@auth0/angular-jwt": "^5.2.0",
     "luxon": "^3.5.0",
+    "ngx-mask": "^18.0.4",
     "ngx-material-timepicker": "^13.1.1",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
