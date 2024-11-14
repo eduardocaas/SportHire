@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Sport } from '../../../../models/enums/sport';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { UF } from '../../../../models/enums/uf';
+import { MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-dialog-create',
@@ -11,7 +13,25 @@ import { UF } from '../../../../models/enums/uf';
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
-      useValue: {showError: true},
+      useValue: { showError: true },
+    },
+    {
+      provide: MAT_DATE_LOCALE,
+      useValue: 'pt-br'
+    },
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: {
+        parse: {
+          dateInput: ['l', 'LL'],
+        },
+        display: {
+          dateInput: 'L',
+          monthYearLabel: 'MMM YYYY',
+          dateA11yLabel: 'LL',
+          monthYearA11yLabel: 'MMMM YYYY',
+        },
+      },
     },
   ]
 })
@@ -40,6 +60,7 @@ export class DialogCreateComponent {
   selectedCity: string = '';
   inputDistrict: string = '';
   inputAddress: string = '';
+  inputTime: string = '';
 
   sportFormGroup = this._formBuilder.group({
     sportCtrl: ['', Validators.required],
@@ -53,8 +74,10 @@ export class DialogCreateComponent {
   });
 
   dateFormGroup = this._formBuilder.group({
-
+    dateCtrl: ['', Validators.required]
   });
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private _dateAdapter: DateAdapter<Date>) {
+    this._dateAdapter.setLocale('pt-br');
+  }
 }

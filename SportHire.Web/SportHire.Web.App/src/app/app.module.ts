@@ -15,6 +15,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { EventsFindComponent } from './components/events/events-find/events-find.component';
 import { HomeComponent } from './components/home/home.component';
 import { EventsDashComponent } from './components/events/events-dash/events-dash.component';
+import { DialogCreateComponent } from './components/events/events-dash/dialog-create/dialog-create.component';
 
 // Forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,7 +37,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 // Others
 import { ToastrModule } from 'ngx-toastr';
-import { DialogCreateComponent } from './components/events/events-dash/dialog-create/dialog-create.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,12 @@ import { DialogCreateComponent } from './components/events/events-dash/dialog-cr
     MatDatepickerModule,
     MatNativeDateModule,
 
+
+
     // Others
+    NgxMaterialTimepickerModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
     ToastrModule.forRoot({
       timeOut: 5000,
       preventDuplicates: true,
@@ -83,7 +90,7 @@ import { DialogCreateComponent } from './components/events/events-dash/dialog-cr
       progressBar: true
     }),
   ],
-  providers: [AuthInterceptorProvider, provideAnimationsAsync()],
+  providers: [AuthInterceptorProvider, provideAnimationsAsync(), provideEnvironmentNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

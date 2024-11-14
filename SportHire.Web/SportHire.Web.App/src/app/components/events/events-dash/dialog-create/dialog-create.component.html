@@ -62,7 +62,15 @@
       <ng-template matStepLabel>Data e horário</ng-template>
 
       <mat-form-field>
-        <input matInput type="datetime-local" placeholder="start date">
+        <mat-label>Escolha a data</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateCtrl" required>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Hora</mat-label>
+        <input matInput mask="00:00" [(ngModel)]="inputTime" name="time">
       </mat-form-field>
 
       <div>
