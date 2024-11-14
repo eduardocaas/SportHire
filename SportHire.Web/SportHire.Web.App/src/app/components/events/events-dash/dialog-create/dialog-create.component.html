@@ -1,5 +1,83 @@
-<h1 mat-dialog-title>Dialog with elements</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
-</div>
+<mat-stepper #stepper>
+
+  <mat-step [stepControl]="sportFormGroup" errorMessage="Preencha os dados">
+    <form [formGroup]="sportFormGroup">
+      <ng-template matStepLabel>Dados do evento</ng-template>
+
+      <mat-form-field>
+        <mat-label>Esporte</mat-label>
+        <mat-select [(ngModel)]="selectedSport" formControlName="sportCtrl" required>
+          <mat-option *ngFor="let sport of sports" [value]="sport.opt">
+            {{ sport.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperNext>Próximo</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="locationFormGroup" errorMessage="Preencha a localização">
+    <form [formGroup]="locationFormGroup">
+      <ng-template matStepLabel>Localização</ng-template>
+
+      <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <mat-select [(ngModel)]="selectedState" formControlName="stateCtrl" required>
+          <mat-option *ngFor="let state of states" [value]="state.uf">
+            {{ state.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Cidade</mat-label>
+        <mat-select [(ngModel)]="selectedCity" formControlName="cityCtrl" required>
+          <mat-option *ngFor="let city of cities" [value]="city.name">
+            {{ city.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Bairro</mat-label>
+        <input [(ngModel)]="inputDistrict" matInput formControlName="districtCtrl" placeholder="Ex. Centro Histórico" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Endereço</mat-label>
+        <input [(ngModel)]="inputAddress" matInput formControlName="addressCtrl" placeholder="Ex. Rua ABC, 123" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button matStepperNext>Próximo</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="dateFormGroup" errorMessage="Preencha o horário">
+    <form [formGroup]="dateFormGroup">
+      <ng-template matStepLabel>Data e horário</ng-template>
+
+      <mat-form-field>
+        <input matInput type="datetime-local" placeholder="start date">
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Voltar</button>
+        <button mat-button matStepperNext>Próximo</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>

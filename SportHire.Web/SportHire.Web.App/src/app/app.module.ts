@@ -30,6 +30,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 // Others
 import { ToastrModule } from 'ngx-toastr';
@@ -68,6 +71,9 @@ import { DialogCreateComponent } from './components/events/events-dash/dialog-cr
     MatSelectModule,
     MatRadioModule,
     MatDialogModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
     // Others
     ToastrModule.forRoot({
