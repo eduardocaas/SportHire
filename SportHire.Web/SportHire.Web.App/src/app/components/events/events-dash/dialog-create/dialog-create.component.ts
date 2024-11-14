@@ -37,6 +37,10 @@ import { DateAdapter } from '@angular/material/core';
 })
 export class DialogCreateComponent {
 
+  constructor(private _formBuilder: FormBuilder, private _dateAdapter: DateAdapter<Date>) {
+    this._dateAdapter.setLocale('pt-br');
+  }
+
   sports = [
     { opt: Sport.FUTEBOL, name: 'Futebol' },
     { opt: Sport.VOLEI_PRAIA, name: 'Vôlei de Praia' },
@@ -61,6 +65,8 @@ export class DialogCreateComponent {
   inputDistrict: string = '';
   inputAddress: string = '';
   inputTime: string = '';
+  inputDuration: number | null = null;
+  inputObservation: string = '';
 
   sportFormGroup = this._formBuilder.group({
     sportCtrl: ['', Validators.required],
@@ -74,10 +80,12 @@ export class DialogCreateComponent {
   });
 
   dateFormGroup = this._formBuilder.group({
-    dateCtrl: ['', Validators.required]
+    dateCtrl: ['', Validators.required],
+    timeCtrl: ['', Validators.required],
+    durationCtrl: ['', [Validators.required, Validators.min(30), Validators.max(180)]]
   });
 
-  constructor(private _formBuilder: FormBuilder, private _dateAdapter: DateAdapter<Date>) {
-    this._dateAdapter.setLocale('pt-br');
-  }
+  doneFormGroup = this._formBuilder.group({
+    observationCtrl: ['', Validators.required]
+  })
 }

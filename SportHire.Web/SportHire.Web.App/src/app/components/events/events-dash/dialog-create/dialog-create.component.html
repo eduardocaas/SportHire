@@ -35,20 +35,24 @@
       <mat-form-field>
         <mat-label>Cidade</mat-label>
         <mat-select [(ngModel)]="selectedCity" formControlName="cityCtrl" required>
-          <mat-option *ngFor="let city of cities" [value]="city.name">
-            {{ city.name }}
-          </mat-option>
+          <ng-container *ngFor="let city of cities">
+            <mat-option *ngIf="selectedState && city.uf == selectedState" [value]="city.name">
+              {{ city.name }}
+            </mat-option>
+          </ng-container>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Bairro</mat-label>
-        <input [(ngModel)]="inputDistrict" matInput formControlName="districtCtrl" placeholder="Ex. Centro Histórico" required>
+        <input [(ngModel)]="inputDistrict" matInput formControlName="districtCtrl" placeholder="Ex. Centro Histórico"
+          required>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Endereço</mat-label>
-        <input [(ngModel)]="inputAddress" matInput formControlName="addressCtrl" placeholder="Ex. Rua ABC, 123" required>
+        <input [(ngModel)]="inputAddress" matInput formControlName="addressCtrl" placeholder="Ex. Rua ABC, 123"
+          required>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Voltar</button>
@@ -69,8 +73,15 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Hora</mat-label>
-        <input matInput mask="00:00" [(ngModel)]="inputTime" name="time">
+        <mat-label>Horário</mat-label>
+        <input matInput mask="Hh:m0" [showMaskTyped]="true" [(ngModel)]="inputTime" formControlName="timeCtrl"
+          placeholder="Ex. 18:30" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Duração (minutos)</mat-label>
+        <input matInput [(ngModel)]="inputDuration" formControlName="durationCtrl" placeholder="min. 30, max. 180"
+          required>
       </mat-form-field>
 
       <div>
@@ -80,12 +91,18 @@
     </form>
   </mat-step>
 
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
+  <mat-step [stepControl]="doneFormGroup" errorMessage="Preencha a observação">
+    <ng-template matStepLabel>Concluir</ng-template>
+    <form [formGroup]="doneFormGroup" class="done-form">
+      <mat-form-field class="full-width">
+        <p>Observação</p>
+        <textarea matInput [(ngModel)]="inputObservation" formControlName="observationCtrl" placeholder="Ex. Evento na quadra 3..." required></textarea>
+      </mat-form-field>
+    </form>
+    <p>Clique no botão abaixo para criar o evento.</p>
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button matStepperPrevious>Voltar</button>
+      <button mat-button (click)="stepper.reset()">Limpar</button>
     </div>
   </mat-step>
 </mat-stepper>
