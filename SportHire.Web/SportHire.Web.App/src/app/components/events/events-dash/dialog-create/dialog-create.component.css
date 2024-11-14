@@ -1,5 +1,5 @@
 mat-stepper {
-  width: 800px;
+  width: 900px;
   height: 350px;
 }
 
@@ -19,4 +19,30 @@ mat-stepper {
 
 .full-width {
   width: 100%;
+}
+
+form {
+  height: 250px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.local-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.margin-left {
+  margin-left: 10px;
+}
+
+.done-btns {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }

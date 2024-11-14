@@ -3,18 +3,20 @@
   <mat-step [stepControl]="sportFormGroup" errorMessage="Preencha os dados">
     <form [formGroup]="sportFormGroup">
       <ng-template matStepLabel>Dados do evento</ng-template>
-
-      <mat-form-field>
-        <mat-label>Esporte</mat-label>
-        <mat-select [(ngModel)]="selectedSport" formControlName="sportCtrl" required>
-          <mat-option *ngFor="let sport of sports" [value]="sport.opt">
-            {{ sport.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <div>
-        <button mat-button matStepperNext>Próximo</button>
+      <div class="flex">
+        <div>
+          <mat-form-field>
+            <mat-label>Esporte</mat-label>
+            <mat-select [(ngModel)]="selectedSport" formControlName="sportCtrl" required>
+              <mat-option *ngFor="let sport of sports" [value]="sport.opt">
+                {{ sport.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-stroked-button matStepperNext>Próximo</button>
+        </div>
       </div>
     </form>
   </mat-step>
@@ -23,40 +25,49 @@
     <form [formGroup]="locationFormGroup">
       <ng-template matStepLabel>Localização</ng-template>
 
-      <mat-form-field>
-        <mat-label>Estado</mat-label>
-        <mat-select [(ngModel)]="selectedState" formControlName="stateCtrl" required>
-          <mat-option *ngFor="let state of states" [value]="state.uf">
-            {{ state.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div class="flex">
+        <div class="local-flex">
+          <div>
+          <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select [(ngModel)]="selectedState" formControlName="stateCtrl" required>
+              <mat-option *ngFor="let state of states" [value]="state.uf">
+                {{ state.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Cidade</mat-label>
-        <mat-select [(ngModel)]="selectedCity" formControlName="cityCtrl" required>
-          <ng-container *ngFor="let city of cities">
-            <mat-option *ngIf="selectedState && city.uf == selectedState" [value]="city.name">
-              {{ city.name }}
-            </mat-option>
-          </ng-container>
-        </mat-select>
-      </mat-form-field>
+          <mat-form-field class="margin-left">
+            <mat-label>Cidade</mat-label>
+            <mat-select [(ngModel)]="selectedCity" formControlName="cityCtrl" required>
+              <ng-container *ngFor="let city of cities">
+                <mat-option *ngIf="selectedState && city.uf == selectedState" [value]="city.name">
+                  {{ city.name }}
+                </mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-      <mat-form-field>
-        <mat-label>Bairro</mat-label>
-        <input [(ngModel)]="inputDistrict" matInput formControlName="districtCtrl" placeholder="Ex. Centro Histórico"
-          required>
-      </mat-form-field>
+        <div>
+          <mat-form-field>
+            <mat-label>Bairro</mat-label>
+            <input [(ngModel)]="inputDistrict" matInput formControlName="districtCtrl"
+              placeholder="Ex. Centro Histórico" required>
+          </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Endereço</mat-label>
-        <input [(ngModel)]="inputAddress" matInput formControlName="addressCtrl" placeholder="Ex. Rua ABC, 123"
-          required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Voltar</button>
-        <button mat-button matStepperNext>Próximo</button>
+
+          <mat-form-field class="margin-left">
+            <mat-label>Endereço</mat-label>
+            <input [(ngModel)]="inputAddress" matInput formControlName="addressCtrl" placeholder="Ex. Rua ABC, 123"
+              required>
+          </mat-form-field>
+        </div>
+        </div>
+        <div>
+          <button mat-stroked-button matStepperPrevious>Voltar</button>
+          <button mat-stroked-button matStepperNext class="margin-left" >Próximo</button>
+        </div>
       </div>
     </form>
   </mat-step>
@@ -64,45 +75,60 @@
   <mat-step [stepControl]="dateFormGroup" errorMessage="Preencha o horário">
     <form [formGroup]="dateFormGroup">
       <ng-template matStepLabel>Data e horário</ng-template>
+      <div class="flex">
+        <div class="local-flex">
+          <div>
+          <mat-form-field>
+            <mat-label>Escolha a data</mat-label>
+            <input matInput [(ngModel)]="inputDate" [matDatepicker]="picker" formControlName="dateCtrl" required>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Escolha a data</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="dateCtrl" required>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Horário</mat-label>
-        <input matInput mask="Hh:m0" [showMaskTyped]="true" [(ngModel)]="inputTime" formControlName="timeCtrl"
-          placeholder="Ex. 18:30" required>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Duração (minutos)</mat-label>
-        <input matInput [(ngModel)]="inputDuration" formControlName="durationCtrl" placeholder="min. 30, max. 180"
-          required>
-      </mat-form-field>
-
-      <div>
-        <button mat-button matStepperPrevious>Voltar</button>
-        <button mat-button matStepperNext>Próximo</button>
+          <mat-form-field class="margin-left">
+            <mat-label>Horário</mat-label>
+            <input matInput mask="Hh:m0" [showMaskTyped]="true" [(ngModel)]="inputTime" formControlName="timeCtrl"
+              placeholder="Ex. 18:30" required>
+          </mat-form-field>
+          </div>
+          <div>
+          <mat-form-field>
+            <mat-label>Duração (minutos)</mat-label>
+            <input matInput [(ngModel)]="inputDuration" formControlName="durationCtrl" placeholder="min. 30, max. 180"
+              required>
+          </mat-form-field>
+        </div>
+        </div>
+        <div>
+          <button mat-stroked-button matStepperPrevious>Voltar</button>
+          <button mat-stroked-button matStepperNext class="margin-left" >Próximo</button>
+        </div>
       </div>
     </form>
   </mat-step>
 
   <mat-step [stepControl]="doneFormGroup" errorMessage="Preencha a observação">
     <ng-template matStepLabel>Concluir</ng-template>
+
     <form [formGroup]="doneFormGroup" class="done-form">
-      <mat-form-field class="full-width">
-        <p>Observação</p>
-        <textarea matInput [(ngModel)]="inputObservation" formControlName="observationCtrl" placeholder="Ex. Evento na quadra 3..." required></textarea>
-      </mat-form-field>
+      <div class="flex">
+        <div>
+          <mat-form-field class="full-width">
+            <p>Observação</p>
+            <textarea matInput [(ngModel)]="inputObservation" formControlName="observationCtrl"
+              placeholder="Ex. Evento na quadra 3..." required></textarea>
+          </mat-form-field>
+        </div>
+        <div class="done-btns">
+          <div>
+          <button mat-stroked-button matStepperPrevious>Voltar</button>
+          <button mat-stroked-button color="primary" class="margin-left">Criar evento</button>
+        </div>
+          <button mat-button (click)="stepper.reset()">Limpar</button>
+        </div>
+      </div>
     </form>
-    <p>Clique no botão abaixo para criar o evento.</p>
-    <div>
-      <button mat-button matStepperPrevious>Voltar</button>
-      <button mat-button (click)="stepper.reset()">Limpar</button>
-    </div>
+
+
   </mat-step>
 </mat-stepper>

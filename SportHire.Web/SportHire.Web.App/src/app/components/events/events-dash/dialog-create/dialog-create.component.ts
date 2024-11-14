@@ -64,6 +64,7 @@ export class DialogCreateComponent {
   selectedCity: string = '';
   inputDistrict: string = '';
   inputAddress: string = '';
+  inputDate: string = '';
   inputTime: string = '';
   inputDuration: number | null = null;
   inputObservation: string = '';
