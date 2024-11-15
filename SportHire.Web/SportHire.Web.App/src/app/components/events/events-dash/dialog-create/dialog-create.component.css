@@ -1,6 +1,6 @@
 mat-stepper {
   width: 900px;
-  height: 350px;
+  height: 400px;
 }
 
 .mat-stepper-horizontal {
@@ -22,7 +22,7 @@ mat-stepper {
 }
 
 form {
-  height: 250px;
+  height: 300px;
 }
 
 .flex {
@@ -45,4 +45,12 @@ form {
   display: flex;
   width: 100%;
   justify-content: space-between;
+}
+
+.margin-h3 {
+  margin: 15px 0 0 2px;
+}
+
+h3 {
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
 }

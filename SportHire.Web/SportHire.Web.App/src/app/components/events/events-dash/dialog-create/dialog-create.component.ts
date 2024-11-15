@@ -85,8 +85,4 @@ export class DialogCreateComponent {
     timeCtrl: ['', Validators.required],
     durationCtrl: ['', [Validators.required, Validators.min(30), Validators.max(180)]]
   });
-
-  doneFormGroup = this._formBuilder.group({
-    observationCtrl: ['', Validators.required]
-  })
 }

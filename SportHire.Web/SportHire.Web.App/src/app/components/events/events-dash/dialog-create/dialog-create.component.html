@@ -5,6 +5,7 @@
       <ng-template matStepLabel>Dados do evento</ng-template>
       <div class="flex">
         <div>
+          <h3 style="margin-left: 2px;">Selecione o esporte</h3>
           <mat-form-field>
             <mat-label>Esporte</mat-label>
             <mat-select [(ngModel)]="selectedSport" formControlName="sportCtrl" required>
@@ -24,10 +25,10 @@
   <mat-step [stepControl]="locationFormGroup" errorMessage="Preencha a localização">
     <form [formGroup]="locationFormGroup">
       <ng-template matStepLabel>Localização</ng-template>
-
       <div class="flex">
         <div class="local-flex">
           <div>
+            <h3 class="margin-h3">Preencha os dados relacionados à localização</h3>
           <mat-form-field>
             <mat-label>Estado</mat-label>
             <mat-select [(ngModel)]="selectedState" formControlName="stateCtrl" required>
@@ -78,6 +79,7 @@
       <div class="flex">
         <div class="local-flex">
           <div>
+            <h3 class="margin-h3">Preencha os dados relacionados à data e horário</h3>
           <mat-form-field>
             <mat-label>Escolha a data</mat-label>
             <input matInput [(ngModel)]="inputDate" [matDatepicker]="picker" formControlName="dateCtrl" required>
@@ -107,16 +109,17 @@
     </form>
   </mat-step>
 
-  <mat-step [stepControl]="doneFormGroup" errorMessage="Preencha a observação">
+  <mat-step>
     <ng-template matStepLabel>Concluir</ng-template>
 
-    <form [formGroup]="doneFormGroup" class="done-form">
+    <form class="done-form">
       <div class="flex">
         <div>
+          <h3 class="margin-h3">Preencha a observação (opcional)</h3>
           <mat-form-field class="full-width">
             <p>Observação</p>
-            <textarea matInput [(ngModel)]="inputObservation" formControlName="observationCtrl"
-              placeholder="Ex. Evento na quadra 3..." required></textarea>
+            <textarea matInput [(ngModel)]="inputObservation"
+              placeholder="Ex. Evento na quadra 3..."></textarea>
           </mat-form-field>
         </div>
         <div class="done-btns">
