@@ -1,8 +1,10 @@
 export interface Event {
   id?: string;
   sport: number;
-  emailOwner?: string;
+  emailOwner: string;
   emailPlayer?: string;
+  nameOwner: string;
+  namePlayer?: string;
   uf?: number;
   city: string;
   district: string;
@@ -11,4 +13,5 @@ export interface Event {
   duration: number;
   status?: number;
   cost: number;
+  observation?: string;
 }
