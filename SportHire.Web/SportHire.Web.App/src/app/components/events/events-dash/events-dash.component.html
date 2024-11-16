@@ -119,7 +119,7 @@
         </div>
         <p class="center-card-title transition">{{ loadTitle(event.sport) }}, <br>{{ event.city }}</p>
         <div class="center-card-footer">
-          <button>
+          <button (click)="openInfoDialog(event.id, event.nameOwner, event.observation, loadTitle(event.sport), event.sport)">
             <img src="/assets/css/events/events-dash/info.svg">
           </button>
           <button>

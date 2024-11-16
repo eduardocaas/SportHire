@@ -1,1 +1,17 @@
-<p>dialog-info works!</p>
+<mat-card class="card">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>{{ data.nameOwner }}</mat-card-title>
+    <mat-card-subtitle>{{ data.title }}</mat-card-subtitle>
+  </mat-card-header>
+  <img class="sport-image" mat-card-image src="/assets/css/events/events-find/{{loadImage(data.sport)}}" alt="Foto referente ao esporte do evento">
+  <mat-card-content>
+    <h3>Observação</h3>
+    <p>
+      {{ loadObservation() }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button mat-dialog-close>Fechar</button>
+  </mat-card-actions>
+</mat-card>

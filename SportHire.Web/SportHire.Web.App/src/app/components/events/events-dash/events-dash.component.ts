@@ -7,6 +7,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Sport } from '../../../models/enums/sport';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCreateComponent } from './dialog-create/dialog-create.component';
+import { DialogInfoComponent } from './dialog-info/dialog-info.component';
 
 @Component({
   selector: 'app-events-dash',
@@ -36,10 +37,6 @@ export class EventsDashComponent implements OnInit {
   ngOnInit() {
     this.loadInProgressEvents();
     this.loadFinishedEvents();
-  }
-
-  openCreateDialog() {
-    this.dialog.open(DialogCreateComponent);
   }
 
   status = [
@@ -229,6 +226,22 @@ export class EventsDashComponent implements OnInit {
         empty_content.style.display = 'none';
       }
     }
+  }
+
+  openCreateDialog() {
+    this.dialog.open(DialogCreateComponent);
+  }
+
+  openInfoDialog(id: string | undefined, nameOwner: string, observation: string | undefined, title: string, sport: Sport) {
+    this.dialog.open(DialogInfoComponent, {
+      data: {
+        id: id,
+        nameOwner: nameOwner,
+        observation: observation,
+        title: title,
+        sport: sport
+      }
+    });
   }
 
   // Retorna o jpg para determinado esporte - card

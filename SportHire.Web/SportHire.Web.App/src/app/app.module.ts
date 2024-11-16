@@ -35,6 +35,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
 
 // Others
 import { ToastrModule } from 'ngx-toastr';
@@ -78,8 +79,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-ma
     MatStepperModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
-
+    MatCardModule,
 
     // Others
     NgxMaterialTimepickerModule,
