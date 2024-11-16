@@ -16,6 +16,7 @@ import { EventsFindComponent } from './components/events/events-find/events-find
 import { HomeComponent } from './components/home/home.component';
 import { EventsDashComponent } from './components/events/events-dash/events-dash.component';
 import { DialogCreateComponent } from './components/events/events-dash/dialog-create/dialog-create.component';
+import { DialogInfoComponent } from './components/events/events-dash/dialog-info/dialog-info.component';
 
 // Forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -49,7 +50,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-ma
     EventsFindComponent,
     HomeComponent,
     EventsDashComponent,
-    DialogCreateComponent
+    DialogCreateComponent,
+    DialogInfoComponent
   ],
   imports: [
     // Angular
