@@ -43,11 +43,14 @@ export class EventsDashComponent implements OnInit {
   }
 
   status = [
+    { opt: Status.DEFAULT, name: 'Todos' },
     { opt: Status.ABERTO, name: 'Aberto' },
     { opt: Status.ANDAMENTO, name: 'Andamento' }
   ];
 
   selectedStatus: number | null = null;
+  selectedStatusText: string = 'andamento';
+  selectedStatusText2: string = 'em';
 
   /* --- CARDS EVENTOS --- */
 
@@ -56,6 +59,8 @@ export class EventsDashComponent implements OnInit {
   displayedInProgressEvents: Event[] = [];
   inPcurrentPage: number = 0;
   inPitemsPerPage: number = 3;
+  inProgressLength: number = 0;
+
 
   // Carrega eventos na tela
   loadInProgressEvents() {
@@ -75,8 +80,35 @@ export class EventsDashComponent implements OnInit {
 
     // Paginator
     const startIndex = this.inPcurrentPage * this.inPitemsPerPage;
+
+    if (this.selectedStatus == Status.ABERTO) {
+      this.selectedStatusText = 'abertos';
+      this.selectedStatusText2 = '';
+    }
+    if (this.selectedStatus == Status.ANDAMENTO) {
+      this.selectedStatusText = 'andamento';
+      this.selectedStatusText2 = 'em';
+    }
+    if (this.selectedStatus == Status.DEFAULT) {
+      this.selectedStatusText = 'andamento';
+      this.selectedStatusText2 = 'em';
+    }
+
     // Cards
-    this.displayedInProgressEvents = this.inProgressEvents.slice(startIndex, startIndex + this.inPitemsPerPage);
+    if (this.selectedStatus !== Status.DEFAULT && this.selectedStatus !== null) {
+      var inProgressFilter = this.inProgressEvents
+      .filter(event => event.status == this.selectedStatus);
+
+      this.inProgressLength = inProgressFilter.length;
+
+      this.displayedInProgressEvents = inProgressFilter
+        .slice(startIndex, startIndex + this.inPitemsPerPage);
+    } else {
+      this.inProgressLength = this.inProgressEvents.length;
+
+      this.displayedInProgressEvents = this.inProgressEvents
+        .slice(startIndex, startIndex + this.inPitemsPerPage);
+    }
   }
 
   // Paginator

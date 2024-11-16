@@ -63,10 +63,7 @@
       <div class="header-content-inP" id="ts--headerInP">
         <mat-form-field appearance="outline">
           <mat-label>Status</mat-label>
-          <mat-select [(ngModel)]="selectedStatus">
-            <mat-option>
-             --
-            </mat-option>
+          <mat-select [(ngModel)]="selectedStatus" (selectionChange)="loadInProgressEvents()">
             <mat-option *ngFor="let s of status" [value]="s.opt">
               {{ s.name }}
             </mat-option>
@@ -76,7 +73,7 @@
           <mat-radio-button value="1" [checked]="true">Aberto</mat-radio-button>
           <mat-radio-button value="2">Andamento</mat-radio-button>
         </mat-radio-group> -->
-        <p>Você tem <strong>{{ inProgressEvents.length }}</strong> eventos em <br>andamento</p>
+        <p>Você tem <strong>{{ this.inProgressLength }}</strong> eventos {{ this.selectedStatusText2 }} <br>{{ this.selectedStatusText }}</p>
       </div>
 
     </div>
@@ -105,14 +102,20 @@
           </div>
         </div>
         <div class="center-card-header">
+          <div style="margin-left: 35px;">
+            <img class="transition card-pin" src="/assets/css/events/events-find/info.svg">
+            <p class="transition left-card-text"><strong>{{ loadStatus(event.status) }}</strong></p>
+          </div>
+          <div>
           <div>
             <img class="transition card-pin" src="/assets/css/events/events-find/pin.svg">
             <p class="transition left-card-text">{{ event.district }}</p>
           </div>
-          <div>
+          <div style="margin: 0 25px 0 15px;">
             <img class="transition card-pin" src="/assets/css/events/events-find/schedule.svg">
             <p class="transition left-card-text">{{ event.startDate | date: 'dd/MM' }}</p>
           </div>
+        </div>
         </div>
         <p class="center-card-title transition">{{ loadTitle(event.sport) }}, <br>{{ event.city }}</p>
         <div class="center-card-footer">
@@ -168,12 +171,12 @@
             <div>
             </div>
           </div>
-          <div class="center-card-header">
+          <div class="right-card-header">
             <div>
               <img class="transition card-pin" src="/assets/css/events/events-find/info.svg">
               <p class="transition right-card-status right-card-text">{{ loadStatus(event.status) }}</p>
             </div>
-            <div>
+            <div style="margin-right: 30px;">
               <img class="transition card-pin" src="/assets/css/events/events-find/schedule.svg">
               <p class="transition right-card-text">{{ event.startDate | date: 'dd/MM' }}</p>
             </div>
