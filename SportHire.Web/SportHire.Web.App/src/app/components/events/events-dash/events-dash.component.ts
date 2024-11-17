@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogCreateComponent } from './dialog-create/dialog-create.component';
 import { DialogInfoComponent } from './dialog-info/dialog-info.component';
 import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-events-dash',
@@ -236,12 +237,15 @@ export class EventsDashComponent implements OnInit {
   }
 
   openCreateDialog() {
-    this.dialog.open(DialogCreateComponent);
+    this.dialog.open(DialogCreateComponent, {
+      scrollStrategy: new NoopScrollStrategy()
+    });
   }
 
   openEditDialog(event: Event) {
     this.dialog.open(DialogEditComponent, {
-        data: event
+        data: event,
+        scrollStrategy: new NoopScrollStrategy()
     });
   }
 
@@ -254,7 +258,8 @@ export class EventsDashComponent implements OnInit {
         title: title,
         sport: sport,
         namePlayer: namePlayer
-      }
+      },
+      scrollStrategy: new NoopScrollStrategy()
     });
   }
 
