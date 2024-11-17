@@ -4,6 +4,12 @@
     <mat-card-title>{{ data.nameOwner }}</mat-card-title>
     <mat-card-subtitle style="font-size: 15px !important; color: #666;">{{ data.title }}</mat-card-subtitle>
   </mat-card-header>
+
+  <mat-card-content>
+    <p style="font-size: 14px !important; margin-bottom: 5px; color: #777">
+      <strong>ID</strong>: {{ data.id }}
+    </p>
+  </mat-card-content>
   <img class="sport-image" mat-card-image src="/assets/css/events/events-find/{{loadImage(data.sport)}}" alt="Foto referente ao esporte do evento">
   <mat-card-content>
     <h3 style="margin-top: 10px;">Observação</h3>
