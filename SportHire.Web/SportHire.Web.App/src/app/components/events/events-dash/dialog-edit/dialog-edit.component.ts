@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { Event } from '../../../../models/event';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-edit',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './dialog-edit.component.css'
 })
 export class DialogEditComponent {
-
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Event) {}
 }

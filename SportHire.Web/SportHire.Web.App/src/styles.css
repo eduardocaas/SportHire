@@ -2,3 +2,22 @@
 @import '../node_modules/ngx-toastr/toastr.css';
 html, body { height: 100%; }
 body { margin: 0; font-family: Inter, "Helvetica Neue", sans-serif !important; }
+
+@media only screen and (min-resolution: 1.07dppx) {
+  * {
+    zoom: 0.99;
+  }
+}
+
+@media only screen and (min-resolution: 1.20dppx) {
+  * {
+    zoom: 0.977;
+  }
+}
+
+@media only screen and (min-resolution: 1.40dppx) {
+  * {
+    zoom: 0.96;
+  }
+}
+

@@ -129,7 +129,7 @@
           <button (click)="openInfoDialog(event.id, event.nameOwner, event.observation, loadTitle(event.sport), event.sport, event.namePlayer)" style="background-color: #fff !important;">
             <img src="/assets/css/events/events-dash/info.svg">
           </button>
-          <button *ngIf="selectedOption == 1">
+          <button (click)="openEditDialog(event)" *ngIf="selectedOption == 1">
             <img src="/assets/css/events/events-dash/edit.svg">
           </button>
           <button *ngIf="selectedOption == 1">

@@ -336,7 +336,7 @@ mat-error {
 .paginator-btns button:hover {
   background-color: rgba(150, 150, 150, 0.1);
 }
-
+/*
 @media only screen and (min-resolution: 1.35dppx) {
 
   .container {
@@ -465,5 +465,33 @@ mat-error {
 
   .page {
     width: 40px !important;
+  }
+}
+*/
+
+@media only screen and (min-resolution: 1.07dppx) {
+  .container {
+    height: calc(100% - 95px);
+  }
+}
+
+@media only screen and (min-resolution: 1.20dppx) {
+  .container {
+    height: calc(100% - 96px);
+  }
+
+  ::ng-deep .cdk-overlay-pane {
+    zoom: 1.097 !important
+  }
+
+}
+
+@media only screen and (min-resolution: 1.40dppx) {
+  .container {
+    height: calc(100% - 97px);
+  }
+
+  ::ng-deep .cdk-overlay-pane {
+    zoom: 1.177 !important
   }
 }

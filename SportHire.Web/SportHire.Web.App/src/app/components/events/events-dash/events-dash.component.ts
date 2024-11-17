@@ -8,6 +8,7 @@ import { Sport } from '../../../models/enums/sport';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCreateComponent } from './dialog-create/dialog-create.component';
 import { DialogInfoComponent } from './dialog-info/dialog-info.component';
+import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
 
 @Component({
   selector: 'app-events-dash',
@@ -236,6 +237,14 @@ export class EventsDashComponent implements OnInit {
 
   openCreateDialog() {
     this.dialog.open(DialogCreateComponent);
+  }
+
+  openEditDialog(event: Event) {
+    this.dialog.open(DialogEditComponent, {
+      data: {
+        event: event
+      }
+    });
   }
 
   openInfoDialog(id: string | undefined, nameOwner: string, observation: string | undefined, title: string, sport: Sport, namePlayer: string | undefined) {

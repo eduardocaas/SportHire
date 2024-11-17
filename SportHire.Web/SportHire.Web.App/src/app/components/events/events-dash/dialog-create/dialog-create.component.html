@@ -7,7 +7,7 @@
         <div>
           <h3 style="margin-left: 2px;">Selecione o esporte</h3>
           <mat-form-field>
-            <mat-label>Esporte</mat-label>
+            <mat-label><mat-icon>emoji_events</mat-icon> Esporte</mat-label>
             <mat-select [(ngModel)]="selectedSport" formControlName="sportCtrl" required>
               <mat-option *ngFor="let sport of sports" [value]="sport.opt">
                 {{ sport.name }}
@@ -30,7 +30,7 @@
           <div>
             <h3 class="margin-h3">Preencha os dados relacionados à localização</h3>
           <mat-form-field>
-            <mat-label>Estado</mat-label>
+            <mat-label><mat-icon>map</mat-icon> Estado</mat-label>
             <mat-select [(ngModel)]="selectedState" formControlName="stateCtrl" required>
               <mat-option *ngFor="let state of states" [value]="state.uf">
                 {{ state.name }}
@@ -39,7 +39,7 @@
           </mat-form-field>
 
           <mat-form-field class="margin-left">
-            <mat-label>Cidade</mat-label>
+            <mat-label><mat-icon>home_work</mat-icon> Cidade</mat-label>
             <mat-select [(ngModel)]="selectedCity" formControlName="cityCtrl" required>
               <ng-container *ngFor="let city of cities">
                 <mat-option *ngIf="selectedState && city.uf == selectedState" [value]="city.name">

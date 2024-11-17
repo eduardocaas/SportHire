@@ -89,7 +89,7 @@
 .ul-nav:nth-child(3) {
   margin-right: 40px;
 }
-
+/*
 @media only screen and (min-resolution: 1.35dppx) {
   .main-nav {
     height: 80px;
@@ -115,3 +115,4 @@
     width: 30px;
   }
 }
+*/

@@ -54,3 +54,24 @@ form {
 h3 {
   font-family: Inter, "Helvetica Neue", sans-serif !important;
 }
+
+@media only screen and (min-resolution: 1.11dppx) {
+  * {
+    zoom: 1.04 !important;
+  }
+
+  ::ng-deep .cdk-overlay-pane {
+    zoom: 1.097 !important
+  }
+}
+
+@media only screen and (min-resolution: 1.3dppx) {
+  * {
+    zoom: 1.05 !important;
+  }
+
+  ::ng-deep .cdk-overlay-pane {
+    zoom: 1.177 !important
+  }
+}
+
