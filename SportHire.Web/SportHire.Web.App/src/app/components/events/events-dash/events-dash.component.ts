@@ -37,6 +37,7 @@ export class EventsDashComponent implements OnInit {
   ) { this.selectedOption = 1 }
 
   ngOnInit() {
+    this.loadNextEvent();
     this.loadInProgressEvents();
     this.loadFinishedEvents();
   }
@@ -52,6 +53,19 @@ export class EventsDashComponent implements OnInit {
   selectedStatus: number | null = null;
   selectedStatusText: string = 'andamento';
   selectedStatusText2: string = 'em';
+
+  /* --- CARD PROXIMO --- */
+  inProgressEvent: Event | null = null;
+
+  loadNextEvent() {
+    this.mockService.getInProgressByEmailOwner("owner1@example.com").subscribe(events => {
+      if (events && events.length > 0) {
+        this.inProgressEvent = events[0];
+      } else {
+        this.inProgressEvent = null;
+      }
+    });
+  }
 
   /* --- CARDS EVENTOS --- */
 

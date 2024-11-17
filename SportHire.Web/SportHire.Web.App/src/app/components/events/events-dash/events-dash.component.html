@@ -13,47 +13,58 @@
           <img src="/assets/css/events/events-dash/add_task.svg">
           <span>Criar evento</span>
         </button>
-        <div class="create-card-box">
+        <div class="create-card-box" *ngIf="this.inProgressEvent !== null">
           <p>Próximo evento</p>
-          <div class="create-card" [style.background-image]="'url(/assets/css/events/events-find/futebol.jpg)'">
+          <div class="create-card" [style.background-image]="'url(/assets/css/events/events-find/' + loadImage(this.inProgressEvent.sport) + ')'">
+            <div class="create-card-header transition">
+              <img class="card-pin" src="/assets/css/events/events-find/info.svg">
+              <p><strong>{{ loadStatus(this.inProgressEvent.status) }}</strong></p>
+            </div>
             <div class="create-card-content">
               <div>
                 <p class="create-card-content-title transition">Endereço</p>
-                <p class="create-card-content-info transition">Rua ABC, 123</p>
+                <p class="create-card-content-info transition">{{ this.inProgressEvent.address }}</p>
                 <p class="create-card-content-title transition">Duração</p>
-                <p class="create-card-content-info transition">60 minutos</p>
+                <p class="create-card-content-info transition">{{ this.inProgressEvent.duration }}</p>
                 <p class="create-card-content-title transition">Data</p>
-                <p class="create-card-content-info transition">30/10 às 17:00</p>
+                <p class="create-card-content-info transition">{{ this.inProgressEvent.startDate | date: 'dd/MM \'às\' HH:mm' }} </p>
                 <p class="create-card-content-title transition">Preço</p>
-                <p class="create-card-content-info transition">R$ 80,00 </p>
+                <p class="create-card-content-info transition">R$ {{ this.inProgressEvent.cost }} </p>
               </div>
               <div>
               </div>
             </div>
-            <p class="create-card-title transition">Futebol, <br>Porto Alegre</p>
+            <p class="create-card-title transition">{{ loadTitle(this.inProgressEvent.sport) }}, <br>{{ this.inProgressEvent.city }}</p>
             <div class="create-card-footer">
               <div>
                 <img class="transition card-pin" src="/assets/css/events/events-find/pin.svg">
-                <p class="transition">Cavalhada</p>
+                <p class="transition">{{ this.inProgressEvent.district }}</p>
               </div>
               <div>
                 <img class="transition card-pin" src="/assets/css/events/events-find/schedule.svg">
-                <p class="transition">30/10</p>
+                <p class="transition">{{ this.inProgressEvent.startDate | date: 'dd/MM' }}</p>
               </div>
             </div>
           </div>
           <div class="create-card-btns">
-            <button *ngIf="selectedOption == 1">
-              <img src="/assets/css/events/events-dash/edit.svg">
+            <button (click)="openInfoDialog(this.inProgressEvent.id, this.inProgressEvent.nameOwner, this.inProgressEvent.observation, loadTitle(this.inProgressEvent.sport), this.inProgressEvent.sport, this.inProgressEvent.namePlayer)" style="width: 50px" *ngIf="selectedOption == 1">
+              <img src="/assets/css/events/events-dash/info_gray.svg">
+            </button>
+            <button (click)="openEditDialog(this.inProgressEvent)" *ngIf="selectedOption == 1">
+              <img src="/assets/css/events/events-dash/edit_gray.svg">
               <span>Editar</span>
             </button>
             <button *ngIf="selectedOption == 1">
-              <img src="/assets/css/events/events-dash/delete.svg">
+              <img src="/assets/css/events/events-dash/delete_gray.svg">
               <span>Cancelar</span>
+            </button>
+
+            <button (click)="openInfoDialog(this.inProgressEvent.id, this.inProgressEvent.nameOwner, this.inProgressEvent.observation, loadTitle(this.inProgressEvent.sport), this.inProgressEvent.sport, this.inProgressEvent.namePlayer)" class="player-info" *ngIf="selectedOption == 2">
+              <img src="/assets/css/events/events-dash/info_gray.svg">
             </button>
             <button class="player-button" *ngIf="selectedOption == 2">
               <img src="/assets/css/events/events-dash/cancel.svg">
-              <span>Cancelar</span>
+              <span style="color:#d9d9d9 !important">Cancelar</span>
             </button>
           </div>
         </div>

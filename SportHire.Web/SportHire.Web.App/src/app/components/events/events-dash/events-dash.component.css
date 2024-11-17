@@ -118,6 +118,20 @@ margin-bottom: 35px;
   transition: border 0.4s, box-shadow 0.4s;
 }
 
+.create-card-header {
+  margin: 10px 25px -57px 0;
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.create-card-header p {
+  color: #fff !important;
+  margin-top: 11px;
+  font-size: 15px;
+}
+
 .create-card p {
   cursor: default;
 }
@@ -205,6 +219,10 @@ margin-bottom: 35px;
   border: 2px solid #111;
   box-shadow: inset 0 0 0 1000px rgba(0,0,0,.7), 0px 0px 69px -3px rgba(0,0,0,1);
 
+  .create-card-header {
+    opacity: 0;
+  }
+
   .create-card-title {
     color: rgba(0,0,0, 0);
   }
@@ -243,38 +261,40 @@ margin-bottom: 35px;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  width: 170px;
+  width: 144px;
   height: 40px;
   font-family: Inter, "Helvetica Neue", sans-serif !important;
   font-size: 16px;
   font-weight: 600;
-  color: #FFF;
-  border: 0;
+  color: #d9d9d9;
+  border: 1px solid #666;
+  background-color: transparent;
   border-radius: 7px;
-  transition: background-color 0.2s;
+  transition: background-color 0.1s;
   -webkit-box-shadow: 5px 10px 16px -7px rgba(17,17,17,1);
   -moz-box-shadow: 5px 10px 16px -7px rgba(17,17,17,1);
   box-shadow: 5px 10px 16px -7px rgba(17,17,17,1);
 }
 
-.create-card-btns button:nth-child(1) {
-  background-color: #0034c2;
+.create-card-btns button:hover {
+  background-color: rgba(100, 100, 100, 0.1) !important;
 }
 
-.create-card-btns button:nth-child(2) {
-  background-color: #c1121f;
+.player-info {
+  background-color: transparent !important;
+  border: 1px solid #666 !important;
+  border-radius: 12px !important;
+  width: 18% !important;
+  height: 50px !important;
+  transition: background-color 0.1s !important;
 }
 
-.create-card-btns button:nth-child(1):hover {
-  background-color: #0a3cc6;
-}
-
-.create-card-btns button:nth-child(2):hover {
-  background-color: #c41b26;
+.player-info:hover {
+  background-color: rgba(100, 100, 100, 0.1) !important;
 }
 
 .player-button {
-  width: 100% !important;
+  width: 80% !important;
   height: 50px !important;
   background-color: transparent !important;
   border: 1px solid #666 !important;
