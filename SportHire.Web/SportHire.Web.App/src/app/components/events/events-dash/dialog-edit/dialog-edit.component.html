@@ -18,7 +18,7 @@
 
     <mat-form-field>
       <mat-label>Endereço</mat-label>
-      <input type="email" matInput [ngModel]="data.address" [formControl]="addressFormControl" placeholder="Ex. pat@example.com">
+      <input type="email" matInput [ngModel]="data.address" [formControl]="addressFormControl" placeholder="Ex. Rua ABC, 123">
       <mat-error *ngIf="addressFormControl.hasError('required')">
         Insira um <strong>endereço</strong>
       </mat-error>
@@ -28,7 +28,7 @@
   <div>
     <mat-form-field class="full-width">
       <p>Observação</p>
-      <textarea matInput [(ngModel)]="data.observation" placeholder="Evento na quadra 1, ...">{{ data.observation }}</textarea>
+      <textarea matInput [(ngModel)]="data.observation" placeholder="Evento na quadra 1, etc...">{{ data.observation }}</textarea>
     </mat-form-field>
   </div>
 
@@ -71,6 +71,4 @@
       </mat-error>
     </mat-form-field>
   </div>
-
-
 </form>
