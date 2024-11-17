@@ -241,9 +241,7 @@ export class EventsDashComponent implements OnInit {
 
   openEditDialog(event: Event) {
     this.dialog.open(DialogEditComponent, {
-      data: {
-        event: event
-      }
+        data: event
     });
   }
 
