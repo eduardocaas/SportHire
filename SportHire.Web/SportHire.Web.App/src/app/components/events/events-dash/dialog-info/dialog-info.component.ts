@@ -8,6 +8,7 @@ export interface InfoData {
   observation?: string;
   title: string;
   sport: Sport;
+  namePlayer?: string;
 }
 
 @Component({

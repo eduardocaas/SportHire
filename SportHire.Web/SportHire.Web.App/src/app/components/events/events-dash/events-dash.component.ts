@@ -32,7 +32,7 @@ export class EventsDashComponent implements OnInit {
     private readonly mockService: MockEventService,
     private readonly service: EventService,
     public dialog: MatDialog
-  ) {}
+  ) { this.selectedOption = 1 }
 
   ngOnInit() {
     this.loadInProgressEvents();
@@ -44,6 +44,8 @@ export class EventsDashComponent implements OnInit {
     { opt: Status.ABERTO, name: 'Aberto' },
     { opt: Status.ANDAMENTO, name: 'Andamento' }
   ];
+
+  selectedOption: number | null = null;
 
   selectedStatus: number | null = null;
   selectedStatusText: string = 'andamento';
@@ -228,18 +230,23 @@ export class EventsDashComponent implements OnInit {
     }
   }
 
+  changeProfile(opt: number) {
+    this.selectedOption = opt == 1 ? 1 : 2;
+  }
+
   openCreateDialog() {
     this.dialog.open(DialogCreateComponent);
   }
 
-  openInfoDialog(id: string | undefined, nameOwner: string, observation: string | undefined, title: string, sport: Sport) {
+  openInfoDialog(id: string | undefined, nameOwner: string, observation: string | undefined, title: string, sport: Sport, namePlayer: string | undefined) {
     this.dialog.open(DialogInfoComponent, {
       data: {
         id: id,
         nameOwner: nameOwner,
         observation: observation,
         title: title,
-        sport: sport
+        sport: sport,
+        namePlayer: namePlayer
       }
     });
   }

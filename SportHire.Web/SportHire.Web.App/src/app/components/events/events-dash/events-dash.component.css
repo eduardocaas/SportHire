@@ -64,6 +64,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .create-box > button {
@@ -80,7 +81,7 @@
   color: #0bdc84;
   border-radius: 14px;
   padding: 12px 30px;
-  margin-top: 40px;
+margin-bottom: 35px;
   transition: background-color 0.2s;
 }
 
@@ -103,7 +104,6 @@
 }
 
 .create-card-box > p {
-  margin-top: 35px;
   font-size: 20px;
   color: #FFF;
 }
@@ -242,6 +242,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
   width: 170px;
   height: 40px;
   font-family: Inter, "Helvetica Neue", sans-serif !important;
@@ -270,6 +271,27 @@
 
 .create-card-btns button:nth-child(2):hover {
   background-color: #c41b26;
+}
+
+.player-button {
+  width: 100% !important;
+  height: 50px !important;
+  background-color: transparent !important;
+  border: 1px solid #666 !important;
+  border-radius: 12px !important;
+  transition: background-color 0.1s !important;
+}
+
+.player-button span {
+  font-size: 18px !important;
+}
+
+.player-button img {
+  width: 20px;
+}
+
+.player-button:hover {
+  background-color: rgba(100, 100, 100, 0.1) !important;
 }
 
 .box-center {
@@ -405,8 +427,6 @@
 ::ng-deep .mdc-floating-label--float-above{
   top: 60% !important;
 }
-
-
 
 .cards-center {
   display: flex;

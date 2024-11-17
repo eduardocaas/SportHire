@@ -7,8 +7,12 @@
   <img class="sport-image" mat-card-image src="/assets/css/events/events-find/{{loadImage(data.sport)}}" alt="Foto referente ao esporte do evento">
   <mat-card-content>
     <h3 style="margin-top: 10px;">Observação</h3>
-    <p style="font-size: 15px !important;">
+    <p style="font-size: 16px !important;">
       {{ loadObservation() }}
+    </p>
+    <h3 style="margin-top: 10px;" *ngIf="data.namePlayer != undefined">Nome do jogador</h3>
+    <p style="font-size: 16px !important;" *ngIf="data.namePlayer != undefined">
+      {{ data.namePlayer }}
     </p>
   </mat-card-content>
   <mat-card-actions>

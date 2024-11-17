@@ -3,13 +3,13 @@
     <div class="container-left">
       <div class="profile-box">
         <p>Selecione seu perfil</p>
-        <mat-radio-group aria-label="Select an option">
-          <mat-radio-button value="1" [checked]="true">Usuário</mat-radio-button>
-          <mat-radio-button value="2">Jogador</mat-radio-button>
+        <mat-radio-group aria-label="Selecione um perfil">
+          <mat-radio-button value="1" [checked]="selectedOption == 1" (click)="changeProfile(1)">Usuário</mat-radio-button>
+          <mat-radio-button value="2" [checked]="selectedOption == 2" (click)="changeProfile(2)">Jogador</mat-radio-button>
         </mat-radio-group>
       </div>
       <div class="create-box">
-        <button (click)="openCreateDialog()">
+        <button (click)="openCreateDialog()" *ngIf="selectedOption == 1">
           <img src="/assets/css/events/events-dash/add_task.svg">
           <span>Criar evento</span>
         </button>
@@ -43,12 +43,16 @@
             </div>
           </div>
           <div class="create-card-btns">
-            <button>
+            <button *ngIf="selectedOption == 1">
               <img src="/assets/css/events/events-dash/edit.svg">
               <span>Editar</span>
             </button>
-            <button>
+            <button *ngIf="selectedOption == 1">
               <img src="/assets/css/events/events-dash/delete.svg">
+              <span>Cancelar</span>
+            </button>
+            <button class="player-button" *ngIf="selectedOption == 2">
+              <img src="/assets/css/events/events-dash/cancel.svg">
               <span>Cancelar</span>
             </button>
           </div>
@@ -63,10 +67,12 @@
       <div class="header-content-inP" id="ts--headerInP">
         <mat-form-field appearance="outline">
           <mat-label>Status</mat-label>
-          <mat-select [(ngModel)]="selectedStatus" (selectionChange)="loadInProgressEvents()">
+          <mat-select [(ngModel)]="selectedStatus" (selectionChange)="loadInProgressEvents()" [disabled]="selectedOption == 2 ? true : false">
+            <div *ngIf="selectedOption == 1">
             <mat-option *ngFor="let s of status" [value]="s.opt">
               {{ s.name }}
             </mat-option>
+            </div>
           </mat-select>
         </mat-form-field>
         <!-- <mat-radio-group aria-label="Select an option">
@@ -119,14 +125,18 @@
         </div>
         <p class="center-card-title transition">{{ loadTitle(event.sport) }}, <br>{{ event.city }}</p>
         <div class="center-card-footer">
-          <button (click)="openInfoDialog(event.id, event.nameOwner, event.observation, loadTitle(event.sport), event.sport)">
+          <button *ngIf="selectedOption == 2" style="background-color: transparent !important; cursor: default !important;"></button>
+          <button (click)="openInfoDialog(event.id, event.nameOwner, event.observation, loadTitle(event.sport), event.sport, event.namePlayer)" style="background-color: #fff !important;">
             <img src="/assets/css/events/events-dash/info.svg">
           </button>
-          <button>
+          <button *ngIf="selectedOption == 1">
             <img src="/assets/css/events/events-dash/edit.svg">
           </button>
-          <button>
+          <button *ngIf="selectedOption == 1">
             <img src="/assets/css/events/events-dash/delete.svg">
+          </button>
+          <button *ngIf="selectedOption == 2">
+            <img src="/assets/css/events/events-dash/cancel_white.svg">
           </button>
         </div>
       </div>
