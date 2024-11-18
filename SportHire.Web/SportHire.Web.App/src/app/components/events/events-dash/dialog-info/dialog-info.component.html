@@ -15,9 +15,10 @@
     <p class="card-title">
      Jogador
     </p>
-    <p class="card-data">
-      {{ data.namePlayer ? data.namePlayer : 'Buscando...' }}
-    </p>
+    <div class="card-data">
+      <p *ngIf="data.namePlayer != null || data.namePlayer != undefined"> {{ data.namePlayer }}</p>
+    </div>
+    <div *ngIf="data.namePlayer == null || data.namePlayer == undefined" class="loader"></div>
   </div>
     <div>
     <p class="card-title">
