@@ -18,6 +18,7 @@ import { EventsDashComponent } from './components/events/events-dash/events-dash
 import { DialogCreateComponent } from './components/events/events-dash/dialog-create/dialog-create.component';
 import { DialogInfoComponent } from './components/events/events-dash/dialog-info/dialog-info.component';
 import { DialogEditComponent } from './components/events/events-dash/dialog-edit/dialog-edit.component';
+import { DialogDeleteComponent } from './components/events/events-dash/dialog-delete/dialog-delete.component';
 
 // Forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -54,7 +55,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-ma
     EventsDashComponent,
     DialogCreateComponent,
     DialogInfoComponent,
-    DialogEditComponent
+    DialogEditComponent,
+    DialogDeleteComponent
   ],
   imports: [
     // Angular
