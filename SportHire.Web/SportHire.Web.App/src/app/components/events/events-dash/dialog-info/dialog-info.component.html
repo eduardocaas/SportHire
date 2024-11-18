@@ -2,7 +2,7 @@
   <mat-card-header>
     <div mat-card-avatar class="header-image"></div>
     <mat-card-title>{{ data.nameOwner }}</mat-card-title>
-    <mat-card-subtitle style="font-size: 15px !important; color: #666;">{{ data.title }}</mat-card-subtitle>
+    <mat-card-subtitle style="font-size: 15px !important; color: #666;">{{ loadTitle(data.sport) }}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
@@ -10,15 +10,28 @@
       <strong>ID</strong>: {{ data.id }}
     </p>
   </mat-card-content>
-  <img class="sport-image" mat-card-image src="/assets/css/events/events-find/{{loadImage(data.sport)}}" alt="Foto referente ao esporte do evento">
+  <div class="sport-image" mat-card-image [style.background-image]="'url(/assets/css/events/events-find/' + loadImage(data.sport) + ')'" alt="Foto referente ao esporte do evento">
+    <div>
+    <p class="card-title">
+     Jogador
+    </p>
+    <p class="card-data">
+      {{ data.namePlayer ? data.namePlayer : 'Buscando...' }}
+    </p>
+  </div>
+    <div>
+    <p class="card-title">
+      Data
+    </p>
+    <p class="card-data">
+      {{ data.startDate | date: 'dd/MM \'às\' HH:mm' }}
+    </p>
+  </div>
+  </div>
   <mat-card-content>
     <h3 style="margin-top: 10px;">Observação</h3>
     <p style="font-size: 16px !important;">
-      {{ loadObservation() }}
-    </p>
-    <h3 style="margin-top: 10px;" *ngIf="data.namePlayer != undefined">Nome do jogador</h3>
-    <p style="font-size: 16px !important;" *ngIf="data.namePlayer != undefined">
-      {{ data.namePlayer }}
+      {{ data.observation ? data.observation : 'Sem observação' }}
     </p>
   </mat-card-content>
   <mat-card-actions>

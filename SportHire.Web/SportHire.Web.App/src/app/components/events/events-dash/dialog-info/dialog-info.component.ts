@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Sport } from '../../../../models/enums/sport';
 import { Event } from '../../../../models/event';
+import { Status } from '../../../../models/enums/status';
 
 @Component({
   selector: 'app-dialog-info',
@@ -25,7 +26,33 @@ export class DialogInfoComponent {
     }
   }
 
-  loadObservation() {
-    if (this.data.observation == null || this.data.observation == undefined) { return 'Sem observação' } else { return this.data.observation }
+  // Retorna o titulo para determinado esporte - card
+  loadTitle(sport: Sport) {
+    switch (sport) {
+      case Sport.BASQUETE:
+        return 'Basquete';
+      case Sport.FUTEBOL:
+        return 'Futebol';
+      case Sport.VOLEI_PRAIA:
+        return 'Vôlei de Praia';
+      default:
+        return '';
+    }
+  }
+
+  // Retorna o titulo do status para determinado status - card
+  loadStatus(status: Status | undefined) {
+    switch (status) {
+      case Status.ABERTO:
+        return 'Aberto';
+      case Status.ANDAMENTO:
+        return 'Andamento';
+      case Status.CANCELADO:
+        return 'Cancelado';
+      case Status.CONCLUIDO:
+        return 'Concluído';
+      default:
+        return '';
+    }
   }
 }
