@@ -47,7 +47,7 @@
             </div>
           </div>
           <div class="create-card-btns">
-            <button (click)="openInfoDialog(this.inProgressEvent.id, this.inProgressEvent.nameOwner, this.inProgressEvent.observation, loadTitle(this.inProgressEvent.sport), this.inProgressEvent.sport, this.inProgressEvent.namePlayer)" style="width: 50px" *ngIf="selectedOption == 1">
+            <button (click)="openInfoDialog(this.inProgressEvent)" style="width: 50px" *ngIf="selectedOption == 1">
               <img src="/assets/css/events/events-dash/info_gray.svg">
             </button>
             <button (click)="openEditDialog(this.inProgressEvent)" *ngIf="selectedOption == 1">
@@ -59,7 +59,7 @@
               <span>Cancelar</span>
             </button>
 
-            <button (click)="openInfoDialog(this.inProgressEvent.id, this.inProgressEvent.nameOwner, this.inProgressEvent.observation, loadTitle(this.inProgressEvent.sport), this.inProgressEvent.sport, this.inProgressEvent.namePlayer)" class="player-info" *ngIf="selectedOption == 2">
+            <button (click)="openInfoDialog(this.inProgressEvent)" class="player-info" *ngIf="selectedOption == 2">
               <img src="/assets/css/events/events-dash/info_gray.svg">
             </button>
             <button class="player-button" *ngIf="selectedOption == 2">
@@ -137,7 +137,7 @@
         <p class="center-card-title transition">{{ loadTitle(event.sport) }}, <br>{{ event.city }}</p>
         <div class="center-card-footer">
           <button *ngIf="selectedOption == 2" style="background-color: transparent !important; cursor: default !important;"></button>
-          <button (click)="openInfoDialog(event.id, event.nameOwner, event.observation, loadTitle(event.sport), event.sport, event.namePlayer)" style="background-color: #fff !important;">
+          <button (click)="openInfoDialog(event)" style="background-color: #fff !important;">
             <img src="/assets/css/events/events-dash/info.svg">
           </button>
           <button (click)="openEditDialog(event)" *ngIf="selectedOption == 1">

@@ -1,15 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Sport } from '../../../../models/enums/sport';
-
-export interface InfoData {
-  id?: string;
-  nameOwner: string;
-  observation?: string;
-  title: string;
-  sport: Sport;
-  namePlayer?: string;
-}
+import { Event } from '../../../../models/event';
 
 @Component({
   selector: 'app-dialog-info',
@@ -17,7 +9,7 @@ export interface InfoData {
   styleUrl: './dialog-info.component.css'
 })
 export class DialogInfoComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: InfoData) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Event) {}
 
   // Retorna o jpg para determinado esporte - card
   loadImage(sport: Sport) {

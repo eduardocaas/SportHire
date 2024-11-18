@@ -263,16 +263,9 @@ export class EventsDashComponent implements OnInit {
     });
   }
 
-  openInfoDialog(id: string | undefined, nameOwner: string, observation: string | undefined, title: string, sport: Sport, namePlayer: string | undefined) {
+  openInfoDialog(event: Event) {
     this.dialog.open(DialogInfoComponent, {
-      data: {
-        id: id,
-        nameOwner: nameOwner,
-        observation: observation,
-        title: title,
-        sport: sport,
-        namePlayer: namePlayer
-      },
+      data: event,
       scrollStrategy: new NoopScrollStrategy()
     });
   }
