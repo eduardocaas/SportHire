@@ -1,0 +1,14 @@
+/* Section - boxes */
+.boxes {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.box {
+  width: 43%;
+  height: 780px;
+  background-color: #f1f1f1;
+  border-radius: 20px;
+}
