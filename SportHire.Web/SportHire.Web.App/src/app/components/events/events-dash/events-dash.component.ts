@@ -82,60 +82,51 @@ export class EventsDashComponent implements OnInit {
   loadInProgressEvents() {
     this.mockService.getInProgressByEmailOwner("owner1@example.com").subscribe(events => {
       this.inProgressEvents = events;
-    });
 
-    if (this.inProgressEvents.length == 0) {
-      this.loadInProgressCardsContent(2);
-    }
-    if (this.inProgressEvents.length > 0 && this.inProgressEvents.length <= 3) {
-      this.loadInProgressCardsContent(3)
-    }
-    if (this.inProgressEvents.length > 3) {
-      this.loadInProgressCardsContent(1);
-    }
+      // Filtragem de eventos, aplicando o filtro por status se necessário
+      let inProgressFilter = this.inProgressEvents;
+      if (this.selectedStatus !== Status.DEFAULT && this.selectedStatus !== null) {
+        inProgressFilter = this.inProgressEvents.filter(event => event.status == this.selectedStatus);
+      }
 
-    // Paginator
-    const startIndex = this.inPcurrentPage * this.inPitemsPerPage;
-
-    if (this.selectedStatus == Status.ABERTO) {
-      this.selectedStatusText = 'abertos';
-      this.selectedStatusText2 = '';
-    }
-    if (this.selectedStatus == Status.ANDAMENTO) {
-      this.selectedStatusText = 'andamento';
-      this.selectedStatusText2 = 'em';
-    }
-    if (this.selectedStatus == Status.DEFAULT) {
-      this.selectedStatusText = 'andamento';
-      this.selectedStatusText2 = 'em';
-    }
-
-    // Cards
-    if (this.selectedStatus !== Status.DEFAULT && this.selectedStatus !== null) {
-      var inProgressFilter = this.inProgressEvents
-      .filter(event => event.status == this.selectedStatus);
-
+      // Atualiza o comprimento dos eventos filtrados
       this.inProgressLength = inProgressFilter.length;
 
-      this.displayedInProgressEvents = inProgressFilter
-        .slice(startIndex, startIndex + this.inPitemsPerPage);
-    } else {
-      this.inProgressLength = this.inProgressEvents.length;
+      // Calcula o número total de páginas baseadas na quantidade de itens filtrados
+      const totalPages = Math.ceil(this.inProgressLength / this.inPitemsPerPage);
 
-      this.displayedInProgressEvents = this.inProgressEvents
-        .slice(startIndex, startIndex + this.inPitemsPerPage);
-    }
+      // Se a página atual for maior que o número total de páginas, ajuste para a última página
+      if (this.inPcurrentPage >= totalPages) {
+        this.inPcurrentPage = totalPages - 1;  // Ajusta para a última página válida
+      }
+
+      // Calcula o início da página baseado no índice atual
+      const startIndex = this.inPcurrentPage * this.inPitemsPerPage;
+
+      // Define os eventos que serão exibidos com base na página atual e itens por página
+      this.displayedInProgressEvents = inProgressFilter.slice(startIndex, startIndex + this.inPitemsPerPage);
+
+      // Atualiza o conteúdo dos cards
+      if (this.inProgressLength == 0) {
+        this.loadInProgressCardsContent(2);  // Exibe a tela de "sem eventos"
+      } else if (this.inProgressLength <= 3) {
+        this.loadInProgressCardsContent(3);  // Exibe os eventos com no máximo 3 itens
+      } else {
+        this.loadInProgressCardsContent(1);  // Exibe a tela com o paginador
+      }
+    });
   }
 
-  // Paginator
+  // Paginator - próximo
   nextInPPage() {
-    if ((this.inPcurrentPage + 1) * this.inPitemsPerPage < this.inProgressEvents.length) {
+    const totalPages = Math.ceil(this.inProgressLength / this.inPitemsPerPage);
+    if (this.inPcurrentPage < totalPages - 1) {
       this.inPcurrentPage++;
       this.loadInProgressEvents();
     }
   }
 
-  // Paginator
+  // Paginator - anterior
   previousInPPage() {
     if (this.inPcurrentPage > 0) {
       this.inPcurrentPage--;
@@ -149,7 +140,6 @@ export class EventsDashComponent implements OnInit {
     let empty_content = document.querySelector('#ts--empty-inProgress') as HTMLElement;
 
     if (paginator !== null && header !== null && empty_content !== null) {
-
       // Carrega conteúdo
       if (opt == 1) {
         header.style.display = 'flex';
