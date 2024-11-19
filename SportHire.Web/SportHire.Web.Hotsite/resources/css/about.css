@@ -1,3 +1,7 @@
+/* Auxiliary properties */
+.w-100 { width: 100%; }
+.h-50 { height: 50% }
+
 /* Section - boxes */
 .boxes {
   display: flex;
@@ -16,7 +20,10 @@
 /* Boxes (box-left) */
 
 .box-left {
-  padding: 50px 30px;
+  padding: 80px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .box-left h3 {
@@ -25,7 +32,7 @@
 }
 
 .box-left h2 {
-  font-size: 220%;
+  font-size: 280%;
   line-break: unset;
   white-space: nowrap;
 }
@@ -33,6 +40,50 @@
 .header-box-left {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  background-color: red;
+  gap: 40px;
+}
+
+.footer-box-left p {
+  text-align: justify;
+  font-size: 115%;
+}
+
+/* Boxes (box-right) */
+
+.box-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-box-right {
+  background: url('/resources/css/img/about/about-image-l.jpg');
+  background-size: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.footer-box-right {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+}
+
+.footer-box-right > div {
+  flex: 40%;
+  border-radius: 20px;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.footer-box-right > div > p {
+  color: #4361ee;
+  font-size: 160%;
+  font-weight: 600;
+}
+
+.footer-box-right > div > span {
+  display: block;
+  color: #666666;
+  margin-top: 10px;
 }
