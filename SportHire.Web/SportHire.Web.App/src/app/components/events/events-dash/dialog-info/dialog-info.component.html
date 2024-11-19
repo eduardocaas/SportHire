@@ -35,6 +35,12 @@
       {{ data.observation ? data.observation : 'Sem observação' }}
     </p>
   </mat-card-content>
+  <mat-card-content *ngIf="loadStatus(data.status) == 'Cancelado' || loadStatus(data.status) == 'Concluído'">
+    <h3 style="margin-top: 10px;">Custo</h3>
+    <p style="font-size: 16px !important;">
+      R$ {{ data.cost }},00
+    </p>
+  </mat-card-content>
   <mat-card-actions>
     <button [tabIndex]="-1" style="margin: 5px 0 0 5px;" mat-raised-button color="primary" mat-dialog-close>Fechar</button>
   </mat-card-actions>

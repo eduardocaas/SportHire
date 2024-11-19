@@ -204,7 +204,7 @@
           </div>
           <p class="center-card-title transition">{{ loadTitle(event.sport) }}, <br>{{ event.city }}</p>
           <div class="right-card-footer">
-            <button>
+            <button (click)="openInfoDialog(event)">
               <img src="/assets/css/events/events-dash/info_gray.svg">
               <span>Detalhes</span>
             </button>
