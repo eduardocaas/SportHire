@@ -12,3 +12,27 @@
   background-color: #f1f1f1;
   border-radius: 20px;
 }
+
+/* Boxes (box-left) */
+
+.box-left {
+  padding: 50px 30px;
+}
+
+.box-left h3 {
+  color: #4361ee;
+  font-size: 140%;
+}
+
+.box-left h2 {
+  font-size: 220%;
+  line-break: unset;
+  white-space: nowrap;
+}
+
+.header-box-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: red;
+}
