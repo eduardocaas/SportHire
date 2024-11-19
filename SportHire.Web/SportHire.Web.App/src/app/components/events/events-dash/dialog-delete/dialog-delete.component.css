@@ -1,0 +1,37 @@
+.card {
+  padding: 40px 60px;
+}
+
+.card h3 {
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  color: #c1121f;
+}
+
+.content-card p {
+  margin: 0;
+}
+
+.subtitle-card {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.data-card {
+  font-size: 16px;
+  margin-bottom: 10px !important;
+}
+
+.title-button {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 35px !important;
+}
+
+button {
+  margin-left: 10px;
+}
