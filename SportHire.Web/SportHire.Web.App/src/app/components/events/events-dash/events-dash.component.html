@@ -54,7 +54,7 @@
               <img src="/assets/css/events/events-dash/edit_gray.svg">
               <span>Editar</span>
             </button>
-            <button *ngIf="selectedOption == 1">
+            <button (click)="openDeleteDialog(this.inProgressEvent)" *ngIf="selectedOption == 1">
               <img src="/assets/css/events/events-dash/delete_gray.svg">
               <span>Cancelar</span>
             </button>
@@ -143,7 +143,7 @@
           <button (click)="openEditDialog(event)" *ngIf="selectedOption == 1">
             <img src="/assets/css/events/events-dash/edit.svg">
           </button>
-          <button *ngIf="selectedOption == 1">
+          <button (click)="openDeleteDialog(event)" *ngIf="selectedOption == 1">
             <img src="/assets/css/events/events-dash/delete.svg">
           </button>
           <button *ngIf="selectedOption == 2">

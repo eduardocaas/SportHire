@@ -10,6 +10,7 @@ import { DialogCreateComponent } from './dialog-create/dialog-create.component';
 import { DialogInfoComponent } from './dialog-info/dialog-info.component';
 import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
+import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 
 @Component({
   selector: 'app-events-dash',
@@ -258,6 +259,13 @@ export class EventsDashComponent implements OnInit {
 
   openEditDialog(event: Event) {
     this.dialog.open(DialogEditComponent, {
+        data: event,
+        scrollStrategy: new NoopScrollStrategy()
+    });
+  }
+
+  openDeleteDialog(event: Event) {
+    this.dialog.open(DialogDeleteComponent, {
         data: event,
         scrollStrategy: new NoopScrollStrategy()
     });
