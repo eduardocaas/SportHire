@@ -19,6 +19,10 @@
   margin: 0;
 }
 
+.title-banner span {
+  font-weight: 700;
+}
+
 .title-banner img {
   width: 300px;
 }

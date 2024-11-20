@@ -22,10 +22,13 @@
   <link rel="stylesheet" type="text/css" href="vendors/lib/slick/slick-theme.css" />
 
   <!-- Layout css -->
-  <link rel="stylesheet" href="resources/css/layout.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/layout.css">
 
   <!-- About css -->
-  <link rel="stylesheet" href="resources/css/about.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/about.css">
+
+  <!-- Bootstrap -->
+<!--   <link rel="stylesheet" type="text/css" href="vendors/lib/bootstrap/css/bootstrap.min.css"> -->
 
 </head>
 
@@ -36,7 +39,7 @@
     <header>
       <nav class="navbar padding">
         <ul>
-          <li><a href="#">Início</a></li>
+          <li><a href="index.html">Início</a></li>
           <li>|</li>
           <li><strong><a href="#">Sobre</a></strong></li>
           <li>|</li>
@@ -90,7 +93,7 @@
     <footer>
       <div class="content-footer">
         <p>Confira nossas redes sociais abaixo</p>
-        <div class="icons-footer">
+        <nav class="icons-footer">
         <ul>
           <li><a href=""> <img src="resources/css/img/logo/logo-facebook.svg" alt="Logo do Facebook"></a></li>
           <li><a href=""> <img src="resources/css/img/logo/logo-instagram.svg" alt="Logo do Instagram"></a></li>
@@ -98,18 +101,23 @@
           <li><a href=""> <img src="resources/css/img/logo/logo-whatsapp.svg" alt="Logo do Whatsapp"></a></li>
           <li><a href=""> <img src="resources/css/img/logo/logo-github.svg" alt="Logo do Github"></a></li>
         </ul>
-        </div>
+      </nav>
+      <nav>
         <ul>
           <li><a href="#">Início</a></li>
           <li><a href="#">Sobre</a></li>
           <li><a href="#">Contato</a></li>
         </ul>
+      </nav>
       </div>
       <div class="bottom-footer">
         <p>Copyright &copy 2024; SportHire</p>
       </div>
     </footer>
   </div>
+
+  <!-- Project JS import -->
+  <script type="text/javascript" src="resources/js/index.js"></script>
 
   <!-- JQuery import -->
   <script type="text/javascript" src="vendors/lib/jquery/jquery-1.11.0.min.js"></script>
@@ -118,13 +126,13 @@
   <!-- Slick import -->
   <script type="text/javascript" src="vendors/lib/slick/slick.min.js"></script>
 
-  <!-- Project JS import -->
-  <script type="text/javascript" src="resources/js/index.js"></script>
+  <!-- Bootstrap JS import -->
+  <!-- <script src="vendors/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendors/lib/bootstrap/js/bootstrap.min.js"></script> -->
 
   <!-- Ionicons import -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </body>
-
 </html>

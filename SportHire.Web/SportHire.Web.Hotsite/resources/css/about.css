@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .box {
@@ -45,6 +45,7 @@
 
 .footer-box-left p {
   text-align: justify;
+  color: #666666;
   font-size: 115%;
 }
 
@@ -84,6 +85,6 @@
 
 .footer-box-right > div > span {
   display: block;
-  color: #666666;
+  color: #757575;
   margin-top: 10px;
 }
