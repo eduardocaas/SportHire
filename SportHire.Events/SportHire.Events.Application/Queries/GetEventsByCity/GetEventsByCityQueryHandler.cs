@@ -4,7 +4,7 @@ using SportHire.Events.Core.Repositories;
 
 namespace SportHire.Events.Application.Queries.GetEventsByCity
 {
-    public class GetEventsByCityQueryHandler : IRequestHandler<GetEventsByCityQuery, List<EventPlayerViewModel>>
+    public class GetEventsByCityQueryHandler : IRequestHandler<GetEventsByCityQuery, List<EventViewModel>>
     {
         private readonly IEventRepository _repository;
 
@@ -13,11 +13,11 @@ namespace SportHire.Events.Application.Queries.GetEventsByCity
             _repository = repository;
         }
 
-        public async Task<List<EventPlayerViewModel>> Handle(GetEventsByCityQuery request, CancellationToken cancellationToken)
+        public async Task<List<EventViewModel>> Handle(GetEventsByCityQuery request, CancellationToken cancellationToken)
         {
             var events = await _repository.GetAllByCityAsync(request.city, request.email);
             var eventsViewModel = events
-                .Select(e => new EventPlayerViewModel(e.Id, e.Sport, e.NameOwner, e.NamePlayer, e.City, e.District, e.Address, e.StartDate, e.Duration, e.Cost))
+                .Select(e => new EventViewModel(e.Id, e.Sport, e.NameOwner, e.NamePlayer, e.City, e.District, e.Address, e.StartDate, e.Duration, e.Cost))
                 .ToList();
 
             return eventsViewModel;
