@@ -6,8 +6,8 @@ namespace SportHire.Events.Core.Repositories
     public interface IEventRepository
     {
         Task AddAsync(Event _event);
-        Task<List<Event>> GetAllByCityAndSportAsync(string city, EventSportEnum sport);
-        Task<List<Event>> GetAllByCityAsync(string city);
+        Task<List<Event>> GetAllByCityAndSportAsync(string city, EventSportEnum sport, string email);
+        Task<List<Event>> GetAllByCityAsync(string city, string email);
         Task<List<Event>> GetAllByOwnerAsync(string ownerEmail);
     }
 }

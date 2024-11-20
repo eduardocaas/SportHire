@@ -18,24 +18,26 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
             await _collection.InsertOneAsync(_event);
         }
 
-        public async Task<List<Event>> GetAllByCityAndSportAsync(string city, EventSportEnum sport)
+        public async Task<List<Event>> GetAllByCityAndSportAsync(string city, EventSportEnum sport, string email)
         {
             return await _collection
                 .Find(e => 
                     e.City.ToLower() == city.ToLower() && 
                     e.Sport.Equals((int)sport) && 
-                    e.Status == EventStatusEnum.ABERTO)
+                    e.Status == EventStatusEnum.ABERTO &&
+                    e.EmailOwner != email)
                 .SortBy(e => 
                     e.StartDate)
                 .ToListAsync();
         }
 
-        public async Task<List<Event>> GetAllByCityAsync(string city)
+        public async Task<List<Event>> GetAllByCityAsync(string city, string email)
         {
             return await _collection
                 .Find(e => 
                     e.City.ToLower() == city.ToLower() && 
-                    e.Status == EventStatusEnum.ABERTO)
+                    e.Status == EventStatusEnum.ABERTO &&
+                    e.EmailOwner != email)
                 .SortBy(e => 
                     e.StartDate)
                 .ToListAsync();

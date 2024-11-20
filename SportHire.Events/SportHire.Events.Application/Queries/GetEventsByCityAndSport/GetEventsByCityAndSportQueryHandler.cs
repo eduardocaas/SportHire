@@ -15,10 +15,10 @@ namespace SportHire.Events.Application.Queries.GetEventsByCityAndSport
 
         public async Task<List<EventPlayerViewModel>> Handle(GetEventsByCityAndSportQuery request, CancellationToken cancellationToken)
         {
-            var events = await _repository.GetAllByCityAndSportAsync(request.City, request.Sport);
+            var events = await _repository.GetAllByCityAndSportAsync(request.City, request.Sport, request.email);
 
             var eventsViewModel = events
-                .Select(e => new EventPlayerViewModel(e.Id, e.Sport, e.City, e.District, e.Address, e.StartDate, e.Duration, e.Cost))
+                .Select(e => new EventPlayerViewModel(e.Id, e.Sport, e.NameOwner, e.NamePlayer, e.City, e.District, e.Address, e.StartDate, e.Duration, e.Cost))
                 .ToList();
 
             return eventsViewModel;

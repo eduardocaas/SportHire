@@ -5,11 +5,13 @@ namespace SportHire.Events.Application.Queries.GetEventsByCity
 {
     public class GetEventsByCityQuery : IRequest<List<EventPlayerViewModel>>
     {
-        public GetEventsByCityQuery(string city)
+        public GetEventsByCityQuery(string city, string email)
         {
             this.city = city;
+            this.email = email;
         }
 
         public string city { get; private set; }
+        public string email { get; private set; }
     }
 }
