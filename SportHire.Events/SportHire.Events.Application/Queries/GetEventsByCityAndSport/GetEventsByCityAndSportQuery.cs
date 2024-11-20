@@ -4,7 +4,7 @@ using SportHire.Events.Core.Enums;
 
 namespace SportHire.Events.Application.Queries.GetEventsByCityAndSport
 {
-    public class GetEventsByCityAndSportQuery : IRequest<List<EventPlayerViewModel>>
+    public class GetEventsByCityAndSportQuery : IRequest<List<EventViewModel>>
     {
         public GetEventsByCityAndSportQuery(string city, EventSportEnum sport, string email)
         {

@@ -3,7 +3,7 @@ using SportHire.Events.Application.ViewModels.Events;
 
 namespace SportHire.Events.Application.Queries.GetEventsByOwner
 {
-    public class GetEventsByOwnerQuery : IRequest<List<EventDashViewModel>>
+    public class GetEventsByOwnerQuery : IRequest<List<EventViewModel>>
     {
         public GetEventsByOwnerQuery(string emailOwner)
         {

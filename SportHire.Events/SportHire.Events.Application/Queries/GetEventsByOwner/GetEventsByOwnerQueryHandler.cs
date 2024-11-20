@@ -19,7 +19,7 @@ namespace SportHire.Events.Application.Queries.GetEventsByOwner
 
             var eventsViewModel = events
                 .Select(e =>
-                    new EventDashViewModel(e.Id, e.Sport, e.City, e.District, e.Address, e.StartDate, e.Duration, e.Cost, e.NamePlayer, e.NameOwner))
+                    new EventViewModel(e.Id, e.Sport, e.NameOwner, e.NamePlayer, e.City, e.District, e.Address, e.StartDate, e.Duration, e.Cost))
                 .ToList();
 
             return eventsViewModel;

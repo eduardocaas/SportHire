@@ -3,7 +3,7 @@ using SportHire.Events.Application.ViewModels.Events;
 
 namespace SportHire.Events.Application.Queries.GetEventsByCity
 {
-    public class GetEventsByCityQuery : IRequest<List<EventPlayerViewModel>>
+    public class GetEventsByCityQuery : IRequest<List<EventViewModel>>
     {
         public GetEventsByCityQuery(string city, string email)
         {
