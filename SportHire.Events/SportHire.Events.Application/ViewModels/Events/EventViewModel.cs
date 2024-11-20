@@ -2,9 +2,9 @@
 
 namespace SportHire.Events.Application.ViewModels.Events
 {
-    public class EventPlayerViewModel
+    public class EventViewModel
     {
-        public EventPlayerViewModel(
+        public EventViewModel(
             string id, 
             EventSportEnum sport,
             string nameOwner,
