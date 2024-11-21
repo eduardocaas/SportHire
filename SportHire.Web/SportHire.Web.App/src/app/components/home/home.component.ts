@@ -12,11 +12,16 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
+    this.checkRoute();
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.showContainer = this.router.url === '/';
+        this.checkRoute();
       }
     });
   }
 
+  private checkRoute() {
+    this.showContainer = this.router.url === '/';
+  }
 }
