@@ -7,6 +7,7 @@ namespace SportHire.Events.Application.ViewModels.Events
         public EventViewModel(
             string id, 
             EventSportEnum sport,
+            EventStatusEnum status,
             string nameOwner,
             string namePlayer, 
             string city, 
@@ -18,6 +19,7 @@ namespace SportHire.Events.Application.ViewModels.Events
         {
             Id = id;
             Sport = sport;
+            Status = status;
             NameOwner = nameOwner;
             NamePlayer = namePlayer;
             City = city;
@@ -30,6 +32,7 @@ namespace SportHire.Events.Application.ViewModels.Events
 
         public string Id { get; private set; }
         public EventSportEnum Sport { get; private set; }
+        public EventStatusEnum Status { get; private set; }
         public string NameOwner { get; private set; }
         public string? NamePlayer { get; private set; }
         public string City { get; private set; }
