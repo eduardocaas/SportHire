@@ -28,8 +28,11 @@ export class AuthService {
     const decodedToken = this.decodeToken(authToken);
 
     if (decodedToken) {
-      localStorage.setItem('email', decodedToken.email);
-      localStorage.setItem('name', decodedToken.name);
+      const emailClaim = 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress';
+      const nameClaim = 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name';
+
+      localStorage.setItem('email', decodedToken[emailClaim]);
+      localStorage.setItem('name', decodedToken[nameClaim]);
     }
   }
 
