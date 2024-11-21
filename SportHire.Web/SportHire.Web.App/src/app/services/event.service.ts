@@ -6,7 +6,9 @@ import { Event } from '../models/event';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { EVENTS_CONFIG, JWT } from '../configs/api.config';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
+import { Status } from '../models/enums/status';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,29 @@ export class EventService implements IEventService {
     (sport != Sport.DEFAULT && sport != null) ? params.set('sport', sport) : params.set('sport', Sport.DEFAULT);
 
     return this.http.get<Event[]>(EVENTS_CONFIG.localUrl, { params, headers });
+  }
+
+  getByEmailOwner(opt: number): Observable<Event[]> {
+    const email = this.authService.getEmail();
+    const emailParam = email ? email : '';
+
+    const params = new HttpParams()
+      .set('emailOwner', emailParam);
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
+    /* return this.http.get<Event[]>(`${EVENTS_CONFIG.localUrl}/dash`, { params, headers }); */
+
+    return this.http.get<Event[]>(`${EVENTS_CONFIG.localUrl}/dash`, { params, headers }).pipe(
+      map(events => {
+        if (opt == 1) {
+          return events.filter(event => event.status == Status.ANDAMENTO || event.status == Status.ABERTO);
+        } else if (opt == 2) {
+          return events.filter(event => event.status == Status.CONCLUIDO || event.status == Status.CANCELADO);
+        } else {
+          return events;
+        }
+      })
+    );
   }
 
   getInProgressByEmailOwner(emailOwner: string): Observable<Event[]> {
@@ -60,6 +85,10 @@ export class MockEventService implements IEventService {
     return of(eventsFindPortoAlegreAberto.filter(e => {
       return e.city == city && e.sport == sport
     }));
+  }
+
+  getByEmailOwner(opt: number): Observable<Event[]> {
+    throw new Error('Method not implemented.');
   }
 
   getInProgressByEmailOwner(emailOwner: string): Observable<Event[]> {
