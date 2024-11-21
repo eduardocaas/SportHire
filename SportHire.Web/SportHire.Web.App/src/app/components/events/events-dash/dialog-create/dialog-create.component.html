@@ -121,11 +121,17 @@
             <textarea matInput [(ngModel)]="inputObservation"
               placeholder="Ex. Evento na quadra 3..."></textarea>
           </mat-form-field>
+          <button class="pay-button" (click)="markAsPaid()">
+            <span>{{ payStatus ? 'Pago' : 'Pagamento' }}</span>
+            <img [src]="payStatus ? '/assets/css/events/events-dash/check.svg' : '/assets/css/events/events-dash/payments.svg'" alt="Ícone de pagamento">
+          </button>
         </div>
         <div class="done-btns">
           <div>
           <button mat-stroked-button matStepperPrevious>Voltar</button>
-          <button mat-stroked-button color="primary" class="margin-left">Criar evento</button>
+          <button mat-stroked-button color="primary" class="margin-left" [disabled]="!payStatus || sportFormGroup.invalid || locationFormGroup.invalid || dateFormGroup.invalid">Criar evento</button>
+          <span class="warn-info" *ngIf="sportFormGroup.invalid || locationFormGroup.invalid || dateFormGroup.invalid">Preencha o restante!</span>
+          <span class="warn-info" *ngIf="sportFormGroup.valid && locationFormGroup.valid && dateFormGroup.valid && !payStatus">Realize o pagamento!</span>
         </div>
           <button mat-button (click)="stepper.reset()">Limpar</button>
         </div>

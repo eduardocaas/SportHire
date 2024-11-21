@@ -55,6 +55,36 @@ h3 {
   font-family: Inter, "Helvetica Neue", sans-serif !important;
 }
 
+.pay-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 140px;
+  height: 45px;
+  border: 1px solid #0bdc84;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.pay-button:active {
+  background-color: rgba(220, 220, 220, 0.8);
+}
+
+.pay-button span {
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.warn-info {
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
+  font-size: 12px;
+  margin-left: 10px;
+  color: red;
+}
+
 @media only screen and (min-resolution: 1.11dppx) {
   * {
     zoom: 1.04 !important;

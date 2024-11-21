@@ -59,6 +59,14 @@ export class DialogCreateComponent {
     { name: 'Campinas', uf: UF.SP }
   ];
 
+  payStatus = false;
+
+  markAsPaid() {
+    if (!this.payStatus) {
+      this.payStatus = true;
+    }
+  }
+
   selectedSport: number | null = null;
   selectedState: number | null = null;
   selectedCity: string = '';
