@@ -80,7 +80,7 @@ export class EventsDashComponent implements OnInit {
 
   // Carrega eventos na tela
   loadInProgressEvents() {
-    this.mockService.getInProgressByEmailOwner("owner1@example.com").subscribe(events => {
+    /* this.mockService.getInProgressByEmailOwner("owner1@example.com").subscribe(events => {
       this.inProgressEvents = events;
 
       // Filtragem de eventos, aplicando o filtro por status se necessário
@@ -98,6 +98,42 @@ export class EventsDashComponent implements OnInit {
       // Se a página atual for maior que o número total de páginas, ajuste para a última página
       if (this.inPcurrentPage >= totalPages) {
         this.inPcurrentPage = totalPages - 1;  // Ajusta para a última página válida
+      }
+
+      // Calcula o início da página baseado no índice atual
+      const startIndex = this.inPcurrentPage * this.inPitemsPerPage;
+
+      // Define os eventos que serão exibidos com base na página atual e itens por página
+      this.displayedInProgressEvents = inProgressFilter.slice(startIndex, startIndex + this.inPitemsPerPage);
+
+      // Atualiza o conteúdo dos cards
+      if (this.inProgressLength == 0) {
+        this.loadInProgressCardsContent(2);  // Exibe a tela de "sem eventos"
+      } else if (this.inProgressLength <= 3) {
+        this.loadInProgressCardsContent(3);  // Exibe os eventos com no máximo 3 itens
+      } else {
+        this.loadInProgressCardsContent(1);  // Exibe a tela com o paginador
+      }
+    });
+ */
+    this.service.getByEmailOwner(1).subscribe(events => {
+      this.inProgressEvents = events;
+
+      // Filtragem de eventos, aplicando o filtro por status se necessário
+      let inProgressFilter = this.inProgressEvents;
+      if (this.selectedStatus !== Status.DEFAULT && this.selectedStatus !== null) {
+        inProgressFilter = this.inProgressEvents.filter(event => event.status == this.selectedStatus);
+      }
+
+      // Atualiza o comprimento dos eventos filtrados
+      this.inProgressLength = inProgressFilter.length;
+
+      // Calcula o número total de páginas baseadas na quantidade de itens filtrados
+      const totalPages = Math.ceil(this.inProgressLength / this.inPitemsPerPage);
+
+      // Se a página atual for maior que o número total de páginas, ajuste para a última página
+      if (this.inPcurrentPage >= totalPages) {
+        this.inPcurrentPage = Math.max(0, totalPages - 1);  // Garante que a página seja válida
       }
 
       // Calcula o início da página baseado no índice atual
@@ -135,14 +171,14 @@ export class EventsDashComponent implements OnInit {
   }
 
   loadInProgressCardsContent(opt: number) {
-    let header = document.querySelector('#ts--headerInP') as HTMLElement;
+    let header = document.querySelector('#ts--headerInP_P') as HTMLElement;
     let paginator = document.querySelector('#ts--inPpaginator') as HTMLElement;
     let empty_content = document.querySelector('#ts--empty-inProgress') as HTMLElement;
 
     if (paginator !== null && header !== null && empty_content !== null) {
       // Carrega conteúdo
       if (opt == 1) {
-        header.style.display = 'flex';
+        header.style.display = 'block';
         paginator.style.display = 'flex';
         empty_content.style.display = 'none';
       }
@@ -156,7 +192,7 @@ export class EventsDashComponent implements OnInit {
       }
       // Carrega conteúdo - sem paginator
       if (opt == 3) {
-        header.style.display = 'flex';
+        header.style.display = 'block';
         paginator.style.display = 'none';
         empty_content.style.display = 'none';
       }
@@ -171,7 +207,12 @@ export class EventsDashComponent implements OnInit {
 
   // Carrega eventos na tela
   loadFinishedEvents() {
-    this.mockService.getFinishedByEmailOwner("owner1@example.com").subscribe(events => {
+    /* this.mockService.getFinishedByEmailOwner("owner1@example.com").subscribe(events => {
+      this.finishedEvents = events;
+    });
+ */
+
+    this.service.getByEmailOwner(2).subscribe(events => {
       this.finishedEvents = events;
     });
 
