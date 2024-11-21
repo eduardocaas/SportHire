@@ -6,18 +6,24 @@ import { Event } from '../models/event';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { EVENTS_CONFIG, JWT } from '../configs/api.config';
 import { Observable, of } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService implements IEventService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   getByCityAndSport(city: string, sport: Sport | null): Observable<Event[]> {
+
+    const email = this.authService.getEmail();
+    const emailParam = email ? email : '';
+
     const params = new HttpParams()
       .set('city', city)
-      .set('sport', sport && sport !== Sport.DEFAULT ? sport : Sport.DEFAULT);
+      .set('sport', sport && sport !== Sport.DEFAULT ? sport : Sport.DEFAULT)
+      .set('email', emailParam);
 
     // Apenas para desenvolvimento
     const headers = new HttpHeaders().set('Authorization', `Bearer ${JWT.token}`);
