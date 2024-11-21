@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Credentials } from '../models/credentials';
 import { IDENTITY_CONFIG } from '../configs/api.config';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,22 @@ export class AuthService {
 
   successfulLogin(authToken: string) {
     localStorage.setItem('token', authToken);
+
+    const decodedToken = this.decodeToken(authToken);
+
+    if (decodedToken) {
+      localStorage.setItem('email', decodedToken.email);
+      localStorage.setItem('name', decodedToken.name);
+    }
+  }
+
+  private decodeToken(token: string): any {
+    try {
+      return jwtDecode(token);
+    } catch (error) {
+      console.error('Erro ao decodificar o token', error);
+      return null;
+    }
   }
 
   isAuthenticated() {
@@ -34,5 +51,13 @@ export class AuthService {
 
   logout() {
     localStorage.clear();
+  }
+
+  getEmail(): string | null {
+    return localStorage.getItem('email');
+  }
+
+  getName(): string | null {
+    return localStorage.getItem('name');
   }
 }
