@@ -26,7 +26,7 @@ export class EventService implements IEventService {
       .set('email', emailParam);
 
     // Apenas para desenvolvimento
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${JWT.token}`);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
 
     (sport != Sport.DEFAULT && sport != null) ? params.set('sport', sport) : params.set('sport', Sport.DEFAULT);
 

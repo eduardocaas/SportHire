@@ -12,13 +12,15 @@ const routes: Routes = [
 
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', component: HomeComponent },
-  {
-    path: 'events', component: NavComponent, children: [
-      { path: 'find', component: EventsFindComponent },
-      { path: 'dash', component: EventsDashComponent }
-    ]
-  }
+  { path: '', component: HomeComponent, canActivate: [authGuard], children: [
+    {
+      path: 'events', component: NavComponent, children: [
+        { path: 'find', component: EventsFindComponent },
+        { path: 'dash', component: EventsDashComponent }
+      ]
+    }
+  ] },
+
 ];
 
 @NgModule({
