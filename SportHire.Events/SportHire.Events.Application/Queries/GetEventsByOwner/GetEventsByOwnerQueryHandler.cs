@@ -4,7 +4,7 @@ using SportHire.Events.Core.Repositories;
 
 namespace SportHire.Events.Application.Queries.GetEventsByOwner
 {
-    public class GetEventsByOwnerQueryHandler : IRequestHandler<GetEventsByOwnerQuery, List<EventDashViewModel>>
+    public class GetEventsByOwnerQueryHandler : IRequestHandler<GetEventsByOwnerQuery, List<EventViewModel>>
     {
         private readonly IEventRepository _repository;
 
@@ -13,7 +13,7 @@ namespace SportHire.Events.Application.Queries.GetEventsByOwner
             _repository = repository;
         }
 
-        public async Task<List<EventDashViewModel>> Handle(GetEventsByOwnerQuery request, CancellationToken cancellationToken)
+        public async Task<List<EventViewModel>> Handle(GetEventsByOwnerQuery request, CancellationToken cancellationToken)
         {
             var events = await _repository.GetAllByOwnerAsync(request.emailOwner);
 
