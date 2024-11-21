@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="showContainer">
   <div class="box box-left">
     <div class="content-box">
       <div class="content">
@@ -6,7 +6,7 @@
         <h3>Querendo jogar mas sem nenhuma equipe?</h3>
         <p>Clique no botão abaixo para encontrar uma!</p>
       </div>
-      <button>Jogar</button>
+      <button routerLink="/events/dash">Jogar</button>
       </div>
     </div>
   </div>
@@ -17,8 +17,10 @@
         <h3>A procura de um jogador para completar sua equipe?</h3>
         <p>Clique no botão abaixo para encontrá-lo!</p>
       </div>
-      <button routerLink="events/find">Buscar</button>
+      <button routerLink="/events/find">Buscar</button>
       </div>
     </div>
   </div>
 </div>
+
+<router-outlet></router-outlet>
