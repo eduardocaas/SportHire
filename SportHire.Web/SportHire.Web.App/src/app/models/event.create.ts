@@ -6,7 +6,7 @@ export class EventCreate {
   EmailOwner: string;
   NameOwner: string;
   Sport: Sport;
-  Uf: UF;
+  Uf?: UF;
   City: string;
   District: string;
   Address: string;
