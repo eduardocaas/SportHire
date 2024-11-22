@@ -7,4 +7,5 @@ export interface IEventService {
   getByEmailOwner(opt: number): Observable<Event[]>;
   getInProgressByEmailOwner(emailOwner: string): Observable<Event[]>;
   getFinishedByEmailOwner(emailOwner: string): Observable<Event[]>;
+  create(event: Event): Observable<void>;
 }

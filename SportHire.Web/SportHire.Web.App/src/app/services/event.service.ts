@@ -65,6 +65,17 @@ export class EventService implements IEventService {
   getFinishedByEmailOwner(emailOwner: string): Observable<Event[]> {
     throw new Error('Method not implemented.');
   }
+
+  create(event: Event): Observable<void> {
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
+
+    event.emailOwner = this.authService.getEmail() ?? '';
+    event.nameOwner = this.authService.getName() ?? '';
+
+    return this.http.post<void>(EVENTS_CONFIG.localUrl, event, { headers });
+  }
+
 }
 
 @Injectable({
@@ -101,6 +112,10 @@ export class MockEventService implements IEventService {
     return of(eventsDashUserCanceladoFinalizado.filter(e => {
       return e.emailOwner == emailOwner
     }));
+  }
+
+  create(event: Event): Observable<void> {
+    throw new Error('Method not implemented.');
   }
 }
 
