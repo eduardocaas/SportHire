@@ -8,7 +8,7 @@
           <h3 style="margin-left: 2px;">Selecione o esporte</h3>
           <mat-form-field>
             <mat-label><mat-icon>emoji_events</mat-icon> Esporte</mat-label>
-            <mat-select [(ngModel)]="selectedSport" formControlName="sportCtrl" required>
+            <mat-select [(ngModel)]="event.Sport" formControlName="sportCtrl" required>
               <mat-option *ngFor="let sport of sports" [value]="sport.opt">
                 {{ sport.name }}
               </mat-option>
@@ -31,7 +31,7 @@
             <h3 class="margin-h3">Preencha os dados relacionados à localização</h3>
           <mat-form-field>
             <mat-label><mat-icon>map</mat-icon> Estado</mat-label>
-            <mat-select [(ngModel)]="selectedState" formControlName="stateCtrl" required>
+            <mat-select [(ngModel)]="event.Uf" formControlName="stateCtrl" required>
               <mat-option *ngFor="let state of states" [value]="state.uf">
                 {{ state.name }}
               </mat-option>
@@ -40,9 +40,9 @@
 
           <mat-form-field class="margin-left">
             <mat-label><mat-icon>home_work</mat-icon> Cidade</mat-label>
-            <mat-select [(ngModel)]="selectedCity" formControlName="cityCtrl" required>
+            <mat-select [(ngModel)]="event.City" formControlName="cityCtrl" required>
               <ng-container *ngFor="let city of cities">
-                <mat-option *ngIf="selectedState && city.uf == selectedState" [value]="city.name">
+                <mat-option *ngIf="event.Uf && city.uf == event.Uf" [value]="city.name">
                   {{ city.name }}
                 </mat-option>
               </ng-container>
@@ -53,14 +53,14 @@
         <div>
           <mat-form-field>
             <mat-label>Bairro</mat-label>
-            <input [(ngModel)]="inputDistrict" matInput formControlName="districtCtrl"
+            <input [(ngModel)]="event.District" matInput formControlName="districtCtrl"
               placeholder="Ex. Centro Histórico" required>
           </mat-form-field>
 
 
           <mat-form-field class="margin-left">
             <mat-label>Endereço</mat-label>
-            <input [(ngModel)]="inputAddress" matInput formControlName="addressCtrl" placeholder="Ex. Rua ABC, 123"
+            <input [(ngModel)]="event.Address" matInput formControlName="addressCtrl" placeholder="Ex. Rua ABC, 123"
               required>
           </mat-form-field>
         </div>
@@ -96,7 +96,7 @@
           <div>
           <mat-form-field>
             <mat-label>Duração (minutos)</mat-label>
-            <input matInput [(ngModel)]="inputDuration" formControlName="durationCtrl" placeholder="min. 30, max. 180"
+            <input matInput [(ngModel)]="event.Duration" formControlName="durationCtrl" placeholder="min. 30, max. 180"
               required>
           </mat-form-field>
         </div>
@@ -118,7 +118,7 @@
           <h3 class="margin-h3">Preencha a observação (opcional)</h3>
           <mat-form-field class="full-width">
             <p>Observação</p>
-            <textarea matInput [(ngModel)]="inputObservation"
+            <textarea matInput [(ngModel)]="event.Observation"
               placeholder="Ex. Evento na quadra 3..."></textarea>
           </mat-form-field>
           <button class="pay-button" (click)="markAsPaid()">
@@ -129,7 +129,7 @@
         <div class="done-btns">
           <div>
           <button mat-stroked-button matStepperPrevious>Voltar</button>
-          <button mat-stroked-button color="primary" class="margin-left" [disabled]="!payStatus || sportFormGroup.invalid || locationFormGroup.invalid || dateFormGroup.invalid">Criar evento</button>
+          <button mat-stroked-button (click)="create()" color="primary" class="margin-left" [disabled]="!payStatus || sportFormGroup.invalid || locationFormGroup.invalid || dateFormGroup.invalid">Criar evento</button>
           <span class="warn-info" *ngIf="sportFormGroup.invalid || locationFormGroup.invalid || dateFormGroup.invalid">Preencha o restante!</span>
           <span class="warn-info" *ngIf="sportFormGroup.valid && locationFormGroup.valid && dateFormGroup.valid && !payStatus">Realize o pagamento!</span>
         </div>

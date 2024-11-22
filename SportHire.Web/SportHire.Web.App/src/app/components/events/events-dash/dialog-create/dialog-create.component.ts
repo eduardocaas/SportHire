@@ -5,6 +5,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { UF } from '../../../../models/enums/uf';
 import { MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 import { DateAdapter } from '@angular/material/core';
+import { EventCreate } from '../../../../models/event.create';
 
 @Component({
   selector: 'app-dialog-create',
@@ -67,15 +68,22 @@ export class DialogCreateComponent {
     }
   }
 
-  selectedSport: number | null = null;
-  selectedState: number | null = null;
-  selectedCity: string = '';
-  inputDistrict: string = '';
-  inputAddress: string = '';
+  event: EventCreate =
+  {
+    EmailOwner: '',
+    NameOwner: '',
+    Sport: Sport.DEFAULT,
+    Uf: undefined,
+    City: '',
+    District: '',
+    Address: '',
+    StartDate: new Date(),
+    Duration: 0,
+    Observation: ''
+  }
+
   inputDate: string = '';
   inputTime: string = '';
-  inputDuration: number | null = null;
-  inputObservation: string = '';
 
   sportFormGroup = this._formBuilder.group({
     sportCtrl: ['', Validators.required],
@@ -93,4 +101,22 @@ export class DialogCreateComponent {
     timeCtrl: ['', Validators.required],
     durationCtrl: ['', [Validators.required, Validators.min(30), Validators.max(180)]]
   });
+
+  dateBuilder() {
+    const date = new Date(this.inputDate);
+
+    const hour = parseInt(this.inputTime.substring(0, 2), 10);
+    const minute = parseInt(this.inputTime.substring(2, 4), 10);
+
+    date.setHours(hour);
+    date.setMinutes(minute);
+
+    return date;
+  }
+
+  create() {
+    this.event.StartDate = this.dateBuilder();
+
+
+  }
 }
