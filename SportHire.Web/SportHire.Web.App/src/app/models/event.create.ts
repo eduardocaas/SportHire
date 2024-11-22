@@ -12,6 +12,7 @@ export class EventCreate {
   Address: string;
   StartDate: Date;
   Duration: number;
+  Observation?: string;
 
   constructor(
     emailOwner: string,
@@ -22,7 +23,8 @@ export class EventCreate {
     district: string,
     address: string,
     startDate: Date,
-    duration: number
+    duration: number,
+    observation: string
   ) {
     this.EmailOwner = emailOwner;
     this.NameOwner = nameOwner;
@@ -32,6 +34,7 @@ export class EventCreate {
     this.District = district,
     this.Address = address,
     this.StartDate = startDate,
-    this.Duration = duration
+    this.Duration = duration,
+    this.Observation = observation
   }
 }
