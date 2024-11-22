@@ -15,7 +15,8 @@ namespace SportHire.Events.Application.ViewModels.Events
             string address, 
             DateTime startDate,
             int duration, 
-            int cost)
+            int cost,
+            string observation)
         {
             Id = id;
             Sport = sport;
@@ -28,6 +29,7 @@ namespace SportHire.Events.Application.ViewModels.Events
             StartDate = startDate;
             Duration = duration;
             Cost = cost;
+            Observation = observation; 
         }
 
         public string Id { get; private set; }
@@ -41,5 +43,6 @@ namespace SportHire.Events.Application.ViewModels.Events
         public DateTime StartDate { get; private set; }
         public int Duration { get; private set; }
         public int Cost { get; private set; }
+        public string? Observation { get; private set; }
     }
 }

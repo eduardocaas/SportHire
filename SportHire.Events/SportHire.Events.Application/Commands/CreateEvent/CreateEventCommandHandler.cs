@@ -15,7 +15,7 @@ namespace SportHire.Events.Application.Commands.CreateEvent
 
         public async Task<int> Handle(CreateEventCommand request, CancellationToken cancellationToken)
         {
-            var _event = new Event(request.EmailOwner, request.NameOwner, request.Sport, request.Uf, request.City, request.District, request.Address, request.StartDate, request.Duration);
+            var _event = new Event(request.EmailOwner, request.NameOwner, request.Sport, request.Uf, request.City, request.District, request.Address, request.StartDate, request.Duration, request.Observation);
             await _repository.AddAsync(_event);
             return 1; // TODO: Retornar string -> ver se funciona consulta direta -> return _event.Id
         }

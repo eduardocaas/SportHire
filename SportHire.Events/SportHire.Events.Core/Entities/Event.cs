@@ -6,7 +6,17 @@ namespace SportHire.Events.Core.Entities
 {
     public class Event
     {
-        public Event(string emailOwner, string nameOwner, EventSportEnum sport, UF uf, string city, string district, string address, DateTime startDate, int duration)
+        public Event(
+            string emailOwner, 
+            string nameOwner, 
+            EventSportEnum sport,
+            UF uf,
+            string city,
+            string district, 
+            string address,
+            DateTime startDate, 
+            int duration,
+            string observation)
         {
             NameOwner = nameOwner;
             EmailOwner = emailOwner;
@@ -19,6 +29,7 @@ namespace SportHire.Events.Core.Entities
             EndDate = startDate.AddMinutes(duration);
             Duration = duration;
             Cost = (int) (duration * 0.5);
+            Observation = observation;
         }
 
         [BsonId]
@@ -38,5 +49,6 @@ namespace SportHire.Events.Core.Entities
         public DateTime EndDate { get; set; }
         public EventStatusEnum Status { get; set; } = EventStatusEnum.ABERTO;
         public int Cost { get; set; }
+        public string? Observation { get; set; } = null;
     }
 }
