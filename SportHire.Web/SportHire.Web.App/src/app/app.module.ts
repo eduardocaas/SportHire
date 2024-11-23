@@ -39,11 +39,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMenuModule } from '@angular/material/menu';
 
 // Others
 import { ToastrModule } from 'ngx-toastr';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
+import { DialogLogoutComponent } from './components/nav/dialog-logout/dialog-logout.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-ma
     DialogCreateComponent,
     DialogInfoComponent,
     DialogEditComponent,
-    DialogDeleteComponent
+    DialogDeleteComponent,
+    DialogLogoutComponent
   ],
   imports: [
     // Angular
@@ -86,6 +89,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-ma
     MatNativeDateModule,
     MatCardModule,
     MatSlideToggleModule,
+    MatMenuModule,
 
     // Others
     NgxMaterialTimepickerModule,

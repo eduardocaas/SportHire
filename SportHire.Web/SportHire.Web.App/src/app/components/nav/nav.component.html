@@ -10,7 +10,17 @@
       <li><a href="">|</a></li>
       <li><a href="">Histórico</a></li>
     </ul>
-    <img (click)="logout()" class="pin" src="/assets/css/nav/person_pin.svg">
+    <img [matMenuTriggerFor]="menu" class="pin" src="/assets/css/nav/person_pin.svg">
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item disabled>
+        <mat-icon>manage_accounts</mat-icon>
+        <span>Conta</span>
+      </button>
+      <button (click)="openLogoutDialog()" mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Sair</span>
+      </button>
+    </mat-menu>
   </div>
 </nav>
 
