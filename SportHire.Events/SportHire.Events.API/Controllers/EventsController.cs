@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SportHire.Events.Application.Commands.CreateEvent;
+using SportHire.Events.Application.Commands.UpdateEvent;
 using SportHire.Events.Application.Queries.GetEventsByCity;
 using SportHire.Events.Application.Queries.GetEventsByCityAndSport;
 using SportHire.Events.Application.Queries.GetEventsByOwner;
@@ -59,6 +60,14 @@ namespace SportHire.Events.API.Controllers
 
             return Ok();
             // TODO: Criar GetById -> return At Action
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(
+            [FromRoute] string id, 
+            [FromBody] UpdateEventCommand command)
+        {
+            throw new NotImplementedException();
         }
     }
 }
