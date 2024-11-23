@@ -52,5 +52,17 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
                     e.StartDate)
                 .ToListAsync();
         }
+
+        public async Task<bool> UpdateAsync(string id, Event _event)
+        {
+            var filter = Builders<Event>
+                .Filter
+                .Eq(e => e.Id, _event.Id);
+
+            var options = new ReplaceOptions { IsUpsert = true };
+            var result = await _collection.ReplaceOneAsync(filter, _event, options);
+
+            return result.ModifiedCount > 0;
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace SportHire.Events.Core.Repositories
         Task<List<Event>> GetAllByCityAndSportAsync(string city, EventSportEnum sport, string email);
         Task<List<Event>> GetAllByCityAsync(string city, string email);
         Task<List<Event>> GetAllByOwnerAsync(string ownerEmail);
+        Task<bool> UpdateAsync(string id, Event _event);
     }
 }
