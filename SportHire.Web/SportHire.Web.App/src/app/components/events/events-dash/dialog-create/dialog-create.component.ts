@@ -6,6 +6,10 @@ import { UF } from '../../../../models/enums/uf';
 import { MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 import { DateAdapter } from '@angular/material/core';
 import { EventCreate } from '../../../../models/event.create';
+import { EventService } from '../../../../services/event.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-dialog-create',
@@ -38,7 +42,13 @@ import { EventCreate } from '../../../../models/event.create';
 })
 export class DialogCreateComponent {
 
-  constructor(private _formBuilder: FormBuilder, private _dateAdapter: DateAdapter<Date>) {
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _dateAdapter: DateAdapter<Date>,
+    private _service: EventService,
+    private _toast: ToastrService,
+    private _router: Router)
+  {
     this._dateAdapter.setLocale('pt-br');
   }
 
@@ -117,6 +127,19 @@ export class DialogCreateComponent {
   create() {
     this.event.StartDate = this.dateBuilder();
 
+    this._service.create(this.event).subscribe(response => {
+      this._toast.success('Evento cadastrado com sucesso!', 'Evento', { positionClass: 'toast-bottom-center' });
+      timer(2000).subscribe(x => { window.location.reload(); })
 
+    }, err => {
+      if (err.error.errors) {
+        err.error.errors.forEach((e: { message: string | undefined; }) => {
+          this._toast.error(e.message, 'Erro ao evento', { positionClass: 'toast-bottom-center' });
+        });
+      }
+      else {
+        this._toast.error(err.error.message, 'Erro ao criar', { positionClass: 'toast-bottom-center' });
+      }
+    })
   }
 }

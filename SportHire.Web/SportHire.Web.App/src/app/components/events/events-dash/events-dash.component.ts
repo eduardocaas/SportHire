@@ -214,22 +214,23 @@ export class EventsDashComponent implements OnInit {
 
     this.service.getByEmailOwner(2).subscribe(events => {
       this.finishedEvents = events;
-    });
+    ;
 
-    if (this.finishedEvents.length == 0) {
-      this.loadFinishedEventsCardsContent(2);
-    }
-    if (this.finishedEvents.length > 0 && this.finishedEvents.length <= 3) {
-      this.loadFinishedEventsCardsContent(3)
-    }
-    if (this.finishedEvents.length > 3) {
-      this.loadFinishedEventsCardsContent(1);
-    }
+      if (this.finishedEvents.length == 0) {
+        this.loadFinishedEventsCardsContent(2);
+      }
+      if (this.finishedEvents.length > 0 && this.finishedEvents.length <= 3) {
+        this.loadFinishedEventsCardsContent(3)
+      }
+      if (this.finishedEvents.length > 3) {
+        this.loadFinishedEventsCardsContent(1);
+      }
 
-    // Paginator
-    const startIndex = this.finCurrentPage * this.finItemsPerPage;
-    // Cards
-    this.displayedFinishedEvents = this.finishedEvents.slice(startIndex, startIndex + this.finItemsPerPage);
+      // Paginator
+      const startIndex = this.finCurrentPage * this.finItemsPerPage;
+      // Cards
+      this.displayedFinishedEvents = this.finishedEvents.slice(startIndex, startIndex + this.finItemsPerPage);
+    })
   }
 
   // Paginator
