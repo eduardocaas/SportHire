@@ -19,7 +19,8 @@ const routes: Routes = [
         path: 'events', component: NavComponent, children:
         [
           { path: 'find', component: EventsFindComponent },
-          { path: 'dash', component: EventsDashComponent }
+          { path: 'dash', component: EventsDashComponent },
+          { path: '', redirectTo: 'dash', pathMatch: 'full' }
         ]
       }
     ]
