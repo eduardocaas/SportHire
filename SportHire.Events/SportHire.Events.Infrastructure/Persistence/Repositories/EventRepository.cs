@@ -57,10 +57,17 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
         {
             var filter = Builders<Event>
                 .Filter
-                .Eq(e => e.Id, _event.Id);
+                .Eq(e => e.Id, id);
 
-            var options = new ReplaceOptions { IsUpsert = true };
-            var result = await _collection.ReplaceOneAsync(filter, _event, options);
+            var update = Builders<Event>.Update
+                .Set(e => e.District, _event.District)
+                .Set(e => e.Address, _event.Address)
+                .Set(e => e.StartDate, _event.StartDate)
+                .Set(e => e.Duration, _event.Duration)
+                .Set(e => e.Observation, _event.Observation);
+
+            var options = new UpdateOptions { IsUpsert = false };
+            var result = await _collection.UpdateOneAsync(filter, update, options);
 
             return result.ModifiedCount > 0;
         }
