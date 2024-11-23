@@ -38,7 +38,6 @@ export class EventsDashComponent implements OnInit {
   ) { this.selectedOption = 1 }
 
   ngOnInit() {
-    this.loadNextEvent();
     this.loadInProgressEvents();
     this.loadFinishedEvents();
   }
@@ -59,13 +58,19 @@ export class EventsDashComponent implements OnInit {
   inProgressEvent: Event | null = null;
 
   loadNextEvent() {
-    this.mockService.getInProgressByEmailOwner("owner1@example.com").subscribe(events => {
+    // Mock
+    /* this.mockService.getInProgressByEmailOwner("owner1@example.com").subscribe(events => {
       if (events && events.length > 0) {
         this.inProgressEvent = events[0];
       } else {
         this.inProgressEvent = null;
       }
-    });
+    }); */
+    if (this.inProgressEvents.length > 0) {
+      this.inProgressEvent = this.inProgressEvents[0];
+    } else {
+      this.inProgressEvent = null;
+    }
   }
 
   /* --- CARDS EVENTOS --- */
@@ -150,6 +155,8 @@ export class EventsDashComponent implements OnInit {
       } else {
         this.loadInProgressCardsContent(1);  // Exibe a tela com o paginador
       }
+
+      this.loadNextEvent();
     });
   }
 
