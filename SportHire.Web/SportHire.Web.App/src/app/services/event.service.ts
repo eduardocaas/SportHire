@@ -9,6 +9,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { Status } from '../models/enums/status';
+import { EventCreate } from '../models/event.create';
 
 @Injectable({
   providedIn: 'root'
@@ -66,12 +67,12 @@ export class EventService implements IEventService {
     throw new Error('Method not implemented.');
   }
 
-  create(event: Event): Observable<void> {
+  create(event: EventCreate): Observable<void> {
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
 
-    event.emailOwner = this.authService.getEmail() ?? '';
-    event.nameOwner = this.authService.getName() ?? '';
+    event.EmailOwner = this.authService.getEmail() ?? '';
+    event.NameOwner = this.authService.getName() ?? '';
 
     return this.http.post<void>(EVENTS_CONFIG.localUrl, event, { headers });
   }
@@ -114,7 +115,7 @@ export class MockEventService implements IEventService {
     }));
   }
 
-  create(event: Event): Observable<void> {
+  create(event: EventCreate): Observable<void> {
     throw new Error('Method not implemented.');
   }
 }
