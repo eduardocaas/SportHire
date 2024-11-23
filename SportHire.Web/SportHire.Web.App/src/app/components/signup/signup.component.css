@@ -113,3 +113,10 @@
 .btn:active {
   background-color: #0b266e;
 }
+
+::ng-deep .mat-mdc-form-field:not(.mat-form-field-disabled) .mat-mdc-floating-label.mdc-floating-label {
+  top: 52%;
+}
+::ng-deep .mdc-floating-label--float-above{
+  top: 50% !important;
+}
