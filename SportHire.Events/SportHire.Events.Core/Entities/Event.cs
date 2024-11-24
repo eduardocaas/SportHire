@@ -32,6 +32,22 @@ namespace SportHire.Events.Core.Entities
             Observation = observation;
         }
 
+        public Event(
+            string? id,
+            string district, 
+            string address, 
+            DateTime startDate, 
+            int duration, 
+            string? observation)
+        {
+            Id = id;
+            District = district;
+            Address = address;
+            StartDate = startDate;
+            Duration = duration;
+            Observation = observation;
+        }
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
