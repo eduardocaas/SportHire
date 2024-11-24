@@ -1,25 +1,24 @@
-<form>
+<form [formGroup]="eventForm">
   <h3>Atualizar</h3>
-  <div>
+
   <mat-form-field class="full-width">
     <mat-label>ID do evento</mat-label>
-    <input matInput disabled value="{{data.id}}">
+    <input matInput disabled [value]="eventForm.get('id')?.value">
   </mat-form-field>
 
-</div>
   <div>
     <mat-form-field>
       <mat-label>Bairro</mat-label>
-      <input type="text" matInput [ngModel]="data.district" [formControl]="districtFormControl" placeholder="Ex. Centro Histórico">
-      <mat-error *ngIf="districtFormControl.hasError('required')">
+      <input type="text" matInput formControlName="district" placeholder="Ex. Centro Histórico">
+      <mat-error *ngIf="eventForm.get('district')?.hasError('required')">
         Insira um <span class="fw-600">bairro</span>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="margin-left">
       <mat-label>Endereço</mat-label>
-      <input type="email" matInput [ngModel]="data.address" [formControl]="addressFormControl" placeholder="Ex. Rua ABC, 123">
-      <mat-error *ngIf="addressFormControl.hasError('required')">
+      <input type="email" matInput formControlName="address" placeholder="Ex. Rua ABC, 123">
+      <mat-error *ngIf="eventForm.get('address')?.hasError('required')">
         Insira um <span class="fw-600">endereço</span>
       </mat-error>
     </mat-form-field>
@@ -28,33 +27,29 @@
   <div>
     <mat-form-field class="full-width">
       <p>Observação</p>
-      <textarea matInput [(ngModel)]="data.observation" placeholder="Evento na quadra 1, etc...">{{ data.observation }}</textarea>
+      <textarea matInput formControlName="observation" placeholder="Evento na quadra 1, etc..."></textarea>
     </mat-form-field>
   </div>
 
   <div>
     <mat-form-field>
       <mat-label>Duração (minutos)</mat-label>
-      <input matInput [(ngModel)]="data.duration" [formControl]="durationFormControl" placeholder="min. 30, max. 180"
-        required>
-      <mat-error *ngIf="durationFormControl.hasError('required')">
+      <input matInput formControlName="duration" placeholder="min. 30, max. 180" required>
+      <mat-error *ngIf="eventForm.get('duration')?.hasError('required')">
         Insira uma <span class="fw-600">duração</span>
       </mat-error>
-      <mat-error
-        *ngIf="durationFormControl.hasError('min') && !durationFormControl.hasError('required') && !durationFormControl.hasError('max')">
-        Insira uma <span class="fw-600">duração </span>maior que 30 minutos
+      <mat-error *ngIf="eventForm.get('duration')?.hasError('min')">
+        Insira uma <span class="fw-600">duração</span> maior que 30 minutos
       </mat-error>
-      <mat-error
-        *ngIf="durationFormControl.hasError('max') && !durationFormControl.hasError('required') && !durationFormControl.hasError('min')">
-        Insira uma <span class="fw-600">duração </span>menor que 180 minutos
+      <mat-error *ngIf="eventForm.get('duration')?.hasError('max')">
+        Insira uma <span class="fw-600">duração</span> menor que 180 minutos
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="margin-left">
       <mat-label>Horário</mat-label>
-      <input matInput mask="Hh:m0" [showMaskTyped]="true" [(ngModel)]="formattedTime" [formControl]="timeFormControl"
-        placeholder="Ex. 18:30" required>
-      <mat-error *ngIf="timeFormControl.hasError('required')">
+      <input matInput mask="Hh:m0" [showMaskTyped]="true" formControlName="time" placeholder="Ex. 18:30" required>
+      <mat-error *ngIf="eventForm.get('time')?.hasError('required')">
         Insira um <span class="fw-600">horário</span>
       </mat-error>
     </mat-form-field>
@@ -63,15 +58,16 @@
   <div>
     <mat-form-field class="full-width">
       <mat-label>Escolha a data</mat-label>
-      <input matInput [(ngModel)]="data.startDate" [matDatepicker]="picker" [formControl]="dateFormControl" required>
+      <input matInput formControlName="date" [matDatepicker]="picker" required>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="dateFormControl.hasError('required')">
+      <mat-error *ngIf="eventForm.get('date')?.hasError('required')">
         Insira uma <span class="fw-600">data</span>
       </mat-error>
     </mat-form-field>
   </div>
+
   <div>
-    <button mat-flat-button color="primary">Salvar</button>
+    <button (click)="update()" mat-flat-button color="primary">Salvar</button>
   </div>
 </form>
