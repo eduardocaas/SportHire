@@ -30,11 +30,11 @@ export class EventCreate {
     this.NameOwner = nameOwner;
     this.Sport = sport;
     this.Uf = uf;
-    this.City = city,
-    this.District = district,
-    this.Address = address,
-    this.StartDate = startDate,
-    this.Duration = duration,
-    this.Observation = observation
+    this.City = city;
+    this.District = district;
+    this.Address = address;
+    this.StartDate = startDate;
+    this.Duration = duration;
+    this.Observation = observation;
   }
 }
