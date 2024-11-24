@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { Status } from '../models/enums/status';
 import { EventCreate } from '../models/event.create';
+import { EventUpdate } from '../models/event.update';
 
 @Injectable({
   providedIn: 'root'
@@ -77,6 +78,9 @@ export class EventService implements IEventService {
     return this.http.post<void>(EVENTS_CONFIG.localUrl, event, { headers });
   }
 
+  update(event: EventUpdate): Observable<void> {
+    throw new Error('Method not implemented.');
+  }
 }
 
 @Injectable({
@@ -116,6 +120,10 @@ export class MockEventService implements IEventService {
   }
 
   create(event: EventCreate): Observable<void> {
+    throw new Error('Method not implemented.');
+  }
+
+  update(event: EventUpdate): Observable<void> {
     throw new Error('Method not implemented.');
   }
 }

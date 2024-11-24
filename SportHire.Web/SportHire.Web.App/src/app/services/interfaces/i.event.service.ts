@@ -2,6 +2,7 @@ import { Observable } from "rxjs";
 import { Sport } from "../../models/enums/sport";
 import { Event } from "../../models/event";
 import { EventCreate } from "../../models/event.create";
+import { EventUpdate } from "../../models/event.update";
 
 export interface IEventService {
   getByCityAndSport(city: string, sport: Sport | null): Observable<Event[]>;
@@ -9,4 +10,5 @@ export interface IEventService {
   getInProgressByEmailOwner(emailOwner: string): Observable<Event[]>;
   getFinishedByEmailOwner(emailOwner: string): Observable<Event[]>;
   create(event: EventCreate): Observable<void>;
+  update(event: EventUpdate): Observable<void>;
 }
