@@ -56,6 +56,25 @@
   padding-right: 5px !important;
 }
 
+.create-null {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.create-null > div > img {
+  width: 46px;
+}
+
+.create-null > p {
+  margin-top: 16px;
+  text-align: center;
+  color: #d9d9d9;
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .create-box {
   width: 100%;
   height: 79%;

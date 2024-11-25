@@ -9,6 +9,14 @@
         </mat-radio-group>
       </div>
       <div class="create-box">
+        <div class="create-null" *ngIf="this.inProgressEvent == null">
+          <div>
+            <img src="/assets/css/events/events-dash/sports_soccer.svg" alt="Ícone de bola de futebol">
+            <img src="/assets/css/events/events-dash/sports_volleyball.svg" alt="Ícone de bola de vôlei">
+            <img src="/assets/css/events/events-dash/sports_basketball.svg" alt="Ícone de bola de basquete">
+          </div>
+          <p>Clique no botão abaixo<br>para criar um evento</p>
+        </div>
         <button (click)="openCreateDialog()" *ngIf="selectedOption == 1">
           <img src="/assets/css/events/events-dash/add_task.svg">
           <span>Criar evento</span>

@@ -123,6 +123,7 @@ export class EventsDashComponent implements OnInit {
  */
     this.service.getByEmailOwner(1).subscribe(events => {
       this.inProgressEvents = events;
+      this.loadNextEvent();
 
       // Filtragem de eventos, aplicando o filtro por status se necessário
       let inProgressFilter = this.inProgressEvents;
@@ -155,8 +156,6 @@ export class EventsDashComponent implements OnInit {
       } else {
         this.loadInProgressCardsContent(1);  // Exibe a tela com o paginador
       }
-
-      this.loadNextEvent();
     });
   }
 
