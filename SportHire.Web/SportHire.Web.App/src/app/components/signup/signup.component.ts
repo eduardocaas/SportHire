@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { UserSignup } from '../../models/signup';
 import { SignupService } from '../../services/signup.service';
 import { Router } from '@angular/router';
-
+import { HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { timer } from 'rxjs';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -14,29 +16,60 @@ export class SignupComponent {
   hide = true;
   nameControl = new FormControl('', [Validators.required]);
   emailControl = new FormControl('', [Validators.required, Validators.email]);
-  passwordControl = new FormControl('', [Validators.required]);
+  passwordControl = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*., ?]).+$') ]);
 
   user: UserSignup = {
-    name: '',
+    fullname: '',
     email: '',
     password: ''
   }
 
-  constructor(private readonly service: SignupService, private readonly router: Router) { }
+  constructor(
+    private readonly _service: SignupService,
+    private readonly _router: Router,
+    private readonly _toast: ToastrService) { }
 
   signup() {
     if (this.nameControl.valid && this.emailControl.valid && this.passwordControl.valid) {
-      this.service
+      console.log(this.user);
+
+      this._service
       .signup(this.user)
       .subscribe({
         next: (response) => {
-          this.router.navigate(['events/login']);
+          this._toast.success('Usuário registrado com sucesso', 'Cadastro', { timeOut: 1000 });
+          timer(1000).subscribe(x => { this._router.navigate(['login']); })
         },
-        error: (err) => {
-          console.log(err);
+        error: (err: HttpErrorResponse) => {
+          if (err.status === 409) {
+            this._toast.error('Email já cadastrado no sistema', 'Cadastro');
+          } else {
+            this._toast.error('Erro no servidor', 'Erro');
+          }
+          console.error('Error status:', err.status, 'Message:', err.message);
         }
-      }); // TODO: Toast (else) para campos inválidos.
+      });
     }
+    else {
+      this._toast.error('Campos inválidos', 'Cadastro');
+    }
+  }
+
+  passwordCaseValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      // Mínimo uma letra minúscula
+      const hasLowerCase = /[a-z]/.test(value);
+      // Mínimo uma letra maiúscula
+      const hasUpperCase = /[A-Z]/.test(value);
+
+      if (!hasLowerCase || !hasUpperCase) {
+        return { 'passwordStrength': true }; // Retorna o erro
+      }
+
+      return null; // Senha válida
+    };
   }
 
   // TODO: Adicionar Regex para caracteres especiais e maxLength
@@ -53,7 +86,20 @@ export class SignupComponent {
   }
 
   getErrorMessagePwd() {
-    return this.passwordControl.hasError('required') ? 'Insira uma senha' : '';
+    console.log('passwordControl.errors:', this.passwordControl.errors);
+    if (this.passwordControl.hasError('required')) {
+      return 'Insira uma senha';
+    }
+    if (this.passwordControl.hasError('minlength')) {
+      return 'A senha deve conter no mínimo 8 caracteres';
+    }
+    if (this.passwordControl.hasError('maxlength')) {
+      return 'A senha deve conter no máximo 20 caracteres';
+    }
+    if (this.passwordControl.hasError('pattern')) {
+      return 'Requisitos: letra minúscula, maiúscula, número e caractere especial';
+    }
+    return '';
   }
 
 }

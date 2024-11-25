@@ -42,9 +42,9 @@
 
 .welcome-box span {
   font-size: 24px;
-  font-weight: 200;
-  word-spacing: 1px;
-  line-height: 25px;
+  font-weight: 300;
+  word-spacing: -1px;
+  line-height: 28px;
   text-align: center;
 }
 

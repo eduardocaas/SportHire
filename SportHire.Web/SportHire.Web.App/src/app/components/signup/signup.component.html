@@ -14,7 +14,7 @@
       <p>
         <mat-form-field class="field" appearance="outline">
           <mat-label class="label">Nome</mat-label>
-          <input [(ngModel)]="user.name" matInput [formControl]="nameControl" required>
+          <input [(ngModel)]="user.fullname" matInput [formControl]="nameControl" required>
           <mat-icon class="icon" matSuffix>person</mat-icon>
           <mat-error *ngIf="nameControl.invalid">{{getErrorMessageName()}}</mat-error>
         </mat-form-field>
@@ -28,12 +28,23 @@
         </mat-form-field>
       </p>
       <p>
-        <mat-form-field class="field field-pwd" appearance="outline">
+        <mat-form-field matTooltip="Requisitos: 8 caracteres, letra maiúscula, minúscula, um número e um caractere especial"
+                        [matTooltipPosition]="'above'"
+                        class="field field-pwd"
+                        appearance="outline">
           <mat-label class="label">Senha</mat-label>
-          <input [(ngModel)]="user.password" matInput [type]="hide ? 'password' : 'text'"
-            [formControl]="passwordControl" required>
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon class="icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <input [(ngModel)]="user.password"
+                  matInput
+                  [type]="hide ? 'password' : 'text'"
+                  [formControl]="passwordControl" required>
+            <button mat-icon-button
+                    matSuffix
+                    (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+              <mat-icon class="icon">
+                {{hide ? 'visibility_off' : 'visibility'}}
+              </mat-icon>
             </button>
           <mat-error *ngIf="passwordControl.invalid">{{getErrorMessagePwd()}}</mat-error>
         </mat-form-field>
