@@ -20,6 +20,7 @@ import { DialogInfoComponent } from './components/events/events-dash/dialog-info
 import { DialogEditComponent } from './components/events/events-dash/dialog-edit/dialog-edit.component';
 import { DialogDeleteComponent } from './components/events/events-dash/dialog-delete/dialog-delete.component';
 import { DialogLogoutComponent } from './components/nav/dialog-logout/dialog-logout.component';
+import { DialogHireComponent } from './components/events/events-find/dialog-hire/dialog-hire.component';
 
 // Forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -61,7 +62,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-ma
     DialogInfoComponent,
     DialogEditComponent,
     DialogDeleteComponent,
-    DialogLogoutComponent
+    DialogLogoutComponent,
+    DialogHireComponent
   ],
   imports: [
     // Angular
