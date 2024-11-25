@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SportHire.Events.Application.Commands.CancelEvent;
 using SportHire.Events.Application.Commands.CreateEvent;
 using SportHire.Events.Application.Commands.UpdateEvent;
 using SportHire.Events.Application.Queries.GetEventsByCity;
@@ -69,6 +70,16 @@ namespace SportHire.Events.API.Controllers
         {
             command.IdRoute = id;
             var result = await _mediator.Send(command);
+            return result ? Ok() : NotFound("Evento não encontrado!");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Cancel(
+            [FromRoute] string id)
+        {
+            CancelEventCommand command = new CancelEventCommand(id);
+            var result = await _mediator.Send(command);
+
             return result ? Ok() : NotFound("Evento não encontrado!");
         }
     }
