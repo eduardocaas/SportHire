@@ -19,6 +19,7 @@ import { DialogCreateComponent } from './components/events/events-dash/dialog-cr
 import { DialogInfoComponent } from './components/events/events-dash/dialog-info/dialog-info.component';
 import { DialogEditComponent } from './components/events/events-dash/dialog-edit/dialog-edit.component';
 import { DialogDeleteComponent } from './components/events/events-dash/dialog-delete/dialog-delete.component';
+import { DialogLogoutComponent } from './components/nav/dialog-logout/dialog-logout.component';
 
 // Forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,12 +41,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 // Others
 import { ToastrModule } from 'ngx-toastr';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
-import { DialogLogoutComponent } from './components/nav/dialog-logout/dialog-logout.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { DialogLogoutComponent } from './components/nav/dialog-logout/dialog-log
     MatCardModule,
     MatSlideToggleModule,
     MatMenuModule,
+    MatTooltipModule,
 
     // Others
     NgxMaterialTimepickerModule,
