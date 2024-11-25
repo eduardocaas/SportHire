@@ -10,7 +10,8 @@
     <p class="subtitle-card">Local</p>
     <p class="data-card">{{ data.district }} - {{ data.address }}</p>
   </div>
-  <p class="cost-info">O custo do evento será retornado<br>para sua carteira</p>
+  <p *ngIf="data.status != 2" class="cost-info">O custo do evento será retornado<br>para sua carteira</p>
+  <p *ngIf="data.status == 2" class="cost-info">O custo do evento será retornado<br>para sua carteira e o jogador<br>será notificado</p>
   <p class="title-button">Deseja cancelar o evento?</p>
 
   <mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle>
