@@ -26,10 +26,16 @@
   margin-bottom: 10px !important;
 }
 
+.cost-info {
+  margin-top: 20px;
+  color: #333;
+  font-style: italic;
+}
+
 .title-button {
   font-size: 14px;
   font-weight: 600;
-  margin-top: 35px !important;
+  margin-top: 25px !important;
 }
 
 button {

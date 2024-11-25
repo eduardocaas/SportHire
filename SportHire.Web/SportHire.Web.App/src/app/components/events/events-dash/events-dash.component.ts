@@ -220,7 +220,7 @@ export class EventsDashComponent implements OnInit {
  */
 
     this.service.getByEmailOwner(2).subscribe(events => {
-      this.finishedEvents = events;
+      this.finishedEvents = events.reverse();
     ;
 
       if (this.finishedEvents.length == 0) {
