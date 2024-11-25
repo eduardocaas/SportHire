@@ -11,7 +11,7 @@ export class SignupService {
   constructor(private http: HttpClient) { }
 
   signup(user: UserSignup) {
-    return this.http.post(`${IDENTITY_CONFIG.localUrl}/identity/users/signup`, user, {
+    return this.http.post(`${IDENTITY_CONFIG.localUrl}/identity/users`, user, {
       observe: 'response',
       responseType: 'text'
     });
