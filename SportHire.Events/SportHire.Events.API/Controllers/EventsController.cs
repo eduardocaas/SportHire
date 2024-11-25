@@ -69,7 +69,7 @@ namespace SportHire.Events.API.Controllers
         {
             command.IdRoute = id;
             var result = await _mediator.Send(command);
-            return result ? Ok("Evento atualizado com sucesso!") : NotFound("Evento não encontrado!");
+            return result ? Ok() : NotFound("Evento não encontrado!");
         }
     }
 }
