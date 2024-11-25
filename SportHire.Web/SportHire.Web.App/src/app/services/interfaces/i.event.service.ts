@@ -11,4 +11,5 @@ export interface IEventService {
   getFinishedByEmailOwner(emailOwner: string): Observable<Event[]>;
   create(event: EventCreate): Observable<void>;
   update(id: string, event: EventUpdate): Observable<void>;
+  cancel(id: string): Observable<void>;
 }

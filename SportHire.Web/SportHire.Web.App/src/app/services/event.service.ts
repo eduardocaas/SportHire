@@ -82,6 +82,12 @@ export class EventService implements IEventService {
 
     return this.http.put<void>(`${EVENTS_CONFIG.localUrl}/${id}`, event, { headers });
   }
+
+  cancel(id: string): Observable<void> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
+
+    return this.http.delete<void>(`${EVENTS_CONFIG.localUrl}/${id}`, { headers });
+  }
 }
 
 @Injectable({
@@ -125,6 +131,10 @@ export class MockEventService implements IEventService {
   }
 
   update(id: string, event: EventUpdate): Observable<void> {
+    throw new Error('Method not implemented.');
+  }
+
+  cancel(id: string): Observable<void> {
     throw new Error('Method not implemented.');
   }
 }
