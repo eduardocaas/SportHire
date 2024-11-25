@@ -129,7 +129,7 @@ export class DialogCreateComponent {
 
     this._service.create(this.event).subscribe(response => {
       this._toast.success('Evento cadastrado com sucesso!', 'Evento', { positionClass: 'toast-bottom-center' });
-      timer(2000).subscribe(x => { window.location.reload(); })
+      timer(1000).subscribe(x => { window.location.reload(); })
 
     }, err => {
       if (err.error.errors) {

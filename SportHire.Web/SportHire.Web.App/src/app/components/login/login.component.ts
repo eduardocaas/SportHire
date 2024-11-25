@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Credentials } from '../../models/credentials';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { timer } from 'rxjs';
 
 export interface AuthResponse {
   email: string;
@@ -27,19 +28,25 @@ export class LoginComponent {
     password: ''
   }
 
-  constructor(private service: AuthService, private router: Router, private toast: ToastrService) { }
+  constructor(
+    private _service: AuthService,
+    private _router: Router,
+    private _toast: ToastrService) { }
 
   login() {
     if (this.emailControl.valid && this.passwordControl.valid) {
-      this.service
+      this._service
       .authenticate(this.creds)
       .subscribe({
         next: (response: HttpResponse<AuthResponse>) => {
           const token = response.body?.token;
 
           if (token) {
-            this.service.successfulLogin(token);
-            this.router.navigate(['']);
+
+
+            this._service.successfulLogin(token);
+            this._toast.success('Login realizado, redirecionando', 'Login', { timeOut: 1500, positionClass: 'toast-top-left' });
+            timer(1700).subscribe(x => { this._router.navigate(['']); })
           } else {
             console.error('Authorization header not found');
           }
@@ -47,9 +54,9 @@ export class LoginComponent {
         error: (err: HttpErrorResponse) => {
           // Exibe um toast de erro caso o status seja 400 ou outro
           if (err.status === 400) {
-            this.toast.error('Email ou senha incorretos', 'Autenticação', { positionClass: 'toast-bottom-center' });
+            this._toast.error('Email ou senha incorretos', 'Autenticação', { positionClass: 'toast-bottom-center' });
           } else {
-            this.toast.error('Erro no servidor', 'Erro', { positionClass: 'toast-bottom-center' });
+            this._toast.error('Erro no servidor', 'Erro', { positionClass: 'toast-bottom-center' });
           }
           console.error('Error status:', err.status, 'Message:', err.message);
         }
