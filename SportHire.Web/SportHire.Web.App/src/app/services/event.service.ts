@@ -69,7 +69,6 @@ export class EventService implements IEventService {
   }
 
   create(event: EventCreate): Observable<void> {
-
     const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
 
     event.EmailOwner = this.authService.getEmail() ?? '';
@@ -78,8 +77,10 @@ export class EventService implements IEventService {
     return this.http.post<void>(EVENTS_CONFIG.localUrl, event, { headers });
   }
 
-  update(event: EventUpdate): Observable<void> {
-    throw new Error('Method not implemented.');
+  update(id: string, event: EventUpdate): Observable<void> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
+
+    return this.http.put<void>(`${EVENTS_CONFIG.localUrl}/${id}`, event, { headers });
   }
 }
 
@@ -123,7 +124,7 @@ export class MockEventService implements IEventService {
     throw new Error('Method not implemented.');
   }
 
-  update(event: EventUpdate): Observable<void> {
+  update(id: string, event: EventUpdate): Observable<void> {
     throw new Error('Method not implemented.');
   }
 }

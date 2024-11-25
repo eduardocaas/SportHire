@@ -103,28 +103,46 @@ export class DialogEditComponent {
         updatedFormValues.observation
       );
 
-      console.log(eventUpdate);
+      if (this.checkFields(eventUpdate)) {
+        this._toast.info('Você não realizou nenhuma alteração', 'Atualização', { positionClass: 'toast-bottom-center' });
+      }
+      else {
+        this._service.update(this.data.id!, eventUpdate).subscribe(response => {
+          this._toast.success('Evento atualizado com sucesso!', 'Evento', { positionClass: 'toast-bottom-center' });
+          timer(1000).subscribe(x => { window.location.reload(); })
+        }, err => {
+          if (err.status == 404) {
+            this._toast.error('Evento não encontrado', 'Erro', { positionClass: 'toast-bottom-center' });
+          }
+          else if (err.error.errors) {
+            err.error.errors.forEach((e: { message: string | undefined; }) => {
+              this._toast.error(e.message, 'Erro ao atualizar', { positionClass: 'toast-bottom-center' });
+            });
+          }
+          else {
+            console.log(err.status);
 
-
-      this._service.update(eventUpdate).subscribe(response => {
-        this._toast.success('Evento atualizado com sucesso!', 'Evento', { positionClass: 'toast-bottom-center' });
-        timer(1000).subscribe(x => { window.location.reload(); })
-      }, err => {
-        if (err.status == 404) {
-          this._toast.error('Evento não encontrado', 'Erro', { positionClass: 'toast-bottom-center' });
-        }
-        else if (err.error.errors) {
-          err.error.errors.forEach((e: { message: string | undefined; }) => {
-            this._toast.error(e.message, 'Erro ao atualizar', { positionClass: 'toast-bottom-center' });
-          });
-        }
-        else {
-          this._toast.error(err.error.message, 'Erro ao atualizar', { positionClass: 'toast-bottom-center' });
-        }
-      });
+            this._toast.error(err.error.message, 'Erro ao atualizar', { positionClass: 'toast-bottom-center' });
+          }
+        });
+      }
     }
     else {
-      this._toast.warning('Preencha os campos obrigatórios!', 'Formulário', { positionClass: 'toast-bottom-center' });
+      this._toast.error('Preencha os campos obrigatórios!', 'Formulário', { positionClass: 'toast-bottom-center' });
     }
+  }
+
+  checkFields(event: EventUpdate): boolean {
+    var dateEvent: string = this.data.startDate.toString();
+
+    if (event.District == this.data.district &&
+       event.Address == this.data.address &&
+       event.StartDate.toISOString().slice(0, 19) == dateEvent.slice(0, 19) &&
+       event.Duration == this.data.duration &&
+       event.Observation == this.data.observation)
+       {
+          return true;
+       }
+    return false;
   }
 }
