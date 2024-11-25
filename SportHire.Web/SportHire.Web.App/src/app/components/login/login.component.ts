@@ -54,9 +54,9 @@ export class LoginComponent {
         error: (err: HttpErrorResponse) => {
           // Exibe um toast de erro caso o status seja 400 ou outro
           if (err.status === 400) {
-            this._toast.error('Email ou senha incorretos', 'Autenticação', { positionClass: 'toast-bottom-center' });
+            this._toast.error('Email ou senha incorretos', 'Autenticação', { positionClass: 'toast-top-left' });
           } else {
-            this._toast.error('Erro no servidor', 'Erro', { positionClass: 'toast-bottom-center' });
+            this._toast.error('Erro no servidor', 'Erro', { positionClass: 'toast-top-left' });
           }
           console.error('Error status:', err.status, 'Message:', err.message);
         }
