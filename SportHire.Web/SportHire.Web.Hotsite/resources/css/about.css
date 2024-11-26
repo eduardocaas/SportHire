@@ -112,15 +112,18 @@
 
 .product-left {
   width: 29%;
+  background-color: #4361ee !important;
 }
 
 .product-left > h2 {
   font-size: 200%;
+  color: #FFF;
 }
 
 .product-left > h3 {
-  color: #333;
+  color: #000;
   margin-top: 10px;
+  font-style: italic;
 }
 
 .product-right {
@@ -128,8 +131,7 @@
 }
 
 .product-right > p {
-  font-size: 120%;
-  font-style: italic;
+  font-size: 125%;
 }
 
 .product-right > p > span {
