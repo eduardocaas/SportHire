@@ -1,13 +1,13 @@
 <nav class="main-nav">
-  <div class="btn-nav">
+  <div class="btn-nav" (click)="onButtonClick()"> <!-- Ação ao clicar no botão -->
     <img class="pin pin-btn" src="/assets/css/nav/fast_rewind.svg">
-    <a href="">QUERO ALUGAR</a>
+    <span>{{ btn_text }}</span>
   </div>
   <h1>SportHire</h1>
   <div class="ul-nav">
     <ul class="ul-nav">
-      <li><a href="">Eventos</a></li>
-      <li><a href="">|</a></li>
+      <li *ngIf="!(this.href == '/events/dash')"><a routerLink="dash">Eventos</a></li>
+      <li *ngIf="!(this.href == '/events/dash')"><span style="color: #d9d9d9; font-size: 22px;">|</span></li>
       <li><a href="">Carteira</a></li>
     </ul>
     <img [matMenuTriggerFor]="menu" class="pin" src="/assets/css/nav/person_pin.svg">
@@ -25,3 +25,9 @@
 </nav>
 
 <router-outlet></router-outlet>
+
+
+
+
+
+
