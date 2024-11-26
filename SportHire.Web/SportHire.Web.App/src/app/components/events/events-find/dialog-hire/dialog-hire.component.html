@@ -65,7 +65,8 @@
     <mat-slide-toggle color="primary" [(ngModel)]="isChecked"></mat-slide-toggle>
     <button [tabIndex]="-1" style="margin: 5px 0 0 5px;"
       mat-raised-button color="primary"
-      [disabled]="!isChecked">Inscrever-se</button>
+      [disabled]="!isChecked"
+      (click)="updatePlayer()">Inscrever-se</button>
 
   </mat-card-actions>
 </mat-card>
