@@ -44,20 +44,28 @@
     </div>
   </div>
     <hr>
+    <h2>Outros</h2>
+    <div class="content-flex">
+    <div>
     <h3 style="margin-top: 10px;">Observação</h3>
     <p style="font-size: 16px !important;">
       {{ data.observation ? data.observation : 'Sem observação' }}
     </p>
+    </div>
+    <div class="cost-info">
+      <h3 style="margin-top: 10px;">Custo:</h3>
+      <p style="font-size: 16px !important;">
+        R$ {{ data.cost }},00
+      </p>
+    </div>
+  </div>
   </mat-card-content>
 
   <mat-card-actions>
-    <button [tabIndex]="-1" style="margin: 5px 0 0 5px;" mat-raised-button color="primary"
-      mat-dialog-close>Fechar</button>
-    <div class="cost-info">
-    <h3 style="margin-top: 10px;">Custo</h3>
-    <p style="font-size: 16px !important;">
-      R$ {{ data.cost }},00
-    </p>
-  </div>
+    <mat-slide-toggle color="primary" [(ngModel)]="isChecked"></mat-slide-toggle>
+    <button [tabIndex]="-1" style="margin: 5px 0 0 5px;"
+      mat-raised-button color="primary"
+      [disabled]="!isChecked">Inscrever-se</button>
+
   </mat-card-actions>
 </mat-card>

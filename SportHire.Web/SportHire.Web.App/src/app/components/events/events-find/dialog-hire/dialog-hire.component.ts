@@ -15,6 +15,8 @@ export class DialogHireComponent {
     @Inject(MAT_DIALOG_DATA) public data: Event,
     ) {}
 
+  isChecked = false;
+
   // Retorna o titulo para determinado esporte - card
   loadTitle(sport: Sport) {
     switch (sport) {
