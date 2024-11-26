@@ -11,5 +11,6 @@ namespace SportHire.Events.Core.Repositories
         Task<List<Event>> GetAllByOwnerAsync(string ownerEmail);
         Task<bool> UpdateAsync(string id, Event _event);
         Task<bool> CancelAsync(string id);
+        Task<bool> UpdatePlayerAsync(string id, string namePlayer, string emailPlayer);
     }
 }

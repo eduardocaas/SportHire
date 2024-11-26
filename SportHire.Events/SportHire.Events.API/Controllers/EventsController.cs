@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SportHire.Events.Application.Commands.CancelEvent;
 using SportHire.Events.Application.Commands.CreateEvent;
+using SportHire.Events.Application.Commands.PlayerHireEvent;
 using SportHire.Events.Application.Commands.UpdateEvent;
 using SportHire.Events.Application.Queries.GetEventsByCity;
 using SportHire.Events.Application.Queries.GetEventsByCityAndSport;
@@ -70,6 +71,17 @@ namespace SportHire.Events.API.Controllers
         {
             command.IdRoute = id;
             var result = await _mediator.Send(command);
+            return result ? Ok() : NotFound("Evento não encontrado!");
+        }
+
+        [HttpPut("hire/{id}")]
+        public async Task<IActionResult> PlayerHire(
+            [FromRoute] string id,
+            [FromBody] PlayerHireEventCommand command)
+        {
+            command.EventId = id;
+            var result = await _mediator.Send(command);
+
             return result ? Ok() : NotFound("Evento não encontrado!");
         }
 
