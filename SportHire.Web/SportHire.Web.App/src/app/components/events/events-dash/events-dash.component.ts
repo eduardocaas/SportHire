@@ -11,6 +11,8 @@ import { DialogInfoComponent } from './dialog-info/dialog-info.component';
 import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
+import { ChangeDetectorRef } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-events-dash',
@@ -27,14 +29,14 @@ import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
         animate('0.5s ease-out', style({ opacity: 1 }))
       ])
     ])
-  ]
+  ],
 })
 export class EventsDashComponent implements OnInit {
 
   constructor(
     private readonly mockService: MockEventService,
     private readonly service: EventService,
-    public dialog: MatDialog
+    public dialog: MatDialog, private cdr: ChangeDetectorRef
   ) { this.selectedOption = 1 }
 
   ngOnInit() {
@@ -82,6 +84,8 @@ export class EventsDashComponent implements OnInit {
   inPitemsPerPage: number = 3;
   inProgressLength: number = 0;
 
+  private displayedInProgressEventsSubject: BehaviorSubject<Event[]> = new BehaviorSubject<Event[]>([]);
+  displayedInProgressEvents$: Observable<Event[]> = this.displayedInProgressEventsSubject.asObservable();
 
   // Carrega eventos na tela
   loadInProgressEvents() {
@@ -146,7 +150,8 @@ export class EventsDashComponent implements OnInit {
       const startIndex = this.inPcurrentPage * this.inPitemsPerPage;
 
       // Define os eventos que serão exibidos com base na página atual e itens por página
-      this.displayedInProgressEvents = inProgressFilter.slice(startIndex, startIndex + this.inPitemsPerPage);
+      //this.displayedInProgressEvents = inProgressFilter.slice(startIndex, startIndex + this.inPitemsPerPage);
+      this.displayedInProgressEventsSubject.next(inProgressFilter.slice(startIndex, startIndex + this.inPitemsPerPage));
 
       // Atualiza o conteúdo dos cards
       if (this.inProgressLength == 0) {
