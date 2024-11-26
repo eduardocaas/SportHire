@@ -12,6 +12,7 @@ import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { UrlService } from '../../../services/url.service';
 
 @Component({
   selector: 'app-events-dash',
@@ -32,13 +33,21 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class EventsDashComponent implements OnInit {
 
+  previousUrl: string = '';
+
   constructor(
     private readonly mockService: MockEventService,
     private readonly service: EventService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private urlService: UrlService
   ) { this.selectedOption = 1 }
 
   ngOnInit() {
+    this.urlService.previousUrl$.subscribe((previousUrl: string) => {
+      this.previousUrl = previousUrl || ''; // Atualiza a URL anterior quando disponível
+      console.log('URL anterior:', this.previousUrl);
+    });
+
     this.loadInProgressEvents();
     this.loadFinishedEvents();
   }
@@ -224,7 +233,7 @@ export class EventsDashComponent implements OnInit {
 
     this.service.getByEmailOwner(2).subscribe(events => {
       this.finishedEvents = events.reverse();
-    ;
+      ;
 
       if (this.finishedEvents.length == 0) {
         this.loadFinishedEventsCardsContent(2);
@@ -301,15 +310,15 @@ export class EventsDashComponent implements OnInit {
 
   openEditDialog(event: Event) {
     this.dialog.open(DialogEditComponent, {
-        data: event,
-        scrollStrategy: new NoopScrollStrategy()
+      data: event,
+      scrollStrategy: new NoopScrollStrategy()
     });
   }
 
   openDeleteDialog(event: Event) {
     this.dialog.open(DialogDeleteComponent, {
-        data: event,
-        scrollStrategy: new NoopScrollStrategy()
+      data: event,
+      scrollStrategy: new NoopScrollStrategy()
     });
   }
 
