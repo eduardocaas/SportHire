@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 import { Status } from '../models/enums/status';
 import { EventCreate } from '../models/event.create';
 import { EventUpdate } from '../models/event.update';
+import { EventUpdatePlayer } from '../models/event.updateplayer';
 
 @Injectable({
   providedIn: 'root'
@@ -88,6 +89,17 @@ export class EventService implements IEventService {
 
     return this.http.delete<void>(`${EVENTS_CONFIG.localUrl}/${id}`, { headers });
   }
+
+  updatePlayer(id: string): Observable<void> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
+
+    const name = this.authService.getName() ?? '';
+    const email = this.authService.getEmail() ?? '';
+
+    let event: EventUpdatePlayer = new EventUpdatePlayer(name, email);
+
+    return this.http.put<void>(`${EVENTS_CONFIG.localUrl}/hire/${id}`, event, { headers });
+  }
 }
 
 @Injectable({
@@ -135,6 +147,10 @@ export class MockEventService implements IEventService {
   }
 
   cancel(id: string): Observable<void> {
+    throw new Error('Method not implemented.');
+  }
+
+  updatePlayer(id: string): Observable<void> {
     throw new Error('Method not implemented.');
   }
 }
