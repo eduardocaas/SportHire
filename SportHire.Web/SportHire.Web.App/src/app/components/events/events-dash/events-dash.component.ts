@@ -13,6 +13,7 @@ import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UrlService } from '../../../services/url.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-events-dash',
@@ -39,17 +40,30 @@ export class EventsDashComponent implements OnInit {
     private readonly mockService: MockEventService,
     private readonly service: EventService,
     public dialog: MatDialog,
-    private urlService: UrlService
-  ) { this.selectedOption = 1 }
+    private urlService: UrlService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.urlService.previousUrl$.subscribe((previousUrl: string) => {
       this.previousUrl = previousUrl || ''; // Atualiza a URL anterior quando disponível
-      console.log('URL anterior:', this.previousUrl);
+      if (this.previousUrl == "/events/find") {
+        this.selectedOption = 1;
+      }
     });
 
     this.loadInProgressEvents();
     this.loadFinishedEvents();
+  }
+
+  ngAfterViewInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const opt = params['opt'];
+      if (opt === '1') {
+        this.selectedOption = 2;
+      }
+    });
   }
 
   status = [

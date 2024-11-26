@@ -40,7 +40,7 @@ export class NavComponent implements OnInit {
    * Atualiza o texto do botão com base na URL atual.
    */
   private updateButtonText(): void {
-    if (this.href === '/events/dash') {
+    if (this.href === '/events/dash' || this.href === '/events/dash?opt=1') {
       this.btn_text = 'QUERO JOGAR';
     } else if (this.href === '/events/find') {
       this.btn_text = 'QUERO ALUGAR';
@@ -53,11 +53,15 @@ export class NavComponent implements OnInit {
    * Redireciona entre "events/dash" e "events/find" ao clicar no botão.
    */
   onButtonClick(): void {
-    if (this.href === '/events/dash') {
+    if (this.href === '/events/dash' || this.href === '/events/dash?opt=1') {
       this._router.navigate(['/events/find']);
     } else if (this.href === '/events/find') {
       this._router.navigate(['/events/dash']);
     }
+  }
+
+  openDashPlayer(): void {
+    this._router.navigate(['/events/dash'], { queryParams: { opt: 1 }});
   }
 
   openLogoutDialog(): void {

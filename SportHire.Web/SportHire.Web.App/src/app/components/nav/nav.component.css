@@ -24,23 +24,27 @@
 
 .ul-nav li a:link,
 .ul-nav li a:visited,
+.ul-nav li a,
 .btn-nav a:link,
 .btn-nav a:visited {
   font-size: 24px;
   font-weight: 400;
   color: #d9d9d9;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .ul-nav li a:link,
-.ul-nav li a:visited {
+.ul-nav li a:visited,
+.ul-nav li a {
   border-bottom: 2px solid transparent;
   padding-bottom: 3px;
   transition: border-bottom 0.2s;
 }
 
 .ul-nav li a:link:hover,
-.ul-nav li a:visited:hover {
+.ul-nav li a:visited:hover,
+.ul-nav li a:hover {
   border-bottom: 2px solid #012894;
 }
 
