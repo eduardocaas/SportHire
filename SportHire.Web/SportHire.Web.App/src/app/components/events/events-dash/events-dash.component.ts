@@ -11,7 +11,6 @@ import { DialogInfoComponent } from './dialog-info/dialog-info.component';
 import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
-import { ChangeDetectorRef } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
@@ -36,7 +35,7 @@ export class EventsDashComponent implements OnInit {
   constructor(
     private readonly mockService: MockEventService,
     private readonly service: EventService,
-    public dialog: MatDialog, private cdr: ChangeDetectorRef
+    public dialog: MatDialog
   ) { this.selectedOption = 1 }
 
   ngOnInit() {
