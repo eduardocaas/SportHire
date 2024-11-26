@@ -56,7 +56,7 @@
             <p class="card-content-info transition">R$ {{ event.cost }} </p>
           </div>
           <div>
-            <div class="card-content-footer">
+            <div (click)="openHireDialog(event)" class="card-content-footer">
               <span class="card-content-title transition">Jogar</span>
               <img class="transition" src="/assets/css/events/events-find/trending_flat.svg">
             </div>

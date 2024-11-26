@@ -1,1 +1,63 @@
-<p>dialog-hire works!</p>
+<mat-card class="card">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>{{ data.nameOwner }}</mat-card-title>
+    <mat-card-subtitle style="font-size: 15px !important; color: #666;">{{ loadTitle(data.sport) }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p style="font-size: 14px !important; margin-bottom: 5px; color: #777">
+      <strong>ID</strong>: {{ data.id }}
+    </p>
+  </mat-card-content>
+  <mat-card-content class="content-card">
+    <h2>Horários</h2>
+    <div class="content-flex">
+    <div>
+      <h3 style="margin-top: 10px;">Data</h3>
+      <p style="font-size: 16px !important;">
+        {{ data.startDate | date: 'dd/MM \'às\' HH:mm' }}
+      </p>
+    </div>
+    <div>
+      <h3 style="margin-top: 10px;">Duração</h3>
+      <p style="font-size: 16px !important;">
+        {{ data.duration }} minutos
+      </p>
+    </div>
+  </div>
+
+    <hr>
+    <h2>Localização</h2>
+    <div class="content-flex">
+    <div>
+      <h3 style="margin-top: 10px;">Bairro</h3>
+      <p style="font-size: 16px !important;">
+        {{ data.district }}
+      </p>
+    </div>
+    <div>
+      <h3 style="margin-top: 10px;">Endereço</h3>
+      <p style="font-size: 16px !important;">
+        {{ data.address }}
+      </p>
+    </div>
+  </div>
+    <hr>
+    <h3 style="margin-top: 10px;">Observação</h3>
+    <p style="font-size: 16px !important;">
+      {{ data.observation ? data.observation : 'Sem observação' }}
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button [tabIndex]="-1" style="margin: 5px 0 0 5px;" mat-raised-button color="primary"
+      mat-dialog-close>Fechar</button>
+    <div class="cost-info">
+    <h3 style="margin-top: 10px;">Custo</h3>
+    <p style="font-size: 16px !important;">
+      R$ {{ data.cost }},00
+    </p>
+  </div>
+  </mat-card-actions>
+</mat-card>

@@ -8,6 +8,9 @@ import { eventsFindPortoAlegreAberto } from '../../../mocks/events.mock';
 import { EventService, MockEventService } from '../../../services/event.service';
 import { ToastrService } from 'ngx-toastr';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogHireComponent } from './dialog-hire/dialog-hire.component';
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-events-find',
@@ -27,7 +30,8 @@ export class EventsFindComponent {
   constructor(
     private readonly mockService: MockEventService,
     private readonly service: EventService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    public dialog: MatDialog
   ) { }
 
   /* --- FORMULÁRIO DE BUSCA --- */
@@ -241,5 +245,12 @@ export class EventsFindComponent {
         info_events.style.display = 'block';
       }
     }
+  }
+
+  openHireDialog(event: Event) {
+    this.dialog.open(DialogHireComponent, {
+      data: event,
+      scrollStrategy: new NoopScrollStrategy()
+    });
   }
 }
