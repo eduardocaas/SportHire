@@ -1,6 +1,8 @@
-﻿using MongoDB.Driver;
+﻿using Microsoft.Extensions.Logging;
+using MongoDB.Driver;
 using SportHire.Events.Core.Entities;
 using SportHire.Events.Core.Enums;
+using SportHire.Events.Core.Exceptions;
 using SportHire.Events.Core.Repositories;
 
 namespace SportHire.Events.Infrastructure.Persistence.Repositories
@@ -89,6 +91,48 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
 
         public async Task<bool> UpdatePlayerAsync(string id, string namePlayer, string emailPlayer)
         {
+
+            var playerEventCount = await _collection.CountDocumentsAsync(Builders<Event>.Filter.And(
+                Builders<Event>.Filter.Eq(e => e.EmailPlayer, emailPlayer),
+                Builders<Event>.Filter.Eq(e => e.Status, EventStatusEnum.ANDAMENTO)
+            ));
+
+            if (playerEventCount >= 5)
+            {
+                throw new PlayerExceededLimitException($"O jogador excedeu o limite de 5 eventos em andamento.");
+            }
+
+            var eventToJoin = await _collection.Find(Builders<Event>.Filter.Eq(e => e.Id, id)).FirstOrDefaultAsync();
+
+            if (eventToJoin == null)
+            {
+                throw new ArgumentException($"Evento com ID '{id}' não encontrado.");
+            }
+
+            var conflictingEvent = await _collection.Find(Builders<Event>.Filter.And(
+                Builders<Event>.Filter.Eq(e => e.Status, EventStatusEnum.ANDAMENTO),
+                Builders<Event>.Filter.Eq(e => e.EmailPlayer, emailPlayer),
+                Builders<Event>.Filter.Or(
+                    Builders<Event>.Filter.And(
+                        Builders<Event>.Filter.Lte(e => e.StartDate, eventToJoin.StartDate),
+                        Builders<Event>.Filter.Gte(e => e.EndDate, eventToJoin.StartDate)
+                    ),
+                    Builders<Event>.Filter.And(
+                        Builders<Event>.Filter.Lte(e => e.StartDate, eventToJoin.EndDate),
+                        Builders<Event>.Filter.Gte(e => e.EndDate, eventToJoin.EndDate)
+                    ),
+                    Builders<Event>.Filter.And(
+                        Builders<Event>.Filter.Gte(e => e.StartDate, eventToJoin.StartDate),
+                        Builders<Event>.Filter.Lte(e => e.EndDate, eventToJoin.EndDate)
+                    )
+                )
+            )).FirstOrDefaultAsync();
+
+            if (conflictingEvent != null)
+            {
+                throw new PlayerConflictDateException($"O evento conflita com outro evento em andamento (ID: {conflictingEvent.Id}).");
+            }
+
             var filter = Builders<Event>
                 .Filter
                 .Eq(e => e.Id, id);
