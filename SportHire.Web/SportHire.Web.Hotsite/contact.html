@@ -28,7 +28,7 @@
   <link rel="stylesheet" type="text/css" href="resources/css/contact.css">
 
   <!-- Bootstrap -->
-<!--   <link rel="stylesheet" type="text/css" href="vendors/lib/bootstrap/css/bootstrap.min.css"> -->
+  <!--   <link rel="stylesheet" type="text/css" href="vendors/lib/bootstrap/css/bootstrap.min.css"> -->
 
 </head>
 
@@ -53,28 +53,90 @@
       </nav>
     </header>
 
-    
+    <!-- Section Header -->
+    <section class="contact-header padding">
+      <h2>Quer <span>entrar em contato?</span></h2>
+      <p>Explore as opções abaixo.</p>
+    </section>
+
+    <!-- Section Boxes - Form -->
+    <section class="form-boxes padding">
+
+      <!-- Box left - form -->
+      <div class="form-box form-box-left">
+        <h3>Formulário de<br>contato</h3>
+        <form>
+          <div>
+            <input type="text" name="fullName" placeholder="Insira seu nome" required>
+            <input type="email" name="email" placeholder="Insira seu email" required>
+          </div>
+          <input class="w-80" type="text" name="subject" placeholder="Assunto" required>
+          <textarea class="w-80" name="message" placeholder="Escreva sua mensagem aqui" required></textarea>
+        </form>
+      </div>
+
+      <!-- Box right - accordion -->
+      <div class="form-box form-box-right">
+        <div class="w-80">
+          <h2>Perguntas frequentes</h2>
+
+          <button class="accordion" style="border-top-left-radius: 8px; border-top-right-radius: 8px;">Posso buscar e
+            criar eventos ao mesmo tempo?</button>
+          <div class="panel">
+            <p><br><span style="font-weight: 600;">Sim.</span> No SportHire não possui nenhuma limitação em relação ao
+              perfil do usuário, uma vez dentro do
+              aplicativo, você poderá alternar entre os perfis de jogador e usuário, se inscrevendo em
+              eventos, e convocando jogadores, respectivamente.</p><br>
+          </div>
+
+          <button class="accordion">Existe um limite de eventos criados?</button>
+          <div class="panel">
+            <p><br><span style="font-weight: 600;">Não.</span> Os eventos não possuem nenhum limite relacionado em vezes
+              que foi criado por um usuário, isso é
+              garantido por meio do pagamento, uma vez que o evento só é disponibilizado se for pago</p><br>
+          </div>
+
+          <button class="accordion">Como funciona o
+            pagamento?</button>
+          <div class="panel">
+            <p><br>O pagamento é realizado na criação do evento, porém o jogador convocado naquele evento, só vai
+              receber o pagamento após confirmação de presença no evento realizada por ambas as partes</p><br>
+          </div>
+
+          <button class="accordion accordion-last" id="lastAccordion">Posso me inscrever em mais de <span
+              style="font-weight: 600;">um</span> evento?</button>
+          <div class=" panel">
+            <p><br><span style="font-weight: 600;">Parcialmente.</span>Você poderá se inscrever em até 5 eventos
+              simultâneos, sendo eles em horários não conflitantes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="contact-boxes">
+
+    </section>
+
 
     <!-- Section - footer -->
     <footer>
       <div class="content-footer">
         <p>Confira nossas redes sociais abaixo</p>
         <nav class="icons-footer">
-        <ul>
-          <li><a href=""> <img src="resources/css/img/logo/logo-facebook.svg" alt="Logo do Facebook"></a></li>
-          <li><a href=""> <img src="resources/css/img/logo/logo-instagram.svg" alt="Logo do Instagram"></a></li>
-          <li><a href=""> <img src="resources/css/img/logo/logo-twitter.svg" alt="Logo do Twitter"></a></li>
-          <li><a href=""> <img src="resources/css/img/logo/logo-whatsapp.svg" alt="Logo do Whatsapp"></a></li>
-          <li><a href=""> <img src="resources/css/img/logo/logo-github.svg" alt="Logo do Github"></a></li>
-        </ul>
-      </nav>
-      <nav>
-        <ul>
-          <li><a href="#">Início</a></li>
-          <li><a href="#">Sobre</a></li>
-          <li><a href="#">Contato</a></li>
-        </ul>
-      </nav>
+          <ul>
+            <li><a href=""> <img src="resources/css/img/logo/logo-facebook.svg" alt="Logo do Facebook"></a></li>
+            <li><a href=""> <img src="resources/css/img/logo/logo-instagram.svg" alt="Logo do Instagram"></a></li>
+            <li><a href=""> <img src="resources/css/img/logo/logo-twitter.svg" alt="Logo do Twitter"></a></li>
+            <li><a href=""> <img src="resources/css/img/logo/logo-whatsapp.svg" alt="Logo do Whatsapp"></a></li>
+            <li><a href=""> <img src="resources/css/img/logo/logo-github.svg" alt="Logo do Github"></a></li>
+          </ul>
+        </nav>
+        <nav>
+          <ul>
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </nav>
       </div>
       <div class="bottom-footer">
         <p>Copyright &copy 2024; SportHire</p>
@@ -83,7 +145,7 @@
   </div>
 
   <!-- Project JS import -->
-  <script type="text/javascript" src="resources/js/index.js"></script>
+  <script type="text/javascript" src="resources/js/contact.js"></script>
 
   <!-- JQuery import -->
   <script type="text/javascript" src="vendors/lib/jquery/jquery-1.11.0.min.js"></script>
@@ -101,4 +163,5 @@
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </body>
+
 </html>

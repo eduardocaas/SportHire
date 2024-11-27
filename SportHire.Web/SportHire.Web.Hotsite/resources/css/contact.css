@@ -1,0 +1,139 @@
+/* Aux - class */
+.w-80 {
+  width: 80%;
+}
+
+
+/* 
+  Section - Header
+    */
+.contact-header {
+  margin: 50px 0 100px 0;
+  white-space: nowrap;
+}
+
+.contact-header > h2 {
+  font-size: 260%;
+  font-weight: 400;
+}
+
+.contact-header > h2 > span {
+  font-weight: 600;
+  color: #4361ee;
+}
+
+.contact-header > p {
+  margin-top: 8px;
+  font-size: 130%;
+  color: #666;
+}
+
+
+/* 
+  Section - Form Boxes 
+    */
+.form-boxes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-box {
+  width: 48%;
+  height: 600px;
+}
+
+
+/* 
+  Section - Form Box Left 
+    */
+.form-box-left > h3 {
+  font-size: 180%;
+  margin-bottom: 20px;
+}
+
+.form-box-left > form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-box-left > form > div {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-box-left > form > div input {
+  width: 49%;
+}
+
+.form-box-left > form input, textarea {
+  height: 60px;
+  border: 0;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+  padding-left: 10px;
+}
+
+.form-box-left > form textarea {
+  padding-top: 15px;
+  height: 200px;
+  resize: none;
+}
+
+
+/* 
+  Form Box Right - accordion
+     */
+
+.form-box-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-box-right h2 {
+  width: 100%;
+  margin-bottom: 60px;
+  text-align: center;
+  color: #4361ee;
+}
+
+.accordion {
+  background-color: #f8f8f8;
+  color: #666;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #e9e9e9; 
+}
+
+.accordion:after {
+  content: '\02795'; 
+  font-size: 13px;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796";
+}
+
+.accordion-last {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
