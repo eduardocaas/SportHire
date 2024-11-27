@@ -9,6 +9,7 @@ using SportHire.Events.Application.Queries.GetEventsByCity;
 using SportHire.Events.Application.Queries.GetEventsByCityAndSport;
 using SportHire.Events.Application.Queries.GetEventsByOwner;
 using SportHire.Events.Core.Enums;
+using SportHire.Events.Core.Exceptions;
 
 namespace SportHire.Events.API.Controllers
 {
@@ -79,10 +80,28 @@ namespace SportHire.Events.API.Controllers
             [FromRoute] string id,
             [FromBody] PlayerHireEventCommand command)
         {
-            command.EventId = id;
-            var result = await _mediator.Send(command);
-
-            return result ? Ok() : NotFound("Evento não encontrado!");
+            try
+            {
+                command.EventId = id;
+                var result = await _mediator.Send(command);
+                return Ok();
+            }
+            catch(ArgumentException aex)
+            {
+                return NotFound(aex.Message);
+            }
+            catch(PlayerExceededLimitException lex)
+            {
+                return BadRequest(lex.Message);
+            }
+            catch(PlayerConflictDateException cex)
+            {
+                return Conflict(cex.Message);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
