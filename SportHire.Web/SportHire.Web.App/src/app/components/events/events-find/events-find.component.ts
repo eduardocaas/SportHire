@@ -147,12 +147,12 @@ export class EventsFindComponent {
 
           if (this.events.length > 0) {
 
-            this.events = this.events.map(e => {
+            /* this.events = this.events.map(e => {
               var newDate = new Date(e.startDate);
               newDate.setHours(newDate.getHours() + 3);
               e.startDate = newDate;
               return e;
-            });
+            }); */
 
             this.events.length <= 3 ? this.loadCardsContent(3) : this.loadCardsContent(1);
 

@@ -43,7 +43,7 @@ export class EventsDashComponent implements OnInit {
     private urlService: UrlService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) { this.selectedOption = 1 }
 
   ngOnInit() {
     this.urlService.previousUrl$.subscribe((previousUrl: string) => {
