@@ -99,7 +99,7 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
 
             if (playerEventCount >= 5)
             {
-                throw new PlayerExceededLimitException($"O jogador excedeu o limite de 5 eventos em andamento.");
+                throw new PlayerExceededLimitException("Você excedeu o limite de 5 eventos em andamento.");
             }
 
             var eventToJoin = await _collection.Find(Builders<Event>.Filter.Eq(e => e.Id, id)).FirstOrDefaultAsync();
@@ -130,7 +130,7 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
 
             if (conflictingEvent != null)
             {
-                throw new PlayerConflictDateException($"O evento conflita com outro evento em andamento (ID: {conflictingEvent.Id}).");
+                throw new PlayerConflictDateException("Você já está inscrito em um evento na mesma data e horário");
             }
 
             var filter = Builders<Event>
