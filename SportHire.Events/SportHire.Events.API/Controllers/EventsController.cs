@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using SportHire.Events.Application.Commands.CancelEvent;
 using SportHire.Events.Application.Commands.CreateEvent;
 using SportHire.Events.Application.Commands.PlayerHireEvent;
@@ -8,6 +9,8 @@ using SportHire.Events.Application.Commands.UpdateEvent;
 using SportHire.Events.Application.Queries.GetEventsByCity;
 using SportHire.Events.Application.Queries.GetEventsByCityAndSport;
 using SportHire.Events.Application.Queries.GetEventsByOwner;
+using SportHire.Events.Application.Queries.GetEventsByPlayer;
+using SportHire.Events.Application.ViewModels.Events;
 using SportHire.Events.Core.Enums;
 using SportHire.Events.Core.Exceptions;
 
@@ -47,13 +50,23 @@ namespace SportHire.Events.API.Controllers
         }
 
         [HttpGet("dash")]
-        public async Task<IActionResult> GetByOwner(
-            [FromQuery(Name = "emailOwner")] string emailOwner)
+        public async Task<IActionResult> GetByEmail(
+            [FromQuery(Name = "emailOwner")] string? emailOwner,
+            [FromQuery(Name = "emailPlayer")] string? emailPlayer)
         {          
-            var query = new GetEventsByOwnerQuery(emailOwner);
-
-            var events = await _mediator.Send(query);
-            return Ok(events);            
+            if (emailOwner != null || !emailOwner.IsNullOrEmpty())
+            {
+                var query = new GetEventsByOwnerQuery(emailOwner);
+                var events = await _mediator.Send(query);
+                return Ok(events);
+            }
+            if (emailPlayer != null || !emailPlayer.IsNullOrEmpty())
+            {
+                var query = new GetEventsByPlayerQuery(emailPlayer);
+                var events = await _mediator.Send(query);
+                return Ok(events);
+            }
+            return Ok(new List<EventViewModel>());       
         }
 
         [HttpPost]

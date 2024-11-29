@@ -55,6 +55,16 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<Event>> GetAllByPlayerAsync(string emailPlayer)
+        {
+            return await _collection
+                .Find(e =>
+                    e.EmailPlayer.Equals(emailPlayer, StringComparison.OrdinalIgnoreCase))
+                .SortBy(e =>
+                    e.StartDate)
+                .ToListAsync();
+        }
+
         public async Task<bool> UpdateAsync(string id, Event _event)
         {
             var filter = Builders<Event>
