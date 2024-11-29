@@ -28,7 +28,7 @@ export class DialogHireComponent {
     this._service.updatePlayer(this.data.id!).subscribe(response => {
       this._toast.success('Inscrição confirmada com sucesso!', 'Evento', { positionClass: 'toast-bottom-center', timeOut: 2000 });
       timer(1000).subscribe(() => {
-        this._router.navigate(['events/dash']).then(() => {
+        this._router.navigate(['/events/dash'], { queryParams: { opt: 2 }}).then(() => {
           this.dialogRef.close();
         });
       });

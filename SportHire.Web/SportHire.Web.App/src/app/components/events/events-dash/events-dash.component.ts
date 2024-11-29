@@ -53,17 +53,18 @@ export class EventsDashComponent implements OnInit {
       }
     });
 
-    this.loadInProgressEvents();
-    this.loadFinishedEvents();
+
   }
 
   ngAfterViewInit(): void {
     this.route.queryParams.subscribe(params => {
       const opt = params['opt'];
-      if (opt === '1') {
+      if (opt == '2') {
         this.selectedOption = 2;
       }
     });
+    this.loadInProgressEvents();
+    this.loadFinishedEvents();
   }
 
   status = [
@@ -90,6 +91,7 @@ export class EventsDashComponent implements OnInit {
         this.inProgressEvent = null;
       }
     }); */
+    console.log(this.inProgressEvents);
 
     if (this.inProgressEvents.length > 0) {
       this.inProgressEvent = this.inProgressEvents[0];
@@ -149,8 +151,6 @@ export class EventsDashComponent implements OnInit {
     });
  */
     if(this.selectedOption == 1) {
-      console.log("Caiu no 1");
-
       this.service.getByEmailOwner(1).subscribe(events => {
         this.inProgressEvents = events;
         this.loadNextEvent();
@@ -190,8 +190,6 @@ export class EventsDashComponent implements OnInit {
       });
     }
     if(this.selectedOption == 2) {
-      console.log("Caiu no 2");
-
       this.service.getByEmailPlayer(1).subscribe(events => {
         this.inProgressEvents = events;
         this.loadNextEvent();
