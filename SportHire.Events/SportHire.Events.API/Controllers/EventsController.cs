@@ -54,13 +54,13 @@ namespace SportHire.Events.API.Controllers
             [FromQuery(Name = "emailOwner")] string? emailOwner,
             [FromQuery(Name = "emailPlayer")] string? emailPlayer)
         {          
-            if (emailOwner != null || !emailOwner.IsNullOrEmpty())
+            if (!emailOwner.Equals("null"))
             {
                 var query = new GetEventsByOwnerQuery(emailOwner);
                 var events = await _mediator.Send(query);
                 return Ok(events);
             }
-            if (emailPlayer != null || !emailPlayer.IsNullOrEmpty())
+            if (!emailPlayer.Equals("null"))
             {
                 var query = new GetEventsByPlayerQuery(emailPlayer);
                 var events = await _mediator.Send(query);
