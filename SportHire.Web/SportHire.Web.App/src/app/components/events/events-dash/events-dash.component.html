@@ -70,9 +70,13 @@
             <button (click)="openInfoDialog(this.inProgressEvent)" class="player-info" *ngIf="selectedOption == 2">
               <img src="/assets/css/events/events-dash/info_gray.svg">
             </button>
-            <button class="player-button" *ngIf="selectedOption == 2">
+            <button class="player-button" *ngIf="selectedOption == 2 && !checkEndDate(this.inProgressEvent)">
               <img src="/assets/css/events/events-dash/cancel.svg">
               <span style="color:#d9d9d9 !important">Cancelar</span>
+            </button>
+            <button class="player-button" *ngIf="selectedOption == 2 && checkEndDate(this.inProgressEvent)">
+              <img src="/assets/css/events/events-dash/check_circle.svg">
+              <span style="color:#0bdc84 !important;">Confirmar</span>
             </button>
           </div>
         </div>
@@ -154,8 +158,11 @@
           <button (click)="openDeleteDialog(event)" *ngIf="selectedOption == 1">
             <img src="/assets/css/events/events-dash/delete.svg">
           </button>
-          <button *ngIf="selectedOption == 2">
+          <button *ngIf="selectedOption == 2 && !checkEndDate(event)">
             <img src="/assets/css/events/events-dash/cancel_white.svg">
+          </button>
+          <button *ngIf="selectedOption == 2 && checkEndDate(event)" style="background-color: #32373b !important;">
+            <img src="/assets/css/events/events-dash/check_circle.svg">
           </button>
         </div>
       </div>

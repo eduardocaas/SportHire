@@ -52,8 +52,6 @@ export class EventsDashComponent implements OnInit {
         this.selectedOption = 1;
       }
     });
-
-
   }
 
   ngAfterViewInit(): void {
@@ -91,7 +89,6 @@ export class EventsDashComponent implements OnInit {
         this.inProgressEvent = null;
       }
     }); */
-    console.log(this.inProgressEvents);
 
     if (this.inProgressEvents.length > 0) {
       this.inProgressEvent = this.inProgressEvents[0];
@@ -150,7 +147,7 @@ export class EventsDashComponent implements OnInit {
       }
     });
  */
-    if(this.selectedOption == 1) {
+    if (this.selectedOption == 1) {
       this.service.getByEmailOwner(1).subscribe(events => {
         this.inProgressEvents = events;
         this.loadNextEvent();
@@ -189,7 +186,7 @@ export class EventsDashComponent implements OnInit {
         }
       });
     }
-    if(this.selectedOption == 2) {
+    if (this.selectedOption == 2) {
       this.service.getByEmailPlayer(1).subscribe(events => {
         this.inProgressEvents = events;
         this.loadNextEvent();
@@ -310,7 +307,7 @@ export class EventsDashComponent implements OnInit {
         this.displayedFinishedEvents = this.finishedEvents.slice(startIndex, startIndex + this.finItemsPerPage);
       });
     }
-    if (this.selectedOption == 2 ) {
+    if (this.selectedOption == 2) {
       this.service.getByEmailPlayer(2).subscribe(events => {
         this.finishedEvents = events.reverse();
         ;
@@ -454,6 +451,19 @@ export class EventsDashComponent implements OnInit {
       default:
         return '';
     }
+  }
+
+  // Verifica se data de término foi ultrapassada
+  checkEndDate(event: Event): boolean {
+
+    let dateNow: Date = new Date(); // Agora dateNow é do tipo Date
+    let endDate = new Date(event.startDate);
+    endDate.setMinutes(endDate.getMinutes() + event.duration);
+
+    if (endDate <= dateNow) {
+      return true;
+    }
+    return false;
   }
 }
 
