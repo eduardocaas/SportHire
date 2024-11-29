@@ -43,7 +43,8 @@ export class EventService implements IEventService {
     const emailParam = email ? email : '';
 
     const params = new HttpParams()
-      .set('emailOwner', emailParam);
+      .set('emailOwner', emailParam)
+      .set('emailPlayer', '');
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
     /* return this.http.get<Event[]>(`${EVENTS_CONFIG.localUrl}/dash`, { params, headers }); */
@@ -54,6 +55,30 @@ export class EventService implements IEventService {
           return events.filter(event => event.status == Status.ANDAMENTO || event.status == Status.ABERTO);
         } else if (opt == 2) {
           return events.filter(event => event.status == Status.CONCLUIDO || event.status == Status.CANCELADO);
+        } else {
+          return events;
+        }
+      })
+    );
+  }
+
+  getByEmailPlayer(opt: number): Observable<Event[]> {
+    const email = this.authService.getEmail();
+    const emailParam = email ? email : '';
+
+    const params = new HttpParams()
+      .set('emailOwner', '')
+      .set('emailPlayer', emailParam);
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
+    /* return this.http.get<Event[]>(`${EVENTS_CONFIG.localUrl}/dash`, { params, headers }); */
+
+    return this.http.get<Event[]>(`${EVENTS_CONFIG.localUrl}/dash`, { params, headers }).pipe(
+      map(events => {
+        if (opt == 1) {
+          return events.filter(event => event.status == Status.ANDAMENTO);
+        } else if (opt == 2) {
+          return events.filter(event => event.status == Status.CONCLUIDO);
         } else {
           return events;
         }
@@ -123,6 +148,10 @@ export class MockEventService implements IEventService {
   }
 
   getByEmailOwner(opt: number): Observable<Event[]> {
+    throw new Error('Method not implemented.');
+  }
+
+  getByEmailPlayer(opt: number): Observable<Event[]> {
     throw new Error('Method not implemented.');
   }
 
