@@ -90,6 +90,7 @@ export class EventsDashComponent implements OnInit {
         this.inProgressEvent = null;
       }
     }); */
+
     if (this.inProgressEvents.length > 0) {
       this.inProgressEvent = this.inProgressEvents[0];
     } else {
@@ -147,43 +148,88 @@ export class EventsDashComponent implements OnInit {
       }
     });
  */
-    this.service.getByEmailOwner(1).subscribe(events => {
-      this.inProgressEvents = events;
-      this.loadNextEvent();
+    if(this.selectedOption == 1) {
+      console.log("Caiu no 1");
 
-      // Filtragem de eventos, aplicando o filtro por status se necessário
-      let inProgressFilter = this.inProgressEvents;
-      if (this.selectedStatus !== Status.DEFAULT && this.selectedStatus !== null) {
-        inProgressFilter = this.inProgressEvents.filter(event => event.status == this.selectedStatus);
-      }
+      this.service.getByEmailOwner(1).subscribe(events => {
+        this.inProgressEvents = events;
+        this.loadNextEvent();
 
-      // Atualiza o comprimento dos eventos filtrados
-      this.inProgressLength = inProgressFilter.length;
+        // Filtragem de eventos, aplicando o filtro por status se necessário
+        let inProgressFilter = this.inProgressEvents;
+        if (this.selectedStatus !== Status.DEFAULT && this.selectedStatus !== null) {
+          inProgressFilter = this.inProgressEvents.filter(event => event.status == this.selectedStatus);
+        }
 
-      // Calcula o número total de páginas baseadas na quantidade de itens filtrados
-      const totalPages = Math.ceil(this.inProgressLength / this.inPitemsPerPage);
+        // Atualiza o comprimento dos eventos filtrados
+        this.inProgressLength = inProgressFilter.length;
 
-      // Se a página atual for maior que o número total de páginas, ajuste para a última página
-      if (this.inPcurrentPage >= totalPages) {
-        this.inPcurrentPage = Math.max(0, totalPages - 1);  // Garante que a página seja válida
-      }
+        // Calcula o número total de páginas baseadas na quantidade de itens filtrados
+        const totalPages = Math.ceil(this.inProgressLength / this.inPitemsPerPage);
 
-      // Calcula o início da página baseado no índice atual
-      const startIndex = this.inPcurrentPage * this.inPitemsPerPage;
+        // Se a página atual for maior que o número total de páginas, ajuste para a última página
+        if (this.inPcurrentPage >= totalPages) {
+          this.inPcurrentPage = Math.max(0, totalPages - 1);  // Garante que a página seja válida
+        }
 
-      // Define os eventos que serão exibidos com base na página atual e itens por página
-      //this.displayedInProgressEvents = inProgressFilter.slice(startIndex, startIndex + this.inPitemsPerPage);
-      this.displayedInProgressEventsSubject.next(inProgressFilter.slice(startIndex, startIndex + this.inPitemsPerPage));
+        // Calcula o início da página baseado no índice atual
+        const startIndex = this.inPcurrentPage * this.inPitemsPerPage;
 
-      // Atualiza o conteúdo dos cards
-      if (this.inProgressLength == 0) {
-        this.loadInProgressCardsContent(2);  // Exibe a tela de "sem eventos"
-      } else if (this.inProgressLength <= 3) {
-        this.loadInProgressCardsContent(3);  // Exibe os eventos com no máximo 3 itens
-      } else {
-        this.loadInProgressCardsContent(1);  // Exibe a tela com o paginador
-      }
-    });
+        // Define os eventos que serão exibidos com base na página atual e itens por página
+        //this.displayedInProgressEvents = inProgressFilter.slice(startIndex, startIndex + this.inPitemsPerPage);
+        this.displayedInProgressEventsSubject.next(inProgressFilter.slice(startIndex, startIndex + this.inPitemsPerPage));
+
+        // Atualiza o conteúdo dos cards
+        if (this.inProgressLength == 0) {
+          this.loadInProgressCardsContent(2);  // Exibe a tela de "sem eventos"
+        } else if (this.inProgressLength <= 3) {
+          this.loadInProgressCardsContent(3);  // Exibe os eventos com no máximo 3 itens
+        } else {
+          this.loadInProgressCardsContent(1);  // Exibe a tela com o paginador
+        }
+      });
+    }
+    if(this.selectedOption == 2) {
+      console.log("Caiu no 2");
+
+      this.service.getByEmailPlayer(1).subscribe(events => {
+        this.inProgressEvents = events;
+        this.loadNextEvent();
+
+        // Filtragem de eventos, aplicando o filtro por status se necessário
+        let inProgressFilter = this.inProgressEvents;
+        if (this.selectedStatus !== Status.DEFAULT && this.selectedStatus !== null) {
+          inProgressFilter = this.inProgressEvents.filter(event => event.status == this.selectedStatus);
+        }
+
+        // Atualiza o comprimento dos eventos filtrados
+        this.inProgressLength = inProgressFilter.length;
+
+        // Calcula o número total de páginas baseadas na quantidade de itens filtrados
+        const totalPages = Math.ceil(this.inProgressLength / this.inPitemsPerPage);
+
+        // Se a página atual for maior que o número total de páginas, ajuste para a última página
+        if (this.inPcurrentPage >= totalPages) {
+          this.inPcurrentPage = Math.max(0, totalPages - 1);  // Garante que a página seja válida
+        }
+
+        // Calcula o início da página baseado no índice atual
+        const startIndex = this.inPcurrentPage * this.inPitemsPerPage;
+
+        // Define os eventos que serão exibidos com base na página atual e itens por página
+        //this.displayedInProgressEvents = inProgressFilter.slice(startIndex, startIndex + this.inPitemsPerPage);
+        this.displayedInProgressEventsSubject.next(inProgressFilter.slice(startIndex, startIndex + this.inPitemsPerPage));
+
+        // Atualiza o conteúdo dos cards
+        if (this.inProgressLength == 0) {
+          this.loadInProgressCardsContent(2);  // Exibe a tela de "sem eventos"
+        } else if (this.inProgressLength <= 3) {
+          this.loadInProgressCardsContent(3);  // Exibe os eventos com no máximo 3 itens
+        } else {
+          this.loadInProgressCardsContent(1);  // Exibe a tela com o paginador
+        }
+      });
+    }
   }
 
   // Paginator - próximo
@@ -245,25 +291,49 @@ export class EventsDashComponent implements OnInit {
     });
  */
 
-    this.service.getByEmailOwner(2).subscribe(events => {
-      this.finishedEvents = events.reverse();
-      ;
+    if (this.selectedOption == 1) {
+      this.service.getByEmailOwner(2).subscribe(events => {
+        this.finishedEvents = events.reverse();
+        ;
 
-      if (this.finishedEvents.length == 0) {
-        this.loadFinishedEventsCardsContent(2);
-      }
-      if (this.finishedEvents.length > 0 && this.finishedEvents.length <= 3) {
-        this.loadFinishedEventsCardsContent(3)
-      }
-      if (this.finishedEvents.length > 3) {
-        this.loadFinishedEventsCardsContent(1);
-      }
+        if (this.finishedEvents.length == 0) {
+          this.loadFinishedEventsCardsContent(2);
+        }
+        if (this.finishedEvents.length > 0 && this.finishedEvents.length <= 3) {
+          this.loadFinishedEventsCardsContent(3)
+        }
+        if (this.finishedEvents.length > 3) {
+          this.loadFinishedEventsCardsContent(1);
+        }
 
-      // Paginator
-      const startIndex = this.finCurrentPage * this.finItemsPerPage;
-      // Cards
-      this.displayedFinishedEvents = this.finishedEvents.slice(startIndex, startIndex + this.finItemsPerPage);
-    })
+        // Paginator
+        const startIndex = this.finCurrentPage * this.finItemsPerPage;
+        // Cards
+        this.displayedFinishedEvents = this.finishedEvents.slice(startIndex, startIndex + this.finItemsPerPage);
+      });
+    }
+    if (this.selectedOption == 2 ) {
+      this.service.getByEmailPlayer(2).subscribe(events => {
+        this.finishedEvents = events.reverse();
+        ;
+
+        if (this.finishedEvents.length == 0) {
+          this.loadFinishedEventsCardsContent(2);
+        }
+        if (this.finishedEvents.length > 0 && this.finishedEvents.length <= 3) {
+          this.loadFinishedEventsCardsContent(3)
+        }
+        if (this.finishedEvents.length > 3) {
+          this.loadFinishedEventsCardsContent(1);
+        }
+
+        // Paginator
+        const startIndex = this.finCurrentPage * this.finItemsPerPage;
+        // Cards
+        this.displayedFinishedEvents = this.finishedEvents.slice(startIndex, startIndex + this.finItemsPerPage);
+      });
+    }
+
   }
 
   // Paginator
@@ -314,6 +384,8 @@ export class EventsDashComponent implements OnInit {
 
   changeProfile(opt: number) {
     this.selectedOption = opt == 1 ? 1 : 2;
+    this.loadInProgressEvents();
+    this.loadFinishedEvents();
   }
 
   openCreateDialog() {

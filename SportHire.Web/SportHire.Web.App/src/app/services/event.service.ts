@@ -44,7 +44,7 @@ export class EventService implements IEventService {
 
     const params = new HttpParams()
       .set('emailOwner', emailParam)
-      .set('emailPlayer', '');
+      .set('emailPlayer', 'null');
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
     /* return this.http.get<Event[]>(`${EVENTS_CONFIG.localUrl}/dash`, { params, headers }); */
@@ -67,8 +67,9 @@ export class EventService implements IEventService {
     const emailParam = email ? email : '';
 
     const params = new HttpParams()
-      .set('emailOwner', '')
+      .set('emailOwner', 'null')
       .set('emailPlayer', emailParam);
+
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
     /* return this.http.get<Event[]>(`${EVENTS_CONFIG.localUrl}/dash`, { params, headers }); */
