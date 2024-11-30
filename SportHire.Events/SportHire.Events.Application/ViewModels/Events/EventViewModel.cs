@@ -16,7 +16,9 @@ namespace SportHire.Events.Application.ViewModels.Events
             DateTime startDate,
             int duration, 
             int cost,
-            string observation)
+            string observation,
+            bool confirmPlayer,
+            bool confirmOwner)
         {
             Id = id;
             Sport = sport;
@@ -29,7 +31,9 @@ namespace SportHire.Events.Application.ViewModels.Events
             StartDate = startDate;
             Duration = duration;
             Cost = cost;
-            Observation = observation; 
+            Observation = observation;
+            ConfirmPlayer = confirmPlayer;
+            ConfirmOwner = confirmOwner;
         }
 
         public string Id { get; private set; }
@@ -44,5 +48,7 @@ namespace SportHire.Events.Application.ViewModels.Events
         public int Duration { get; private set; }
         public int Cost { get; private set; }
         public string? Observation { get; private set; }
+        public bool ConfirmPlayer { get; private set; }
+        public bool ConfirmOwner { get; private set; }
     }
 }

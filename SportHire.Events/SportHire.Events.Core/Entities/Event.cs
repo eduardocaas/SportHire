@@ -60,6 +60,9 @@ namespace SportHire.Events.Core.Entities
         public string City { get; set; }
         public string District  { get; set; }
         public string Address { get; set; }
+        public bool ConfirmPlayer { get; set; } = false;
+        public bool ConfirmOwner { get; set; } = false;
+        public bool Confirm { get; set; } = false;
         public DateTime StartDate { get; set; }
         public int Duration { get; set; }
         public DateTime EndDate { get; set; }

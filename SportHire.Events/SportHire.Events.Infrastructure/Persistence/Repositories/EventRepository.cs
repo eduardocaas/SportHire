@@ -157,5 +157,61 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
 
             return result.ModifiedCount > 0;
         }
+
+        public async Task<EventConfirmEnum> Confirm(string id, UserProfileEnum profile)
+        {
+            EventConfirmEnum eventConfirm = EventConfirmEnum.DEFAULT;
+
+            var filter = Builders<Event>
+                .Filter
+                .Eq(e => e.Id, id);
+
+            var event_ = await _collection.Find(filter).FirstOrDefaultAsync();
+
+            UpdateDefinition<Event> update = null;
+
+            if (profile == UserProfileEnum.OWNER)
+            {
+                if (event_.ConfirmPlayer == true)
+                {
+                    update = Builders<Event>.Update
+                        .Set(e => e.ConfirmOwner, true)
+                        .Set(e => e.Confirm, true)
+                        .Set(e => e.Status, EventStatusEnum.CONCLUIDO); 
+
+                    eventConfirm = EventConfirmEnum.CONFIRMED;
+                }
+                else
+                {
+                    update = Builders<Event>.Update
+                        .Set(e => e.ConfirmOwner, true);
+
+                    eventConfirm = EventConfirmEnum.ONLY_OWNER_CONFIRMED;
+                }
+            }
+            if (profile == UserProfileEnum.PLAYER) {
+                if (event_.ConfirmOwner == true)
+                {
+                    update = Builders<Event>.Update
+                        .Set(e => e.ConfirmPlayer, true)
+                        .Set(e => e.Confirm, true)
+                        .Set(e => e.Status, EventStatusEnum.CONCLUIDO);
+
+                    eventConfirm = EventConfirmEnum.CONFIRMED;
+                }
+                else
+                {
+                    update = Builders<Event>.Update
+                        .Set(e => e.ConfirmPlayer, true);
+
+                    eventConfirm = EventConfirmEnum.ONLY_PLAYER_CONFIRMED;
+                }
+            }
+
+            var options = new UpdateOptions { IsUpsert = false };
+            var result = await _collection.UpdateOneAsync(filter, update, options);
+            
+            return eventConfirm;
+        }
     }
 }

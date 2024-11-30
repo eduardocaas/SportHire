@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using SportHire.Events.Application.Commands.CancelEvent;
+using SportHire.Events.Application.Commands.ConfirmEvent;
 using SportHire.Events.Application.Commands.CreateEvent;
 using SportHire.Events.Application.Commands.PlayerHireEvent;
 using SportHire.Events.Application.Commands.UpdateEvent;
@@ -114,6 +115,34 @@ namespace SportHire.Events.API.Controllers
             catch(Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPut("confirm/{id}")]
+        public async Task<IActionResult> Confirm(
+            [FromRoute] string id,
+            [FromQuery(Name = "profile")] UserProfileEnum profile)
+        {
+            var command = new ConfirmEventCommand(id, profile);
+            var confirm = await _mediator.Send(command);
+
+            switch (confirm)
+            {
+                case EventConfirmEnum.ONLY_OWNER_CONFIRMED: 
+                    return Ok("Evento confirmado, aguardando confirmação do jogador");
+                case EventConfirmEnum.ONLY_PLAYER_CONFIRMED: 
+                    return Ok("Evento confirmado, aguardando confirmação do criador do evento");
+                case EventConfirmEnum.CONFIRMED:
+                    if (profile == UserProfileEnum.PLAYER) 
+                    { 
+                        return Ok("Evento confirmado, o pagamento será adicionado a sua carteira"); 
+                    }
+                    else 
+                    { 
+                        return Ok("Evento confirmado, o pagamento será pago ao jogador"); 
+                    }
+                default:
+                    return NotFound("Evento não encontrado!");
             }
         }
 
