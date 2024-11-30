@@ -1,1 +1,23 @@
-<p>dialog-confirm works!</p>
+<div class="card">
+  <h3>Confirmar</h3>
+  <div class="content-card">
+    <p class="subtitle-card">ID do evento</p>
+    <p class="data-card">{{ data.event.id }}</p>
+    <p class="subtitle-card">Jogador</p>
+    <p class="data-card">{{ data.event.namePlayer ? data.event.namePlayer : 'Sem jogador' }}</p>
+    <p class="subtitle-card">Data</p>
+    <p class="data-card">{{ data.event.startDate | date: 'dd/MM \'às\' HH:mm' }}</p>
+    <p class="subtitle-card">Local</p>
+    <p class="data-card">{{ data.event.district }} - {{ data.event.address }}</p>
+  </div>
+  <p *ngIf="data.profile == 1" class="cost-info">O jogador compareceu ao evento?<br>Se sim, confirme o evento abaixo</p>
+  <p *ngIf="data.profile == 2" class="cost-info">Ao comparecer ao evento<br>foi realizada a partida?<br>Se sim, confirme o evento abaixo</p>
+  <p class="title-button">Deseja confirmar o evento?</p>
+
+  <button [tabIndex]="-1" mat-raised-button color="primary" style="margin:0 0 10px 0px !important;">Confirmar</button>
+
+  <p class="cost-info">Houve algum problema com o evento?</p>
+  <p class="title-button" style="margin-top: -22px !important"><br>Conteste abaixo!</p>
+  <mat-slide-toggle [(ngModel)]="isChecked" color="accent"></mat-slide-toggle>
+  <button [tabIndex]="-1" mat-raised-button color="accent" [disabled]="!isChecked">Contestar</button>
+</div>

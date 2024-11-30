@@ -14,6 +14,8 @@ import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UrlService } from '../../../services/url.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserProfile } from '../../../models/enums/profile';
+import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 
 @Component({
   selector: 'app-events-dash',
@@ -406,6 +408,16 @@ export class EventsDashComponent implements OnInit {
   openInfoDialog(event: Event) {
     this.dialog.open(DialogInfoComponent, {
       data: event,
+      scrollStrategy: new NoopScrollStrategy()
+    });
+  }
+
+  openConfirmDialog(event: Event, profile: UserProfile) {
+    this.dialog.open(DialogConfirmComponent, {
+      data: {
+        event: event,
+        profile: profile
+      },
       scrollStrategy: new NoopScrollStrategy()
     });
   }

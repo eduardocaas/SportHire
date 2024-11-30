@@ -152,7 +152,7 @@
           <button (click)="openInfoDialog(event)" style="background-color: #fff !important;">
             <img src="/assets/css/events/events-dash/info.svg">
           </button>
-          <button *ngIf="selectedOption == 1 && checkEndDate(event)" style="background-color: #0bdc84 !important; width: 90px !important;">
+          <button *ngIf="selectedOption == 1 && checkEndDate(event)" (click)="openConfirmDialog(event, 1)" style="background-color: #0bdc84 !important; width: 90px !important;">
             <img src="/assets/css/events/events-dash/check_circle_black.svg">
           </button>
           <button (click)="openEditDialog(event)" *ngIf="selectedOption == 1 && !checkEndDate(event)">
@@ -164,7 +164,7 @@
           <button *ngIf="selectedOption == 2 && !checkEndDate(event)">
             <img src="/assets/css/events/events-dash/cancel_white.svg">
           </button>
-          <button *ngIf="selectedOption == 2 && checkEndDate(event)" style="background-color: #0bdc84 !important;">
+          <button *ngIf="selectedOption == 2 && checkEndDate(event)" (click)="openConfirmDialog(event, 2)" style="background-color: #0bdc84 !important;">
             <img src="/assets/css/events/events-dash/check_circle_black.svg">
           </button>
         </div>
