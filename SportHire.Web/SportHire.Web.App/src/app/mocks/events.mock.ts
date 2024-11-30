@@ -17,9 +17,11 @@ export const eventsFindPortoAlegreAberto: Event[] = [
     duration: 90,
     status: Status.ABERTO,
     cost: 100,
-    observation: "Evento na quadra 3, estacionamento no local"
+    observation: "Evento na quadra 3, estacionamento no local",
+    confirmOwner: false,
+    confirmPlayer: false
   },
-  {
+   /* {
     id: "507f1f77bcf86cd799439012",
     sport: Sport.VOLEI_PRAIA,
     emailOwner: "owner2@example.com",
@@ -133,11 +135,11 @@ export const eventsFindPortoAlegreAberto: Event[] = [
     duration: 75,
     status: Status.ABERTO,
     cost: 170,
-  },
+  }, */
 ];
 
 export const eventsDashUserAbertoAndamento: Event[] = [
-  {
+  /* {
     id: "507f1f77bcf86cd799439011",
     sport: Sport.BASQUETE,
     emailOwner: "owner1@example.com",
@@ -259,11 +261,11 @@ export const eventsDashUserAbertoAndamento: Event[] = [
     duration: 45,
     status: Status.ABERTO,
     cost: 120,
-  }
+  } */
 ];
 
 export const eventsDashUserCanceladoFinalizado: Event[] = [
-  {
+  /* {
     id: "507f1f77bcf86cd799439011",
     sport: Sport.BASQUETE,
     emailOwner: "owner1@example.com",
@@ -329,5 +331,5 @@ export const eventsDashUserCanceladoFinalizado: Event[] = [
     status: Status.CANCELADO,
     cost: 120,
     observation: "Evento na quadra 3, estacionamento no local"
-  },
+  },  */
 ];

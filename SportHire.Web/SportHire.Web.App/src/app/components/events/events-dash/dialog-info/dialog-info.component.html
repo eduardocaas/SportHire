@@ -38,6 +38,22 @@
       {{ data.observation ? data.observation : 'Sem observação' }}
     </p>
   </mat-card-content>
+
+  <mat-card-content *ngIf="data.status == 2 && this.checkEndDate(data)">
+    <hr>
+    <h3 style="margin: 3px 0 0 0;  display: inline;">Jogador:</h3>
+    <p style="font-size: 16px !important; display: inline;">
+      {{ data.confirmPlayer ? 'Confirmado' : 'Não confirmado' }}
+    </p>
+    <br>
+    <h3 style="margin: 3px 0 0 0; display: inline;">Proprietário:</h3>
+    <p style="font-size: 16px !important; display: inline;">
+      {{ data.confirmOwner ? 'Confirmado' : 'Não confirmado' }}
+    </p>
+    <hr>
+  </mat-card-content>
+
+
   <mat-card-content *ngIf="loadStatus(data.status) == 'Cancelado' || loadStatus(data.status) == 'Concluído'">
     <h3 style="margin-top: 10px;">Custo</h3>
     <p style="font-size: 16px !important;">

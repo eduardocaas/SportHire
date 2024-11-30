@@ -4,12 +4,12 @@
       <div class="profile-box">
         <p>Selecione seu perfil</p>
         <mat-radio-group aria-label="Selecione um perfil">
-          <mat-radio-button value="1" [checked]="selectedOption == 1" (click)="changeProfile(1)">Usuário</mat-radio-button>
-          <mat-radio-button value="2" [checked]="selectedOption == 2" (click)="changeProfile(2)">Jogador</mat-radio-button>
+          <mat-radio-button value="1" [checked]="selectedOption == 1" (click)="changeProfile(1)">Buscando</mat-radio-button>
+          <mat-radio-button value="2" [checked]="selectedOption == 2" (click)="changeProfile(2)">Jogando</mat-radio-button>
         </mat-radio-group>
       </div>
       <div class="create-box">
-        <div class="create-null" *ngIf="this.inProgressEvent == null">
+        <div class="create-null" *ngIf="this.inProgressEvent == null && this.selectedOption == 1">
           <div>
             <img src="/assets/css/events/events-dash/sports_soccer.svg" alt="Ícone de bola de futebol">
             <img src="/assets/css/events/events-dash/sports_volleyball.svg" alt="Ícone de bola de vôlei">
@@ -26,7 +26,7 @@
           <div class="create-card" [style.background-image]="'url(/assets/css/events/events-find/' + loadImage(this.inProgressEvent.sport) + ')'">
             <div class="create-card-header transition">
               <img class="card-pin" src="/assets/css/events/events-find/info.svg">
-              <p><strong>{{ loadStatus(this.inProgressEvent.status) }}</strong></p>
+              <p><strong>{{ loadStatus(this.inProgressEvent) }}</strong></p>
             </div>
             <div class="create-card-content">
               <div>
@@ -58,13 +58,17 @@
             <button (click)="openInfoDialog(this.inProgressEvent)" style="width: 50px" *ngIf="selectedOption == 1">
               <img src="/assets/css/events/events-dash/info_gray.svg">
             </button>
-            <button (click)="openEditDialog(this.inProgressEvent)" *ngIf="selectedOption == 1">
+            <button (click)="openEditDialog(this.inProgressEvent)" *ngIf="selectedOption == 1 && !checkEndDate(this.inProgressEvent)">
               <img src="/assets/css/events/events-dash/edit_gray.svg">
               <span>Editar</span>
             </button>
-            <button (click)="openDeleteDialog(this.inProgressEvent)" *ngIf="selectedOption == 1">
+            <button (click)="openDeleteDialog(this.inProgressEvent)" *ngIf="selectedOption == 1 && !checkEndDate(this.inProgressEvent)">
               <img src="/assets/css/events/events-dash/delete_gray.svg">
               <span>Cancelar</span>
+            </button>
+            <button style="height: 40px !important; width: 293px !important; border-radius: 7px !important;" class="player-button" *ngIf="selectedOption == 1 && checkEndDate(this.inProgressEvent)">
+              <img src="/assets/css/events/events-dash/check_circle.svg">
+              <span style="color:#0bdc84 !important;" (click)="openConfirmDialog(this.inProgressEvent, 1)">Confirmar</span>
             </button>
 
             <button (click)="openInfoDialog(this.inProgressEvent)" class="player-info" *ngIf="selectedOption == 2">
@@ -76,7 +80,7 @@
             </button>
             <button class="player-button" *ngIf="selectedOption == 2 && checkEndDate(this.inProgressEvent)">
               <img src="/assets/css/events/events-dash/check_circle.svg">
-              <span style="color:#0bdc84 !important;">Confirmar</span>
+              <span style="color:#0bdc84 !important;" (click)="openConfirmDialog(this.inProgressEvent, 2)">Confirmar</span>
             </button>
           </div>
         </div>
@@ -133,16 +137,16 @@
         <div class="center-card-header">
           <div style="margin-left: 35px;">
             <img class="transition card-pin" src="/assets/css/events/events-find/info.svg">
-            <p class="transition left-card-text"><strong>{{ loadStatus(event.status) }}</strong></p>
+            <p class="transition left-card-text" style="font-size: 15px !important;"><strong>{{ loadStatus(event) }}</strong></p>
           </div>
           <div>
           <div>
             <img class="transition card-pin" src="/assets/css/events/events-find/pin.svg">
-            <p class="transition left-card-text">{{ event.district }}</p>
+            <p class="transition left-card-text" style="font-size: 15px !important;">{{ event.district }}</p>
           </div>
           <div style="margin: 0 25px 0 15px;">
             <img class="transition card-pin" src="/assets/css/events/events-find/schedule.svg">
-            <p class="transition left-card-text">{{ event.startDate | date: 'dd/MM' }}</p>
+            <p class="transition left-card-text" style="font-size: 15px !important;">{{ event.startDate | date: 'dd/MM' }}</p>
           </div>
         </div>
         </div>
@@ -213,7 +217,7 @@
           <div class="right-card-header">
             <div>
               <img class="transition card-pin" src="/assets/css/events/events-find/info.svg">
-              <p class="transition right-card-status right-card-text">{{ loadStatus(event.status) }}</p>
+              <p class="transition right-card-status right-card-text">{{ loadStatus(event) }}</p>
             </div>
             <div style="margin-right: 30px;">
               <img class="transition card-pin" src="/assets/css/events/events-find/schedule.svg">

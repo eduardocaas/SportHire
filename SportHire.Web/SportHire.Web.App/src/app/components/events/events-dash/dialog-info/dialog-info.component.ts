@@ -55,4 +55,17 @@ export class DialogInfoComponent {
         return '';
     }
   }
+
+  // Verifica se data de término foi ultrapassada
+  checkEndDate(event: Event): boolean {
+
+    let dateNow: Date = new Date(); // Agora dateNow é do tipo Date
+    let endDate = new Date(event.startDate);
+    endDate.setMinutes(endDate.getMinutes() + event.duration);
+
+    if (endDate <= dateNow) {
+      return true;
+    }
+    return false;
+  }
 }

@@ -14,4 +14,6 @@ export interface Event {
   status?: number;
   cost: number;
   observation?: string;
+  confirmPlayer: boolean;
+  confirmOwner: boolean;
 }

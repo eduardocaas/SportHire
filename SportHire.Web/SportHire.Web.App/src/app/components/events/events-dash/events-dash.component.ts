@@ -450,8 +450,11 @@ export class EventsDashComponent implements OnInit {
     }
   }
 
-  loadStatus(status: Status | undefined) {
-    switch (status) {
+  loadStatus(event: Event) {
+    if (event.status == Status.ANDAMENTO && this.checkEndDate(event)) {
+      if (event.confirmOwner == false || event.confirmPlayer == false) { return 'Confirmação pendente' }
+    }
+    switch (event.status) {
       case Status.ABERTO:
         return 'Aberto';
       case Status.ANDAMENTO:
