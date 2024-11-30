@@ -12,6 +12,7 @@ import { Status } from '../models/enums/status';
 import { EventCreate } from '../models/event.create';
 import { EventUpdate } from '../models/event.update';
 import { EventUpdatePlayer } from '../models/event.updateplayer';
+import { UserProfile } from '../models/enums/profile';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ import { EventUpdatePlayer } from '../models/event.updateplayer';
 export class EventService implements IEventService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
+
 
   getByCityAndSport(city: string, sport: Sport | null): Observable<Event[]> {
 
@@ -126,6 +128,15 @@ export class EventService implements IEventService {
 
     return this.http.put<void>(`${EVENTS_CONFIG.localUrl}/hire/${id}`, event, { headers });
   }
+
+  confirm(id: string, profile: UserProfile): Observable<string> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
+
+    const params = new HttpParams()
+      .set('profile', profile);
+
+    return this.http.put<string>(`${EVENTS_CONFIG.localUrl}/confirm/${id}`, { params, headers });
+  }
 }
 
 @Injectable({
@@ -181,6 +192,10 @@ export class MockEventService implements IEventService {
   }
 
   updatePlayer(id: string): Observable<void> {
+    throw new Error('Method not implemented.');
+  }
+
+  confirm(id: string, profile: UserProfile): Observable<string> {
     throw new Error('Method not implemented.');
   }
 }

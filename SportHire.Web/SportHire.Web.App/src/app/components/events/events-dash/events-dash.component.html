@@ -152,17 +152,20 @@
           <button (click)="openInfoDialog(event)" style="background-color: #fff !important;">
             <img src="/assets/css/events/events-dash/info.svg">
           </button>
-          <button (click)="openEditDialog(event)" *ngIf="selectedOption == 1">
+          <button *ngIf="selectedOption == 1 && checkEndDate(event)" style="background-color: #0bdc84 !important; width: 90px !important;">
+            <img src="/assets/css/events/events-dash/check_circle_black.svg">
+          </button>
+          <button (click)="openEditDialog(event)" *ngIf="selectedOption == 1 && !checkEndDate(event)">
             <img src="/assets/css/events/events-dash/edit.svg">
           </button>
-          <button (click)="openDeleteDialog(event)" *ngIf="selectedOption == 1">
+          <button (click)="openDeleteDialog(event)" *ngIf="selectedOption == 1 && !checkEndDate(event)">
             <img src="/assets/css/events/events-dash/delete.svg">
           </button>
           <button *ngIf="selectedOption == 2 && !checkEndDate(event)">
             <img src="/assets/css/events/events-dash/cancel_white.svg">
           </button>
-          <button *ngIf="selectedOption == 2 && checkEndDate(event)" style="background-color: #32373b !important;">
-            <img src="/assets/css/events/events-dash/check_circle.svg">
+          <button *ngIf="selectedOption == 2 && checkEndDate(event)" style="background-color: #0bdc84 !important;">
+            <img src="/assets/css/events/events-dash/check_circle_black.svg">
           </button>
         </div>
       </div>
