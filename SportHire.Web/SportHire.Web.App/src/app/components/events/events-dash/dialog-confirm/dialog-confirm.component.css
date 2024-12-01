@@ -41,3 +41,33 @@
 button {
   margin-left: 10px;
 }
+
+.loader-owner {
+  width: fit-content;
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
+  color: #000;
+  font-size: 17px;
+  padding: 3px 0 5px 0;
+  background: linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat;
+  animation: l2 2s linear infinite;
+}
+.loader-owner:before {
+  content:"Aguardando confirmação\A do jogador...";
+  white-space: pre-line;
+}
+
+.loader-player {
+  width: fit-content;
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
+  color: #141414;
+  font-size: 17px;
+  padding: 3px 0 5px 0;
+  background: linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat;
+  animation: l2 2s linear infinite;
+}
+.loader-owner:player {
+  content:"Aguardando confirmação\A do criador do evento...";
+  white-space: pre-line;
+}
+@keyframes l2 {to{background-size: 100% 3px}}
+
