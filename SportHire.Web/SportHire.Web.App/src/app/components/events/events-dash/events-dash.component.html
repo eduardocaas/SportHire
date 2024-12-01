@@ -9,6 +9,18 @@
         </mat-radio-group>
       </div>
       <div class="create-box">
+        <div class="player-null" *ngIf="this.inProgressEvent == null && this.selectedOption == 2">
+          <div>
+            <img src="/assets/css/events/events-dash/sports_soccer.svg" alt="Ícone de bola de futebol">
+            <img src="/assets/css/events/events-dash/sports_volleyball.svg" alt="Ícone de bola de vôlei">
+            <img src="/assets/css/events/events-dash/sports_basketball.svg" alt="Ícone de bola de basquete">
+          </div>
+          <p>Você não tem nenhum<br>evento em andamento</p>
+          <button (click)="redirectFind()">
+            <img src="/assets/css/events/events-dash/search.svg" style="width: 32px;">
+            <span>Buscar eventos</span>
+          </button>
+        </div>
         <div class="create-null" *ngIf="this.inProgressEvent == null && this.selectedOption == 1">
           <div>
             <img src="/assets/css/events/events-dash/sports_soccer.svg" alt="Ícone de bola de futebol">

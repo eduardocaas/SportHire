@@ -480,5 +480,9 @@ export class EventsDashComponent implements OnInit {
     }
     return false;
   }
+
+  redirectFind() {
+    this.router.navigate(['events/find']);
+  }
 }
 
