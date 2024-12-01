@@ -14,7 +14,7 @@
   <p *ngIf="data.profile == 2" class="cost-info">Ao comparecer ao evento<br>foi realizada a partida?<br>Se sim, confirme o evento abaixo</p>
   <p class="title-button">Deseja confirmar o evento?</p>
 
-  <button [tabIndex]="-1" mat-raised-button color="primary" style="margin:0 0 10px 0px !important;">Confirmar</button>
+  <button (click)="confirm()" [tabIndex]="-1" mat-flat-button color="primary" style="margin:0 0 10px 0px !important;">Confirmar</button>
 
   <p class="cost-info">Houve algum problema com o evento?</p>
   <p class="title-button" style="margin-top: -22px !important"><br>Conteste abaixo!</p>

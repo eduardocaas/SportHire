@@ -66,9 +66,9 @@
               <img src="/assets/css/events/events-dash/delete_gray.svg">
               <span>Cancelar</span>
             </button>
-            <button style="height: 40px !important; width: 293px !important; border-radius: 7px !important;" class="player-button" *ngIf="selectedOption == 1 && checkEndDate(this.inProgressEvent)">
+            <button (click)="openConfirmDialog(this.inProgressEvent, 1)" style="height: 40px !important; width: 293px !important; border-radius: 7px !important;" class="player-button" *ngIf="selectedOption == 1 && checkEndDate(this.inProgressEvent)">
               <img src="/assets/css/events/events-dash/check_circle.svg">
-              <span style="color:#0bdc84 !important;" (click)="openConfirmDialog(this.inProgressEvent, 1)">Confirmar</span>
+              <span style="color:#0bdc84 !important;">Confirmar</span>
             </button>
 
             <button (click)="openInfoDialog(this.inProgressEvent)" class="player-info" *ngIf="selectedOption == 2">
@@ -78,9 +78,9 @@
               <img src="/assets/css/events/events-dash/cancel.svg">
               <span style="color:#d9d9d9 !important">Cancelar</span>
             </button>
-            <button class="player-button" *ngIf="selectedOption == 2 && checkEndDate(this.inProgressEvent)">
+            <button class="player-button" (click)="openConfirmDialog(this.inProgressEvent, 2)" *ngIf="selectedOption == 2 && checkEndDate(this.inProgressEvent)">
               <img src="/assets/css/events/events-dash/check_circle.svg">
-              <span style="color:#0bdc84 !important;" (click)="openConfirmDialog(this.inProgressEvent, 2)">Confirmar</span>
+              <span style="color:#0bdc84 !important;">Confirmar</span>
             </button>
           </div>
         </div>

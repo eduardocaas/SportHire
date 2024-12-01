@@ -129,13 +129,10 @@ export class EventService implements IEventService {
     return this.http.put<void>(`${EVENTS_CONFIG.localUrl}/hire/${id}`, event, { headers });
   }
 
-  confirm(id: string, profile: UserProfile): Observable<string> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this.authService.getToken() }`);
+  confirm(id: string, profile: number): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.authService.getToken()}`);
 
-    const params = new HttpParams()
-      .set('profile', profile);
-
-    return this.http.put<string>(`${EVENTS_CONFIG.localUrl}/confirm/${id}`, { params, headers });
+    return this.http.put<any>(`${EVENTS_CONFIG.localUrl}/confirm/${id}/${profile}`, { headers });
   }
 }
 

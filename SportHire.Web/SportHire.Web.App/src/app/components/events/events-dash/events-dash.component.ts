@@ -412,7 +412,7 @@ export class EventsDashComponent implements OnInit {
     });
   }
 
-  openConfirmDialog(event: Event, profile: UserProfile) {
+  openConfirmDialog(event: Event, profile: number) {
     this.dialog.open(DialogConfirmComponent, {
       data: {
         event: event,

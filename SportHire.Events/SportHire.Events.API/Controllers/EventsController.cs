@@ -118,31 +118,32 @@ namespace SportHire.Events.API.Controllers
             }
         }
 
-        [HttpPut("confirm/{id}")]
+        [HttpPut("confirm/{id}/{profile}")]
         public async Task<IActionResult> Confirm(
-            [FromRoute] string id,
-            [FromQuery(Name = "profile")] UserProfileEnum profile)
+            [FromRoute(Name = "id")] string id,
+            [FromRoute(Name = "profile")] UserProfileEnum profile)
         {
+            await Console.Out.WriteLineAsync(profile.ToString());
             var command = new ConfirmEventCommand(id, profile);
             var confirm = await _mediator.Send(command);
 
             switch (confirm)
             {
-                case EventConfirmEnum.ONLY_OWNER_CONFIRMED: 
-                    return Ok("Evento confirmado, aguardando confirmação do jogador");
-                case EventConfirmEnum.ONLY_PLAYER_CONFIRMED: 
-                    return Ok("Evento confirmado, aguardando confirmação do criador do evento");
+                case EventConfirmEnum.ONLY_OWNER_CONFIRMED:
+                    return Ok(new { message = "Evento confirmado, aguardando confirmação do jogador" });
+                case EventConfirmEnum.ONLY_PLAYER_CONFIRMED:
+                    return Ok(new { message = "Evento confirmado, aguardando confirmação do criador do evento" });
                 case EventConfirmEnum.CONFIRMED:
-                    if (profile == UserProfileEnum.PLAYER) 
-                    { 
-                        return Ok("Evento confirmado, o pagamento será adicionado a sua carteira"); 
+                    if (profile == UserProfileEnum.PLAYER)
+                    {
+                        return Ok(new { message = "Evento confirmado, o pagamento será adicionado a sua carteira" });
                     }
-                    else 
-                    { 
-                        return Ok("Evento confirmado, o pagamento será pago ao jogador"); 
+                    else
+                    {
+                        return Ok(new { message = "Evento confirmado, o valor será pago ao jogador" });
                     }
                 default:
-                    return NotFound("Evento não encontrado!");
+                    return NotFound(new { message = "Evento não encontrado!" });
             }
         }
 

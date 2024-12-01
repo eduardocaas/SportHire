@@ -160,6 +160,7 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
 
         public async Task<EventConfirmEnum> Confirm(string id, UserProfileEnum profile)
         {
+            await Console.Out.WriteLineAsync((char)profile);
             EventConfirmEnum eventConfirm = EventConfirmEnum.DEFAULT;
 
             var filter = Builders<Event>
@@ -168,8 +169,10 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
 
             var event_ = await _collection.Find(filter).FirstOrDefaultAsync();
 
+            // Inicializa com uma atualização vazia
             UpdateDefinition<Event> update = null;
 
+            // Garantir que, em qualquer situação, a variável 'update' sempre tenha um valor válido
             if (profile == UserProfileEnum.OWNER)
             {
                 if (event_.ConfirmPlayer == true)
@@ -177,7 +180,7 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
                     update = Builders<Event>.Update
                         .Set(e => e.ConfirmOwner, true)
                         .Set(e => e.Confirm, true)
-                        .Set(e => e.Status, EventStatusEnum.CONCLUIDO); 
+                        .Set(e => e.Status, EventStatusEnum.CONCLUIDO);
 
                     eventConfirm = EventConfirmEnum.CONFIRMED;
                 }
@@ -189,7 +192,8 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
                     eventConfirm = EventConfirmEnum.ONLY_OWNER_CONFIRMED;
                 }
             }
-            if (profile == UserProfileEnum.PLAYER) {
+            else if (profile == UserProfileEnum.PLAYER)
+            {
                 if (event_.ConfirmOwner == true)
                 {
                     update = Builders<Event>.Update
@@ -208,9 +212,17 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
                 }
             }
 
+            // Se o 'update' ainda for null ou vazio, não faça nada
+            if (update == null)
+            {
+                throw new InvalidOperationException("Nenhuma operação de atualização foi definida.");
+            }
+
             var options = new UpdateOptions { IsUpsert = false };
+
+            // Atualiza o documento no banco de dados
             var result = await _collection.UpdateOneAsync(filter, update, options);
-            
+
             return eventConfirm;
         }
     }
