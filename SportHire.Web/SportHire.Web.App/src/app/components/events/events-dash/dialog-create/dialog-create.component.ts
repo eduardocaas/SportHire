@@ -50,7 +50,11 @@ export class DialogCreateComponent {
     private _router: Router)
   {
     this._dateAdapter.setLocale('pt-br');
+    this.maxDate.setMonth(this.maxDate.getMonth() + 3);
   }
+
+  minDate = new Date();
+  maxDate = new Date();
 
   sports = [
     { opt: Sport.FUTEBOL, name: 'Futebol' },
@@ -96,7 +100,7 @@ export class DialogCreateComponent {
   inputTime: string = '';
 
   sportFormGroup = this._formBuilder.group({
-    sportCtrl: ['', Validators.required],
+    sportCtrl: ['', [Validators.required, this.sportValidator]],
   });
 
   locationFormGroup = this._formBuilder.group({
@@ -111,6 +115,13 @@ export class DialogCreateComponent {
     timeCtrl: ['', Validators.required],
     durationCtrl: ['', [Validators.required, Validators.min(30), Validators.max(180)]]
   });
+
+  sportValidator(control: { value: any }) {
+    if (control.value === Sport.DEFAULT) {
+      return { sportInvalid: true };
+    }
+    return null;
+  }
 
   dateBuilder() {
     const date = new Date(this.inputDate);

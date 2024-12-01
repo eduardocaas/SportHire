@@ -82,7 +82,7 @@
             <h3 class="margin-h3">Preencha os dados relacionados à data e horário</h3>
           <mat-form-field>
             <mat-label>Escolha a data</mat-label>
-            <input matInput [(ngModel)]="inputDate" [matDatepicker]="picker" formControlName="dateCtrl" required>
+            <input matInput [(ngModel)]="inputDate" [matDatepicker]="picker" [min]="minDate" [max]="maxDate" formControlName="dateCtrl" required>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
