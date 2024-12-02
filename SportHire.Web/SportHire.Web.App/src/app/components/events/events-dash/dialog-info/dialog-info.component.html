@@ -1,26 +1,29 @@
 <mat-card class="card">
   <mat-card-header>
     <div mat-card-avatar class="header-image"></div>
-    <mat-card-title>{{ data.nameOwner }}</mat-card-title>
-    <mat-card-subtitle style="font-size: 15px !important; color: #666;">{{ loadTitle(data.sport) }}</mat-card-subtitle>
+    <mat-card-title>{{ this.event.nameOwner }}</mat-card-title>
+    <mat-card-subtitle style="font-size: 15px !important; color: #666;">{{ loadTitle(this.event.sport) }}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
     <p style="font-size: 14px !important; margin-bottom: 5px; color: #777">
-      <strong>ID</strong>: {{ data.id }}
+      <strong>ID</strong>: {{ this.event.id }}
     </p>
   </mat-card-content>
-  <div class="sport-image" mat-card-image [style.background-image]="'url(/assets/css/events/events-find/' + loadImage(data.sport) + ')'" alt="Foto referente ao esporte do evento">
+  <div class="sport-image" mat-card-image [style.background-image]="'url(/assets/css/events/events-find/' + loadImage(this.event.sport) + ')'" alt="Foto referente ao esporte do evento">
     <div>
     <p class="card-title">
      Jogador
     </p>
     <div class="card-data">
-      <p *ngIf="data.namePlayer != null || data.namePlayer != undefined"> {{ data.namePlayer }}</p>
+      <p *ngIf="this.event.namePlayer != null || this.event.namePlayer != undefined"> {{ this.event.namePlayer }}</p>
+      <div *ngIf="this.event.status == 2 && this.profile == 1" style="display: flex; align-items: center; gap: 8px; margin-top: 5px;">
+      <img src="/assets/css/events/events-dash/cached.svg" (click)="quit()" style="width: 24px; cursor: pointer;"><span style="font-size: 16px; font-weight: 600;color: #0bdc84">Utilizadas: {{ this.event.playerChangeAttempts }} de 3 </span>
     </div>
-    <div *ngIf="(data.namePlayer == null || data.namePlayer == undefined) && data.status != 3" class="loader"></div>
+    </div>
+    <div *ngIf="(this.event.namePlayer == null || this.event.namePlayer == undefined) && this.event.status != 3" class="loader"></div>
     <div class="card-data">
-      <p *ngIf="(data.namePlayer == null || data.namePlayer == undefined) && data.status == 3">Sem jogador</p>
+      <p *ngIf="(this.event.namePlayer == null || this.event.namePlayer == undefined) && this.event.status == 3">Sem jogador</p>
     </div>
   </div>
     <div>
@@ -28,36 +31,36 @@
       Data
     </p>
     <p class="card-data">
-      {{ data.startDate | date: 'dd/MM \'às\' HH:mm' }}
+      {{ this.event.startDate | date: 'dd/MM \'às\' HH:mm' }}
     </p>
   </div>
   </div>
   <mat-card-content>
     <h3 style="margin-top: 10px;">Observação</h3>
     <p style="font-size: 16px !important;">
-      {{ data.observation ? data.observation : 'Sem observação' }}
+      {{ this.event.observation ? this.event.observation : 'Sem observação' }}
     </p>
   </mat-card-content>
 
-  <mat-card-content *ngIf="data.status == 2 && this.checkEndDate(data)">
+  <mat-card-content *ngIf="this.event.status == 2 && this.checkEndDate(this.event)">
     <hr>
     <h3 style="margin: 3px 0 0 0;  display: inline;">Jogador:</h3>
     <p style="font-size: 16px !important; display: inline;">
-      {{ data.confirmPlayer ? 'Confirmado' : 'Não confirmado' }}
+      {{ this.event.confirmPlayer ? 'Confirmado' : 'Não confirmado' }}
     </p>
     <br>
     <h3 style="margin: 3px 0 0 0; display: inline;">Proprietário:</h3>
     <p style="font-size: 16px !important; display: inline;">
-      {{ data.confirmOwner ? 'Confirmado' : 'Não confirmado' }}
+      {{ this.event.confirmOwner ? 'Confirmado' : 'Não confirmado' }}
     </p>
     <hr>
   </mat-card-content>
 
 
-  <mat-card-content *ngIf="loadStatus(data.status) == 'Cancelado' || loadStatus(data.status) == 'Concluído'">
+  <mat-card-content *ngIf="loadStatus(this.event.status) == 'Cancelado' || loadStatus(this.event.status) == 'Concluído'">
     <h3 style="margin-top: 10px;">Custo</h3>
     <p style="font-size: 16px !important;">
-      R$ {{ data.cost }},00
+      R$ {{ this.event.cost }},00
     </p>
   </mat-card-content>
   <mat-card-actions>

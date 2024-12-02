@@ -19,7 +19,8 @@ export const eventsFindPortoAlegreAberto: Event[] = [
     cost: 100,
     observation: "Evento na quadra 3, estacionamento no local",
     confirmOwner: false,
-    confirmPlayer: false
+    confirmPlayer: false,
+    playerChangeAttempts: 0
   },
    /* {
     id: "507f1f77bcf86cd799439012",

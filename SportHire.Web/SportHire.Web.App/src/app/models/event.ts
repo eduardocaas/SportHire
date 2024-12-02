@@ -16,4 +16,5 @@ export interface Event {
   observation?: string;
   confirmPlayer: boolean;
   confirmOwner: boolean;
+  playerChangeAttempts: number;
 }

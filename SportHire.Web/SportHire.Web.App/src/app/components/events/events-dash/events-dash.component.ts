@@ -406,9 +406,12 @@ export class EventsDashComponent implements OnInit {
     });
   }
 
-  openInfoDialog(event: Event) {
+  openInfoDialog(event: Event, profile: number) {
     this.dialog.open(DialogInfoComponent, {
-      data: event,
+      data: {
+        event: event,
+        profile: profile
+      },
       scrollStrategy: new NoopScrollStrategy()
     });
   }
