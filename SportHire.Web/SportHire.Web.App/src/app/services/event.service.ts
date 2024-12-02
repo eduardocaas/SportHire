@@ -21,7 +21,6 @@ export class EventService implements IEventService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-
   getByCityAndSport(city: string, sport: Sport | null): Observable<Event[]> {
 
     const email = this.authService.getEmail();
@@ -134,6 +133,10 @@ export class EventService implements IEventService {
 
     return this.http.put<any>(`${EVENTS_CONFIG.localUrl}/confirm/${id}/${profile}`, { headers });
   }
+
+  quit(id: string): Observable<void> {
+    throw new Error('Method not implemented.');
+  }
 }
 
 @Injectable({
@@ -193,6 +196,10 @@ export class MockEventService implements IEventService {
   }
 
   confirm(id: string, profile: UserProfile): Observable<string> {
+    throw new Error('Method not implemented.');
+  }
+
+  quit(id: string): Observable<void> {
     throw new Error('Method not implemented.');
   }
 }
