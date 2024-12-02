@@ -67,7 +67,7 @@
             </div>
           </div>
           <div class="create-card-btns">
-            <button (click)="openInfoDialog(this.inProgressEvent)" style="width: 50px" *ngIf="selectedOption == 1">
+            <button (click)="openInfoDialog(this.inProgressEvent, this.selectedOption)" style="width: 50px" *ngIf="selectedOption == 1">
               <img src="/assets/css/events/events-dash/info_gray.svg">
             </button>
             <button (click)="openEditDialog(this.inProgressEvent)" *ngIf="selectedOption == 1 && !checkEndDate(this.inProgressEvent)">
@@ -83,12 +83,12 @@
               <span style="color:#0bdc84 !important;">Confirmar</span>
             </button>
 
-            <button (click)="openInfoDialog(this.inProgressEvent)" class="player-info" *ngIf="selectedOption == 2">
+            <button (click)="openInfoDialog(this.inProgressEvent, this.selectedOption)" class="player-info" *ngIf="selectedOption == 2">
               <img src="/assets/css/events/events-dash/info_gray.svg">
             </button>
-            <button class="player-button" *ngIf="selectedOption == 2 && !checkEndDate(this.inProgressEvent)">
+            <button  (click)="openQuitDialog(this.inProgressEvent, this.selectedOption)" class="player-button" *ngIf="selectedOption == 2 && !checkEndDate(this.inProgressEvent)">
               <img src="/assets/css/events/events-dash/cancel.svg">
-              <span style="color:#d9d9d9 !important" (click)="openQuitDialog(this.inProgressEvent, this.selectedOption)">Desistir</span>
+              <span style="color:#d9d9d9 !important">Desistir</span>
             </button>
             <button class="player-button" (click)="openConfirmDialog(this.inProgressEvent, 2)" *ngIf="selectedOption == 2 && checkEndDate(this.inProgressEvent)">
               <img src="/assets/css/events/events-dash/check_circle.svg">
@@ -165,7 +165,7 @@
         <p class="center-card-title transition">{{ loadTitle(event.sport) }}, <br>{{ event.city }}</p>
         <div class="center-card-footer">
           <button *ngIf="selectedOption == 2" style="background-color: transparent !important; cursor: default !important;"></button>
-          <button (click)="openInfoDialog(event)" style="background-color: #fff !important;">
+          <button (click)="openInfoDialog(event, this.selectedOption!)" style="background-color: #fff !important;">
             <img src="/assets/css/events/events-dash/info.svg">
           </button>
           <button *ngIf="selectedOption == 1 && checkEndDate(event)" (click)="openConfirmDialog(event, 1)" style="background-color: #0bdc84 !important; width: 90px !important;">
@@ -238,7 +238,7 @@
           </div>
           <p class="center-card-title transition">{{ loadTitle(event.sport) }}, <br>{{ event.city }}</p>
           <div class="right-card-footer">
-            <button (click)="openInfoDialog(event)">
+            <button (click)="openInfoDialog(event, this.selectedOption!)">
               <img src="/assets/css/events/events-dash/info_gray.svg">
               <span>Detalhes</span>
             </button>

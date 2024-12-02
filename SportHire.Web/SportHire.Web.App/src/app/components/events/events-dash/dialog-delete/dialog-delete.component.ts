@@ -21,8 +21,14 @@ export class DialogDeleteComponent {
 
   cancel() {
     this._service.cancel(this.data.id!).subscribe(response => {
-      this._toast.success('Evento cancelado com sucesso!', 'Evento', { positionClass: 'toast-bottom-center' });
-      timer(1000).subscribe(x => { window.location.reload(); })
+      if (this.data.status == 2) {
+        this._toast.success('Evento cancelado com sucesso! O jogador será notificado', 'Evento', { positionClass: 'toast-bottom-center' });
+        timer(2500).subscribe(x => { window.location.reload(); })
+      }
+      else {
+        this._toast.success('Evento cancelado com sucesso!', 'Evento', { positionClass: 'toast-bottom-center' });
+        timer(2500).subscribe(x => { window.location.reload(); })
+      }
     }, err => {
       if (err.status == 404) {
         this._toast.error('Evento não encontrado', 'Erro', { positionClass: 'toast-bottom-center' });
