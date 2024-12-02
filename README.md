@@ -7,3 +7,4 @@ A falta de jogadores em partidas esportivas informais é um desafio frequente qu
 O SportHire tem como principal objetivo, facilitar a organização de partidas esportivas de forma colaborativa e eficiente, os usuários podem criar eventos detalhados, assim, jogadores interessados podem visualizar eventos próximos e se inscrever.
 
 ## Stack Tecnológico
+![Imagem stack tecnológico](https://github.com/eduardocaas/SportHire/blob/main/docs/Infra.png?raw=true)
