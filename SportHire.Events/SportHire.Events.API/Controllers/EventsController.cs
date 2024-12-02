@@ -180,7 +180,7 @@ namespace SportHire.Events.API.Controllers
             }
             catch (InvalidOperationException iex)
             {
-                return BadRequest(iex.Message);
+                return NotFound(iex.Message);
             }
             catch (Exception ex)
             {
