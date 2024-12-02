@@ -14,5 +14,6 @@ namespace SportHire.Events.Core.Repositories
         Task<bool> CancelAsync(string id);
         Task<bool> UpdatePlayerAsync(string id, string namePlayer, string emailPlayer);
         Task<EventConfirmEnum> Confirm(string id, UserProfileEnum profile);
+        Task<bool> QuitAsync(string id);
     }
 }

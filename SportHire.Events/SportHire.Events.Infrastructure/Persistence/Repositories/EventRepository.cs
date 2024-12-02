@@ -225,5 +225,22 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
 
             return eventConfirm;
         }
+
+        public async Task<bool> QuitAsync(string id)
+        {
+            var filter = Builders<Event>
+                .Filter
+                .Eq(e => e.Id, id);
+
+            var update = Builders<Event>.Update
+                .Set(e => e.NamePlayer, null)
+                .Set(e => e.EmailPlayer, null)
+                .Set(e => e.Status, EventStatusEnum.ABERTO);
+
+            var options = new UpdateOptions { IsUpsert = false };
+            var result = await _collection.UpdateOneAsync(filter, update, options);
+
+            return result.ModifiedCount > 0;
+        }
     }
 }

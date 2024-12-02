@@ -6,6 +6,7 @@ using SportHire.Events.Application.Commands.CancelEvent;
 using SportHire.Events.Application.Commands.ConfirmEvent;
 using SportHire.Events.Application.Commands.CreateEvent;
 using SportHire.Events.Application.Commands.PlayerHireEvent;
+using SportHire.Events.Application.Commands.QuitEvent;
 using SportHire.Events.Application.Commands.UpdateEvent;
 using SportHire.Events.Application.Queries.GetEventsByCity;
 using SportHire.Events.Application.Queries.GetEventsByCityAndSport;
@@ -152,6 +153,16 @@ namespace SportHire.Events.API.Controllers
             [FromRoute] string id)
         {
             CancelEventCommand command = new CancelEventCommand(id);
+            var result = await _mediator.Send(command);
+
+            return result ? Ok() : NotFound("Evento não encontrado!");
+        }
+
+        [HttpPut("quit/{id}")]
+        public async Task<IActionResult> Quit(
+            [FromRoute] string id)
+        {
+            QuitEventCommand command = new QuitEventCommand(id);
             var result = await _mediator.Send(command);
 
             return result ? Ok() : NotFound("Evento não encontrado!");
