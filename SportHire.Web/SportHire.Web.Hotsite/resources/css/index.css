@@ -1,7 +1,3 @@
-
-
-
-
 /* Section - banner */
 
 .title-banner {
@@ -129,4 +125,30 @@
 
 .footer-card img {
   width: 18px;
+}
+
+/* 
+    Fix card image - background size - repeating
+    */
+@media only screen and (max-width: 1860px) {
+  .card {
+    background-size: 120%;
+  }
+
+  .card:hover {
+    background-size: 125%;
+  }
+}
+
+/* 
+    Fix card image - background size - repeating
+    */
+@media only screen and (max-width: 1650px) {
+  .card {
+    background-size: cover;
+  }
+
+  .card:hover {
+    background-size: cover;
+  }
 }
