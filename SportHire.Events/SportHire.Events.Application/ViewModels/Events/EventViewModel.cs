@@ -18,7 +18,8 @@ namespace SportHire.Events.Application.ViewModels.Events
             int cost,
             string observation,
             bool confirmPlayer,
-            bool confirmOwner)
+            bool confirmOwner,
+            int playerChangeAttempts)
         {
             Id = id;
             Sport = sport;
@@ -34,6 +35,7 @@ namespace SportHire.Events.Application.ViewModels.Events
             Observation = observation;
             ConfirmPlayer = confirmPlayer;
             ConfirmOwner = confirmOwner;
+            PlayerChangeAttempts = playerChangeAttempts;
         }
 
         public string Id { get; private set; }
@@ -50,5 +52,6 @@ namespace SportHire.Events.Application.ViewModels.Events
         public string? Observation { get; private set; }
         public bool ConfirmPlayer { get; private set; }
         public bool ConfirmOwner { get; private set; }
+        public int PlayerChangeAttempts { get; private set; }
     }
 }

@@ -63,6 +63,7 @@ namespace SportHire.Events.Core.Entities
         public bool ConfirmPlayer { get; set; } = false;
         public bool ConfirmOwner { get; set; } = false;
         public bool Confirm { get; set; } = false;
+        public int PlayerChangeAttempts { get; set; } = 0;
         public DateTime StartDate { get; set; }
         public int Duration { get; set; }
         public DateTime EndDate { get; set; }

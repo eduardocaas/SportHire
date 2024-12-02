@@ -32,7 +32,8 @@ namespace SportHire.Events.Application.Queries.GetEventsByCityAndSport
                         e.Cost,
                         e.Observation,
                         e.ConfirmPlayer,
-                        e.ConfirmOwner))
+                        e.ConfirmOwner,
+                        e.PlayerChangeAttempts))
                 .ToList();
 
             return eventsViewModel;

@@ -3,7 +3,7 @@ using SportHire.Events.Core.Repositories;
 
 namespace SportHire.Events.Application.Commands.QuitEvent
 {
-    public class QuitEventCommandHandler : IRequestHandler<QuitEventCommand, bool>
+    public class QuitEventCommandHandler : IRequestHandler<QuitEventCommand, int>
     {
         private readonly IEventRepository _repository;
 
@@ -12,9 +12,9 @@ namespace SportHire.Events.Application.Commands.QuitEvent
             _repository = repository;
         }
 
-        public async Task<bool> Handle(QuitEventCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(QuitEventCommand request, CancellationToken cancellationToken)
         {
-            return await _repository.QuitAsync(request.Id);
+            return await _repository.QuitAsync(request.Id, request.UserProfile);
         }
     }
 }

@@ -158,14 +158,34 @@ namespace SportHire.Events.API.Controllers
             return result ? Ok() : NotFound("Evento não encontrado!");
         }
 
-        [HttpPut("quit/{id}")]
+        [HttpPut("quit/{id}/{profile}")]
         public async Task<IActionResult> Quit(
-            [FromRoute] string id)
+            [FromRoute(Name = "id")] string id,
+            [FromRoute(Name = "profile")] UserProfileEnum profile)
         {
-            QuitEventCommand command = new QuitEventCommand(id);
-            var result = await _mediator.Send(command);
+            try
+            {
+                QuitEventCommand command = new QuitEventCommand(id, profile);
+                var result = await _mediator.Send(command);
 
-            return result ? Ok() : NotFound("Evento não encontrado!");
+                if (profile == UserProfileEnum.OWNER)
+                {
+                    return Ok(new { attempts = result });
+                }
+                return Ok();
+            }
+            catch (ArgumentException aex)
+            {
+                return BadRequest(aex.Message);
+            }
+            catch (InvalidOperationException iex)
+            {
+                return BadRequest(iex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
     }
 }

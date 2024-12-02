@@ -226,7 +226,7 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
             return eventConfirm;
         }
 
-        public async Task<bool> QuitAsync(string id)
+        public async Task<int> QuitAsync(string id, UserProfileEnum profile)
         {
             var filter = Builders<Event>
                 .Filter
@@ -237,10 +237,34 @@ namespace SportHire.Events.Infrastructure.Persistence.Repositories
                 .Set(e => e.EmailPlayer, null)
                 .Set(e => e.Status, EventStatusEnum.ABERTO);
 
+            var event_ = await _collection.Find(filter).FirstOrDefaultAsync();
+
+            if (profile == UserProfileEnum.OWNER)
+            {     
+                if (event_.PlayerChangeAttempts == 3)
+                {
+                    throw new OwnerPlayerChangeLimitException("Você já atingiu o limite (3) de troca de jogadores");
+                }
+
+                update = Builders<Event>.Update
+                .Set(e => e.NamePlayer, null)
+                .Set(e => e.EmailPlayer, null)
+                .Set(e => e.Status, EventStatusEnum.ABERTO)
+                .Inc(e => e.PlayerChangeAttempts, 1);
+            }
+
             var options = new UpdateOptions { IsUpsert = false };
             var result = await _collection.UpdateOneAsync(filter, update, options);
 
-            return result.ModifiedCount > 0;
+            if (result.ModifiedCount == 0)
+            {
+                throw new InvalidOperationException("Evento não encontrado");
+            }
+            if (profile == UserProfileEnum.OWNER) 
+            {
+                return event_.PlayerChangeAttempts + 1;
+            }
+            return 0;
         }
     }
 }
