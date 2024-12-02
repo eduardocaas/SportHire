@@ -423,9 +423,12 @@ export class EventsDashComponent implements OnInit {
     });
   }
 
-  openQuitDialog(event: Event) {
+  openQuitDialog(event: Event, profile: UserProfile) {
     this.dialog.open(DialogQuitComponent, {
-      data: event,
+      data: {
+        event: event,
+        profile: profile
+      },
       scrollStrategy: new NoopScrollStrategy()
     });
   }

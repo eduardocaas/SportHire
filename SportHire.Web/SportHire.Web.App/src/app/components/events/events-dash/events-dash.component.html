@@ -88,7 +88,7 @@
             </button>
             <button class="player-button" *ngIf="selectedOption == 2 && !checkEndDate(this.inProgressEvent)">
               <img src="/assets/css/events/events-dash/cancel.svg">
-              <span style="color:#d9d9d9 !important" (click)="openQuitDialog(this.inProgressEvent)">Desistir</span>
+              <span style="color:#d9d9d9 !important" (click)="openQuitDialog(this.inProgressEvent, this.selectedOption)">Desistir</span>
             </button>
             <button class="player-button" (click)="openConfirmDialog(this.inProgressEvent, 2)" *ngIf="selectedOption == 2 && checkEndDate(this.inProgressEvent)">
               <img src="/assets/css/events/events-dash/check_circle.svg">
@@ -177,7 +177,7 @@
           <button (click)="openDeleteDialog(event)" *ngIf="selectedOption == 1 && !checkEndDate(event)">
             <img src="/assets/css/events/events-dash/delete.svg">
           </button>
-          <button *ngIf="selectedOption == 2 && !checkEndDate(event)" (click)="openQuitDialog(event)">
+          <button *ngIf="selectedOption == 2 && !checkEndDate(event)" (click)="openQuitDialog(event, this.selectedOption)">
             <img src="/assets/css/events/events-dash/cancel_white.svg">
           </button>
           <button *ngIf="selectedOption == 2 && checkEndDate(event)" (click)="openConfirmDialog(event, 2)" style="background-color: #0bdc84 !important;">

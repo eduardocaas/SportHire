@@ -2,15 +2,15 @@
   <h3>Desistir</h3>
   <div class="content-card">
     <p class="subtitle-card">ID do evento</p>
-    <p class="data-card">{{ data.id }}</p>
+    <p class="data-card">{{ this.event.id }}</p>
     <p class="subtitle-card">Criador do evento</p>
-    <p class="data-card">{{ data.nameOwner }}</p>
+    <p class="data-card">{{ this.event.nameOwner }}</p>
     <p class="subtitle-card">Data</p>
-    <p class="data-card">{{ data.startDate | date: 'dd/MM \'às\' HH:mm' }}</p>
+    <p class="data-card">{{ this.event.startDate | date: 'dd/MM \'às\' HH:mm' }}</p>
     <p class="subtitle-card">Local</p>
-    <p class="data-card">{{ data.district }} - {{ data.address }}</p>
+    <p class="data-card">{{ this.event.district }} - {{ this.event.address }}</p>
   </div>
-  <p *ngIf="data.status == 2" class="cost-info">O criador do evento será notificado<br> de sua desistência</p>
+  <p *ngIf="this.event.status == 2" class="cost-info">O criador do evento será notificado<br> de sua desistência</p>
   <p class="title-button">Deseja desistir do evento?</p>
 
   <mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle>

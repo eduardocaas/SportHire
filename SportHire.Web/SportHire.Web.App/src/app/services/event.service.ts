@@ -134,10 +134,10 @@ export class EventService implements IEventService {
     return this.http.put<any>(`${EVENTS_CONFIG.localUrl}/confirm/${id}/${profile}`, { headers });
   }
 
-  quit(id: string): Observable<void> {
+  quit(id: string, profile: UserProfile): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.authService.getToken()}`);
 
-    return this.http.put<any>(`${EVENTS_CONFIG.localUrl}/quit/${id}`, { headers });
+    return this.http.put<any>(`${EVENTS_CONFIG.localUrl}/quit/${id}/${profile}`, { headers });
   }
 }
 
@@ -201,7 +201,7 @@ export class MockEventService implements IEventService {
     throw new Error('Method not implemented.');
   }
 
-  quit(id: string): Observable<void> {
+  quit(id: string, profile: UserProfile): Observable<any> {
     throw new Error('Method not implemented.');
   }
 }

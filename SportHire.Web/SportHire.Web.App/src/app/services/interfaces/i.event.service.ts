@@ -17,5 +17,5 @@ export interface IEventService {
   cancel(id: string): Observable<void>;
   updatePlayer(id: string): Observable<void>;
   confirm(id: string, profile: UserProfile): Observable<string>;
-  quit(id: string): Observable<void>;
+  quit(id: string, profile: UserProfile): Observable<any>;
 }
