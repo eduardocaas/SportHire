@@ -135,7 +135,9 @@ export class EventService implements IEventService {
   }
 
   quit(id: string): Observable<void> {
-    throw new Error('Method not implemented.');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.authService.getToken()}`);
+
+    return this.http.put<any>(`${EVENTS_CONFIG.localUrl}/quit/${id}`, { headers });
   }
 }
 

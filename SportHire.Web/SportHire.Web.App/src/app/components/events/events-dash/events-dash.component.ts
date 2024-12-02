@@ -16,6 +16,7 @@ import { UrlService } from '../../../services/url.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfile } from '../../../models/enums/profile';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
+import { DialogQuitComponent } from './dialog-quit/dialog-quit.component';
 
 @Component({
   selector: 'app-events-dash',
@@ -418,6 +419,13 @@ export class EventsDashComponent implements OnInit {
         event: event,
         profile: profile
       },
+      scrollStrategy: new NoopScrollStrategy()
+    });
+  }
+
+  openQuitDialog(event: Event) {
+    this.dialog.open(DialogQuitComponent, {
+      data: event,
       scrollStrategy: new NoopScrollStrategy()
     });
   }
