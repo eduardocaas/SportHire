@@ -20,12 +20,20 @@ export class WalletService implements IWalletService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${ this._authService.getToken() }`);
     return this._http.get<any>(`${IDENTITY_CONFIG.localUrl}/identity/wallets/${email}`, { headers });
   }
+
   deposit(amount: number): Observable<void> {
     const email = this._authService.getEmail();
     const wallet: Wallet = new Wallet(email!, amount);
     const headers = new HttpHeaders().set('Authorization', `Bearer ${ this._authService.getToken() }`);
     return this._http.put<any>(`${IDENTITY_CONFIG.localUrl}/identity/wallets/deposit`, wallet, { headers });
   }
+
+  depositPlayer(amount: number, emailPlayer: string): Observable<void> {
+    const wallet: Wallet = new Wallet(emailPlayer, amount);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this._authService.getToken() }`);
+    return this._http.put<any>(`${IDENTITY_CONFIG.localUrl}/identity/wallets/deposit`, wallet, { headers });
+  }
+
   withdraw(amount: number): Observable<any> {
     const email = this._authService.getEmail();
     const wallet: Wallet = new Wallet(email!, amount);
