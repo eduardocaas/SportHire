@@ -11,7 +11,7 @@
 .title-banner h1 {
   color: #fff;
   font-weight: 500;
-  font-size: 32px;
+  font-size: 200%;
   margin: 0;
 }
 
@@ -37,7 +37,7 @@
   width: 100%;
   text-wrap: nowrap;
   text-align: center;
-  font-size: 24px;
+  font-size: 130%;
 }
 
 .content-banner a:link,
@@ -61,6 +61,10 @@
   height: 450px;
 }
 
+.carousel-one {
+  display: none;
+}
+
 .carousel h3 {
   color: #333;
   width: 80%;
@@ -72,6 +76,12 @@
   width: 80%;
   background-color: #f1f1f1;
 }
+
+.card-slider-one {
+  width: 80%;
+  background-color: #f1f1f1;
+}
+
 
 .slick-prev:before {
   content: url('/resources/css/img/caret-back.svg');
@@ -150,5 +160,15 @@
 
   .card:hover {
     background-size: cover;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+
+  .carousel-multi {
+    display: none;
+  }
+  .carousel-one {
+    display: flex;
   }
 }
