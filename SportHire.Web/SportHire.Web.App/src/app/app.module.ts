@@ -23,6 +23,7 @@ import { DialogLogoutComponent } from './components/nav/dialog-logout/dialog-log
 import { DialogHireComponent } from './components/events/events-find/dialog-hire/dialog-hire.component';
 import { DialogConfirmComponent } from './components/events/events-dash/dialog-confirm/dialog-confirm.component';
 import { DialogQuitComponent } from './components/events/events-dash/dialog-quit/dialog-quit.component';
+import { WalletComponent } from './components/wallet/wallet.component';
 
 // Forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -67,7 +68,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-ma
     DialogLogoutComponent,
     DialogHireComponent,
     DialogConfirmComponent,
-    DialogQuitComponent
+    DialogQuitComponent,
+    WalletComponent
   ],
   imports: [
     // Angular
