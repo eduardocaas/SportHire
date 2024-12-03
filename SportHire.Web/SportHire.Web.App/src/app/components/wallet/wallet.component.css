@@ -1,0 +1,97 @@
+.bg-333 {
+  background-color: #333;
+}
+
+.br-20 {
+  border-radius: 20px;
+}
+
+.boxes {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  height: calc(100% - 94px);
+}
+
+.box {
+  height: 100%;
+}
+
+.box-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 20px;
+  width: 30%;
+  background-color: #212121;
+}
+
+.box-right {
+  width: 70%;
+  background-color: red;
+}
+
+.profile-box {
+  height: 18%;
+}
+
+.profile-box p {
+  margin: 17px 0 10px 25px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #d9d9d9;
+}
+
+.profile-box mat-radio-group {
+  margin: 0 0 0 25px;
+}
+
+.profile-box mat-radio-button:nth-child(2) {
+  margin-left: 15px;
+}
+
+::ng-deep .mdc-form-field>label {
+  font-size: 18px !important;
+  color: #d9d9d9;
+}
+
+::ng-deep .mdc-radio__outer-circle {
+  border-color: #d9d9d9 !important;
+}
+
+::ng-deep .mdc-radio {
+  padding-left: 0 !important;
+  padding-right: 5px !important;
+}
+
+.cards-box {
+  height: 75%;
+}
+
+
+@media only screen and (min-resolution: 1.07dppx) {
+  .container {
+    height: calc(100% - 95px);
+  }
+}
+
+@media only screen and (min-resolution: 1.20dppx) {
+  .boxes {
+    height: calc(100% - 96px);
+  }
+
+  ::ng-deep .cdk-overlay-pane {
+    zoom: 1.097 !important
+  }
+
+}
+
+@media only screen and (min-resolution: 1.40dppx) {
+  .boxes {
+    height: calc(100% - 97px);
+  }
+
+  ::ng-deep .cdk-overlay-pane {
+    zoom: 1.177 !important
+  }
+}

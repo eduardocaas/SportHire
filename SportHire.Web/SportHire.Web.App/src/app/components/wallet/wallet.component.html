@@ -1,1 +1,22 @@
-<p>wallet works!</p>
+<div class="boxes">
+
+  <div class="box box-left">
+    <div class="profile-box bg-333 br-20">
+      <p>Selecione seu perfil</p>
+      <mat-radio-group aria-label="Selecione um perfil">
+        <mat-radio-button value="1" [checked]="selectedOption == 1"
+          (click)="changeProfile(1)">Buscando</mat-radio-button>
+        <mat-radio-button value="2" [checked]="selectedOption == 2"
+          (click)="changeProfile(2)">Jogando</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="cards-box bg-333 br-20">
+
+    </div>
+  </div>
+
+  <div class="box box-right">
+
+  </div>
+
+</div>

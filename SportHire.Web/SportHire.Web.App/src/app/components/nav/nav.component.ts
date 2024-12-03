@@ -45,7 +45,7 @@ export class NavComponent implements OnInit {
     } else if (this.href === '/events/find') {
       this.btn_text = 'QUERO ALUGAR';
     } else {
-      this.btn_text = ''; // Valor padrão ou vazio
+      this.btn_text = 'QUERO ALUGAR'; // Valor padrão ou vazio
     }
   }
 
@@ -57,6 +57,8 @@ export class NavComponent implements OnInit {
       this._router.navigate(['/events/find']);
     } else if (this.href === '/events/find') {
       this._router.navigate(['/events/dash']);
+    } else {
+      this._router.navigate(['events/dash']);
     }
   }
 
