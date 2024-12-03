@@ -8,7 +8,10 @@
     <ul class="ul-nav">
      <!--  <li *ngIf="!(this.href == '/events/dash')"><a (click)="openDashPlayer()">Eventos</a></li>
       <li *ngIf="!(this.href == '/events/dash')"><span style="color: #d9d9d9; font-size: 22px;">|</span></li> -->
+
       <li><a href="/events/wallet">Carteira</a></li>
+      <li><span style="color: #d9d9d9; font-size: 22px;">|</span></li>
+      <li><span style="color: #d9d9d9; font-size: 22px;">{{ this.email }}</span></li>
     </ul>
     <img [matMenuTriggerFor]="menu" class="pin" src="/assets/css/nav/person_pin.svg">
     <mat-menu #menu="matMenu">

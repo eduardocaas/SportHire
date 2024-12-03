@@ -121,11 +121,14 @@
             <textarea matInput [(ngModel)]="event.Observation"
               placeholder="Ex. Evento na quadra 3..."></textarea>
           </mat-form-field>
-          <button class="pay-button" (click)="markAsPaid()">
+          <div style="display: flex; align-items: center; gap: 15px;"> <button class="pay-button" (click)="markAsPaid()">
             <span>{{ payStatus ? 'Pago' : 'Pagamento' }}</span>
             <img [src]="payStatus ? '/assets/css/events/events-dash/check.svg' : '/assets/css/events/events-dash/payments.svg'" alt="Ícone de pagamento">
           </button>
+          <p style="font-size: 18px; margin-top: 10px">Custo: {{ this.event.Duration * 0.5 }}</p></div>
+
           <span class="warn-info" *ngIf="payBalance">Saldo insuficiente!</span>
+
         </div>
         <div class="done-btns">
           <div>

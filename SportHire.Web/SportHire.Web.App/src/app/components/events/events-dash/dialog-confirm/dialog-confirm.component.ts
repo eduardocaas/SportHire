@@ -65,12 +65,14 @@ export class DialogConfirmComponent {
           this._toast.error('Usuário ou carteira não encontrados', 'Erro', { positionClass: 'toast-bottom-center' });
         }
         else if(err.status == 400) {
+          console.error(err);
           this._toast.error(err.error.message, 'Erro ao pagar', { positionClass: 'toast-bottom-center' });
         }
         else if (err.error?.message) {
+          console.error(err);
           this._toast.error(err.error.message, 'Erro ao pagar', { positionClass: 'toast-bottom-center' });
         } else {
-          console.log(err.status);
+          console.error(err);
           this._toast.error('Erro ao pagar', 'Erro', { positionClass: 'toast-bottom-center' });
         }
       }

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -17,10 +18,14 @@ export class NavComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private _router: Router
+    private _router: Router,
+    private readonly _authService: AuthService
   ) { }
 
+  public email: string = "";
+
   ngOnInit(): void {
+    this.email = this._authService.getEmail()!;
     // Inicializa a URL no momento da criação do componente
     this.href = this._router.url;
     this.updateButtonText(); // Define o texto do botão na inicialização
