@@ -18,9 +18,9 @@ namespace SportHire.Identity.API.Controllers
         }
 
         [HttpGet]
-        [Route("/{email}")]
+        [Route("{email}")]
         public async Task<IActionResult> GetBalance(
-            [FromRoute(Name = "email")] string email)
+            [FromRoute] string email)
         {
             try
             {

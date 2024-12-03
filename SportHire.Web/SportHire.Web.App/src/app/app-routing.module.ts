@@ -11,7 +11,7 @@ import { WalletComponent } from './components/wallet/wallet.component';
 
 const routes: Routes = [
 
-  /* { path: 'signup', component: SignupComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   {
     path: '', component: HomeComponent, canActivate: [authGuard], children:
@@ -19,15 +19,16 @@ const routes: Routes = [
       {
         path: 'events', component: NavComponent, children:
         [
+          { path: 'wallet', component: WalletComponent },
           { path: 'find', component: EventsFindComponent },
           { path: 'dash', component: EventsDashComponent },
           { path: '', redirectTo: 'dash', pathMatch: 'full' }
         ]
       }
     ]
-  } */
+  }
 
-    { path: 'signup', component: SignupComponent },
+  /*   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   {
     path: '', component: HomeComponent, children:
@@ -42,7 +43,7 @@ const routes: Routes = [
         ]
       }
     ]
-  }
+  } */
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
