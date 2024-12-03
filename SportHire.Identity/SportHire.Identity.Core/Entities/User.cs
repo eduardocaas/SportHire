@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SportHire.Identity.Core.Entities
+﻿namespace SportHire.Identity.Core.Entities
 {
     public class User
     {
@@ -20,5 +14,6 @@ namespace SportHire.Identity.Core.Entities
         public string Email { get; private set; }
         public string Password { get; private set; }
         public bool EmailConfirmed { get; private set; }
+        public Wallet Wallet { get; private set; }
     }
 }
