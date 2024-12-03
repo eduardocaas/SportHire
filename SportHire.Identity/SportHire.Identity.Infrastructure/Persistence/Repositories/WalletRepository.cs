@@ -13,7 +13,17 @@ namespace SportHire.Identity.Infrastructure.Persistence.Repositories
 
         public async Task AddBalanceAsync(string email, decimal amount)
         {
-            throw new NotImplementedException();
+            var user = await _userRepository.GetByEmailAsync(email);
+
+            if (user == null)
+                throw new ArgumentException("User not found");
+
+            if (user.Wallet == null)
+                throw new ArgumentException("Wallet not found");
+
+            user.Wallet.Balance += amount;
+
+            await _userRepository.UpdateAsync(user);
         }
     }
 }

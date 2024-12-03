@@ -15,6 +15,7 @@ namespace SportHire.Identity.Infrastructure.Persistence
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Wallet> Wallets { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseNpgsql(this._connectionString);
@@ -22,6 +23,11 @@ namespace SportHire.Identity.Infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
+
+        internal async Task SaveChangesAsync(User user)
+        {
+            throw new NotImplementedException();
         }
     }
 }
