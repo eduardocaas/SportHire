@@ -17,6 +17,26 @@ namespace SportHire.Identity.API.Controllers
             _service = service;
         }
 
+        [HttpGet]
+        [Route("/{email}")]
+        public async Task<IActionResult> GetBalance(
+            [FromRoute(Name = "email")] string email)
+        {
+            try
+            {
+                var amount = await _service.GetBalanceAsync(email);
+                return Ok(new { balance = amount });
+            }
+            catch (ArgumentException aex)
+            {
+                return NotFound(aex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message });
+            }
+        }
+
         [HttpPut]
         [Route("deposit")]
         public async Task<IActionResult> Deposit(

@@ -11,6 +11,12 @@ namespace SportHire.Identity.Application.Services
             _repository = repository;
         }
 
+        public async Task<decimal> GetBalanceAsync(string email)
+        {
+            var amount = await _repository.GetBalanceByEmail(email);
+            return amount;
+        }
+
         public async Task AddBalanceAsync(string email, decimal amount)
         {
             await _repository.AddBalanceAsync(email, amount);
