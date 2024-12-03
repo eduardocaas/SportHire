@@ -15,6 +15,13 @@ namespace SportHire.Identity.Infrastructure.Persistence.Repositories
 
         public async Task AddAsync(User user)
         {
+            var wallet = new Wallet
+            {
+                Balance = 0,
+                User = user
+            };
+            user.Wallet = wallet;
+
             await _dbContext.Users.AddAsync(user);
             await _dbContext.SaveChangesAsync();
         }
@@ -22,6 +29,11 @@ namespace SportHire.Identity.Infrastructure.Persistence.Repositories
         public async Task<User> GetByEmailAndPasswordAsync(string email, string passwordHash)
         {
             return await _dbContext.Users.SingleOrDefaultAsync(u => u.Email == email && u.Password == passwordHash);
+        }
+
+        public async Task<User> GetByEmailAsync(string email)
+        {
+            return await _dbContext.Users.Include(u => u.Wallet).SingleOrDefaultAsync(u => u.Email == email);
         }
 
         public async Task<User> GetByIdAsync(Guid id)
