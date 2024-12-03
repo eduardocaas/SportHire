@@ -27,6 +27,9 @@ export class WalletService implements IWalletService {
     return this._http.put<any>(`${IDENTITY_CONFIG.localUrl}/identity/wallets/deposit`, wallet, { headers });
   }
   withdraw(amount: number): Observable<any> {
-    throw new Error('Method not implemented.');
+    const email = this._authService.getEmail();
+    const wallet: Wallet = new Wallet(email!, amount);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${ this._authService.getToken() }`);
+    return this._http.put<any>(`${IDENTITY_CONFIG.localUrl}/identity/wallets/withdraw`, wallet, { headers });
   }
 }

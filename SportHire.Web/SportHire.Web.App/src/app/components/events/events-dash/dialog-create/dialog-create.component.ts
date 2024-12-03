@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Sport } from '../../../../models/enums/sport';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
@@ -10,6 +10,7 @@ import { EventService } from '../../../../services/event.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { timer } from 'rxjs';
+import { WalletService } from '../../../../services/wallet.service';
 
 @Component({
   selector: 'app-dialog-create',
@@ -40,9 +41,10 @@ import { timer } from 'rxjs';
     },
   ]
 })
-export class DialogCreateComponent {
+export class DialogCreateComponent implements OnInit {
 
   constructor(
+    private _walletService: WalletService,
     private _formBuilder: FormBuilder,
     private _dateAdapter: DateAdapter<Date>,
     private _service: EventService,
@@ -51,6 +53,14 @@ export class DialogCreateComponent {
   {
     this._dateAdapter.setLocale('pt-br');
     this.maxDate.setMonth(this.maxDate.getMonth() + 3);
+  }
+
+  balance: number = 0;
+
+  ngOnInit(): void {
+    this._walletService.getBalance().subscribe(response => {
+      this.balance = response.balance;
+    })
   }
 
   minDate = new Date();
@@ -75,10 +85,21 @@ export class DialogCreateComponent {
   ];
 
   payStatus = false;
+  payBalance = false;
+
+  renewPaid() {
+    this.payStatus = false;
+    this.payBalance = false;
+  }
 
   markAsPaid() {
-    if (!this.payStatus) {
+    if (!this.payStatus && this.event.Duration * 0.5 <= this.balance) {
       this.payStatus = true;
+      this.payBalance = false;
+    }
+    if(this.event.Duration * 0.5 >= this.balance) {
+      this.payStatus = false;
+      this.payBalance = true;
     }
   }
 
@@ -139,6 +160,7 @@ export class DialogCreateComponent {
     this.event.StartDate = this.dateBuilder();
 
     this._service.create(this.event).subscribe(response => {
+      this.payment();
       this._toast.success('Evento cadastrado com sucesso!', 'Evento', { positionClass: 'toast-bottom-center' });
       timer(1000).subscribe(x => { window.location.reload(); })
 
@@ -151,6 +173,29 @@ export class DialogCreateComponent {
       else {
         this._toast.error(err.error.message, 'Erro ao criar', { positionClass: 'toast-bottom-center' });
       }
+    })
+  }
+
+  payment() {
+    this._walletService.withdraw(this.event.Duration * 0.5).subscribe({
+      next: (response) => {
+        console.log(response);
+    },
+    error: (err) => {
+      console.error('Erro na requisição:', err); // Log
+      if (err.status === 404) {
+        this._toast.error('Usuário ou carteira não encontrados', 'Erro', { positionClass: 'toast-bottom-center' });
+      }
+      else if(err.status == 400) {
+        this._toast.error(err.error.message, 'Erro ao pagar', { positionClass: 'toast-bottom-center' });
+      }
+      else if (err.error?.message) {
+        this._toast.error(err.error.message, 'Erro ao pagar', { positionClass: 'toast-bottom-center' });
+      } else {
+        console.log(err.status);
+        this._toast.error('Erro ao pagar', 'Erro', { positionClass: 'toast-bottom-center' });
+      }
+    }
     })
   }
 }
