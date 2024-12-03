@@ -11,12 +11,61 @@
       </mat-radio-group>
     </div>
     <div class="cards-box bg-333 br-20">
-
+      <h3>Cartões de crédito</h3>
+      <div>
+        <img src="/assets/css/wallet/add_card.svg" alt="Ícone de adicionar">
+        <p>Adicionar<br>cartão</p>
+      </div>
     </div>
   </div>
 
   <div class="box box-right">
+    <div class="box-right-top">
+      <div class="balance-box box-top br-20">
+        <img src="/assets/css/wallet/paid.svg" alt="Ícone de dinheiro">
+        <div>
+          <p>Balanço<br>atual</p>
+          <p>R$ 30,00</p>
+        </div>
+      </div>
+      <div class="history-box box-top br-20">
+        <p>Histórico</p>
+        <div>
+          <div><p class="fw-600">R$ 30,00</p><p>03/12</p></div>
+          <div><p class="fw-600 c-green">R$ 80,00</p><p class="c-green">01/12</p></div>
+          <div><p class="fw-600">R$ 50,00</p><p>29/11</p></div>
+          <div><p class="fw-600">R$ 70,00</p><p>28/11</p></div>
+          <div><p class="fw-600 c-green">R$ 85,00</p><p class="c-green">25/11</p></div>
+          <div><p class="fw-600 c-green">R$ 50,00</p><p class="c-green">20/11</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="box-right-bottom">
+      <div class="deposit br-20 bg-333">
+        <div class="deposit-box form-box">
+          <h3>Realizar depósito</h3>
+          <div>
+            <p style="display: flex; flex-direction: column;">
+              <span class="deposit-span">Selecione o valor</span>
+              <mat-form-field floatLabel="always" style="width: 180px">
+                <mat-label>Valor</mat-label>
+                <input matInput type="number" class="example-right-align" placeholder="0">
+                <span matTextPrefix>$&nbsp;</span>
+                <span matTextSuffix>.00</span>
+              </mat-form-field>
+              <mat-radio-group aria-label="Select an option" style="margin-top: -10px;">
+                <mat-radio-button [checked]="true" value="1">Pix</mat-radio-button>
+              </mat-radio-group>
+            </p>
 
+          </div>
+          <button>Gerar código QR<img src="/assets/css/wallet/qr_code.svg"></button>
+        </div>
+        <div class="deposit-box qr-box">
+          <img src="/assets/css/wallet/qr_code_fake.png" alt="Foto de QR Code">
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>

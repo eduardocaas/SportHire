@@ -1,3 +1,15 @@
+h3 {
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.c-green {
+  color: #03dac6 !important;
+}
+
 .bg-333 {
   background-color: #333;
 }
@@ -6,8 +18,11 @@
   border-radius: 20px;
 }
 
+/* -- Boxes */
 .boxes {
   display: flex;
+  justify-content: center;
+  background-color: #212121;
   width: 100%;
   height: 100%;
   height: calc(100% - 94px);
@@ -17,21 +32,21 @@
   height: 100%;
 }
 
+
+/* Box Left --  */
+
 .box-left {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 0 20px;
-  width: 30%;
+  width: 25%;
   background-color: #212121;
 }
 
-.box-right {
-  width: 70%;
-  background-color: red;
-}
-
+/* Profile - Box  */
 .profile-box {
+  margin-top: 18px;
   height: 18%;
 }
 
@@ -64,8 +79,196 @@
   padding-right: 5px !important;
 }
 
+/* Cards - Box  */
 .cards-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 75%;
+  color: #d9d9d9;
+  margin-bottom: 18px;
+}
+
+.cards-box h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.cards-box > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+  gap: 12px;
+}
+
+.cards-box > div > img {
+  width: 52px;
+  cursor: pointer;
+}
+
+.cards-box > div > p {
+  font-size: 20px;
+  text-align: center;
+}
+
+
+/*  Box right --- */
+.box-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.box-right-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 46%;
+  margin-top: 18px;
+}
+
+.box-top {
+  height: 100%;
+  width: 48%;
+}
+
+.balance-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #cf6679;
+}
+
+.balance-box img {
+  width: 90px;
+  margin-top: 30px;
+}
+
+.balance-box div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+  margin-top: 80px;
+}
+
+.balance-box > div > p:nth-child(1) {
+  font-size: 32px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.balance-box > div > p:nth-child(2) {
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.history-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000;
+  margin-right: 20px !important;
+}
+
+.history-box > p {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.history-box > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.history-box > div p {
+  font-size: 20px;
+  color: #b886fc;
+  text-align: center;
+  width: 120px;
+}
+
+.history-box > div div {
+  display: flex;
+  gap: 100px;
+}
+
+.box-right-bottom {
+  width: 100%;
+  height: 46%;
+  margin-bottom: 18px;
+}
+
+.deposit {
+  display: flex;
+  height: 100%;
+  margin-right: 20px;
+}
+
+.deposit-box {
+  width: 50%;
+}
+
+.form-box {
+  padding-left: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-box h3 {
+  margin-top: 30px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #cf6679;
+}
+
+.deposit-span {
+  font-size: 16px;
+  margin: 20px 0 5px 0;
+  color: #cf6679;
+}
+
+::ng-deep .form-box .mdc-label:nth-child(1n-1) {
+  color: #cf6679 !important;
+}
+
+.form-box button {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: Inter, "Helvetica Neue", sans-serif !important;
+  background-color: #cf6679;
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  width: 190px;
+  height: 45px;
+  margin-top: 20px;
+  border-radius: 5px;
+  transition: background-color 0.1s;
+}
+
+.form-box button:active {
+  background-color: #cf6679ee;
+}
+
+.qr-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr-box img {
+  background-color: #fff;
+  width: 300px;
 }
 
 
@@ -94,4 +297,23 @@
   ::ng-deep .cdk-overlay-pane {
     zoom: 1.177 !important
   }
+}
+
+
+/*  Mat-Field valor */
+.example-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
 }
