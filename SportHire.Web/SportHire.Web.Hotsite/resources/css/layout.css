@@ -20,6 +20,7 @@ html {
   font-weight: 600;
 }
 
+
 /* Header - Navbar */
 
 .navbar {
@@ -30,17 +31,18 @@ html {
 }
 
 .navbar ul {
-  display: flex;
   list-style-type: none;
   gap: 20px;
 }
 
-.navbar ul:nth-child(1) {
+.desktop-navbar-ul {
   justify-content: flex-start;
+  display: flex;
 }
 
-.navbar ul:nth-child(3) {
+.login-navbar-ul {
   justify-content: flex-end;
+  display: flex;
 }
 
 .navbar ul li a:link,
@@ -71,6 +73,17 @@ html {
   padding: 8px 30px;
   font-weight: 700;
   font-size: 85%;
+}
+
+.mobile-menu {
+  display: none;
+  width: 100px;
+}
+
+/* Icone menu hamburguer */
+.mobile-menu-icon:visited,
+.mobile-menu-icon:link {
+    display: none;
 }
 
 
@@ -142,5 +155,75 @@ footer {
 @media only screen and (max-width: 1280px) {
   html {
     font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .padding {
+    padding: 0 80px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+
+  .padding {
+    padding: 0 60px;
+  }
+
+  .pipe {
+    display: none;
+  }
+
+  .desktop-navbar-ul {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+    width: 100px;
+  }
+
+  .mobile-menu-icon:link,
+  .mobile-menu-icon:visited {
+    display: block;
+    width: 30px !important;
+  }
+
+  .login-navbar-ul {
+    width: 100px !important;
+  }
+  
+  .navbar h2 {
+    font-size: 140%;
+    width: 100px;
+  }
+
+  .desktop-navbar-ul {
+    position: absolute;
+    top: 65px;
+    left: 0;
+    background-color: #fff;
+    width: 100% !important;
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 0;
+    z-index: 9999;
+  }
+
+  .navbar ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .desktop-navbar-ul.active-nav {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 650px) { 
+  .navbar h2 {
+    display: none;
   }
 }

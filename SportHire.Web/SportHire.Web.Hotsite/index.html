@@ -35,15 +35,20 @@
     <!-- Header - Nav -->
     <header>
       <nav class="navbar padding">
-        <ul>
+        <div class="mobile-menu">
+        <a href="#" class="mobile-menu-icon js--mobile-menu-icon">
+          <img src="/resources/css/img/menu/menu.svg" alt="Menu">
+        </a>
+      </div>
+        <ul class="desktop-navbar-ul js--navbar">
           <li><span class="fw-600"><a href="#">Início</a></span></li>
-          <li>|</li>
+          <li class="pipe">|</li>
           <li><a href="about.html">Sobre</a></li>
-          <li>|</li>
+          <li class="pipe">|</li>
           <li><a href="contact.html">Contato</a></li>
         </ul>
         <h2>SportHire</h2>
-        <ul>
+        <ul class="login-navbar-ul">
           <li class="lang-nav"><ion-icon name="language-outline"></ion-icon><span>BR</span></li>
           <li class="login-nav"><a href="#">Login</a></li>
         </ul>
@@ -66,7 +71,7 @@
       </div>
     </section>
 
-    <!-- Section carousel - cards -->
+    <!-- Section carousel - tree per slide -->
     <section class="carousel carousel-multi">
       <h3>Confira alguns eventos próximos de você!</h3>
       <div class="card-slider">
@@ -158,6 +163,99 @@
       </div>
     </section>
 
+    <!-- Carousel - two per slide -->
+    <section class="carousel carousel-dual">
+      <h3>Confira alguns eventos próximos de você!</h3>
+      <div class="card-slider-dual">
+
+        <div class="card" style="background-image: url('/resources/css/img/futebol.jpg');">
+          <p>Futebol,<br>Porto Alegre</p>
+          <div class="footer-card">
+            <div>
+              <img src="resources/css/img/pin.svg" alt="Ícone de localização">
+              <span>Centro Histórico</span>
+            </div>
+            <div>
+              <img src="resources/css/img/schedule.svg" alt="Ícone de calendário">
+              <span>14/11</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background-image: url('/resources/css/img/basquete.jpg');">
+          <p>Basquete,<br>Porto Alegre</p>
+          <div class="footer-card">
+            <div>
+              <img src="resources/css/img/pin.svg" alt="Ícone de localização">
+              <span>Menino Deus</span>
+            </div>
+            <div>
+              <img src="resources/css/img/schedule.svg" alt="Ícone de calendário">
+              <span>15/11</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background-image: url('/resources/css/img/volei_praia.jpg');">
+          <p>Vôlei de Praia,<br>Porto Alegre</p>
+          <div class="footer-card">
+            <div>
+              <img src="resources/css/img/pin.svg" alt="Ícone de localização">
+              <span>Ipanema</span>
+            </div>
+            <div>
+              <img src="resources/css/img/schedule.svg" alt="Ícone de calendário">
+              <span>15/11</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background-image: url('/resources/css/img/futebol.jpg');">
+          <p>Futebol,<br>Porto Alegre</p>
+          <div class="footer-card">
+            <div>
+              <img src="resources/css/img/pin.svg" alt="Ícone de localização">
+              <span>Cidade Baixa</span>
+            </div>
+            <div>
+              <img src="resources/css/img/schedule.svg" alt="Ícone de calendário">
+              <span>16/11</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background-image: url('/resources/css/img/basquete.jpg');">
+          <p>Basquete,<br>Porto Alegre</p>
+          <div class="footer-card">
+            <div>
+              <img src="resources/css/img/pin.svg" alt="Ícone de localização">
+              <span>Praia de Belas</span>
+            </div>
+            <div>
+              <img src="resources/css/img/schedule.svg" alt="Ícone de calendário">
+              <span>17/11</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="background-image: url('/resources/css/img/volei_praia.jpg');">
+          <p>Vôlei de Praia,<br>Porto Alegre</p>
+          <div class="footer-card">
+            <div>
+              <img src="resources/css/img/pin.svg" alt="Ícone de localização">
+              <span>Cavalhada</span>
+            </div>
+            <div>
+              <img src="resources/css/img/schedule.svg" alt="Ícone de calendário">
+              <span>18/11</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Carousel - one per slide -->
     <section class="carousel carousel-one">
       <h3>Confira alguns eventos próximos de você!</h3>
       <div class="card-slider-one">
@@ -285,6 +383,9 @@
 
   <!-- Project JS import -->
   <script type="text/javascript" src="resources/js/index.js"></script>
+
+  <!-- Layout JS import -->
+  <script type="text/javascript" src="resources/js/layout.js"></script>
 
   <!-- Ionicons import -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

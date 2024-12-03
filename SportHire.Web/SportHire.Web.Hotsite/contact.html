@@ -35,18 +35,23 @@
 <body>
   <div id="container">
 
-    <!-- Header - Nav -->
-    <header>
+     <!-- Header - Nav -->
+     <header>
       <nav class="navbar padding">
-        <ul>
+        <div class="mobile-menu">
+        <a href="#" class="mobile-menu-icon js--mobile-menu-icon">
+          <img src="/resources/css/img/menu/menu.svg" alt="Menu">
+        </a>
+      </div>
+        <ul class="desktop-navbar-ul js--navbar">
           <li><a href="index.html">Início</a></li>
-          <li>|</li>
+          <li class="pipe">|</li>
           <li><a href="about.html">Sobre</a></li>
-          <li>|</li>
+          <li class="pipe">|</li>
           <li><span class="fw-600"><a href="#">Contato</a></span></li>
         </ul>
         <h2>SportHire</h2>
-        <ul>
+        <ul class="login-navbar-ul">
           <li class="lang-nav"><ion-icon name="language-outline"></ion-icon><span>BR</span></li>
           <li class="login-nav"><a href="#">Login</a></li>
         </ul>
@@ -169,6 +174,9 @@
 
   <!-- Project JS import -->
   <script type="text/javascript" src="resources/js/contact.js"></script>
+
+  <!-- Layout JS import -->
+  <script type="text/javascript" src="resources/js/layout.js"></script>
 
   <!-- JQuery import -->
   <script type="text/javascript" src="vendors/lib/jquery/jquery-1.11.0.min.js"></script>

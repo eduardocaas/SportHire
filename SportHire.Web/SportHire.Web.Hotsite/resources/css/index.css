@@ -65,6 +65,10 @@
   display: none;
 }
 
+.carousel-dual {
+  display: none;
+}
+
 .carousel h3 {
   color: #333;
   width: 80%;
@@ -73,6 +77,11 @@
 }
 
 .card-slider {
+  width: 80%;
+  background-color: #f1f1f1;
+}
+
+.card-slider-dual {
   width: 80%;
   background-color: #f1f1f1;
 }
@@ -163,11 +172,41 @@
   }
 }
 
-@media only screen and (max-width: 980px) {
+/* 
+  Max-width 1180px
+  */
+@media only screen and (max-width: 1180px) {
 
   .carousel-multi {
     display: none;
   }
+
+  .carousel-dual {
+    display: flex;
+  }
+
+  .carousel-one {
+    display: none;
+  }
+}
+
+/* 
+  Max-width 900px
+  */
+@media only screen and (max-width: 900px) {
+
+  .banner img {
+    display: none;
+  }
+
+  .carousel-multi {
+    display: none;
+  }
+
+  .carousel-dual {
+    display: none;
+  }
+
   .carousel-one {
     display: flex;
   }
