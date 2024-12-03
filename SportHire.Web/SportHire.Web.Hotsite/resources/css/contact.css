@@ -81,6 +81,20 @@
   resize: none;
 }
 
+.form-box-left > form button {
+  width: 95px;
+  height: 43px;
+  border: 1px solid #c1c1c1;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #535353;
+  transition: background-color 0.1s;
+}
+
+.form-box-left > form button:active {
+  background-color: #f7f7f7;
+}
+
 
 /* 
   Form Box Right - accordion
