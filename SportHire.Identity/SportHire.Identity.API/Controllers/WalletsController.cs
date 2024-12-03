@@ -36,5 +36,29 @@ namespace SportHire.Identity.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message });
             }
         }
+
+        [HttpPut]
+        [Route("withdraw")]
+        public async Task<IActionResult> Withdraw(
+            [FromBody] WalletInputModel inputModel)
+        {
+            try
+            {
+                await _service.RemoveBalanceAsync(inputModel.Email, inputModel.Amount);
+                return Ok();
+            }
+            catch (ArgumentException aex)
+            {
+                return NotFound(aex.Message);
+            }
+            catch (InvalidOperationException iex)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, new { message = iex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message });
+            }
+        }
     }
 }
