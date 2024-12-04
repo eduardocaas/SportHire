@@ -210,4 +210,8 @@
   .carousel-one {
     display: flex;
   }
+
+  .content-banner h2 {
+    text-wrap: wrap;
+  }
 }
