@@ -127,6 +127,11 @@ footer {
   gap: 50px;
 }
 
+.icons-ul {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .icons-footer img {
   width: 50px;
 }
@@ -225,5 +230,9 @@ footer {
 @media only screen and (max-width: 650px) { 
   .navbar h2 {
     display: none;
+  }
+
+  .icons-footer img {
+    width: 30px;
   }
 }
