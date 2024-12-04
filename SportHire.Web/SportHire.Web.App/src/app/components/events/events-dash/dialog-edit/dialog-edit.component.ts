@@ -8,6 +8,7 @@ import { EventService } from '../../../../services/event.service';
 import { EventUpdate } from '../../../../models/event.update';
 import { ToastrService } from 'ngx-toastr';
 import { timer } from 'rxjs';
+import { WalletService } from '../../../../services/wallet.service';
 
 @Component({
   selector: 'app-dialog-edit',
@@ -44,6 +45,7 @@ export class DialogEditComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Event,
+    private _walletService: WalletService,
     private _dateAdapter: DateAdapter<Date>,
     private readonly _service: EventService,
     private readonly _toast: ToastrService)
@@ -144,5 +146,72 @@ export class DialogEditComponent {
           return true;
        }
     return false;
+  }
+
+
+  isChecked = false;
+
+  checkEndDate(event: Event): boolean {
+
+    let dateNow: Date = new Date();
+    let endDate = new Date(event.startDate);
+    endDate.setMinutes(endDate.getMinutes() + event.duration);
+
+    if (endDate <= dateNow) {
+      return true;
+    }
+    return false;
+  }
+
+  cancel() {
+    this._service.cancel(this.data.id!).subscribe(response => {
+      if (this.data.status == 2) {
+        this.payment();
+        this._toast.success('Evento cancelado com sucesso!', 'Evento', { positionClass: 'toast-bottom-center' });
+        timer(2000).subscribe(x => { window.location.reload(); })
+      }
+      else {
+        this.payment();
+        this._toast.success('Evento cancelado com sucesso!', 'Evento', { positionClass: 'toast-bottom-center' });
+        timer(2000).subscribe(x => { window.location.reload(); })
+      }
+    }, err => {
+      if (err.status == 404) {
+        this._toast.error('Evento não encontrado', 'Erro', { positionClass: 'toast-bottom-center' });
+      }
+      else if (err.error.errors) {
+        err.error.errors.forEach((e: { message: string | undefined; }) => {
+          this._toast.error(e.message, 'Erro ao cancelar', { positionClass: 'toast-bottom-center' });
+        });
+      }
+      else {
+        console.log(err.status);
+
+        this._toast.error(err.error.message, 'Erro ao cancelar', { positionClass: 'toast-bottom-center' });
+      }
+    });
+  }
+
+  payment() {
+    this._walletService.deposit(this.data.cost).subscribe({
+      next: (response) => {
+        console.log(response);
+    },
+    error: (err) => {
+      console.error('Erro na requisição:', err); // Log
+      if (err.status === 404) {
+        this._toast.error('Usuário ou carteira não encontrados', 'Erro', { positionClass: 'toast-bottom-center' });
+      }
+      else if(err.status == 400) {
+        this._toast.error(err.error.message, 'Erro ao pagar', { positionClass: 'toast-bottom-center' });
+      }
+      else if (err.error?.message) {
+        this._toast.error(err.error.message, 'Erro ao pagar', { positionClass: 'toast-bottom-center' });
+      } else {
+        console.log(err.status);
+        this._toast.error('Erro ao pagar', 'Erro', { positionClass: 'toast-bottom-center' });
+      }
+    }
+    })
   }
 }

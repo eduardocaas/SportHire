@@ -1,6 +1,15 @@
 <form [formGroup]="eventForm">
   <h3>Atualizar</h3>
 
+  <div style="margin: 25px 0;" *ngIf="data.status == 1 && checkEndDate(data)">
+    <hr style="margin-bottom: 10px;">
+    <p style="font-size: 16px;">O evento ultrapassou a data limite e<br>nenhum jogador foi candidato</p>
+    <p style="color: #444">Você terá opção de atualizar ou cancelar o evento</p>
+    <button [tabIndex]="-1" mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
+    <hr style="margin-top: 15px;">
+  </div>
+
+
   <mat-form-field class="full-width">
     <mat-label>ID do evento</mat-label>
     <input matInput disabled [value]="eventForm.get('id')?.value">
@@ -68,6 +77,6 @@
   </div>
 
   <div>
-    <button (click)="update()" mat-flat-button color="primary">Salvar</button>
+    <button style="margin-bottom: 20px;" (click)="update()" mat-flat-button color="primary">Salvar</button>
   </div>
 </form>
