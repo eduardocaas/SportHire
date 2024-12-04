@@ -80,7 +80,7 @@ export class EventService implements IEventService {
         if (opt == 1) {
           return events.filter(event => event.status == Status.ANDAMENTO);
         } else if (opt == 2) {
-          return events.filter(event => event.status == Status.CONCLUIDO || Status.CANCELADO);
+          return events.filter(event => event.status == Status.CONCLUIDO || event.status == Status.CANCELADO);
         } else {
           return events;
         }

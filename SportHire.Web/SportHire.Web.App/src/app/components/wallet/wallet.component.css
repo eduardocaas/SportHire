@@ -139,38 +139,40 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #cf6679;
+  background-color: #000;
 }
 
 .balance-box img {
   width: 90px;
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .balance-box div {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 80px;
-  margin-top: 80px;
+  gap: 25px;
+  margin-top: 50px;
 }
 
 .balance-box > div > p:nth-child(1) {
-  font-size: 32px;
-  line-height: 28px;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 400;
+  color: #FFF;
 }
 
 .balance-box > div > p:nth-child(2) {
-  font-size: 34px;
+  font-size: 42px;
   font-weight: 700;
+  color: #03dac6;
 }
 
 .history-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #000;
+  background-color: #111;
   margin-right: 20px !important;
 }
 
