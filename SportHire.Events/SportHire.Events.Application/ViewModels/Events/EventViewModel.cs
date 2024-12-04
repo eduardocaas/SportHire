@@ -27,7 +27,9 @@ namespace SportHire.Events.Application.ViewModels.Events
             Sport = sport;
             Status = status;
             NameOwner = nameOwner;
+            EmailOwner = emailOwner;
             NamePlayer = namePlayer;
+            EmailPlayer = emailPlayer;
             City = city;
             District = district;
             Address = address;
