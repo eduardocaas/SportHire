@@ -9,7 +9,9 @@ namespace SportHire.Events.Application.ViewModels.Events
             EventSportEnum sport,
             EventStatusEnum status,
             string nameOwner,
-            string namePlayer, 
+            string emailOwner,
+            string namePlayer,
+            string emailPlayer,
             string city, 
             string district,
             string address, 
@@ -42,7 +44,9 @@ namespace SportHire.Events.Application.ViewModels.Events
         public EventSportEnum Sport { get; private set; }
         public EventStatusEnum Status { get; private set; }
         public string NameOwner { get; private set; }
+        public string EmailOwner { get; private set; }
         public string? NamePlayer { get; private set; }
+        public string? EmailPlayer { get; private set; }
         public string City { get; private set; }
         public string District { get; private set; }
         public string Address { get; private set; }
