@@ -57,13 +57,12 @@
   gap: 20px;
 }
 
-.form-box-left > form > div {
-  width: 80%;
+.form-div {
   display: flex;
   justify-content: space-between;
 }
 
-.form-box-left > form > div input {
+.form-div input {
   width: 49%;
 }
 
@@ -198,4 +197,56 @@
 .contact-box-bottom {
   color: #535353;
   font-weight: 700;
+}
+
+@media only screen and (max-width: 1600px) {
+
+  .w-80 {
+    width: 85%;
+  }
+  .form-box {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  
+  .w-80 {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .form-boxes {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .form-box {
+    width: 95%;
+  }
+
+  .form-box-right {
+    height: 400px;
+  }
+
+  .form-box-left, .form-box-right {
+    justify-content: flex-start;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+
+  .form-box-left {
+    margin-bottom: 80px;
+  }
+  
+  .form-div {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-div input {
+    width: 100%;
+  }
 }
