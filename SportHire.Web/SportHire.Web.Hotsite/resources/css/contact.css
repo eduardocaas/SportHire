@@ -357,4 +357,7 @@
     margin-top: -40px;
   }
 
+  .contact-header > p {
+    font-size: 115%;
+  }
 }
