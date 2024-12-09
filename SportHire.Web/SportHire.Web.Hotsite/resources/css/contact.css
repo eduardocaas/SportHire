@@ -163,9 +163,9 @@
 
 .contact-boxes {
   display: flex;
-  justify-content: center;
-  gap: 120px;
+  justify-content: space-evenly;
   margin-top: 50px;
+  gap: 32px;
 }
 
 .contact-box {
@@ -199,6 +199,7 @@
   font-weight: 700;
 }
 
+
 @media only screen and (max-width: 1600px) {
 
   .w-80 {
@@ -217,6 +218,11 @@
 }
 
 @media only screen and (max-width: 1050px) {
+
+  .contact-header > h2 {
+    font-size: 230%;
+  }
+
   .form-boxes {
     flex-direction: column-reverse;
     align-items: center;
@@ -227,26 +233,128 @@
   }
 
   .form-box-right {
-    height: 400px;
+    height: 430px;
   }
 
-  .form-box-left, .form-box-right {
-    justify-content: flex-start;
+  .form-box-right, .form-box-left {
+    justify-content: center;
+  }
+
+  .form-box input, .form-box textarea, .form-div {
+    width: 100%;
+  }
+
+  .form-div {
+    gap: 10px;
+  }
+
+  .form-box-right > div { 
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-boxes {
+    width: 80%;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+    gap: 0px;
+  }
+
+  .contact-box {
+    width: 48%;
+  }
+
+  .contact-box-row {
+    margin-bottom: 20px;
+    width: 100%;
+    height: 200px;
+    flex-direction: row;
   }
 }
 
 @media only screen and (max-width: 700px) {
 
+  .contact-header > h2 {
+    font-size: 180%;
+    width: 100%;
+  }
+
+  .contact-header {
+    margin: 40px 0 60px 0;
+    white-space: wrap;
+    text-align: center;
+  }
+  
   .form-box-left {
     margin-bottom: 80px;
+  }
+
+  .form-box-left h3 {
+    font-size: 150%;
+  }
+
+  .form-box-right h2 {
+    margin-bottom: 20px;
+    font-size: 120%;
+    font-weight: 600;
+    text-align: start;
+    color: #4361ee;
   }
   
   .form-div {
     flex-direction: column;
     gap: 20px;
   }
+}
 
-  .form-div input {
-    width: 100%;
+@media only screen and (max-width: 620px) {
+
+  .form-boxes {
+    padding: 0 !important;
+  }  
+  
+  .form-box-right { 
+    height: 390px;
   }
+
+  .contact-boxes {
+    width: 95%;
+  }
+
+  .contact-box-row {
+    flex-wrap: wrap;
+  }
+ 
+  .contact-image {
+    width: 80px !important;
+    height: 80px !important;
+    flex-basis: 100%;
+    margin-bottom: -20px;
+  }
+}
+
+@media only screen and (max-width: 460px) { 
+  .accordion {
+    font-size: 85%;
+  }
+
+  .panel p {
+    font-size: 90%;
+  }
+
+  .contact-box-row > .contact-box-bottom {
+    flex-basis: 100%;
+    height: 0 !important;
+    text-align: center;
+    margin-top: -40px;
+  }
+
 }
