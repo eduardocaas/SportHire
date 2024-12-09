@@ -1,10 +1,11 @@
 /* Auxiliary properties */
 .w-100 { width: 100%; }
 .h-50 { height: 50% }
-.p-lr-200 { padding: 0 200px; }
+.w-box { width: 85%;}
 
 /* Section - boxes */
 .boxes {
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   gap: 30px;
@@ -59,9 +60,10 @@
 
 .header-box-right {
   background: url('/resources/css/img/about/about-image-l.jpg');
-  background-size: 100%;
+  background-size: cover;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  height: 50%;
 }
 
 .footer-box-right {
@@ -69,6 +71,7 @@
   flex-wrap: wrap;
   padding: 20px;
   gap: 20px;
+  height: 50%;
 }
 
 .footer-box-right > div {
@@ -93,14 +96,19 @@
 
 /* Section - Product Vision */
 
+.products {
+  width: 100%;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+
 .product-vision {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   height: 350px;
-  margin-top: 70px;
-  background-color: #f1f1f1;
 }
 
 .product {
@@ -137,3 +145,54 @@
 .product-right > p > span {
   font-weight: 600;
 }
+
+@media only screen and (max-width: 1200px) {
+
+  .w-box {
+    width: 95%;
+  }
+
+  .box-left h2 {
+    font-size: 240%;
+  }
+  
+  .header-box-right {
+    height: 40%;
+  }
+
+  .footer-box-right {
+    height: 60%;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .box-left h2 {
+    font-size: 220%;
+  }
+
+  .product-left > h2 {
+    font-size: 160%;
+  }
+
+  .product-right > p {
+    font-size: 115%;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .boxes {
+    margin-top: 50px;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+   }
+   
+   .box {
+    width: 95%;
+   }
+
+   .box-left {
+    height: 500px;
+   }
+  }
