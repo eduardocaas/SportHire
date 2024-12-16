@@ -36,3 +36,8 @@ A implantação do SportHire trará uma série de melhorias e benefícios nos lo
 
 ## Solução
 Entregar uma plataforma web intuitiva e eficiente que facilite a organização e divulgação de partidas esportivas informais, conectando grupos incompletos a jogadores interessados.
+> Diagrama de fluxo de usuário
+
+![Imagem fluxo de usuário](https://github.com/eduardocaas/SportHire/blob/main/docs/Fluxo.jpg?raw=true)
+
+## Arquitetura
