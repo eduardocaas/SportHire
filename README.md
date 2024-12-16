@@ -1,3 +1,5 @@
+#### Documentação final: https://medium.com/@eduardofc.dev/sporthire-plataforma-de-aluguel-de-jogadores-cb8a71fb61b0
+&nbsp;
 # SportHire - Plataforma de aluguel de jogadores
 
 ### Documentação do projeto final na unidade curricular Projeto de Desenvolvimento II do curso Análise e Desenvolvimento de Sistemas do Centro Universitário Senac-RS.
