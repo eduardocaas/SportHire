@@ -9,3 +9,10 @@ services:
     container_name: events_api
     ports:
       - 5301:5301
+    networks:
+      - sporthire-net
+
+networks:
+  sporthire-net:
+    external: true
+

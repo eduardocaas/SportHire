@@ -9,3 +9,11 @@ services:
     container_name: identity_api
     ports:
       - 5201:5201
+    networks:
+      - sporthire-net
+
+networks:
+  sporthire-net:
+    external: true
+
+  
