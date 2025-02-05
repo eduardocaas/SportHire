@@ -71,6 +71,10 @@ export class NavComponent implements OnInit {
     this._router.navigate(['/events/dash'], { queryParams: { opt: 2 }});
   }
 
+  openWallet(): void { 
+    this._router.navigate(['/events/wallet']);
+  }
+
   openLogoutDialog(): void {
     this.dialog.open(DialogLogoutComponent, {
       scrollStrategy: new NoopScrollStrategy()
