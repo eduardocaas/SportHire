@@ -14,7 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportHire.Identity.Core", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportHire.Identity.Infrastructure", "SportHire.Identity.Infrastructure\SportHire.Identity.Infrastructure.csproj", "{2D601309-D82A-4F3E-A147-3ACEAA1A1C23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportHire.Identity.Application", "SportHire.Identity.Application\SportHire.Identity.Application.csproj", "{B77C29AE-07CC-44EE-BBBB-D4628AD46154}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportHire.Identity.Application", "SportHire.Identity.Application\SportHire.Identity.Application.csproj", "{B77C29AE-07CC-44EE-BBBB-D4628AD46154}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportHire.Identity.UnitTests", "SportHire.Identity.UnitTests\SportHire.Identity.UnitTests.csproj", "{99E81C9A-4762-46D5-B4AE-87B20088CD56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{B77C29AE-07CC-44EE-BBBB-D4628AD46154}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B77C29AE-07CC-44EE-BBBB-D4628AD46154}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B77C29AE-07CC-44EE-BBBB-D4628AD46154}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99E81C9A-4762-46D5-B4AE-87B20088CD56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99E81C9A-4762-46D5-B4AE-87B20088CD56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99E81C9A-4762-46D5-B4AE-87B20088CD56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99E81C9A-4762-46D5-B4AE-87B20088CD56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
