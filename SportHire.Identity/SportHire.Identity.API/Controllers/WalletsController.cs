@@ -27,7 +27,7 @@ namespace SportHire.Identity.API.Controllers
                 var amount = await _service.GetBalanceAsync(email);
                 return Ok(new { balance = amount });
             }
-            catch (ArgumentException aex)
+            catch (KeyNotFoundException aex)
             {
                 return NotFound(aex.Message);
             }
@@ -47,7 +47,7 @@ namespace SportHire.Identity.API.Controllers
                 await _service.AddBalanceAsync(inputModel.Email, inputModel.Amount);
                 return Ok();
             }
-            catch(ArgumentException aex)
+            catch(KeyNotFoundException aex)
             {
                 return NotFound(aex.Message);
             }
@@ -67,7 +67,7 @@ namespace SportHire.Identity.API.Controllers
                 await _service.RemoveBalanceAsync(inputModel.Email, inputModel.Amount);
                 return Ok();
             }
-            catch (ArgumentException aex)
+            catch (KeyNotFoundException aex)
             {
                 return NotFound(aex.Message);
             }
