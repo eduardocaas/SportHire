@@ -7,7 +7,7 @@ namespace SportHire.Identity.UnitTests.TestData.ObjectMothers
     {
         private static readonly Faker _faker = new();
 
-        public static User UserWithWallet
+        private static User User
         {
             get
             {
@@ -17,11 +17,24 @@ namespace SportHire.Identity.UnitTests.TestData.ObjectMothers
                     _faker.Internet.Password(length: 8)
                 );
 
-                var wallet = new Wallet { Balance = 0, User = user };
+                return user;
+            }
+        }
+
+        public static User UserWithWallet
+        {
+            get
+            {
+                var user = User;
+
+                var wallet = new Wallet { Balance = 1000, User = user };
                 user.Wallet = wallet;
 
                 return user;
             }
         }
+
+        public static User UserWithoutWallet
+            => User;
     }
 }
