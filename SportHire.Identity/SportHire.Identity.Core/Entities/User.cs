@@ -15,5 +15,10 @@
         public string Password { get; private set; }
         public bool EmailConfirmed { get; private set; }
         public Wallet Wallet { get; set; }
+
+        public User Clone()
+        {
+            return new User(FullName, Email, Password);
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace SportHire.Identity.UnitTests.TestData.ObjectMothers
         {
             get
             {
-                var user = User;
+                var user = User.Clone();
 
                 var wallet = new Wallet { Balance = 1000, User = user };
                 user.Wallet = wallet;
