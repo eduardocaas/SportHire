@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SportHire.Identity.Core\SportHire.Identity.Core.csproj" />
+    <ProjectReference Include="..\SportHire.Identity.Infrastructure\SportHire.Identity.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
