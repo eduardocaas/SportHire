@@ -37,7 +37,7 @@ namespace SportHire.Identity.Infrastructure.Persistence.Repositories
             return await _dbContext.Users.SingleOrDefaultAsync(u => u.Email == email && u.Password == passwordHash);
         }
 
-        public async Task<User> GetByEmailAsync(string email)
+        public async Task<User?> GetByEmailAsync(string email)
         {
             return await _dbContext.Users.Include(u => u.Wallet).SingleOrDefaultAsync(u => u.Email == email);
         }
