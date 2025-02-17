@@ -34,5 +34,23 @@ namespace SportHire.Identity.UnitTests.Infrastructure.Repositories.Tests
             // Assert
             balance.Should().Be(user.Wallet.Balance);
         }
+
+        [Fact]
+        public async Task UserNotExists_GetBalanceByEmail_ThrowsException()
+        {
+            // Arrange 
+            var walletRepository = Substitute.For<IWalletRepository>();
+            var userRepository = Substitute.For<IUserRepository>();
+
+            userRepository.GetByEmailAsync(Arg.Any<string>()).Returns(Task.FromResult((User?) null));
+
+            // Act + Assert
+            await walletRepository.Awaiting(r => r.GetBalanceByEmail("user@email.com"))
+                .Should()
+                .ThrowAsync<KeyNotFoundException>()
+                .WithMessage(WalletRepository.USER_NOT_FOUND_MESSAGE);
+
+            await userRepository.Received(1).GetByEmailAsync(Arg.Any<string>());
+        }
     }
 }
