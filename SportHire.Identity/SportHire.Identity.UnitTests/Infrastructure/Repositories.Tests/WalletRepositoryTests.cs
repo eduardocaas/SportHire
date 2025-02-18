@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using NSubstitute;
-using SportHire.Identity.Core.Entities;
 using SportHire.Identity.Core.Repositories;
 using SportHire.Identity.Infrastructure.Persistence.Repositories;
 using SportHire.Identity.UnitTests.TestData.ObjectMothers;
@@ -8,8 +7,10 @@ using Xunit.Abstractions;
 
 namespace SportHire.Identity.UnitTests.Infrastructure.Repositories.Tests
 {
-    // Testes apenas para demonstrar funcionamento das ferramentas,
-    // os testes reais ficam em Application -> onde são executados testes nos Services.
+    /*
+       Testes apenas para demonstrar funcionamento das ferramentas,
+       os testes reais ficam nos demais diretórios
+     */
 
     public class WalletRepositoryTests
     {
@@ -44,8 +45,8 @@ namespace SportHire.Identity.UnitTests.Infrastructure.Repositories.Tests
             var walletRepository = Substitute.For<IWalletRepository>();
 
             walletRepository.When(w => w.GetBalanceByEmail("notfound@email.com")).Do(w =>  { throw new KeyNotFoundException(WalletRepository.USER_NOT_FOUND_MESSAGE); });
-            // Act + Assert
 
+            // Act + Assert
             Func<Task> getBalanceByEmail = () => walletRepository.GetBalanceByEmail("notfound@email.com");
             await getBalanceByEmail.Should().ThrowAsync<KeyNotFoundException>();
 
