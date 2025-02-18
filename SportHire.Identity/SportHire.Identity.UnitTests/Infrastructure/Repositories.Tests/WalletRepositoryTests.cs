@@ -8,6 +8,9 @@ using Xunit.Abstractions;
 
 namespace SportHire.Identity.UnitTests.Infrastructure.Repositories.Tests
 {
+    // Testes apenas para demonstrar funcionamento das ferramentas,
+    // os testes reais ficam em Application -> onde são executados testes nos Services.
+
     public class WalletRepositoryTests
     {
         private readonly ITestOutputHelper _output;
@@ -24,9 +27,8 @@ namespace SportHire.Identity.UnitTests.Infrastructure.Repositories.Tests
             var user = UserMother.UserWithWallet;
 
             var walletRepository = Substitute.For<IWalletRepository>();
-            var userRepository = Substitute.For<IUserRepository>();
 
-            userRepository.GetByEmailAsync(user.Email).Returns(Task.FromResult((User?) user));
+            walletRepository.GetBalanceByEmail(Arg.Any<string>()).Returns(1000);
 
             // Act
             decimal balance = await walletRepository.GetBalanceByEmail(user.Email);
@@ -40,17 +42,14 @@ namespace SportHire.Identity.UnitTests.Infrastructure.Repositories.Tests
         {
             // Arrange 
             var walletRepository = Substitute.For<IWalletRepository>();
-            var userRepository = Substitute.For<IUserRepository>();
 
-            userRepository.GetByEmailAsync(Arg.Any<string>()).Returns(Task.FromResult((User?) null));
-
+            walletRepository.When(w => w.GetBalanceByEmail("notfound@email.com")).Do(w =>  { throw new KeyNotFoundException(WalletRepository.USER_NOT_FOUND_MESSAGE); });
             // Act + Assert
-            await walletRepository.Awaiting(r => r.GetBalanceByEmail("user@email.com"))
-                .Should()
-                .ThrowAsync<KeyNotFoundException>()
-                .WithMessage(WalletRepository.USER_NOT_FOUND_MESSAGE);
 
-            await userRepository.Received(1).GetByEmailAsync(Arg.Any<string>());
+            Func<Task> getBalanceByEmail = () => walletRepository.GetBalanceByEmail("notfound@email.com");
+            await getBalanceByEmail.Should().ThrowAsync<KeyNotFoundException>();
+
+            await walletRepository.Received(1).GetBalanceByEmail(Arg.Any<string>());
         }
     }
 }
