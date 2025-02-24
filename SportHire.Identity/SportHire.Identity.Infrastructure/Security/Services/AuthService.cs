@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using SportHire.Identity.Infrastructure.Security.Exceptions;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -47,8 +48,25 @@ namespace SportHire.Identity.Infrastructure.Security.Services
             };
 
             var rsaKey = RSA.Create();
-            string pemKey = File.ReadAllText(_configuration.GetSection("Jwt:PrivateKeyPath").Value);
-            rsaKey.ImportFromPem(pemKey);
+            string pemKey;
+
+            try
+            {
+                pemKey = File.ReadAllText(_configuration.GetSection("Jwt:PrivateKeyPath").Value);
+            }
+            catch (FileNotFoundException ex) 
+            {
+                throw new PrivateKeyFileNotFoundException(ex);
+            }
+
+            try
+            {
+                rsaKey.ImportFromPem(pemKey);
+            }
+            catch (CryptographicException ex)
+            {
+                throw new InvalidPrivateKeyException(ex);
+            }
 
             var rsaSecurityKey = new RsaSecurityKey(rsaKey);
             var signingCredentials = new SigningCredentials(rsaSecurityKey, SecurityAlgorithms.RsaSha256);
