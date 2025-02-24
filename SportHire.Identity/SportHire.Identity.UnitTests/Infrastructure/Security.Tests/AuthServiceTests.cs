@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using NSubstitute;
+using SportHire.Identity.Infrastructure.Security.Exceptions;
 using SportHire.Identity.Infrastructure.Security.Services;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -110,6 +111,57 @@ namespace SportHire.Identity.UnitTests.Infrastructure.Security.Tests
 
                 handler.ValidateToken(tokenString, validationParameters, out _);
             }
+        }
+
+        [Fact]
+        public void PrivateKeyNotExist_GenerateJwtToken_ThrowPrivateKeyFileNotFoundException()
+        {
+            // Arrange
+            var email = "user@test.com";
+            var name = "User Test";
+
+            var issuer = "Test-Issuer";
+            var audience = "Test-Audience";
+
+            _configuration["Jwt:Issuer"].Returns(issuer);
+            _configuration["Jwt:Audience"].Returns(audience);
+            _configuration.GetSection("Jwt:PrivateKeyPath").Value.Returns("../private.pem");
+
+            // Act 
+            Func<string> tokenString = () => _authService.GenerateJwtToken(email, name);
+
+            // Assert
+            tokenString
+                .Should()
+                .Throw<PrivateKeyFileNotFoundException>()
+                .WithMessage(PrivateKeyFileNotFoundException.PRIVATE_KEY_FILE_NOT_FOUND_MESSAGE);
+
+        }
+
+        [Fact]
+        public void PrivateKeyInvalid_GenerateJwtToken_ThrowInvalidPrivateKeyException()
+        {
+            // Arrange
+            var email = "user@test.com";
+            var name = "User Test";
+
+            var issuer = "Test-Issuer";
+            var audience = "Test-Audience";
+
+            var privateKeyPath = "../../../../SportHire.Identity.Infrastructure/Keys/invalidPrivate.pem";
+
+            _configuration["Jwt:Issuer"].Returns(issuer);
+            _configuration["Jwt:Audience"].Returns(audience);
+            _configuration.GetSection("Jwt:PrivateKeyPath").Value.Returns(privateKeyPath);
+
+            // Act
+            Func<string> tokenString = () => _authService.GenerateJwtToken(email, name);
+
+            // Assert
+            tokenString
+                .Should()
+                .Throw<InvalidPrivateKeyException>()
+                .WithMessage(InvalidPrivateKeyException.INVALID_PRIVATE_KEY_MESSAGE);
         }
         #endregion
     }
